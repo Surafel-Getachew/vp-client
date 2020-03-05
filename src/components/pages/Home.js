@@ -10,6 +10,7 @@ const Home = () => {
                     <li><Link to = "/quizes">Quizes</Link></li>
                     <li><Link to = "/groupchat">Group Chat</Link></li>
                     <li><Link to = "/videochat">Video Chat</Link></li>
+                    <li><Link to = "/articles">Articles</Link></li>
                 </ul>
             </div>
         </div>

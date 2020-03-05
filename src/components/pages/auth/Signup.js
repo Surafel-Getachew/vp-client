@@ -1,14 +1,20 @@
 import React,{useState,useContext} from "react";
+
 import AlertContext from "../../../context/alert/alertContext";
+import AuthContext from "../../../context/auth/authContext";
 
 const SignUp = () => {
 
     const alertContext = useContext(AlertContext);
     const {setAlert} = alertContext;
 
+    const authContext = useContext(AuthContext);
+    const {register} = authContext;
+    
+
     const [user,setUser] = useState({
         name:"",
-        emial:"",
+        email:"",
         password:"",
         password2:""
     })
@@ -25,8 +31,13 @@ const SignUp = () => {
             setAlert("Password doesn't match")
         }
         else{
-            console.log("Registeration submited");
+            register({
+                name,
+                email,
+                password
+            })
         }
+       
     }
 
     return (
@@ -40,7 +51,7 @@ const SignUp = () => {
                 <input type = "password" name = "password" value = {password} minLength = "6" onChange = {onChange} required/><br/>
                 <label htmlFor = "password2">Confirm Password</label><br/>
                 <input type  = "password" name = "password2" value = {password2} minLength = "6" onChange = {onChange} required /> <br/>
-                <button type = "submit">SignUp</button>
+                <input type = "submit" value = "SignUp"/>
             </form>
         </div>
     )

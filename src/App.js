@@ -8,10 +8,12 @@ import SignUp from "./components/pages/auth/Signup";
 import GroupChat from "./components/pages/GroupChat";
 import VideoChat from "./components/pages/VideoChat";
 import Quizes from "./components/pages/quizes";
+import Articles from "./components/pages/Articles";
 import Alerts from "./components/alert/Alerts";
 
 // State
-import AuthState from "./context/autho/AuthState";
+// import AuthState from "./context/auth/AuthState";
+import AuthState from "./context/auth/AuthState";
 import AlertState from "./context/alert/AlertState";
 
 
@@ -21,7 +23,7 @@ const App = () => {
     <AlertState>
     <Router>
       <Fragment>
-        <div>
+        
       <Alerts/>
       <Switch>
         <Route exact path = "/" component = {Home} />
@@ -30,12 +32,13 @@ const App = () => {
         <Route exact path = "/quizes" component = {Quizes} />
         <Route exact path = "/groupchat" component = {GroupChat} />
         <Route exact path = "/videochat" component = {VideoChat} />
+        <Route exact path = "/articles" component = {Articles} />
       </Switch>
-      </div>
+      
       </Fragment>
-     </Router>
-     </AlertState>
-     </AuthState>
+      </Router>
+      </AlertState>
+     </AuthState> 
   )
 }
 
