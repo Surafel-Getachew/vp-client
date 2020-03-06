@@ -1,7 +1,18 @@
-import React from "react";
+import React,{useContext,useEffect} from "react";
 import {Link} from "react-router-dom"
 
+import AuthContext from "../../context/auth/authContext";
+
 const Home = () => {
+
+    const authContext = useContext(AuthContext);
+    const{loadUser} = authContext;
+
+
+    useEffect(() => {
+        loadUser()
+    },[])
+
     return (
         <div>
             <h1>Home Page</h1>
