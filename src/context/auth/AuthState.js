@@ -81,6 +81,17 @@ const AuthState = (props) => {
         }
     }
 
+    const logout = async () => {
+        
+        try {
+            const res = await axios.post("/vp/users/logout");
+            dispatch({type:LOGOUT})    
+        } catch (error) {
+            console.error(error)
+        }
+        
+    }
+
     const clearErrors = () => dispatch({type:{CLEAR_ERRORS}})
 
     return (
@@ -93,6 +104,7 @@ const AuthState = (props) => {
             loadUser,
             register,
             login,
+            logout,
             clearErrors
         }}>
             {props.children}

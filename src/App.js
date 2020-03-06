@@ -11,6 +11,7 @@ import Quizes from "./components/pages/quizes";
 import Articles from "./components/pages/Articles";
 import Alerts from "./components/alert/Alerts";
 
+
 // State
 // import AuthState from "./context/auth/AuthState";
 import AuthState from "./context/auth/AuthState";
