@@ -4,9 +4,12 @@ import {
     USER_LOADED,
     AUTH_ERROR,
     LOGIN_SUCCESS,
+    PSYCHIATRIST_LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    REGISTER_SUCCESS_PSYCHIATRIST,
+    PSYCHIATRIST_LOADED,
   } from "../../types"
 
 export default (state,action) => {
@@ -17,14 +20,35 @@ export default (state,action) => {
                 isAuthenticated:true,
                 loading:false,
                 user:action.payload,
+                role:action.payload.role,
             }
+        case PSYCHIATRIST_LOADED:
+            return {
+                ...state,
+                isAuthenticated:true,
+                loading:false,
+                user:action.payload,
+                role:action.payload.role
+            }    
         case REGISTER_SUCCESS:
             localStorage.setItem("token",action.payload.token);
             return {
                 ...state,
                 ...action.payload,
                 isAuthenticated:true,
-                loading:false
+                loading:false,
+                error:null
+            }
+        case REGISTER_SUCCESS_PSYCHIATRIST:
+            localStorage.setItem("token",action.payload.token);
+            return {
+                ...state,
+                ...action.payload,
+                // token:action.payload.token,
+                // role:action.payload.role,
+                isAuthenticated:true,
+                loading:false,
+                error:null
             }
         case LOGIN_SUCCESS:
             localStorage.setItem("token",action.payload.token);
@@ -32,8 +56,20 @@ export default (state,action) => {
                 ...state,
                 token:action.payload.token,
                 isAuthenticated:true,
+                role:action.payload.role,
                 loading:false,
-            }    
+                error:null
+            }
+        case PSYCHIATRIST_LOGIN_SUCCESS:
+            localStorage.setItem("token",action.payload.token);
+            return {
+                ...state,
+                token:action.payload.token,
+                isAuthenticated:true,
+                role:action.payload,
+                loading:false,
+                error:null
+            }        
         case REGISTER_FAIL:
         case AUTH_ERROR:
         case LOGIN_FAIL:

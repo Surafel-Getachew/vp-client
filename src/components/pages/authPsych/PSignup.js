@@ -1,40 +1,45 @@
 import React,{useState,useContext,useEffect} from "react";
+import {Redirect} from "react-router-dom";
 
-import AlertContext from "../../../context/alert/alertContext";
 import AuthContext from "../../../context/auth/authContext";
+import AlertContext from "../../../context/alert/alertContext";
+import { CLEAR_ERRORS } from "../../../types";
 
-const SignUp = (props) => {
+const PSignup = (props) => {
+
+    const authContext = useContext(AuthContext);
+    const {registerPsychiatrist,isAuthenticated,role,error,clearErrors} = authContext;
 
     const alertContext = useContext(AlertContext);
     const {setAlert} = alertContext;
 
-    const authContext = useContext(AuthContext);
-    const {register,error,clearErrors,isAuthenticated,role} = authContext;
+   const [psych,setPsych] = useState({
+        name:"",
+        email:"",
+        password:"", 
+        password2:"",
+        redirect:false
+    });
+
+    const {name ,email , password , password2,redirect} = psych;
 
     useEffect(() => {
-
-        if(isAuthenticated){  // i removed checking if role is === user
-            props.history.push("/")
+        if(isAuthenticated && role === "psychiatrist"){
+            setPsych({redirect:true})
         }
-
-        if(error === "User already exist"){
+        if(error){
             setAlert(error)
             clearErrors()
         }
-    },[error,isAuthenticated,props.history,role])
-    
+    },[isAuthenticated,role,redirect,error])
 
-    const [user,setUser] = useState({
-        name:"",
-        email:"",
-        password:"",
-        password2:""
-    })
-    
-    const {name ,email , password , password2} = user; 
-    
+   
+    if(redirect){
+        return (<Redirect to = "/vp/psychiatrist/" />)
+    }
+
     const onChange = (e) => {
-        setUser({...user,[e.target.name]:e.target.value})
+        setPsych({...psych,[e.target.name]:e.target.value})
     }
 
     const onSubmit = (e) => {
@@ -43,7 +48,7 @@ const SignUp = (props) => {
             setAlert("Password doesn't match")
         }
         else{
-            register({
+            registerPsychiatrist({
                 name,
                 email,
                 password
@@ -67,6 +72,8 @@ const SignUp = (props) => {
             </form>
         </div>
     )
+    
+
 }
 
-export default SignUp;
+export default PSignup;

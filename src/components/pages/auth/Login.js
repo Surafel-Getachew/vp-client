@@ -10,7 +10,7 @@ const Login = (props) => {
     const {setAlert} = alertContext
 
     const authContext = useContext(AuthContext);
-    const {login,isAuthenticated,error,clearErrors} = authContext;
+    const {login,isAuthenticated,error,clearErrors,role} = authContext;
 
     const [user,setUser] = useState({
        
@@ -22,7 +22,7 @@ const Login = (props) => {
 
     useEffect(() => {
         
-        if(isAuthenticated){
+        if(isAuthenticated && role === "user"){
             props.history.push("/")
         }
 

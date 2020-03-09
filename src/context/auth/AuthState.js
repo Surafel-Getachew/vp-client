@@ -7,10 +7,13 @@ import axios from "axios";
 
 import {
     REGISTER_SUCCESS,
+    REGISTER_SUCCESS_PSYCHIATRIST,
     REGISTER_FAIL,
     USER_LOADED,
+    PSYCHIATRIST_LOADED,
     AUTH_ERROR,
     LOGIN_SUCCESS,
+    PSYCHIATRIST_LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
     CLEAR_ERRORS
@@ -24,7 +27,8 @@ const AuthState = (props) => {
         isAuthenticated:null,
         loading:true,
         user:null,
-        error:null
+        error:null,
+        role:null
     } 
 
     const [state,dispatch] = useReducer(AuthReducer,initialState);
@@ -45,6 +49,21 @@ const AuthState = (props) => {
         
     }
 
+    const loadPsychiatrist = async () => {
+        
+        if(localStorage.token){
+            setAuthToken(localStorage.token)
+        }
+
+        try {
+            const res = await axios.get("/vp/psychiatrist");
+            dispatch({type:PSYCHIATRIST_LOADED,payload:res.data})
+        } catch (error) {
+            dispatch({type:AUTH_ERROR})
+        }
+
+    }
+
     const register = async (formData) => {
         const config = {
             headers:{
@@ -56,6 +75,22 @@ const AuthState = (props) => {
             dispatch({type:REGISTER_SUCCESS,payload:res.data})
 
             loadUser();
+        } catch (error) {
+            dispatch({type:REGISTER_FAIL,payload:error.response.data.msg})
+        }
+    }
+
+    const registerPsychiatrist = async (formData) => {
+        const config = {
+            headers:{
+                "Content-Type":"application/json"
+            }
+        }
+        try {
+            const res = await axios.post("/vp/psychiatrist",formData,config)
+            dispatch({type:REGISTER_SUCCESS_PSYCHIATRIST,payload:res.data})
+
+            loadPsychiatrist();
         } catch (error) {
             dispatch({type:REGISTER_FAIL,payload:error.response.data.msg})
         }
@@ -81,6 +116,21 @@ const AuthState = (props) => {
         }
     }
 
+    const psychiatristLogin = async (formData) => {
+        const config = {
+            headers:{
+                "Content-Type":"application/json"
+            }
+        }
+        try {
+            const res = await axios.post("/vp/psychiatrist/login",formData,config);
+            dispatch({type:PSYCHIATRIST_LOGIN_SUCCESS,payload:res.data});
+            loadPsychiatrist();
+        } catch (error) {
+            dispatch({type:LOGIN_FAIL,payload:error.response.data.msg})
+        }
+    }
+
     const logout = async () => {
         
         try {
@@ -100,10 +150,13 @@ const AuthState = (props) => {
             isAuthenticated:state.isAuthenticated,
             user:state.user,
             loading:state.loading,
+            role:state.role,
             error:state.error,
             loadUser,
             register,
+            registerPsychiatrist,
             login,
+            psychiatristLogin,
             logout,
             clearErrors
         }}>
