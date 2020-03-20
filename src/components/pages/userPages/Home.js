@@ -1,16 +1,15 @@
 import React,{useContext,useEffect} from "react";
 import {Link} from "react-router-dom"
+import Article from "./Articles"
 
-import AuthContext from "../../context/auth/authContext";
+import AuthContext from "../../../context/auth/authContext";
 
-
-const Home = () => {
-
+const Home = ({title,body}) => {
+    
     const authContext = useContext(AuthContext);
     const{loadUser,logout} = authContext;
 
-
-    useEffect(() => {
+   useEffect(() => {
         loadUser()
     },[])
 
@@ -31,6 +30,12 @@ const Home = () => {
                     <a onClick = {onLogout} href ="#!" >Logout</a>
                 </ul>
             </div>
+
+            <div>
+                <Article/>
+            </div>
+        
+        
         </div>
     )
 }

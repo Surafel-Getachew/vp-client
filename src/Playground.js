@@ -1,25 +1,27 @@
-import React,{useState,useEffect} from "react"
-import axios from "axios";
+import React,{useContext,useEffect} from "react";
+import ArticleContext from "./context/article/articleContext";
+
 
 const Playground = () => {
 
-    const [articles,setArticle] = useState([]);
+   const articleContext = useContext(ArticleContext);
+   const {articles,loadArticle} = articleContext
 
     useEffect(() => {
-        axios.get("/vp").then((res) => {
-            setArticle(res.data);
-        })
-    })
+       loadArticle();
+    },[])
 
     return(
         <div>
-            {articles.map(article => (
-                <ul >
-                    <li>{article.title}</li>
-                </ul>
+            {articles.map((article) => (
+                <div>
+                    <h1>{article.title}</h1>
+                    <p>{article.body}</p>
+                </div>
             ))}
         </div>
-    )
+    )   
+    
 }
 
 export default Playground;
