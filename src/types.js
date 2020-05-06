@@ -25,7 +25,9 @@ export const CLEAR_CURRENT = "CLEAR_CURRENT";
 
 // For Rooms
 export const CREATE_ROOM = "CREATE_ROOM";
-
+export const LOAD_ROOM = "LOAD_ROOM";
+export const GET_ROOM = "LOAD_ROOM";
+export const ROOM_ERROR = "ROOM_ERROR"
 
 
 // trial for profile picture 
