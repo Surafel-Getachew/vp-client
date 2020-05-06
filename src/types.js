@@ -28,6 +28,9 @@ export const CREATE_ROOM = "CREATE_ROOM";
 export const LOAD_ROOM = "LOAD_ROOM";
 export const GET_ROOM = "LOAD_ROOM";
 export const ROOM_ERROR = "ROOM_ERROR"
+export const SET_CURRENT_ROOM = "SET_CURRENT_ROOM"
+export const NEW_MESSAGE = "NEW_MESSAGE";
+export const SET_CURRENT_MESSAGE = "SET_CURRENT_MESSAGE"
 
 
 // trial for profile picture 

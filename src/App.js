@@ -1,6 +1,9 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+// page for all
+import Chat from "./components/chat/Chat";
+
 // Pages for user
 import Home from "./components/pages/userPages/Home";
 import Login from "./components/pages/auth/Login";
@@ -53,6 +56,7 @@ const App = () => {
                   <Route exact path="/groupchat" component={GroupChat} />
                   <Route exact path="/videochat" component={VideoChat} />
                   <Route exact path="/articles" component={Articles} />
+                  <Route exact path = "/chat" component = {Chat} />
                   <Route
                     exact
                     path="/vp/psychiatrist/signup"

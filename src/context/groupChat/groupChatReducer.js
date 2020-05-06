@@ -1,4 +1,4 @@
-import { CREATE_ROOM, LOAD_ROOM, GET_ROOM,ROOM_ERROR } from "../../types";
+import { CREATE_ROOM, LOAD_ROOM,SET_CURRENT_ROOM,NEW_MESSAGE,ROOM_ERROR } from "../../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -15,7 +15,20 @@ export default (state, action) => {
           ...state,
           rooms:[...state.rooms,action.payload],
           error:null
-      };
+      }
+
+    case SET_CURRENT_ROOM:{
+        return {
+            ...state,
+            currentRoom:action.payload
+        }
+    }
+    case NEW_MESSAGE:{
+        return {
+            ...state,
+            newMessage:action.payload
+        }
+    }
     default:
       return state;
   }
