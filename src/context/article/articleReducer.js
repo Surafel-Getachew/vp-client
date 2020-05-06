@@ -6,7 +6,8 @@ import {
     CLEAR_ARTICLE,
     DELETE_ARTICLE,
     SET_CURRENT,
-    CLEAR_CURRENT
+    CLEAR_CURRENT,
+    PROFILE
 }from "../../types";
 
 export default (state,action) => {
@@ -72,6 +73,12 @@ export default (state,action) => {
             return {
                 ...state,
                 current:null
+            }
+        }
+        case PROFILE:{
+            return {
+                ...state,
+                profile:action.payload
             }
         }
         default:

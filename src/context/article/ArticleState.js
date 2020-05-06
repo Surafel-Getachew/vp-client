@@ -14,6 +14,7 @@ import {
     CLEAR_ARTICLE,
     ARTICLE_ERROR,
     CLEAR_CURRENT,
+    PROFILE
 }from "../../types";
 
 
@@ -27,7 +28,8 @@ const ArticleState = (props) => {
         current:null,
         filtered:null,
         loading:true,
-        error:null
+        error:null,
+        profile:null
     }
 
     const [state,dispatch] = useReducer(ArticleReducer,initialState) 
@@ -72,6 +74,17 @@ const ArticleState = (props) => {
             dispatch({type:ARTICLE_ERROR})
         }
     }
+
+    // trial for profile pic
+        const profilePicture = async() => {
+
+            try {
+                const res = await axios.get("/vp/psychiatrist/profilePic");
+                dispatch({type:PROFILE,payload:res.data})
+            } catch (error) {
+                
+            }
+        }
     
     // set the value of current 
     const setCurrent =  (article) => {
@@ -125,7 +138,9 @@ const ArticleState = (props) => {
             clearArticle,  
             loadPsychiatristArticles,
             updateArticle,
-            clearCurrent
+            clearCurrent,
+            profile:state.profile,
+            profilePicture
         }}>
             {props.children}
         </ArticleContext.Provider>

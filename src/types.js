@@ -23,3 +23,11 @@ export const ARTICLE_ERROR = "ARTICLE_ERROR";
 export const CLEAR_ARTICLE = "CLEAR_ARTICLE";
 export const CLEAR_CURRENT = "CLEAR_CURRENT";
 
+// For Rooms
+export const CREATE_ROOM = "CREATE_ROOM";
+
+
+
+// trial for profile picture 
+
+export const PROFILE = "PROFILE";
