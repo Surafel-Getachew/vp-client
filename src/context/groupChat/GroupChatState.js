@@ -7,7 +7,8 @@ import GroupChatReducer from "./groupChatReducer";
 import { CREATE_ROOM, LOAD_ROOM,SET_CURRENT_ROOM,ROOM_ERROR,NEW_MESSAGE,SET_CURRENT_MESSAGE } from "../../types";
 
 const GroupChatState = (props) => {
-  const socket = io("http://localhost:5000");
+  // const socket = io("http://localhost:5000");
+  const socket = "";
 
   const initialState = {
     rooms: [],

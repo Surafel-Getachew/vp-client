@@ -1,0 +1,28 @@
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  background: #ececec;
+}
+
+h1 span {
+  color: #3fd0d4;
+}
+
+.header-title {
+}
+
+.nav-link {
+  align-self: center;
+  padding: 1rem;
+}
+.auth {
+  margin-right: 1rem;
+  font-weight: bold;
+  color: black;
+}
+
+.auth:hover {
+  color: #3fd0d4;
+}

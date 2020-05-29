@@ -1,0 +1,89 @@
+#services {
+    padding:60px 0;
+}
+
+.services-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.services-title h2{
+    font-size: 50px;
+}
+
+.services-title p{
+    margin-top:-10px;
+    text-align: center;
+    width:50%;
+}
+
+.services-center{
+    width: 80vw;
+    margin:0 auto;
+}
+
+.services-card{
+    margin:15px 15px;
+}
+
+.services-card h3{
+    text-transform: capitalize;
+}
+.service-card p{
+    display:block;
+}
+
+@media screen and (min-width:576px){
+    .services-center{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+
+}
+@media screen and (min-width:776px){
+    .services-center{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+
+}
+@media screen and (min-width:996px){
+    .services-center{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+    }
+
+}
+
+#about-us{
+    padding:60px 0;
+    background-color: gainsboro;
+}
+
+.about-center{
+    width:80vw;
+    margin:0 auto;
+    height: 100%;
+}
+
+.about-img{
+    margin-top:-110px;
+}
+
+.about-text h1{
+    font-size:30px;
+    text-align: center;
+}
+
+@media screen and (min-width:552px){
+    .about-center{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+    .about-text{
+        /* align-self: center; */
+    }
+}
