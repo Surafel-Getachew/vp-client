@@ -5,7 +5,13 @@
 
 .signin-section {
   /* background: rgb(48, 202, 151); */
- 
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 102, 139, 1) 0%,
+    rgba(0, 150, 204, 1) 50%,
+    rgba(43, 164, 171, 1) 100%
+  );
+  opacity: 0.75;
   height: 100vh;
   color: rgb(255, 255, 255);
   display: flex;
@@ -24,8 +30,8 @@
 
 .signin-section p {
   align-self: center;
+  text-align: center;
   width: 40%;
-
   margin-bottom: 30px;
 }
 
@@ -49,7 +55,10 @@
 
 .signup-form h1 {
   font-size: 40px;
-  color: rgb(48, 202, 151);
+  /* color: rgb(48, 202, 151); */
+  /* color: rgb(0, 102, 139); */
+    color:rgba(0, 150, 204, 1);
+    /* color:rgba(43, 164, 171, 1); */
   letter-spacing: 2px;
 }
 
@@ -66,10 +75,13 @@
 #signup form input {
   margin: 20px;
   padding: 10px 20px;
+  border:none;
+  border-bottom: 2px solid rgba(0, 150, 204, 1);
 }
 
-#signup form button {
-  background: rgb(48, 202, 151);
+#signup form .signup-btn {
+  /* background: rgb(48, 202, 151); */
+  background:rgba(0, 150, 204, 1);
   color: white;
   border: 2px solid white;
   border-radius: 30px;
