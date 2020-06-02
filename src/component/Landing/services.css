@@ -1,3 +1,26 @@
+
+#banner {
+  background:linear-gradient(
+    to bottom,
+    rgba(0, 102, 139, 0.6) 0%,
+    rgba(0, 150, 204, 0.6) 50%,
+    rgba(43, 164, 171, 0.8) 100%
+  ),
+  url("../../assets/images/landing/patient1.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* background-attachment: fixed; */
+  height: 100vh;
+  color:#fff;
+  text-align: center;
+}
+
+.banner-text{
+    margin:auto 0;
+}
+
+
 #services {
     padding:60px 0;
 }

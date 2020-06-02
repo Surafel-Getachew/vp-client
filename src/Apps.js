@@ -5,10 +5,13 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AuthState from "./context/auth/AuthState";
 import AlertState from "./context/alert/AlertState";
 
-// pages
+// user pages
 import Landing from "./pages/Landing/Landing";
-import PsychiatristLanding from "./pages/Psychiatrist/PsychiatristLanding";
 import Signup from "./pages/User/Auth/Signup";
+
+// psych pages
+import PsychiatristLanding from "./pages/Psychiatrist/PsychLanding/PsychiatristLanding";
+import PsychSignup from "./pages/Psychiatrist/PsychAuth/PsychSignup";
 
 const Apps = () => {
   return (
@@ -18,6 +21,7 @@ const Apps = () => {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/psychiatrist" component={PsychiatristLanding} />
+            <Route exact path="/psychiatrist/signup" component={PsychSignup} />
             <Route exact path="/signup" component={Signup} />
           </Switch>
         </BrowserRouter>

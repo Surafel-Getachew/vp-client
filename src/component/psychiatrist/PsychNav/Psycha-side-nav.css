@@ -1,0 +1,76 @@
+#psych-side-nav {
+  border: 2px solid #f7f7f7;
+}
+
+.profile-side-nav {
+  text-align: center;
+  border-bottom: 1px solid #f7f7f7;
+  padding: 20px;
+}
+
+.profile-side-nav-container {
+  display: block;
+  text-align: center;
+}
+
+.profile-side-nav-container a {
+  display: inline-block;
+  margin: 0 0 15px;
+  width: auto;
+  padding: 8px;
+  background: #f7f7f7;
+  border-radius: 50%;
+}
+
+.profile-side-nav-container img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+
+.profile-side-nav-info {
+  margin-top: -10px;
+}
+
+.profile-side-nav-info h3 {
+  font-size: 17px;
+}
+.profile-side-nav-info h5 {
+  color: #757575;
+  font-weight: normal;
+  margin-top: -10px;
+}
+
+.psych-side-nav-menu {
+}
+
+.psych-side-nav-menu ul {
+  color: #757575;
+  font-size: 14px;
+  line-height: 17px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize;
+}
+
+.psych-side-nav-menu ul li {
+  border-bottom: 1px solid #f0f0f0;
+  /* display: list-item; */
+}
+
+.psych-side-nav-menu ul li a {
+  display: block;
+  padding: 16px 20px;
+  color: #757575;
+}
+
+.psych-side-nav-menu ul li a:hover {
+  color: #0de0fe;
+}
+
+.psych-side-nav-menu ul li a i {
+  margin-right: 10px;
+  width:16px;
+  /* font-size: 16px; */
+}

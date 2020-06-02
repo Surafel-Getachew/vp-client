@@ -3,6 +3,13 @@ import "./services.css";
 const Services = () => {
   return (
     <div>
+      <section id="banner">
+       <div className = "banner-text">
+         <h1>Virtual Psychiatrist</h1>
+         <h3>Discuss with proffessionals from the comfort of your home</h3>
+       </div>
+      </section>
+
       <section id="services">
         <div className="services-title">
           <h2>What we can offer</h2>
@@ -121,7 +128,6 @@ const Services = () => {
             commodi voluptas dolor laborum? Perferendis maxime nam dicta veniam
             fugit autem?
           </div>
-          
         </div>
       </section>
     </div>
