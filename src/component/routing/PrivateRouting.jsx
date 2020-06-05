@@ -10,7 +10,7 @@ const PrivateRouting = ({component:Component,...rest}) => {
     const{isAuthenticated} = authContext;
 
     return (
-        <Route {...rest} render = { props => !isAuthenticated ? (
+        <Route {...rest} render = { props => isAuthenticated === false ? (
             <Redirect to = "/psychiatrist/signin" />
         ): (
             <Component {...props} />

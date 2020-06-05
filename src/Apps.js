@@ -8,6 +8,7 @@ import AlertState from "./context/alert/AlertState";
 // private route
 import PrivateRoute from "./component/routing/PrivateRouting";
 
+
 // user pages
 import Landing from "./pages/Landing/Landing";
 import Signup from "./pages/User/Auth/Signup";
@@ -16,6 +17,12 @@ import Signup from "./pages/User/Auth/Signup";
 import PsychiatristLanding from "./pages/Psychiatrist/PsychLanding/PsychiatristLanding";
 import PsychSignup from "./pages/Psychiatrist/PsychAuth/PsychSignup";
 import PsychSignIn from "./pages/Psychiatrist/PsychAuth/PsychSignIn"
+
+// adding auth token to global header so that will not send it every time.
+import setAuthToken from "./utils/setAuthToken";
+if (localStorage.token) {
+  setAuthToken(localStorage.token)
+}
 
 const Apps = () => {
   return (
