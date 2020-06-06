@@ -1,9 +1,17 @@
-import React from 'react'
+import React,{useContext,useEffect} from 'react'
+import {Link} from "react-router-dom"
 // import "./PsychNav.css"
 import "../PsychNav/Psycha-side-nav.css"
+import AuthContext from "../../../context/auth/authContext";
 
-const PsychNav = ({user}) => {
-   
+const PsychNav = () => {
+    const authContext = useContext(AuthContext);
+    const { loadPsychiatrist, user } = authContext;
+
+    useEffect(() => {
+        loadPsychiatrist();
+        // eslint-disable-next-line
+    }, [])
     return (
         <div id = "psych-side-nav">
             <div className = "profile-side-nav">
@@ -18,15 +26,16 @@ const PsychNav = ({user}) => {
             </div>
             <div className = "psych-side-nav-menu">
                 <ul>
-                    <li><a href="none"><i className="fas fa-columns"></i> <span>Dashboard</span> </a></li>
-                    <li><a href="none"><i className="fas fa-calendar-check"></i><span>Schedule Timings</span></a></li>
-                    <li><a href="none"><i className="fas fa-newspaper"></i><span>Article</span></a></li>
-                    <li><a href="none"><i className="fas fa-users"></i><span>Article</span></a></li>
-                    <li><a href="none"><i className="fas fa-video"></i><span>Video Chat</span></a></li>
-                    <li><a href="none"><i className="fas fa-user-cog"></i><span>Profile Setting</span></a></li>
-                    <li><a href="none"><i className="fas fa-share-alt"></i><span>Social Media links</span></a></li>
-                    <li><a href="none"><i className="fas fa-lock"></i><span>Change Password</span></a></li>
-                    <li><a href="none"><i className="fas fa-sign-out-alt"></i><span>Change Password</span></a></li>
+                    <li><Link className = "a" ><i className="fas fa-columns"></i> <span>Dashboard</span> </Link></li>
+                    <li><Link className = "a" ><i className="fas fa-calendar-check"></i><span>Schedule Timings</span></Link></li>
+                    <li><Link className = "a" to = "vp/psychiatrist/article"><i className="fas fa-newspaper"></i><span>Article</span></Link></li>
+                    <li><Link className = "a" ><i className="fas fa-users"></i><span>Group Chat</span></Link></li>
+                    <li><Link className = "a" ><i className="fas fa-video"></i><span>Video Chat</span></Link></li>
+                    <li><Link className = "a" ><i className="fas fa-user-cog"></i><span>Profile Setting</span></Link></li>
+                    <li><Link className = "a" ><i className="fas fa-share-alt"></i><span>Social Media links</span></Link></li>
+                    <li><Link className = "a" ><i className="fas fa-lock"></i><span>Change Password</span></Link></li>
+                    <li><Link className = "a" ><i className="fas fa-sign-out-alt"></i><span>Change Password</span></Link></li>
+                    <li><Link className = "a" to="/vp/article"><i className="fas fa-sign-out-alt"></i><span>Change Password</span></Link></li>
                 </ul>
             </div>
         </div>

@@ -13,7 +13,7 @@
   text-align: center;
 }
 
-.profile-side-nav-container a {
+.profile-side-nav-container .a {  
   display: inline-block;
   margin: 0 0 15px;
   width: auto;
@@ -59,17 +59,17 @@
   /* display: list-item; */
 }
 
-.psych-side-nav-menu ul li a {
+.psych-side-nav-menu ul li .a {
   display: block;
   padding: 16px 20px;
   color: #757575;
 }
 
-.psych-side-nav-menu ul li a:hover {
+.psych-side-nav-menu ul li .a:hover {
   color: #0de0fe;
 }
 
-.psych-side-nav-menu ul li a i {
+.psych-side-nav-menu ul li .a i {
   margin-right: 10px;
   width:16px;
   /* font-size: 16px; */
