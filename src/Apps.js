@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 // context
 import AuthState from "./context/auth/AuthState";
 import AlertState from "./context/alert/AlertState";
+import ArticleState from "./context/article/ArticleState";
 
 // private route
 import PrivateRoute from "./component/routing/PrivateRouting";
@@ -29,6 +30,7 @@ const Apps = () => {
   return (
     <AuthState>
       <AlertState>
+        <ArticleState>
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Landing} />
@@ -39,6 +41,7 @@ const Apps = () => {
             <Route exact path="/vp/psychiatrist/article" component={PsychArticle} />
           </Switch>
         </BrowserRouter>
+        </ArticleState>
       </AlertState>
     </AuthState>
   );
