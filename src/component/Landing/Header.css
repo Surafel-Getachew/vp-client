@@ -1,28 +1,29 @@
-nav {
+
+
+.nav-bar{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 0 2.5rem;
-  background: #ececec;
 }
 
-h1 span {
-  color: #3fd0d4;
+.nav-bar h1{
+  text-align: center;
+  margin-left: 2rem;
 }
 
-.header-title {
+.nav-bar h1 span{
+  color: rgb(0, 150, 204);
 }
 
 .nav-link {
   align-self: center;
-  padding: 1rem;
-}
-.auth {
-  margin-right: 1rem;
-  font-weight: bold;
-  color: black;
+  margin-right: 2rem;
 }
 
-.auth:hover {
-  color: #3fd0d4;
+.nav-link a{
+  padding: 0 1rem;
+  color: rgb(0, 150, 204);
+  font-size: 17px;
+  /* font-weight: bold; */
+  /* letter-spacing: 1px; */
 }

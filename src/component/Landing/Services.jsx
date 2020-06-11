@@ -6,7 +6,10 @@ const Services = () => {
       <section id="banner">
        <div className = "banner-text">
          <h1>Virtual Psychiatrist</h1>
-         <h3>Discuss with proffessionals from the comfort of your home</h3>
+         <p>Discuss with proffessionals from the comfort of your home</p>
+       <div className="banner-btn">
+         <a href="#none">make appointment</a>
+       </div>
        </div>
       </section>
 

@@ -1,11 +1,13 @@
 #psych-side-nav {
   border: 2px solid #f7f7f7;
+  /* position: fixed; */
 }
 
 .profile-side-nav {
   text-align: center;
   border-bottom: 1px solid #f7f7f7;
   padding: 20px;
+  background: #fff;
 }
 
 .profile-side-nav-container {
@@ -13,12 +15,11 @@
   text-align: center;
 }
 
-.profile-side-nav-container .a {  
+.profile-side-nav-container .a {
   display: inline-block;
   margin: 0 0 15px;
   width: auto;
   padding: 8px;
-  background: #f7f7f7;
   border-radius: 50%;
 }
 
@@ -42,6 +43,7 @@
 }
 
 .psych-side-nav-menu {
+  background: #fff;
 }
 
 .psych-side-nav-menu ul {
@@ -71,6 +73,6 @@
 
 .psych-side-nav-menu ul li .a i {
   margin-right: 10px;
-  width:16px;
+  width: 16px;
   /* font-size: 16px; */
 }

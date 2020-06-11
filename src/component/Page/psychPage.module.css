@@ -1,0 +1,13 @@
+.psychPage{
+    background-color: #f8f9fa;
+    padding:40px 0;
+}
+
+.psychPageCenter{
+    width:95%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-column-gap: 1rem;
+    margin:0 auto;
+
+}

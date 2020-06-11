@@ -1,112 +1,125 @@
-
 #banner {
-  background:linear-gradient(
-    to bottom,
-    rgba(0, 102, 139, 0.6) 0%,
-    rgba(0, 150, 204, 0.6) 50%,
-    rgba(43, 164, 171, 0.8) 100%
-  ),
-  url("../../assets/images/landing/patient1.jpeg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 102, 139, 0.6) 0%,
+      rgba(0, 150, 204, 0.6) 50%,
+      rgba(43, 164, 171, 0.8) 100%
+    ),
+    url("../../assets/images/bbg.jpeg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   /* background-attachment: fixed; */
   height: 100vh;
-  color:#fff;
+  color: #fff;
   text-align: center;
 }
 
-.banner-text{
-    margin:auto 0;
+.banner-btn {
+  margin-top: 3rem;
 }
 
+.banner-btn a {
+  color: #fff;
+  border: 1px solid #fff;
+  padding:1rem 2rem;
+}
+
+.banner-text {
+  margin: auto 0;
+}
+
+.banner-text h1{
+    letter-spacing: 2px;
+    font-size: 40px;
+}
 
 #services {
-    padding:60px 0;
+  padding: 60px 0;
 }
 
 .services-title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
 }
 
-.services-title h2{
-    font-size: 50px;
+.services-title h2 {
+  font-size: 50px;
 }
 
-.services-title p{
-    margin-top:-10px;
-    text-align: center;
-    width:50%;
+.services-title p {
+  margin-top: -10px;
+  text-align: center;
+  width: 50%;
 }
 
-.services-center{
-    width: 80vw;
-    margin:0 auto;
+.services-center {
+  width: 80vw;
+  margin: 0 auto;
 }
 
-.services-card{
-    margin:15px 15px;
+.services-card {
+  margin: 15px 15px;
 }
 
-.services-card h3{
-    text-transform: capitalize;
+.services-card h3 {
+  text-transform: capitalize;
 }
-.service-card p{
-    display:block;
-}
-
-@media screen and (min-width:576px){
-    .services-center{
-        display: grid;
-        grid-template-columns: repeat(1,1fr);
-    }
-
-}
-@media screen and (min-width:776px){
-    .services-center{
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-    }
-
-}
-@media screen and (min-width:996px){
-    .services-center{
-        display: grid;
-        grid-template-columns: repeat(4,1fr);
-    }
-
+.service-card p {
+  display: block;
 }
 
-#about-us{
-    padding:60px 0;
-    background-color: gainsboro;
+@media screen and (min-width: 576px) {
+  .services-center {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media screen and (min-width: 776px) {
+  .services-center {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 996px) {
+  .services-center {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-.about-center{
-    width:80vw;
-    margin:0 auto;
-    height: 100%;
+#about-us {
+  padding: 60px 0;
+  background-color: gainsboro;
 }
 
-.about-img{
-    margin-top:-110px;
+.about-center {
+  width: 80vw;
+  margin: 0 auto;
+  height: 100%;
 }
 
-.about-text h1{
-    font-size:30px;
-    text-align: center;
+.about-img {
+  margin-top: -110px;
 }
 
-@media screen and (min-width:552px){
-    .about-center{
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-    }
-    .about-text{
-        /* align-self: center; */
-    }
+.about-text h1 {
+  font-size: 30px;
+  text-align: center;
+}
+
+@media screen and (min-width: 552px) {
+  .about-center {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .about-text {
+    /* align-self: center; */
+  }
 }

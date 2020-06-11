@@ -22,10 +22,19 @@ const ArticleItem = ({ articles }) => {
   return (
     <div className={styles.articleItem}>
       <h1 dangerouslySetInnerHTML={createMarkup(articles.title)}></h1>
-      <div dangerouslySetInnerHTML={createMarkup(articles.body)}></div>
-      <div className = {styles.articleItemBtn}>
-        <button onClick={onEdit}>Edit</button>
-        <button onClick={onDelete}>Delete</button>
+      <div
+        className={styles.articleItemBody}
+        dangerouslySetInnerHTML={createMarkup(articles.body)}
+      ></div>
+      <div className={styles.articleItemFooter}>
+        <div>
+          <img src= {require("../../../assets/images/doctors/doctor-thumb-02.jpg")} alt=""/>
+          {/* <span>{articles.date}</span> */}
+        </div>
+        <div>
+          <button onClick={onEdit}>Edit</button>
+          <button onClick={onDelete}>Delete</button>{" "}
+        </div>
       </div>
     </div>
   );

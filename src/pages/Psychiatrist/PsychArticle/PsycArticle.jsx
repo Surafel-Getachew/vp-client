@@ -2,13 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import PsychNav from "../../../component/psychiatrist/PsychNav/PsychNav";
-import ArticleItem from "../../../component/psychiatrist/ArticleItem/ArticleItem";
-// import "./psychArticle.css";
 import styles from "./psychArticle.module.css";
-
+import ArticleItem from "../../../component/psychiatrist/ArticleItem/ArticleItem";
 import ArticleContext from "../../../context/article/articleContext";
 
-const PsychArticle = () => {
+const PsycArticle = () => {
   const articleContext = useContext(ArticleContext);
   const {
     addArticle,
@@ -18,64 +16,47 @@ const PsychArticle = () => {
     updateArticle,
     clearCurrent,
   } = articleContext;
-
   const [article, setArticle] = useState({
     title: "",
-    body: ""
+    body: "",
+
   });
-
-  const { title, body } = article;
-
+  const { title, body} = article;
   useEffect(() => {
     loadPsychiatristArticles();
     // eslint-disable-next-line
   }, []);
-
   useEffect(() => {
     if (current !== null) {
-      setArticle({title:current.title,body:current.body});
+      setArticle(current);
     } else {
-      setArticle({ title: "", body:""});
+      setArticle({ title: "", body: "" });
     }
     // eslint-disable-next-line
-  }, [articleContext,current,setArticle()]);
-  // i have to check articleContext in the dependency array check the useEffect hook
-  
-  const onChangeTitle = (e) => {
+  }, [current]);
+  const onChange = (e) => {
     setArticle({ ...article, title: e.target.value });
   };
-
   const onSubmit = (e) => {
-    e.preventDefault();
-    if (current == null) {
-      addArticle({ title, body });
-    } else {
-      updateArticle(article);
-    }
-    clearCurrent();
-  };
-
+      e.preventDefault();
+      if(current !== null){
+          updateArticle(article);
+      } else {
+        addArticle({title,body})
+      }
+      clearCurrent();
+  }
   return (
     <div className={styles.psychArticle}>
       <div className={styles.psychArticleCenter}>
         <PsychNav />
         <div className={styles.psychArticleCnt}>
-          <form className={styles.psychArticleForm} onSubmit={onSubmit}>
-            <label className={styles.psychArticleFormLabel} htmlFor="title">
-              <span> Title</span>
-            </label>
+          <form onSubmit = {onSubmit}>
+            <label htmlFor="title">Title</label>
             <br />
-            <input
-              type="text"
-              name="title"
-              value={title}
-              onChange={onChangeTitle}
-              placeholder="title"
-            />
+            <input type="text" name="title" value={title} onChange={onChange} />
             <br />
-            <label className={styles.psychArticleFormLabel} htmlFor="body">
-              Body
-            </label>
+            <label htmlFor="body">Body</label>
             <br />
             <CKEditor
               editor={ClassicEditor}
@@ -103,4 +84,4 @@ const PsychArticle = () => {
   );
 };
 
-export default PsychArticle;
+export default PsycArticle;
