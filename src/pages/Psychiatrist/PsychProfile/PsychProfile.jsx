@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { addPsychProfile } from "../../../Redux/PsychProfile/psych_profile_aciton";
 import PsychPage from "../../../component/Page/PsychPage";
 import styles from "./psychProfile.module.css";
 
-const PsychProfile = () => {
+const PsychProfile = ({ psychProfile, addPsychProfile }) => {
+  // const [profile,setProfile] = useState({basicInformation:{firstname:"",lastname:""}});
+  // const {basicInformation} = profile;
+  // const {firstname,lastname} = basicInformation;
+  const initialState = {
+    basicInformation:{firstname:"",lastname:""}  
+  }
+  
+  const [profile, setProfile] = useState(initialState);
+  const BasicInfo = initialState.basicInformation;
+  const {firstname,lastname} = BasicInfo;
+  
+  const onChange = (e) => {
+    setProfile({ ...profile, [e.target.name]: e.target.value });
+  };
+
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    addPsychProfile(profile);
+  };
+
   return (
     <PsychPage>
-      <div>
+      <form onSubmit = {onSubmit}>
         <div className={styles.profileCard}>
           <div className={styles.profileCardCenter}>
             <div className={styles.profileCardTitle}>
@@ -27,13 +50,27 @@ const PsychProfile = () => {
               <div>
                 <label htmlFor="firstname">First Name</label>
                 <br />
-                <input type="text" name="firstname" />
+                <input
+                  catagory = "basicInformation"
+                  type="text"
+                  name="firstname"
+                  // value={firstname}
+                  onChange={onChange}
+                  value = {firstname}
+                />
                 <br />
               </div>
               <div>
                 <label htmlFor="lastname">Last Name</label>
                 <br />
-                <input type="text" name="lastname" />
+                <input
+                  catagory="basicInformation"
+                  type="text"
+                  name="lastname"
+                  // value={lastname}
+                  value = {lastname}
+                  onChange={onChange}
+                />
                 <br />
               </div>
               <div>
@@ -192,12 +229,24 @@ const PsychProfile = () => {
             </div>
           </div>
         </div>
-        <button className={styles.profileFormBtn}>Save Changes</button>
+        <input type="submit" value = "submit"/>
+        {/* <button
+          type="submit"
+          onSubmit={onSubmit}
+          onClick ={onSubmit}
+          className={styles.profileFormBtn}
+        >
+          Save Changes
+        </button> */}
 
         {/*  */}
-      </div>
+      </form>
     </PsychPage>
   );
 };
 
-export default PsychProfile;
+const mapStateToProps = (state) => ({
+  psychProfile:state.psychProfile.profiles
+})
+
+export default connect(mapStateToProps,{addPsychProfile})(PsychProfile);

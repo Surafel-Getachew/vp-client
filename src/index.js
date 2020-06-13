@@ -1,9 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import { Provider } from "react-redux";
+import store from "./Redux/store"
 // import App from "./App"
-import Apps from "./Apps"
 // import Playground from "./Playground"
-import "./index.css"
+import Apps from "./Apps";
+import "./index.css";
 
-ReactDOM.render(<Apps/>,document.getElementById("root"));
+ReactDOM.render(
+  <Provider store = {store}>
+    <Apps />
+  </Provider>,
+  document.getElementById("root")
+);
