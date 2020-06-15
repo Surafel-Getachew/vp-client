@@ -5,21 +5,59 @@ import PsychPage from "../../../component/Page/PsychPage";
 import styles from "./psychProfile.module.css";
 
 const PsychProfile = ({ psychProfile, addPsychProfile }) => {
-  // const [profile,setProfile] = useState({basicInformation:{firstname:"",lastname:""}});
-  // const {basicInformation} = profile;
-  // const {firstname,lastname} = basicInformation;
-  const initialState = {
-    basicInformation:{firstname:"",lastname:""}  
-  }
-  
-  const [profile, setProfile] = useState(initialState);
-  const BasicInfo = initialState.basicInformation;
-  const {firstname,lastname} = BasicInfo;
-  
+ 
+
+  const [profile, setProfile] = useState({
+    firstname: "",
+    lastname: "",
+    address1: "",
+    address2: "",
+    city: "",
+    state: "",
+    country: "",
+    about: "",
+    services: [],
+    postalCode: "",
+    specializations: [],
+    degree: "",
+    college: "",
+    yearOfCompletion: "",
+    hospitalName: "",
+    from: "",
+    to: "",
+    designation: "",
+    award: "",
+    year: "",
+    member: "",
+  });
+
+  const {
+    firstname,
+    lastname,
+    address1,
+    address2,
+    postalCode,
+    city,
+    state,
+    country,
+    about,
+    services,
+    specializations,
+    degree,
+    college,
+    yearOfCompletion,
+    hospitalName,
+    from,
+    to,
+    designation,
+    award,
+    year,
+    member,
+  } = profile;
+
   const onChange = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
   };
-
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +66,7 @@ const PsychProfile = ({ psychProfile, addPsychProfile }) => {
 
   return (
     <PsychPage>
-      <form onSubmit = {onSubmit}>
+      <form onSubmit={onSubmit}>
         <div className={styles.profileCard}>
           <div className={styles.profileCardCenter}>
             <div className={styles.profileCardTitle}>
@@ -38,25 +76,23 @@ const PsychProfile = ({ psychProfile, addPsychProfile }) => {
               <div>
                 <label htmlFor="username">Username</label>
                 <br />
-                <input type="text" name="username" />
+                <input type="text" readOnly name="username" />
                 <br />
               </div>
               <div>
                 <label htmlFor="email">Email</label>
                 <br />
-                <input type="text" name="email" />
+                <input type="text" readOnly />
                 <br />
               </div>
               <div>
                 <label htmlFor="firstname">First Name</label>
                 <br />
                 <input
-                  catagory = "basicInformation"
                   type="text"
                   name="firstname"
-                  // value={firstname}
                   onChange={onChange}
-                  value = {firstname}
+                  value={firstname}
                 />
                 <br />
               </div>
@@ -64,12 +100,10 @@ const PsychProfile = ({ psychProfile, addPsychProfile }) => {
                 <label htmlFor="lastname">Last Name</label>
                 <br />
                 <input
-                  catagory="basicInformation"
                   type="text"
                   name="lastname"
-                  // value={lastname}
-                  value = {lastname}
                   onChange={onChange}
+                  value={lastname}
                 />
                 <br />
               </div>
@@ -90,7 +124,7 @@ const PsychProfile = ({ psychProfile, addPsychProfile }) => {
             </div>
             <div className={styles.profileCardForm}>
               <div>
-                <textarea></textarea>
+                <textarea name = "about" onChange = {onChange} value= {about}></textarea>
               </div>
             </div>
           </div>
@@ -104,27 +138,27 @@ const PsychProfile = ({ psychProfile, addPsychProfile }) => {
             <div className={styles.profileCardForm}>
               <div>
                 <label htmlFor="address1">Address Line 1</label>
-                <input type="text" name="address" />
+                <input type="text" name="address1" onChange = {onChange} value ={address1} />
               </div>
               <div>
                 <label htmlFor="address1">Address Line 2</label>
-                <input type="text" name="address" />
+                <input type="text" name="address" onChange = {onChange} value = {address2} />
               </div>
               <div>
-                <label htmlFor="address1">City</label>
-                <input type="text" name="address" />
+                <label htmlFor="city">City</label>
+                <input type="text" name="city" onChange = {onChange} value = {city} />
               </div>
               <div>
-                <label htmlFor="address1">State/province</label>
-                <input type="text" name="address" />
+                <label htmlFor="state">State/province</label>
+                <input type="text" name="state" onChange = {onChange} value = {state} />
               </div>
               <div>
-                <label htmlFor="address1">Country</label>
-                <input type="text" name="address" />
+                <label htmlFor="country">Country</label>
+                <input type="text" name="country" onChange = {onChange} value = {country}/>
               </div>
               <div>
                 <label htmlFor="address1">Postal Code</label>
-                <input type="text" name="address" />
+                <input type="text" name="postalCode" onChange = {onChange} value={postalCode} />
               </div>
             </div>
           </div>
@@ -139,11 +173,11 @@ const PsychProfile = ({ psychProfile, addPsychProfile }) => {
               <div>
                 <label htmlFor="services">Services</label>
                 <br />
-                <input type="text" />
+                <input type="text" name = "services" onChange = {onChange} value = {services} />
                 <br />
-                <label htmlFor="services">Specialization</label>
+                <label htmlFor="specialization">Specialization</label>
                 <br />
-                <input type="text" />
+                <input type="text" name = "specialization" onChange = {onChange} value = {specializations}/>
                 <br />
               </div>
             </div>
@@ -157,16 +191,16 @@ const PsychProfile = ({ psychProfile, addPsychProfile }) => {
             </div>
             <div className={styles.profileCardForm}>
               <div>
-                <label htmlFor="services">Degree</label>
-                <input type="text" />
+                <label htmlFor="degree">Degree</label>
+                <input type="text" name = "degree" onChange = {onChange} value = {degree}/>
               </div>
               <div>
-                <label htmlFor="services">College/institution</label>
-                <input type="text" />
+                <label htmlFor="college">College/institution</label>
+                <input type="text" name = "college" onChange = {onChange} value = {college} />
               </div>
               <div>
                 <label htmlFor="services">Year of Completion</label>
-                <input type="text" />
+                <input type="text" name = "yearOfCompletion" value = {yearOfCompletion} />
               </div>
             </div>
           </div>
@@ -179,20 +213,20 @@ const PsychProfile = ({ psychProfile, addPsychProfile }) => {
             </div>
             <div className={styles.profileCardForm}>
               <div>
-                <label htmlFor="services">Hospital Name</label>
-                <input type="text" />
+                <label htmlFor="hospitalName">Hospital Name</label>
+                <input type="text" name ="hospitalName" onChange = {onChange} value = {hospitalName}/>
               </div>
               <div>
-                <label htmlFor="services">From</label>
-                <input type="text" />
+                <label htmlFor="from">From</label>
+                <input type="text" name = "from" onChange = {onChange} value = {from}/>
               </div>
               <div>
-                <label htmlFor="services">To</label>
-                <input type="text" />
+                <label htmlFor="to">To</label>
+                <input type="text" name = "to" onChange = {onChange} value = {to}/>
               </div>
               <div>
-                <label htmlFor="services">Designation</label>
-                <input type="text" />
+                <label htmlFor="designation">Designation</label>
+                <input type="text" name = "designation" onChange = {onChange} value = {designation} />
               </div>
             </div>
           </div>
@@ -205,12 +239,12 @@ const PsychProfile = ({ psychProfile, addPsychProfile }) => {
             </div>
             <div className={styles.profileCardForm}>
               <div>
-                <label htmlFor="services">Awards</label>
-                <input type="text" />
+                <label htmlFor="awards">Awards</label>
+                <input type="text" name = "awards" onChange = {onChange} value = {award}/>
               </div>
               <div>
-                <label htmlFor="services">Year</label>
-                <input type="text" />
+                <label htmlFor="year">Year</label>
+                <input type="text" name = "year" onChange = {onChange} value = {year} />
               </div>
             </div>
           </div>
@@ -223,22 +257,13 @@ const PsychProfile = ({ psychProfile, addPsychProfile }) => {
             </div>
             <div className={styles.profileCardForm}>
               <div>
-                <label htmlFor="services">Degree</label>
-                <input type="text" />
+                <label htmlFor="services"  >Memberships</label>
+                <input type="text" name="member" onChange={onChange} value={member} />
               </div>
             </div>
           </div>
         </div>
-        <input type="submit" value = "submit"/>
-        {/* <button
-          type="submit"
-          onSubmit={onSubmit}
-          onClick ={onSubmit}
-          className={styles.profileFormBtn}
-        >
-          Save Changes
-        </button> */}
-
+        <input type="submit" value="submit" />
         {/*  */}
       </form>
     </PsychPage>
@@ -246,7 +271,7 @@ const PsychProfile = ({ psychProfile, addPsychProfile }) => {
 };
 
 const mapStateToProps = (state) => ({
-  psychProfile:state.psychProfile.profiles
-})
+  psychProfile: state.psychProfile.profiles,
+});
 
-export default connect(mapStateToProps,{addPsychProfile})(PsychProfile);
+export default connect(mapStateToProps, { addPsychProfile })(PsychProfile);

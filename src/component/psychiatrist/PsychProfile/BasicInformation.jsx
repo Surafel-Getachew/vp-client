@@ -1,6 +1,18 @@
-import React from "react";
+import React,{useState} from "react";
 import styles from "./psychprofile.module.css";
+import { connect } from "react-redux";
+import { addPsychProfile } from "../../../Redux/PsychProfile/psych_profile_aciton";
+
 const BasicInformation = () => {
+
+  const [basicinfo,setBasicInfo]  = useState({firstname:"",lastname:""})
+
+  const onChange = (e) => {
+      setBasicInfo({...basicinfo,[e.target.name]:e.target.value})
+  }
+
+//   onsubmit
+
   return (
       <div className={styles.profileCard}>
           <div className={styles.profileCardCenter}>
