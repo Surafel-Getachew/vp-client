@@ -7,6 +7,7 @@ import Specialization from "../../../component/psychiatrist/PsychProfile/Special
 import Experience from "../../../component/psychiatrist/PsychProfile/Experience"
 import Awards from "../../../component/psychiatrist/PsychProfile/Awards"
 import MemberShip from "../../../component/psychiatrist/PsychProfile/MemberShip"
+import PsychProfileButton from "../../../component/psychiatrist/PsychProfile/PsychProfileButton"
 const Psychprofilee = () => {
     return (
         <PsychPage>
@@ -18,6 +19,7 @@ const Psychprofilee = () => {
                 <Experience/>
                 <Awards/>
                 <MemberShip/>
+                <PsychProfileButton/>
             </div>
         </PsychPage>
     )
