@@ -19,8 +19,8 @@ import PsychiatristLanding from "./pages/Psychiatrist/PsychLanding/PsychiatristL
 import PsychSignup from "./pages/Psychiatrist/PsychAuth/PsychSignup";
 import PsychSignIn from "./pages/Psychiatrist/PsychAuth/PsychSignIn";
 import PsychArticle from "./pages/Psychiatrist/PsychArticle/PsychArticle";
-// import Psychprofilee from "./pages/Psychiatrist/PsychProfile/PsychProfilee";
-import Psychprofilee from "./pages/Psychiatrist/PsychProfile/Psychprofilee";
+import Psychprofile from "./pages/Psychiatrist/PsychProfile/PsychProfile";
+// import Psychprofile from "./pages/Psychiatrist/PsychProfile/Psychprofile";
 
 // adding auth token to global header so that will not send it every time.
 import setAuthToken from "./utils/setAuthToken";
@@ -41,7 +41,7 @@ const Apps = () => {
             <Route exact path="/psychiatrist/signin" component={PsychSignIn} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/vp/psychiatrist/article" component={PsychArticle} />
-            <Route exact path="/vp/psychiatrist/profile" component={Psychprofilee} />
+            <Route exact path="/vp/psychiatrist/profile" component={Psychprofile} />
           </Switch>
         </BrowserRouter>
         </ArticleState>

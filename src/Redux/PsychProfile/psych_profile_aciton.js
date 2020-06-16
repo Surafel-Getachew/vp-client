@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_PSYCH_PROFILE, PSYCH_PROFILE_EROOR, PSYCH_PROFILE_FORM} from "./types";
+import { ADD_PSYCH_PROFILE, PSYCH_PROFILE_EROOR, PSYCH_PROFILE_FORM,LOAD_PSYCH_PROFILE} from "./types";
 
 export const addPsychProfile = (formData) => async(dispatch) => {
     const config = {
@@ -15,11 +15,12 @@ export const addPsychProfile = (formData) => async(dispatch) => {
     }
 }
 
+export const loadPsychProfile = () => async(dispatch) => {
+    const res = await axios.get("/vp/psych/profile/me");
+    dispatch({type:LOAD_PSYCH_PROFILE,payload:res.data})
+}
+
 export const psychProfileForm =  (formData) => (dispatch) => {
     dispatch({ type: PSYCH_PROFILE_FORM,payload:formData});
     console.log(formData)
-}
-
-export const psychProfileFormSubmit = () => (dispatch) => {
-
 }
