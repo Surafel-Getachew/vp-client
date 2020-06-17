@@ -28,7 +28,7 @@ const initialState = {
   designation: "",
   award: "",
   year: "",
-  member: "",
+  memberships: "",
 };
 
 const PsychProfile = ({ psychProfile, addPsychProfile, loadPsychProfile }) => {
@@ -49,11 +49,8 @@ const PsychProfile = ({ psychProfile, addPsychProfile, loadPsychProfile }) => {
         if (key in profileData)
           profileData[key] = psychProfile.contactDetails[key];
       }
-      if (Array.isArray(profileData.memberships)) {
-        profileData.memberships = profileData.memberships.join(",");
-      }
-      if(Array.isArray(profileData.education)){
-        profileData.education = profileData.education.join(",")
+      for (const key in psychProfile.education) {
+        if (key in profileData) profileData[key] = psychProfile.education[key];
       }
       setProfile(profileData);
     }
@@ -80,7 +77,7 @@ const PsychProfile = ({ psychProfile, addPsychProfile, loadPsychProfile }) => {
     designation,
     award,
     year,
-    member,
+    memberships,
   } = profile;
 
   const onChange = (e) => {
@@ -114,7 +111,9 @@ const PsychProfile = ({ psychProfile, addPsychProfile, loadPsychProfile }) => {
                 <br />
               </div>
               <div>
-                <label htmlFor="firstname">First Name</label>
+                <label htmlFor="firstname">
+                  First Name <span style={{ fontFamily:"Poppins",color: "red" }}>*</span>
+                </label>
                 <br />
                 <input
                   type="text"
@@ -125,7 +124,9 @@ const PsychProfile = ({ psychProfile, addPsychProfile, loadPsychProfile }) => {
                 <br />
               </div>
               <div>
-                <label htmlFor="lastname">Last Name</label>
+                <label htmlFor="lastname">
+                  Last Name <span style={{ fontFamily: "Poppins", color: "red" }}>*</span>
+                </label>
                 <br />
                 <input
                   type="text"
@@ -133,12 +134,6 @@ const PsychProfile = ({ psychProfile, addPsychProfile, loadPsychProfile }) => {
                   onChange={onChange}
                   value={lastname}
                 />
-                <br />
-              </div>
-              <div>
-                <label htmlFor="birth">Date of Birth</label>
-                <br />
-                <input type="text" name="birth" />
                 <br />
               </div>
             </div>
@@ -233,7 +228,9 @@ const PsychProfile = ({ psychProfile, addPsychProfile, loadPsychProfile }) => {
             </div>
             <div className={styles.profileCardForm}>
               <div>
-                <label htmlFor="services">Services</label>
+                <label htmlFor="services">
+                  Services <span style={{ fontFamily: "Poppins", color: "red" }}>*</span>
+                </label>
                 <br />
                 <input
                   type="text"
@@ -242,7 +239,9 @@ const PsychProfile = ({ psychProfile, addPsychProfile, loadPsychProfile }) => {
                   value={services}
                 />
                 <br />
-                <label htmlFor="specialization">Specialization</label>
+                <label htmlFor="specialization">
+                  Specialization <span style={{ fontFamily: "Poppins", color: "red" }}>*</span>{" "}
+                </label>
                 <br />
                 <input
                   type="text"
@@ -285,6 +284,7 @@ const PsychProfile = ({ psychProfile, addPsychProfile, loadPsychProfile }) => {
                 <input
                   type="text"
                   name="yearOfCompletion"
+                  onChange={onChange}
                   value={yearOfCompletion}
                 />
               </div>
@@ -371,9 +371,9 @@ const PsychProfile = ({ psychProfile, addPsychProfile, loadPsychProfile }) => {
                 <label htmlFor="services">Memberships</label>
                 <input
                   type="text"
-                  name="member"
+                  name="memberships"
                   onChange={onChange}
-                  value={member}
+                  value={memberships}
                 />
               </div>
             </div>
