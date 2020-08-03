@@ -13,7 +13,7 @@ const Signup = (props) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push("/");
+      props.history.push("/vp/user/dashboard");
     }
     if (error === "User already exist") {
       setAlert(error);

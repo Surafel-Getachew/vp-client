@@ -1,0 +1,1 @@
+export const LOAD_ALL_PSYCH = "LOAD_ALL_PSYCH";

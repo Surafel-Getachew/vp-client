@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_PSYCH_PROFILE, PSYCH_PROFILE_EROOR, PSYCH_PROFILE_FORM,LOAD_PSYCH_PROFILE} from "./types";
+import { ADD_PSYCH_PROFILE, PSYCH_PROFILE_EROOR, PSYCH_PROFILE_FORM,LOAD_PSYCH_PROFILE} from "../types";
 
 export const addPsychProfile = (formData) => async(dispatch) => {
     const config = {

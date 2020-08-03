@@ -1,9 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import PsychNav from "../../../component/psychiatrist/PsychNav/PsychNav";
+import PsychPage from "../../../component/Page/PsychPage";
 import ArticleItem from "../../../component/psychiatrist/ArticleItem/ArticleItem";
-// import "./psychArticle.css";
 import styles from "./psychArticle.module.css";
 
 import ArticleContext from "../../../context/article/articleContext";
@@ -33,12 +32,13 @@ const PsychArticle = () => {
 
   useEffect(() => {
     if (current !== null) {
-      setArticle({title:current.title,body:current.body});
+      // setArticle({title:current.title,body:current.body});
+      setArticle(current);
     } else {
       setArticle({ title: "", body:""});
     }
     // eslint-disable-next-line
-  }, [articleContext,current,setArticle()]);
+  }, [articleContext,current]);
   // i have to check articleContext in the dependency array check the useEffect hook
   
   const onChangeTitle = (e) => {
@@ -56,9 +56,7 @@ const PsychArticle = () => {
   };
 
   return (
-    <div className={styles.psychArticle}>
-      <div className={styles.psychArticleCenter}>
-        <PsychNav />
+    <PsychPage>
         <div className={styles.psychArticleCnt}>
           <form className={styles.psychArticleForm} onSubmit={onSubmit}>
             <label className={styles.psychArticleFormLabel} htmlFor="title">
@@ -98,8 +96,7 @@ const PsychArticle = () => {
             ))}
           </div>
         </div>
-      </div>
-    </div>
+    </PsychPage>
   );
 };
 

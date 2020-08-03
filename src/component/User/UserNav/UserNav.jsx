@@ -1,17 +1,16 @@
 import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
-// import "./PsychNav.css"
-import "../PsychNav/Psycha-side-nav.css";
+import {Link} from "react-router-dom";
+// import "../../psychiatrist/PsychNav/psycha-side-nav.css";
 import AuthContext from "../../../context/auth/authContext";
+import "../../psychiatrist/PsychNav/Psycha-side-nav.css"
 
-const PsychNav = () => {
+const UserNav = () => {
   const authContext = useContext(AuthContext);
-  const { loadPsychiatrist, user } = authContext;
+  const {loadUser,user} = authContext;
 
-  useEffect(() => {
-    loadPsychiatrist();
-    // eslint-disable-next-line
-  }, []);
+  useEffect (() => {
+    loadUser();
+  },[])
   return (
     <div id="psych-side-nav">
       <div className="profile-side-nav">
@@ -55,7 +54,7 @@ const PsychNav = () => {
             </Link>
           </li>
           <li>
-            <Link className="a" >
+            <Link className="a">
               <i className="fas fa-video"></i>
               <span>Video Chat</span>
             </Link>
@@ -96,4 +95,4 @@ const PsychNav = () => {
   );
 };
 
-export default PsychNav;
+export default UserNav;

@@ -8,8 +8,8 @@ const Header = () => {
           Virtual <span>Psychiatrist</span>
         </h1>
       <div className="nav-link">
-        <a className = "auth" href="/signup">Sign Up</a>
-        <a href="/login">Sign In</a>
+        <a className = "auth" href="/vp/user/signup">Sign Up</a>
+        <a href="/vp/user/signin">Sign In</a>
       </div>
       </div>
     </nav>
