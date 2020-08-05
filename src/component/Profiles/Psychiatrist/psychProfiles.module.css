@@ -1,0 +1,97 @@
+.profileCard {
+  background-color: #fff;
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  padding: 15px;
+  /* add the transition here */
+}
+.proContent {
+  padding: 15px 0 0;
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.title a {
+  display: inline-block;
+}
+.title i {
+  color: #28a745;
+  margin-left: 3px;
+}
+.speciality {
+  font-size: 13px;
+  color: #757575;
+  margin-bottom: 5px;
+  min-height: 40px;
+}
+
+.rating i {
+  color: #f4c150;
+  padding-right: 5px;
+}
+.availableInfo {
+  /* font-size: 13px; */
+  color: #757575;
+  /* font-weight: 400; */
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.availableInfo i {
+  padding: 10px 0;
+}
+
+.profileBtns {
+  /* margin-left: 3px;
+  margin-right: 3px; */
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.profileViewBtn .bookBtn {
+  padding-left: 3px;
+  padding-right: 3px;
+  flex: 0 0 50%;
+}
+.profileViewBtn {
+    margin-right: 3px;;
+}
+.profileViewBtn a {
+  color: #0de0fe;
+  font-size: 13px;
+  border: 2px solid #0de0fe;
+  text-align: center;
+  display: block;
+  font-weight: 500;
+  padding: 6px;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  /* vertical-align: middle; */
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.bookBtn a {
+  background-color: #0de0fe;
+  border: 2px solid #0de0fe;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  display: block;
+  font-weight: 500;
+  padding: 6px;
+  /* vertical-align: middle; */
+  cursor: pointer;
+  /* user-select: none; */
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

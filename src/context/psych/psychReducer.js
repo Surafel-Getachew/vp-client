@@ -1,4 +1,4 @@
-import { LOAD_ALL_PSYCH } from "./types";
+import { LOAD_ALL_PSYCH,LOAD_PSYCHIATRISTS_PROFILE } from "./types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -7,6 +7,11 @@ export default (state, action) => {
         ...state,
         psychs: action.payload,
       };
+    case LOAD_PSYCHIATRISTS_PROFILE:
+      return {
+        ...state,
+        psychProfiles:action.payload
+      }
     default:
       return state;
   }

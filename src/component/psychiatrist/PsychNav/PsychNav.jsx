@@ -6,12 +6,16 @@ import AuthContext from "../../../context/auth/authContext";
 
 const PsychNav = () => {
   const authContext = useContext(AuthContext);
-  const { loadPsychiatrist, user } = authContext;
+  const { loadPsychiatrist, user,psychiatristLogout } = authContext;
 
   useEffect(() => {
     loadPsychiatrist();
     // eslint-disable-next-line
   }, []);
+  const onClick = () => {
+    psychiatristLogout();
+  }
+  const {name} = user
   return (
     <div id="psych-side-nav">
       <div className="profile-side-nav">
@@ -23,7 +27,7 @@ const PsychNav = () => {
             />
           </a>
           <div className="profile-side-nav-info">
-            <h3>{user.name}</h3>
+            <h3>{name}</h3>
             {/* <h3>Ross geller</h3> */}
             <h5>Dragon</h5>
           </div>
@@ -32,12 +36,12 @@ const PsychNav = () => {
       <div className="psych-side-nav-menu">
         <ul>
           <li>
-            <Link className="a">
+            <Link className="a" to = "/vp/psychiatrist/dashboard">
               <i className="fas fa-columns"></i> <span>Dashboard</span>{" "}
             </Link>
           </li>
           <li>
-            <Link className="a">
+            <Link className="a" to = "/vp/psychiatrist/schedule">
               <i className="fas fa-calendar-check"></i>
               <span>Schedule Timings</span>
             </Link>
@@ -62,7 +66,7 @@ const PsychNav = () => {
           </li>
           <li>
             <Link className="a" to="vp/me/messages">
-              <i className="fas fa-video"></i>
+              <i className="fas fa-envelope"></i>
               <span>Message</span>
             </Link>
           </li>
@@ -87,7 +91,7 @@ const PsychNav = () => {
           <li>
             <Link className="a">
               <i className="fas fa-sign-out-alt"></i>
-              <span>Logout</span>
+              <button className = "logout-btn" onClick = {onClick}>logout</button>
             </Link>
           </li>
         </ul>

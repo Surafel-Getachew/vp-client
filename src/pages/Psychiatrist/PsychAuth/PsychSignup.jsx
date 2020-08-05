@@ -38,7 +38,7 @@ const PsychSignUp = (props) => {
   }, [error, isAuthenticated, redirect, props.history]);
 
   if (redirect) {
-    return <Redirect to="/psychiatrist/" />;
+    return <Redirect to="/vp/psychiatrist/dashboard" />;
   }
 
   const onChange = (e) => {

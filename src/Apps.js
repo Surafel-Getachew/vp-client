@@ -1,3 +1,4 @@
+import "./App.css";
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -10,13 +11,14 @@ import ChatContext from "./context/groupChat/GroupChatState";
 
 // private route
 import PrivateRoute from "./component/routing/PrivateRouting";
-
+import UserProtectedRoute from "./component/routing/UserProtectedRoute";
 
 // Landing pages
 import Landing from "./pages/Landing/Landing";
 
 // UserPage
 import UserDashBoard from "./pages/User/Dashboard/UserDashBoard";
+import PsychiatristList from "./pages/User/List_of_psychiatrist/PsychiatristList";
 import Signup from "./pages/User/Auth/Signup";
 import Signin from "./pages/User/Auth/Signin";
 
@@ -29,6 +31,7 @@ import PsychArticle from "./pages/Psychiatrist/PsychArticle/PsychArticle";
 import Psychprofile from "./pages/Psychiatrist/PsychProfile/PsychProfile";
 // import Psychprofile from "./pages/Psychiatrist/PsychProfile/Psychprofile";
 import PsychSocial from "./pages/Psychiatrist/PsychSocial/PsychSocial";
+import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychSchedule";
 
 // Try page
 import Try from "./pages/Try/Try";
@@ -52,13 +55,15 @@ const Apps = () => {
             <Route exact path="/" component={Landing} />
             <Route exact path="/vp/user/signup" component={Signup} />
             <Route exact path="/vp/user/signin" component={Signin} />
-            <Route exact path="/vp/user/dashboard" component={UserDashBoard} />
-            <PrivateRoute exact path="/psychiatrist" component={PsychiatristLanding} />
+            <Route exact path="/vp/user/psychiatrists" component = {PsychiatristList} />
+            <UserProtectedRoute exact path="/vp/user/dashboard" component={UserDashBoard} />
+            <PrivateRoute exact path="/vp/psychiatrist/dashboard" component={PsychiatristLanding} />
             <Route exact path="/psychiatrist/signup" component={PsychSignup} />
             <Route exact path="/psychiatrist/signin" component={PsychSignIn} />
             <Route exact path="/vp/psychiatrist/article" component={PsychArticle} />
             <Route exact path="/vp/psychiatrist/profile" component={Psychprofile} />
             <Route exact path="/vp/psychiatrist/socialmedia" component={PsychSocial} />
+            <Route exact path="/vp/psychiatrist/schedule" component={PsychSchedule} />
             <Route exact path ="/vp/try" component = {Try} />
             <Route exact path ="/chat" component = {ChatPage} />
           </Switch>

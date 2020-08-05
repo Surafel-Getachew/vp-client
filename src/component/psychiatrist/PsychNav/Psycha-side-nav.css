@@ -77,3 +77,8 @@
   width: 16px;
   /* font-size: 16px; */
 }
+
+.logout-btn {
+  background:transparent;
+  border:none;
+}

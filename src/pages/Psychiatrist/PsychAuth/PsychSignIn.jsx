@@ -37,7 +37,7 @@ const PsychSignIn = (props) => {
   }, [error, isAuthenticated, redirect, props.history]);
 
   if (redirect) {
-    return <Redirect to="/psychiatrist/" />;
+    return <Redirect to="/vp/psychiatrist/dashboard" />;
   }
 
   const onChange = (e) => {
@@ -46,16 +46,20 @@ const PsychSignIn = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    psychiatristLogin({email,password});
+    psychiatristLogin({ email, password });
+  };
+
+  const onSignupClick = () => {
+    return <Redirect to="/psychiatrist/signup" />;
   };
 
   return (
     <div>
       <section id="signup">
         <div className="signin-section">
-          <h1 style = {{textalign:"center"}}>Virtual Psychiatrist!</h1>
+          <h1 style={{ textAlign: "center" }}>Virtual Psychiatrist!</h1>
           <p>Psychiatrist Login Page.</p>
-          {/* <button>Sign up</button> */}
+          <button onClick={onSignupClick}>Sign up</button>
         </div>
 
         <div className="signup-form">

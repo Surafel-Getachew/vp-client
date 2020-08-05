@@ -15,6 +15,7 @@ import {
   PSYCHIATRIST_LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  LOGOUT_PSYCHIATRIST,
   CLEAR_ERRORS,
 } from "../../types";
 
@@ -132,6 +133,10 @@ const AuthState = (props) => {
     }
   };
 
+  const psychiatristLogout = () => {
+    dispatch({type:LOGOUT_PSYCHIATRIST})
+  }
+
   const clearErrors = () => dispatch({ type: { CLEAR_ERRORS } });
 
   return (
@@ -150,6 +155,7 @@ const AuthState = (props) => {
         login,
         psychiatristLogin,
         logout,
+        psychiatristLogout,
         clearErrors,
       }}
     >

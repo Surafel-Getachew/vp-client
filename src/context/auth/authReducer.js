@@ -7,6 +7,7 @@ import {
     PSYCHIATRIST_LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
+    LOGOUT_PSYCHIATRIST,
     CLEAR_ERRORS,
     REGISTER_SUCCESS_PSYCHIATRIST,
     PSYCHIATRIST_LOADED,
@@ -73,7 +74,8 @@ export default (state,action) => {
         case REGISTER_FAIL:
         case AUTH_ERROR:
         case LOGIN_FAIL:
-        case LOGOUT:   
+        case LOGOUT:
+        case LOGOUT_PSYCHIATRIST:
             localStorage.removeItem("token");
             return {
                 ...state,
