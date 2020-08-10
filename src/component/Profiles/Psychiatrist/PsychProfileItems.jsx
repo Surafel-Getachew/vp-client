@@ -1,34 +1,461 @@
 import React from "react";
-import styles from "./psychProfiles.module.css";
+import styles from "./psychProfiles.module.css";  
 
 const PsychProfileItems = ({ profile }) => {
+  const {basicInformation,specializations,contactDetails} = profile
   return (
-    <div>
+    <div className={styles.profileCardsContainer}>
       <div className={styles.profileCard}>
-        <div className={styles.profileImg}></div>
+        <div className={styles.profileImg}>
+          <a href="none">
+            <img
+              src={require("../../../assets/images/doctors/doctor-thumb-02.jpg")}
+              alt=""
+            />
+          </a>
+        </div>
         <div className={styles.proContent}>
-          <h3 className={styles.title}>Surafel Getachew
-            <i className = "fas fa-check-circle"></i>
+          <h3 className={styles.title}>
+            {basicInformation.firstname } {""} {basicInformation.lastname}
+            <i className="fas fa-check-circle"></i>
           </h3>
-          <p className = {styles.speciality}>MDS - Periodontology and Oral Implantology, BDS</p>
-          <div className = {styles.rating}>
-              <i className = "fas fa-star filled"></i>
-              <i className = "fas fa-star filled"></i>
-              <i className = "fas fa-star filled"></i>
-              <i className = "fas fa-star filled"></i>
-              <span>(17)</span>
+          <p className={styles.speciality}>
+            {specializations[0]}
+            MDS - Periodontology and Oral Implantology, BDS
+          </p>
+          <div className={styles.rating}>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <span>(17)</span>
           </div>
-          <ul className = {styles.availableInfo}>
-              <li><i className = "fas fa-map-marker-alt">"Florida,USA"</i></li>
-              <li><i className = "fas fa-clock">"Available on Fri, 22 mar"</i></li>
-              <li><i className = "far fa-money-bill-alt">"$3000 - $10000"</i></li>
+          <ul className={styles.availableInfo}>
+            <li>
+              <i className="fas fa-map-marker-alt"></i>{contactDetails.city},{contactDetails.country}
+            </li>
+            <li>
+              <i className="fas fa-clock"></i>Available on Fri, 22 mar
+            </li>
+            <li>
+              <i className="far fa-money-bill-alt"></i>$3000 - $10000
+            </li>
           </ul>
-          <div className = {styles.profileBtns}>
-            <div className = {styles.profileViewBtn}>
-                <a href="">View Profile</a>
+          <div className={styles.profileBtns}>
+            <div className={styles.profileViewBtn}>
+              <a href="">View Profile</a>
             </div>
-            <div className = {styles.bookBtn}>
-                <a href="">Book Now</a>
+            <div className={styles.bookBtn}>
+              <a href="">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.profileCard}>
+        <div className={styles.profileImg}>
+          <a href="none">
+            <img
+              src={require("../../../assets/images/doctors/doctor-thumb-02.jpg")}
+              alt=""
+            />
+          </a>
+        </div>
+        <div className={styles.proContent}>
+          <h3 className={styles.title}>
+            Surafel Getachew
+            <i className="fas fa-check-circle"></i>
+          </h3>
+          <p className={styles.speciality}>
+            MDS - Periodontology and Oral Implantology, BDS
+          </p>
+          <div className={styles.rating}>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <span>(17)</span>
+          </div>
+          <ul className={styles.availableInfo}>
+            <li>
+              <i className="fas fa-map-marker-alt"></i>Florida,USA
+            </li>
+            <li>
+              <i className="fas fa-clock"></i>Available on Fri, 22 mar
+            </li>
+            <li>
+              <i className="far fa-money-bill-alt"></i>$3000 - $10000
+            </li>
+          </ul>
+          <div className={styles.profileBtns}>
+            <div className={styles.profileViewBtn}>
+              <a href="">View Profile</a>
+            </div>
+            <div className={styles.bookBtn}>
+              <a href="">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.profileCard}>
+        <div className={styles.profileImg}>
+          <a href="none">
+            <img
+              src={require("../../../assets/images/doctors/doctor-thumb-02.jpg")}
+              alt=""
+            />
+          </a>
+        </div>
+        <div className={styles.proContent}>
+          <h3 className={styles.title}>
+            {basicInformation.firstname } {""} {basicInformation.lastname}
+            <i className="fas fa-check-circle"></i>
+          </h3>
+          <p className={styles.speciality}>
+            {specializations[0]}
+            MDS - Periodontology and Oral Implantology, BDS
+          </p>
+          <div className={styles.rating}>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <span>(17)</span>
+          </div>
+          <ul className={styles.availableInfo}>
+            <li>
+              <i className="fas fa-map-marker-alt"></i>{contactDetails.city},{contactDetails.country}
+            </li>
+            <li>
+              <i className="fas fa-clock"></i>Available on Fri, 22 mar
+            </li>
+            <li>
+              <i className="far fa-money-bill-alt"></i>$3000 - $10000
+            </li>
+          </ul>
+          <div className={styles.profileBtns}>
+            <div className={styles.profileViewBtn}>
+              <a href="">View Profile</a>
+            </div>
+            <div className={styles.bookBtn}>
+              <a href="">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.profileCard}>
+        <div className={styles.profileImg}>
+          <a href="none">
+            <img
+              src={require("../../../assets/images/doctors/doctor-thumb-02.jpg")}
+              alt=""
+            />
+          </a>
+        </div>
+        <div className={styles.proContent}>
+          <h3 className={styles.title}>
+            Surafel Getachew
+            <i className="fas fa-check-circle"></i>
+          </h3>
+          <p className={styles.speciality}>
+            MDS - Periodontology and Oral Implantology, BDS
+          </p>
+          <div className={styles.rating}>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <span>(17)</span>
+          </div>
+          <ul className={styles.availableInfo}>
+            <li>
+              <i className="fas fa-map-marker-alt"></i>Florida,USA
+            </li>
+            <li>
+              <i className="fas fa-clock"></i>Available on Fri, 22 mar
+            </li>
+            <li>
+              <i className="far fa-money-bill-alt"></i>$3000 - $10000
+            </li>
+          </ul>
+          <div className={styles.profileBtns}>
+            <div className={styles.profileViewBtn}>
+              <a href="">View Profile</a>
+            </div>
+            <div className={styles.bookBtn}>
+              <a href="">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.profileCard}>
+        <div className={styles.profileImg}>
+          <a href="none">
+            <img
+              src={require("../../../assets/images/doctors/doctor-thumb-02.jpg")}
+              alt=""
+            />
+          </a>
+        </div>
+        <div className={styles.proContent}>
+          <h3 className={styles.title}>
+            {basicInformation.firstname } {""} {basicInformation.lastname}
+            <i className="fas fa-check-circle"></i>
+          </h3>
+          <p className={styles.speciality}>
+            {specializations[0]}
+            MDS - Periodontology and Oral Implantology, BDS
+          </p>
+          <div className={styles.rating}>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <span>(17)</span>
+          </div>
+          <ul className={styles.availableInfo}>
+            <li>
+              <i className="fas fa-map-marker-alt"></i>{contactDetails.city},{contactDetails.country}
+            </li>
+            <li>
+              <i className="fas fa-clock"></i>Available on Fri, 22 mar
+            </li>
+            <li>
+              <i className="far fa-money-bill-alt"></i>$3000 - $10000
+            </li>
+          </ul>
+          <div className={styles.profileBtns}>
+            <div className={styles.profileViewBtn}>
+              <a href="">View Profile</a>
+            </div>
+            <div className={styles.bookBtn}>
+              <a href="">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.profileCard}>
+        <div className={styles.profileImg}>
+          <a href="none">
+            <img
+              src={require("../../../assets/images/doctors/doctor-thumb-02.jpg")}
+              alt=""
+            />
+          </a>
+        </div>
+        <div className={styles.proContent}>
+          <h3 className={styles.title}>
+            Surafel Getachew
+            <i className="fas fa-check-circle"></i>
+          </h3>
+          <p className={styles.speciality}>
+            MDS - Periodontology and Oral Implantology, BDS
+          </p>
+          <div className={styles.rating}>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <span>(17)</span>
+          </div>
+          <ul className={styles.availableInfo}>
+            <li>
+              <i className="fas fa-map-marker-alt"></i>Florida,USA
+            </li>
+            <li>
+              <i className="fas fa-clock"></i>Available on Fri, 22 mar
+            </li>
+            <li>
+              <i className="far fa-money-bill-alt"></i>$3000 - $10000
+            </li>
+          </ul>
+          <div className={styles.profileBtns}>
+            <div className={styles.profileViewBtn}>
+              <a href="">View Profile</a>
+            </div>
+            <div className={styles.bookBtn}>
+              <a href="">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.profileCard}>
+        <div className={styles.profileImg}>
+          <a href="none">
+            <img
+              src={require("../../../assets/images/doctors/doctor-thumb-02.jpg")}
+              alt=""
+            />
+          </a>
+        </div>
+        <div className={styles.proContent}>
+          <h3 className={styles.title}>
+            {basicInformation.firstname } {""} {basicInformation.lastname}
+            <i className="fas fa-check-circle"></i>
+          </h3>
+          <p className={styles.speciality}>
+            {specializations[0]}
+            MDS - Periodontology and Oral Implantology, BDS
+          </p>
+          <div className={styles.rating}>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <span>(17)</span>
+          </div>
+          <ul className={styles.availableInfo}>
+            <li>
+              <i className="fas fa-map-marker-alt"></i>{contactDetails.city},{contactDetails.country}
+            </li>
+            <li>
+              <i className="fas fa-clock"></i>Available on Fri, 22 mar
+            </li>
+            <li>
+              <i className="far fa-money-bill-alt"></i>$3000 - $10000
+            </li>
+          </ul>
+          <div className={styles.profileBtns}>
+            <div className={styles.profileViewBtn}>
+              <a href="">View Profile</a>
+            </div>
+            <div className={styles.bookBtn}>
+              <a href="">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.profileCard}>
+        <div className={styles.profileImg}>
+          <a href="none">
+            <img
+              src={require("../../../assets/images/doctors/doctor-thumb-02.jpg")}
+              alt=""
+            />
+          </a>
+        </div>
+        <div className={styles.proContent}>
+          <h3 className={styles.title}>
+            Surafel Getachew
+            <i className="fas fa-check-circle"></i>
+          </h3>
+          <p className={styles.speciality}>
+            MDS - Periodontology and Oral Implantology, BDS
+          </p>
+          <div className={styles.rating}>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <span>(17)</span>
+          </div>
+          <ul className={styles.availableInfo}>
+            <li>
+              <i className="fas fa-map-marker-alt"></i>Florida,USA
+            </li>
+            <li>
+              <i className="fas fa-clock"></i>Available on Fri, 22 mar
+            </li>
+            <li>
+              <i className="far fa-money-bill-alt"></i>$3000 - $10000
+            </li>
+          </ul>
+          <div className={styles.profileBtns}>
+            <div className={styles.profileViewBtn}>
+              <a href="">View Profile</a>
+            </div>
+            <div className={styles.bookBtn}>
+              <a href="">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.profileCard}>
+        <div className={styles.profileImg}>
+          <a href="none">
+            <img
+              src={require("../../../assets/images/doctors/doctor-thumb-02.jpg")}
+              alt=""
+            />
+          </a>
+        </div>
+        <div className={styles.proContent}>
+          <h3 className={styles.title}>
+            {basicInformation.firstname } {""} {basicInformation.lastname}
+            <i className="fas fa-check-circle"></i>
+          </h3>
+          <p className={styles.speciality}>
+            {specializations[0]}
+            MDS - Periodontology and Oral Implantology, BDS
+          </p>
+          <div className={styles.rating}>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <span>(17)</span>
+          </div>
+          <ul className={styles.availableInfo}>
+            <li>
+              <i className="fas fa-map-marker-alt"></i>{contactDetails.city},{contactDetails.country}
+            </li>
+            <li>
+              <i className="fas fa-clock"></i>Available on Fri, 22 mar
+            </li>
+            <li>
+              <i className="far fa-money-bill-alt"></i>$3000 - $10000
+            </li>
+          </ul>
+          <div className={styles.profileBtns}>
+            <div className={styles.profileViewBtn}>
+              <a href="">View Profile</a>
+            </div>
+            <div className={styles.bookBtn}>
+              <a href="">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.profileCard}>
+        <div className={styles.profileImg}>
+          <a href="none">
+            <img
+              src={require("../../../assets/images/doctors/doctor-thumb-02.jpg")}
+              alt=""
+            />
+          </a>
+        </div>
+        <div className={styles.proContent}>
+          <h3 className={styles.title}>
+            Surafel Getachew
+            <i className="fas fa-check-circle"></i>
+          </h3>
+          <p className={styles.speciality}>
+            MDS - Periodontology and Oral Implantology, BDS
+          </p>
+          <div className={styles.rating}>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <i className="fas fa-star filled"></i>
+            <span>(17)</span>
+          </div>
+          <ul className={styles.availableInfo}>
+            <li>
+              <i className="fas fa-map-marker-alt"></i>Florida,USA
+            </li>
+            <li>
+              <i className="fas fa-clock"></i>Available on Fri, 22 mar
+            </li>
+            <li>
+              <i className="far fa-money-bill-alt"></i>$3000 - $10000
+            </li>
+          </ul>
+          <div className={styles.profileBtns}>
+            <div className={styles.profileViewBtn}>
+              <a href="">View Profile</a>
+            </div>
+            <div className={styles.bookBtn}>
+              <a href="">Book Now</a>
             </div>
           </div>
         </div>

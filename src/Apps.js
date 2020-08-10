@@ -24,7 +24,7 @@ import Signin from "./pages/User/Auth/Signin";
 
 
 // psych pages
-import PsychiatristLanding from "./pages/Psychiatrist/PsychLanding/PsychiatristLanding";
+import PsychiatristDashboard from "./pages/Psychiatrist/PsychDashboard/PsychDashboard";
 import PsychSignup from "./pages/Psychiatrist/PsychAuth/PsychSignup";
 import PsychSignIn from "./pages/Psychiatrist/PsychAuth/PsychSignIn";
 import PsychArticle from "./pages/Psychiatrist/PsychArticle/PsychArticle";
@@ -36,6 +36,7 @@ import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychSchedule";
 // Try page
 import Try from "./pages/Try/Try";
 import ChatPage from "./pages/Try/ChatPage";
+import ProfileSetting from "./ProfileSetting";
 
 // adding auth token to global header so that will not send it every time.
 import setAuthToken from "./utils/setAuthToken";
@@ -53,11 +54,12 @@ const Apps = () => {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Landing} />
+            <Route exact path="/ps" component={ProfileSetting} />
             <Route exact path="/vp/user/signup" component={Signup} />
             <Route exact path="/vp/user/signin" component={Signin} />
             <Route exact path="/vp/user/psychiatrists" component = {PsychiatristList} />
             <UserProtectedRoute exact path="/vp/user/dashboard" component={UserDashBoard} />
-            <PrivateRoute exact path="/vp/psychiatrist/dashboard" component={PsychiatristLanding} />
+            <PrivateRoute exact path="/vp/psychiatrist/dashboard" component={PsychiatristDashboard} />
             <Route exact path="/psychiatrist/signup" component={PsychSignup} />
             <Route exact path="/psychiatrist/signin" component={PsychSignIn} />
             <Route exact path="/vp/psychiatrist/article" component={PsychArticle} />

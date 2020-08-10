@@ -1,6 +1,6 @@
 import React from "react";
-import PsychNav from "../psychiatrist/PsychNav/PsychNav";
 import styles from "./psychPage.module.css";
+import PsychNav from "../psychiatrist/PsychNav/PsychNav";
 
 const PsychPage = (props) => {
   return (

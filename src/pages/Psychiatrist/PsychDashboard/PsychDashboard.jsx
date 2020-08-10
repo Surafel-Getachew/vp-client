@@ -1,11 +1,15 @@
 import React from 'react'
+import PsychPage from "../../../component/Page/PsychPage";
 
 const PsychDashboard = () => {
     return (
-        <div>
-            <h1>Dashboard</h1>
-        </div>
+        <PsychPage>
+            <div>
+                <h1>DashBoard</h1>
+            </div>
+        </PsychPage>
     )
 }
 
-export default PsychDashboard
+export default PsychDashboard;
+
