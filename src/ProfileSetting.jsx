@@ -1,33 +1,47 @@
 import React, { useState } from "react";
-import { Form, Input, Checkbox, Button, Select } from "antd";
+import { Form, Input, Button } from "antd";
+import FormItem from "antd/lib/form/FormItem";
+import styles from "./styles.module.css"
 
-const { Option } = Select;
-
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
-const tailLayout = {
-  wrapperCol: {
-    offset: 8,
-    span: 16,
-  },
-};
+const formItemLayout = {};
 
 const ProfileSetting = () => {
-  const [gender, setGender] = useState("");
-
+  const onFinish = (values) => {
+    console.log("success:", values);
+  };
+  const tailLayout = {
+    wrapperCol: {
+      offset: 8,
+      span: 16,
+    },
+  };
   return (
-    <div>
-      <h1>Profile setting</h1>
-      <Form layout vertical>
-        <Form.Item label = "first name">
-          <Input/>
+    <div className = {styles.formm}>
+      <Form onFinish={onFinish}>
+        <Form.Item
+          label="username"
+          name="username"
+          rules={[{ required: true, message: "Enter username!" }]}
+        >
+          <Input />
         </Form.Item>
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: "Please input your password!",
+            },
+          ]}
+        >
+          <Input.Password />
+        </Form.Item>
+        <Form.Item {...tailLayout}>
+        <Button  className = {styles.btn}type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
       </Form>
     </div>
   );

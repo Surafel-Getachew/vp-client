@@ -32,6 +32,9 @@ import Psychprofile from "./pages/Psychiatrist/PsychProfile/PsychProfile";
 // import Psychprofile from "./pages/Psychiatrist/PsychProfile/Psychprofile";
 import PsychSocial from "./pages/Psychiatrist/PsychSocial/PsychSocial";
 import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychSchedule";
+import PsychVideoChat from "./pages/Psychiatrist/PsychVideoChat/PsychVideoChat";
+// import VideoChatRoom from "./pages/Psychiatrist/PsychVideoChat/VideoChatRoom";
+import VideoChatRoom from "./pages/Psychiatrist/PsychVideoChat/vct";
 
 // Try page
 import Try from "./pages/Try/Try";
@@ -65,6 +68,8 @@ const Apps = () => {
             <Route exact path="/vp/psychiatrist/article" component={PsychArticle} />
             <Route exact path="/vp/psychiatrist/profile" component={Psychprofile} />
             <Route exact path="/vp/psychiatrist/socialmedia" component={PsychSocial} />
+            <Route exact path="/vp/psychiatrist/videochat" component={PsychVideoChat} />
+            <Route exact path="/vp/videochat/room/:roomId" component={VideoChatRoom}/>
             <Route exact path="/vp/psychiatrist/schedule" component={PsychSchedule} />
             <Route exact path ="/vp/try" component = {Try} />
             <Route exact path ="/chat" component = {ChatPage} />

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import "./PsychNav.css"
-import "../PsychNav/Psycha-side-nav.css";
+import "./Psycha-side-nav.css";
 import AuthContext from "../../../context/auth/authContext";
 
 const PsychNav = () => {
@@ -59,7 +58,7 @@ const PsychNav = () => {
             </Link>
           </li>
           <li>
-            <Link className="a" >
+            <Link className="a" to= "/vp/psychiatrist/videochat" >
               <i className="fas fa-video"></i>
               <span>Video Chat</span>
             </Link>

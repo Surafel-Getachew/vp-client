@@ -1,0 +1,45 @@
+
+.videoGrid {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.videoGrid video {
+    height: 300px;
+    width:400px;
+    object-fit: cover;
+}
+
+.psychVcCnt {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.createLink:hover {
+  transform: scale(1.2, 1.2);
+}
+
+p {
+  color:#757575 ;
+}
+
+.createLink i {
+  font-size: 140px;
+  color: #0fb4e7; /* Old browsers */
+  color: -moz-linear-gradient(-45deg, #0fb4e7 7%, #a9e4f7 70%); /* FF3.6-15 */
+  color: -webkit-linear-gradient(
+    -45deg,
+    #0fb4e7 7%,
+    #a9e4f7 70%
+  ); /* Chrome10-25,Safari5.1-6 */
+  color: linear-gradient(
+    135deg,
+    #0fb4e7 7%,
+    #a9e4f7 70%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0fb4e7', endColorstr='#a9e4f7',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
