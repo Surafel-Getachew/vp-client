@@ -17,6 +17,7 @@ import {
   LOGOUT,
   LOGOUT_PSYCHIATRIST,
   CLEAR_ERRORS,
+  FOUND_LOGGEDIN_USER
 } from "../../types";
 
 const AuthState = (props) => {
@@ -25,6 +26,8 @@ const AuthState = (props) => {
     isAuthenticated: null,
     loading: true,
     user: [],
+    foundLoggedInUser:[],
+    psychiatrist:[],
     error: null,
     role: null,
   };
@@ -58,6 +61,35 @@ const AuthState = (props) => {
     }
   };
 
+  const findLoggedInUser = async() => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    try {
+      const res = await axios.get("/vp/users");
+      dispatch({type:FOUND_LOGGEDIN_USER,payload:res.data})
+    } catch (error) {
+      try {
+        const res = await axios.get("/vp/psychiatrist");
+        dispatch({type:FOUND_LOGGEDIN_USER,payload:res.data})
+      } catch (error) {
+        
+      }
+    }
+
+    // const res = await axios.get("/vp/user");
+    // if (res.data.msg === "Unauthorized") {
+    //   const res = await axios.get("/vp/psychiatrist");
+    //   if (res.data.msg === "Unauthorized"){
+    //     console.log("Cant be found!!");
+    //   } else {
+    //     dispatch({ type: PSYCHIATRIST_LOADED, payload: res.data });
+    //   }
+    // } else {
+    //   dispatch({ type: USER_LOADED, payload: res.data });
+    // }
+  }
+ 
 
   const register = async (formData) => {
     const config = {
@@ -145,6 +177,8 @@ const AuthState = (props) => {
         token: state.token,
         isAuthenticated: state.isAuthenticated,
         user: state.user,
+        foundLoggedInUser:state.foundLoggedInUser,
+        psychiatrist:state.psychiatrist,
         loading: state.loading,
         role: state.role,
         error: state.error,
@@ -157,6 +191,7 @@ const AuthState = (props) => {
         logout,
         psychiatristLogout,
         clearErrors,
+        findLoggedInUser
       }}
     >
       {props.children}

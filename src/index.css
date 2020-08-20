@@ -1,4 +1,7 @@
 @import '~antd/dist/antd.css';
+/* @import '~antd/lib/style/index.less'; */
+/* @import "~antd/dist/antd.less"; */
+/* @import '~antd/dist/antd.less'; */
 
 * {
   box-sizing: border-box;

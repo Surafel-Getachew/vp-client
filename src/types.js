@@ -12,7 +12,7 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 export const LOGOUT_PSYCHIATRIST = "LOGOUT_PSYCHIATRIST"; 
 export const CLEAR_ERRORS = "CLEAR_ERRORS"; 
-
+export const FOUND_LOGGEDIN_USER = "FOUND_LOGGEDIN_USER";
 // For the Article
 export const ADD_ARTICLE = "ADD_ARTICLE";
 export const LOAD_ARTICLE = "LOAD_ARTICLE";
@@ -37,3 +37,12 @@ export const SET_CURRENT_MESSAGE = "SET_CURRENT_MESSAGE"
 // trial for profile picture 
 
 export const PROFILE = "PROFILE";
+
+
+// {
+//     "start": "react-scripts start",
+//      "build": "react-scripts build",
+//      "test": "react-scripts test",
+//      "eject": "react-scripts eject"
+  
+//   }

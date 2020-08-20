@@ -20,6 +20,7 @@ const PsychVideoChat = () => {
         </div>
         <div onClick={onClick} className={styles.createLink}>
           <i className="fas fa-video"></i>
+          <button>create</button>
         </div>
         {links === "" ? (
           ""

@@ -3,7 +3,6 @@ import "../../User/Auth/Signup.css";
 import AlertContext from "../../../context/alert/alertContext";
 import AuthContext from "../../../context/auth/authContext";
 import { Redirect } from "react-router-dom";
-
 const PsychSignUp = (props) => {
   const alertContext = useContext(AlertContext);
   const { setAlert } = alertContext;
@@ -128,7 +127,6 @@ const PsychSignUp = (props) => {
         </div>
       </section>
     </div>
-   
   );
 };
 

@@ -11,16 +11,23 @@ import {
     CLEAR_ERRORS,
     REGISTER_SUCCESS_PSYCHIATRIST,
     PSYCHIATRIST_LOADED,
+    FOUND_LOGGEDIN_USER
   } from "../../types"
 
 export default (state,action) => {
     switch (action.type){
+        case FOUND_LOGGEDIN_USER:{
+            return {
+               foundLoggedInUser:action.payload 
+            }
+        }
         case USER_LOADED:   
             return {
                 ...state,
                 isAuthenticated:true,
                 loading:false,
                 user:action.payload,
+                // user:[...state.user,action.payload],
                 role:action.payload.role,
             }
         case PSYCHIATRIST_LOADED:
@@ -29,6 +36,8 @@ export default (state,action) => {
                 isAuthenticated:true,
                 loading:false,
                 user:action.payload,
+                psychiatrist:action.payload,
+                // psychiatrist:[...state.psychiatrist,action.payload],
                 role:action.payload.role
             }    
         case REGISTER_SUCCESS:
@@ -71,9 +80,9 @@ export default (state,action) => {
                 loading:false,
                 error:null
             }        
-        case REGISTER_FAIL:
-        case AUTH_ERROR:
-        case LOGIN_FAIL:
+        // case REGISTER_FAIL:
+        // case AUTH_ERROR:
+        // case LOGIN_FAIL:
         case LOGOUT:
         case LOGOUT_PSYCHIATRIST:
             localStorage.removeItem("token");

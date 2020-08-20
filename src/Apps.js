@@ -8,6 +8,7 @@ import AlertState from "./context/alert/AlertState";
 import ArticleState from "./context/article/ArticleState";
 import PsychState from "./context/psych/PsychState";
 import ChatContext from "./context/groupChat/GroupChatState";
+import VideoChatState from "./context/video_chat/VideoChatState"
 
 // private route
 import PrivateRoute from "./component/routing/PrivateRouting";
@@ -28,7 +29,7 @@ import PsychiatristDashboard from "./pages/Psychiatrist/PsychDashboard/PsychDash
 import PsychSignup from "./pages/Psychiatrist/PsychAuth/PsychSignup";
 import PsychSignIn from "./pages/Psychiatrist/PsychAuth/PsychSignIn";
 import PsychArticle from "./pages/Psychiatrist/PsychArticle/PsychArticle";
-import Psychprofile from "./pages/Psychiatrist/PsychProfile/PsychProfile";
+import Psychprofile from "./pages/Psychiatrist/PsychProfile/PsProfile";
 // import Psychprofile from "./pages/Psychiatrist/PsychProfile/Psychprofile";
 import PsychSocial from "./pages/Psychiatrist/PsychSocial/PsychSocial";
 import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychSchedule";
@@ -54,27 +55,29 @@ const Apps = () => {
         <ArticleState>
           <PsychState>
            <ChatContext>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/ps" component={ProfileSetting} />
-            <Route exact path="/vp/user/signup" component={Signup} />
-            <Route exact path="/vp/user/signin" component={Signin} />
-            <Route exact path="/vp/user/psychiatrists" component = {PsychiatristList} />
-            <UserProtectedRoute exact path="/vp/user/dashboard" component={UserDashBoard} />
-            <PrivateRoute exact path="/vp/psychiatrist/dashboard" component={PsychiatristDashboard} />
-            <Route exact path="/psychiatrist/signup" component={PsychSignup} />
-            <Route exact path="/psychiatrist/signin" component={PsychSignIn} />
-            <Route exact path="/vp/psychiatrist/article" component={PsychArticle} />
-            <Route exact path="/vp/psychiatrist/profile" component={Psychprofile} />
-            <Route exact path="/vp/psychiatrist/socialmedia" component={PsychSocial} />
-            <Route exact path="/vp/psychiatrist/videochat" component={PsychVideoChat} />
-            <Route exact path="/vp/videochat/room/:roomId" component={VideoChatRoom}/>
-            <Route exact path="/vp/psychiatrist/schedule" component={PsychSchedule} />
-            <Route exact path ="/vp/try" component = {Try} />
-            <Route exact path ="/chat" component = {ChatPage} />
-          </Switch>
-        </BrowserRouter>
+            <VideoChatState>
+              <BrowserRouter>
+                <Switch>
+                  <Route exact path="/" component={Landing} />
+                  <Route exact path="/ps" component={ProfileSetting} />
+                  <Route exact path="/vp/user/signup" component={Signup} />
+                  <Route exact path="/vp/user/signin" component={Signin} />
+                  <Route exact path="/vp/user/psychiatrists" component = {PsychiatristList} />
+                  <UserProtectedRoute exact path="/vp/user/dashboard" component={UserDashBoard} />
+                  <PrivateRoute exact path="/vp/psychiatrist/dashboard" component={PsychiatristDashboard} />
+                  <Route exact path="/psychiatrist/signup" component={PsychSignup} />
+                  <Route exact path="/psychiatrist/signin" component={PsychSignIn} />
+                  <Route exact path="/vp/psychiatrist/article" component={PsychArticle} />
+                  <Route exact path="/vp/psychiatrist/profile" component={Psychprofile} />
+                  <Route exact path="/vp/psychiatrist/socialmedia" component={PsychSocial} />
+                  <Route exact path="/vp/psychiatrist/videochat" component={PsychVideoChat} />
+                  <Route exact path="/vp/videochat/room/:roomId" component={VideoChatRoom}/>
+                  <Route exact path="/vp/psychiatrist/schedule" component={PsychSchedule} />
+                  <Route exact path ="/vp/try" component = {Try} />
+                  <Route exact path ="/chat" component = {ChatPage} />
+                </Switch>
+              </BrowserRouter>
+            </VideoChatState>
             </ChatContext>
           </PsychState>
         </ArticleState>

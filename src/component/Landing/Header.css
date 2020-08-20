@@ -1,26 +1,26 @@
 
 
-.nav-bar{
+.navBar{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.nav-bar h1{
+.navBar h1{
   text-align: center;
   margin-left: 2rem;
 }
 
-.nav-bar h1 span{
+.navBar h1 span{
   color: rgb(0, 150, 204);
 }
 
-.nav-link {
+.navLink {
   align-self: center;
   margin-right: 2rem;
 }
 
-.nav-link a{
+.navLink a{
   padding: 0 1rem;
   color: rgb(0, 150, 204);
   font-size: 17px;
