@@ -7,7 +7,7 @@ import AuthState from "./context/auth/AuthState";
 import AlertState from "./context/alert/AlertState";
 import ArticleState from "./context/article/ArticleState";
 import PsychState from "./context/psych/PsychState";
-import ChatContext from "./context/groupChat/GroupChatState";
+// import ChatContext from "./context/groupChat/GroupChatState";
 import VideoChatState from "./context/video_chat/VideoChatState"
 
 // private route
@@ -35,12 +35,18 @@ import PsychSocial from "./pages/Psychiatrist/PsychSocial/PsychSocial";
 import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychSchedule";
 import PsychVideoChat from "./pages/Psychiatrist/PsychVideoChat/PsychVideoChat";
 // import VideoChatRoom from "./pages/Psychiatrist/PsychVideoChat/VideoChatRoom";
-import VideoChatRoom from "./pages/Psychiatrist/PsychVideoChat/vct";
+
+
+// video chats that are not yet decided and completed.
+// import VideoChatRoom from "./pages/Psychiatrist/PsychVideoChat/vct";
+import VideoChatRoom from "./pages/Psychiatrist/videoChat/video";
 
 // Try page
-import Try from "./pages/Try/Try";
-import ChatPage from "./pages/Try/ChatPage";
+// import Try from "./pages/Try/Try";
+// import ChatPage from "./pages/Try/ChatPage";
 import ProfileSetting from "./ProfileSetting";
+import ForgotPasswordEmail from "./component/ForgotPasswordEmail/ForgotPasswordEmail";
+import ResetPassword from "./component/ResetPassword/ResetPassword";
 
 // Theo
 
@@ -56,11 +62,12 @@ const Apps = () => {
       <AlertState>
         <ArticleState>
           <PsychState>
-           <ChatContext>
             <VideoChatState>
               <BrowserRouter>
                 <Switch>
                   <Route exact path="/" component={Landing} />
+                  <Route exact path="/forgot" component={ForgotPasswordEmail} />
+                  <Route exact path="/reset-password" component={ResetPassword} />
                   <Route exact path="/ps" component={ProfileSetting} />
                   <Route exact path="/vp/user/signup" component={Signup} />
                   <Route exact path="/vp/user/signin" component={Signin} />
@@ -75,12 +82,11 @@ const Apps = () => {
                   <Route exact path="/vp/psychiatrist/videochat" component={PsychVideoChat} />
                   <Route exact path="/vp/videochat/room/:roomId" component={VideoChatRoom}/>
                   <Route exact path="/vp/psychiatrist/schedule" component={PsychSchedule} />
-                  <Route exact path ="/vp/try" component = {Try} />
-                  <Route exact path ="/chat" component = {ChatPage} />
+                  {/* <Route exact path ="/vp/try" component = {Try} /> */}
+                  {/* <Route exact path ="/chat" component = {ChatPage} /> */}
                 </Switch>
               </BrowserRouter>
             </VideoChatState>
-            </ChatContext>
           </PsychState>
         </ArticleState>
       </AlertState>

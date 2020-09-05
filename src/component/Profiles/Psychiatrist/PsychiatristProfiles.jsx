@@ -12,9 +12,10 @@ const PsychiatristProfiles = () => {
   return (
     <div>
       {/* <h1>PsychProfileComp</h1> */}
-      {psychProfiles.map((profile) => (
+      {/* {psychProfiles.map((profile) => (
         <PsychiatristProfileItems profile={profile} />
-      ))}
+      ))} */}
+      <PsychiatristProfileItems/>
     </div>
   );
 };

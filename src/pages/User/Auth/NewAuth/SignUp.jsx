@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import GoogleLogin from "react-google-login";
 import style from "./form.module.css";
 import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
 import { Input, Form, Button } from "antd";
@@ -11,8 +12,9 @@ const invalidCharacterRegEx = /^([\s]|[a-zA-Z/\\])+([\s]{1}|[a-zA-Z/\\]+)*$/;
 const tooMuchNameRegEx = /^([\S]{1,16})(|\s)+(|[\S]{1,16})(|\s)+(|[\S]{1,16})$/;
 const SignUp = () => {
   const authContext = useContext(AuthContext);
-  const { register, isAuthenticated } = authContext;
+  const { register, isAuthenticated, emailInUse,loginWithGoogle } = authContext;
   const [size, setSize] = useState("large");
+  const [err, setErr] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [form] = Form.useForm();
   const onFinish = (values) => {
@@ -21,7 +23,15 @@ const SignUp = () => {
       register(values);
     }
   };
-
+  const responseGoogle = (response) => {
+    console.log(response);
+    loginWithGoogle(response.accessToken)
+  }
+  // useEffect(() => {
+  //   setErr(emailInUse);
+  //   console.log(err);
+  // },[emailInUse])
+  console.log("check", emailInUse);
   useEffect(() => {
     if (isAuthenticated) {
       setRedirect(true);
@@ -94,7 +104,26 @@ const SignUp = () => {
           <Form.Item
             style={{ width: "100%" }}
             name="email"
-            rules={[{ required: true, message: "Please input your Email!" }]}
+            rules={[
+              {
+                type: "email",
+                message: "Invalid Email",
+              },
+              {
+                required: true,
+                message: "Please fill in your Email!",
+              },
+              ({ getFieldValue }) => ({
+                validator(rule, value) {
+                  if (emailInUse === "User already exist") {
+                    console.log("Input", emailInUse);
+                    return Promise.reject("Email In use");
+                  } else {
+                    return Promise.resolve();
+                  }
+                },
+              }),
+            ]}
           >
             <Input
               prefix={<MailOutlined />}
@@ -168,10 +197,18 @@ const SignUp = () => {
             type="primary"
             htmlType="submit"
             size={size}
-            style={{ width: "70%" }}
+            style={{ width: "70%",marginBottom:"15px" }}
           >
             SignUp
           </Button>
+          <GoogleLogin
+            clientId= "88513050295-peb5bai40q8mg78k6p6sn60t5qh16aod.apps.googleusercontent.com"
+            buttonText="Continue With Google"
+            cookiePolicy={"single_host_origin"}
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            style = {{}}
+          />
           <p>
             You have account?<Button type="link">Sign IN</Button>
           </p>

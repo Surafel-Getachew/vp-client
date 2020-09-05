@@ -1,0 +1,12 @@
+.inputCard {
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.cardInputs {
+  width: 95%;
+  margin: 0 auto;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(2, 1fr);
+}

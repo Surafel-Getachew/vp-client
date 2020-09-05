@@ -13,11 +13,16 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   PSYCHIATRIST_LOGIN_SUCCESS,
+  LOGIN_WITH_GOOGLE,
   LOGIN_FAIL,
+  RESET_PASSWRORD_EMAIL,
+  RESET_PASSWRORD,
+  RESET_PASSWRORD_EMAIL_ERROR,
   LOGOUT,
   LOGOUT_PSYCHIATRIST,
   CLEAR_ERRORS,
-  FOUND_LOGGEDIN_USER
+  FOUND_LOGGEDIN_USER,
+  SHOW_FORGOT_PASSWORD,
 } from "../../types";
 
 const AuthState = (props) => {
@@ -26,10 +31,14 @@ const AuthState = (props) => {
     isAuthenticated: null,
     loading: true,
     user: [],
-    foundLoggedInUser:[],
-    psychiatrist:[],
+    foundLoggedInUser: [],
+    psychiatrist: [],
     error: null,
+    successMsg: null,
+    responseMsg:null,
     role: null,
+    emailInUser: "",
+    showForgotPasswordState: false,
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -61,35 +70,20 @@ const AuthState = (props) => {
     }
   };
 
-  const findLoggedInUser = async() => {
+  const findLoggedInUser = async () => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
     try {
       const res = await axios.get("/vp/users");
-      dispatch({type:FOUND_LOGGEDIN_USER,payload:res.data})
+      dispatch({ type: FOUND_LOGGEDIN_USER, payload: res.data });
     } catch (error) {
       try {
         const res = await axios.get("/vp/psychiatrist");
-        dispatch({type:FOUND_LOGGEDIN_USER,payload:res.data})
-      } catch (error) {
-        
-      }
+        dispatch({ type: FOUND_LOGGEDIN_USER, payload: res.data });
+      } catch (error) {}
     }
-
-    // const res = await axios.get("/vp/user");
-    // if (res.data.msg === "Unauthorized") {
-    //   const res = await axios.get("/vp/psychiatrist");
-    //   if (res.data.msg === "Unauthorized"){
-    //     console.log("Cant be found!!");
-    //   } else {
-    //     dispatch({ type: PSYCHIATRIST_LOADED, payload: res.data });
-    //   }
-    // } else {
-    //   dispatch({ type: USER_LOADED, payload: res.data });
-    // }
-  }
- 
+  };
 
   const register = async (formData) => {
     const config = {
@@ -150,10 +144,43 @@ const AuthState = (props) => {
       const res = await axios.post("/vp/psychiatrist/login", formData, config);
       dispatch({ type: PSYCHIATRIST_LOGIN_SUCCESS, payload: res.data });
       loadPsychiatrist();
-    
     } catch (error) {
       dispatch({ type: LOGIN_FAIL, payload: error.response.data.msg });
     }
+  };
+
+  const resetPasswordEmail = async (email) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(
+        "/vp/users/sendResetPasswordEmail",
+        email,
+        config
+      );
+      dispatch({ type: RESET_PASSWRORD_EMAIL, payload: res.data.msg });
+    } catch (error) {
+      console.log(error.response.data);
+      dispatch({
+        type: RESET_PASSWRORD_EMAIL_ERROR,
+        payload: error.response.data.msg,
+      });
+    }
+  };
+
+  const resetPassword = async (data) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post("/vp/users/resetPassword", data, config);
+      dispatch({ type: RESET_PASSWRORD, payload: res.data });
+    } catch (error) {}
   };
 
   const logout = async () => {
@@ -165,9 +192,25 @@ const AuthState = (props) => {
     }
   };
 
+  const loginWithGoogle = async (accessToken) => {
+    try {
+      const res = await axios.post("/vp/users/google", {
+        access_token: accessToken,
+      });
+      dispatch({ type: LOGIN_WITH_GOOGLE, payload: res.data });
+      loadUser();
+    } catch (err) {
+      dispatch({ type: AUTH_ERROR });
+    }
+  };
+
+  const showForgotPassword = () => {
+    dispatch({ type: SHOW_FORGOT_PASSWORD });
+  };
+
   const psychiatristLogout = () => {
-    dispatch({type:LOGOUT_PSYCHIATRIST})
-  }
+    dispatch({ type: LOGOUT_PSYCHIATRIST });
+  };
 
   const clearErrors = () => dispatch({ type: { CLEAR_ERRORS } });
 
@@ -177,21 +220,29 @@ const AuthState = (props) => {
         token: state.token,
         isAuthenticated: state.isAuthenticated,
         user: state.user,
-        foundLoggedInUser:state.foundLoggedInUser,
-        psychiatrist:state.psychiatrist,
+        foundLoggedInUser: state.foundLoggedInUser,
+        psychiatrist: state.psychiatrist,
         loading: state.loading,
         role: state.role,
         error: state.error,
+        successMsg: state.successMsg,
+        emailInUse: state.emailInUse,
+        responseMsg:state.responseMsg,
+        showForgotPasswordState: state.showForgotPasswordState,
         loadUser,
         loadPsychiatrist,
         register,
         registerPsychiatrist,
         login,
+        loginWithGoogle,
         psychiatristLogin,
+        resetPasswordEmail,
+        resetPassword,
         logout,
         psychiatristLogout,
         clearErrors,
-        findLoggedInUser
+        findLoggedInUser,
+        showForgotPassword,
       }}
     >
       {props.children}

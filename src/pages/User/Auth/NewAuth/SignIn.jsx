@@ -4,12 +4,16 @@ import style from "./form.module.css";
 import { Input, Form, Button } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import FormComponent from "./FormComponent";
+import ForgotPasswordEmail from "../../../../component/ForgotPasswordEmail/ForgotPasswordEmail";
 import AuthContext from "../../../../context/auth/authContext";
 const SignIn = () => {
   const authContext = useContext(AuthContext);
-  const { login, isAuthenticated } = authContext;
+  const { login, isAuthenticated,showForgotPassword,showForgotPasswordState } = authContext;
   const [size, setSize] = useState("large");
   const [redirect, setRedirect] = useState(false);
+  const toggleForgotPassword = () => {
+    showForgotPassword();
+  }
   const onFinish = (values) => {
     console.log(values);
     if (values) {
@@ -51,7 +55,7 @@ const SignIn = () => {
               size="large"
               placeholder="Password"
               className={style.input}
-              prefix={<LockOutlined/>}
+              prefix={<LockOutlined />}
             />
           </Form.Item>
 
@@ -63,12 +67,13 @@ const SignIn = () => {
           >
             Sign In
           </Button>
-
+          <p><Button onClick = {toggleForgotPassword} type = "link">Forgot password?</Button></p>
           <p>
-            You don't have account? <Button type="link">Sign IN</Button>
+            Don't have an account?<Button type="link">Sign Up</Button>
           </p>
         </Form>
       </div>
+      {showForgotPasswordState && <ForgotPasswordEmail/>}
     </FormComponent>
   );
 };

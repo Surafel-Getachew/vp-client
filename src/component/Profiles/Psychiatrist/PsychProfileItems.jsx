@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./psychProfiles.module.css";  
+import styles from "./psychProfiles.module.css";
 
 const PsychProfileItems = ({ profile }) => {
-  const {basicInformation,specializations,contactDetails} = profile
+  // const { basicInformation, specializations, contactDetails } = profile;
   return (
     <div className={styles.profileCardsContainer}>
       <div className={styles.profileCard}>
@@ -16,11 +16,12 @@ const PsychProfileItems = ({ profile }) => {
         </div>
         <div className={styles.proContent}>
           <h3 className={styles.title}>
-            {basicInformation.firstname } {""} {basicInformation.lastname}
+            {/* {basicInformation.firstname } {""} {basicInformation.lastname} */}
+            Surafel Getachew
             <i className="fas fa-check-circle"></i>
           </h3>
           <p className={styles.speciality}>
-            {specializations[0]}
+            {/* {specializations[0]} */}
             MDS - Periodontology and Oral Implantology, BDS
           </p>
           <div className={styles.rating}>
@@ -32,7 +33,7 @@ const PsychProfileItems = ({ profile }) => {
           </div>
           <ul className={styles.availableInfo}>
             <li>
-              <i className="fas fa-map-marker-alt"></i>{contactDetails.city},{contactDetails.country}
+              <i className="fas fa-map-marker-alt"></i>AddisAbaba,Ethiopia
             </li>
             <li>
               <i className="fas fa-clock"></i>Available on Fri, 22 mar
@@ -107,11 +108,11 @@ const PsychProfileItems = ({ profile }) => {
         </div>
         <div className={styles.proContent}>
           <h3 className={styles.title}>
-            {basicInformation.firstname } {""} {basicInformation.lastname}
+            {/* {basicInformation.firstname} {""} {basicInformation.lastname} */}
             <i className="fas fa-check-circle"></i>
           </h3>
           <p className={styles.speciality}>
-            {specializations[0]}
+            {/* {specializations[0]} */}
             MDS - Periodontology and Oral Implantology, BDS
           </p>
           <div className={styles.rating}>
@@ -123,7 +124,8 @@ const PsychProfileItems = ({ profile }) => {
           </div>
           <ul className={styles.availableInfo}>
             <li>
-              <i className="fas fa-map-marker-alt"></i>{contactDetails.city},{contactDetails.country}
+              <i className="fas fa-map-marker-alt"></i>
+              {/* {contactDetails.city},{contactDetails.country} */}
             </li>
             <li>
               <i className="fas fa-clock"></i>Available on Fri, 22 mar
@@ -198,11 +200,11 @@ const PsychProfileItems = ({ profile }) => {
         </div>
         <div className={styles.proContent}>
           <h3 className={styles.title}>
-            {basicInformation.firstname } {""} {basicInformation.lastname}
+            {/* {basicInformation.firstname} {""} {basicInformation.lastname} */}
             <i className="fas fa-check-circle"></i>
           </h3>
           <p className={styles.speciality}>
-            {specializations[0]}
+            {/* {specializations[0]} */}
             MDS - Periodontology and Oral Implantology, BDS
           </p>
           <div className={styles.rating}>
@@ -214,7 +216,8 @@ const PsychProfileItems = ({ profile }) => {
           </div>
           <ul className={styles.availableInfo}>
             <li>
-              <i className="fas fa-map-marker-alt"></i>{contactDetails.city},{contactDetails.country}
+              <i className="fas fa-map-marker-alt"></i>
+              {/* {contactDetails.city},{contactDetails.country} */}
             </li>
             <li>
               <i className="fas fa-clock"></i>Available on Fri, 22 mar
@@ -289,11 +292,12 @@ const PsychProfileItems = ({ profile }) => {
         </div>
         <div className={styles.proContent}>
           <h3 className={styles.title}>
-            {basicInformation.firstname } {""} {basicInformation.lastname}
+            {/* {basicInformation.firstname} {""} {basicInformation.lastname} */}
+            JonDoe
             <i className="fas fa-check-circle"></i>
           </h3>
           <p className={styles.speciality}>
-            {specializations[0]}
+            {/* {specializations[0]} */}
             MDS - Periodontology and Oral Implantology, BDS
           </p>
           <div className={styles.rating}>
@@ -305,7 +309,8 @@ const PsychProfileItems = ({ profile }) => {
           </div>
           <ul className={styles.availableInfo}>
             <li>
-              <i className="fas fa-map-marker-alt"></i>{contactDetails.city},{contactDetails.country}
+              <i className="fas fa-map-marker-alt"></i>
+              {/* {contactDetails.city},{contactDetails.country} */}
             </li>
             <li>
               <i className="fas fa-clock"></i>Available on Fri, 22 mar
@@ -380,11 +385,12 @@ const PsychProfileItems = ({ profile }) => {
         </div>
         <div className={styles.proContent}>
           <h3 className={styles.title}>
-            {basicInformation.firstname } {""} {basicInformation.lastname}
+            {/* {basicInformation.firstname} {""} {basicInformation.lastname} */}
+            Alexis sanches
             <i className="fas fa-check-circle"></i>
           </h3>
           <p className={styles.speciality}>
-            {specializations[0]}
+            {/* {specializations[0]} */}
             MDS - Periodontology and Oral Implantology, BDS
           </p>
           <div className={styles.rating}>
@@ -396,7 +402,8 @@ const PsychProfileItems = ({ profile }) => {
           </div>
           <ul className={styles.availableInfo}>
             <li>
-              <i className="fas fa-map-marker-alt"></i>{contactDetails.city},{contactDetails.country}
+              <i className="fas fa-map-marker-alt"></i>
+              {/* {contactDetails.city},{contactDetails.country} */}
             </li>
             <li>
               <i className="fas fa-clock"></i>Available on Fri, 22 mar
