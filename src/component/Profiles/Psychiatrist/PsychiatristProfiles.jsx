@@ -1,23 +1,26 @@
-import React, { useContext, useEffect } from "react";
-import PsychContext from "../../../context/psych/psychContext";
+import React, { useEffect } from "react";
 import PsychiatristProfileItems from "./PsychProfileItems";
+import { connect } from "react-redux";
+import styles from "./psychProfiles.module.css"
+import { loadAllPsychProfile } from "../../../Redux/PsychProfile/psych_profile_aciton";
 
-const PsychiatristProfiles = () => {
-  const psychContext = useContext(PsychContext);
-  const { loadPsychProfiles, psychProfiles } = psychContext;
+const PsychiatristProfiles = (props) => {
+
+  const { loadAllPsychProfile, psychProfiles } = props;
   useEffect(() => {
-    loadPsychProfiles();
+    loadAllPsychProfile();
   }, []);
-
   return (
-    <div>
-      {/* <h1>PsychProfileComp</h1> */}
-      {/* {psychProfiles.map((profile) => (
-        <PsychiatristProfileItems profile={profile} />
-      ))} */}
-      <PsychiatristProfileItems/>
+    <div className = {styles.mainCnt}>
+      {psychProfiles.map((profile) => (
+        <PsychiatristProfileItems key = {profile._id} profile={profile} />
+      ))}
     </div>
   );
 };
-
-export default PsychiatristProfiles;
+const mapStateToProps = (state) => ({
+  psychProfiles: state.psychProfile.psychProfiles,
+});
+export default connect(mapStateToProps, { loadAllPsychProfile })(
+  PsychiatristProfiles
+);

@@ -1,0 +1,14 @@
+.servSpecCnt {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+
+.ser ul li{ 
+    padding: 10px;
+}
+
+.spec ul li{
+    padding: 10px;
+}

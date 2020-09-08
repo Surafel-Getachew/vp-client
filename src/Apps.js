@@ -29,11 +29,11 @@ import PsychiatristDashboard from "./pages/Psychiatrist/PsychDashboard/PsychDash
 import PsychSignin from "./pages/Psychiatrist/PsychAuth/NewAuth/SignIn";
 import PsychSignup from "./pages/Psychiatrist/PsychAuth/NewAuth/SignUp";
 import PsychArticle from "./pages/Psychiatrist/PsychArticle/PsychArticle";
-import Psychprofile from "./pages/Psychiatrist/PsychProfile/PsProfile";
-// import Psychprofile from "./pages/Psychiatrist/PsychProfile/Psychprofile";
+import PsychiatristProfileForm from "./pages/Psychiatrist/PsychProfile/PsychiatristProfileForm";
 import PsychSocial from "./pages/Psychiatrist/PsychSocial/PsychSocial";
 import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychSchedule";
 import PsychVideoChat from "./pages/Psychiatrist/PsychVideoChat/PsychVideoChat";
+import PsychDetailProfile from "./pages/Psychiatrist/PsychProfile/PsychDetailProfile";
 // import VideoChatRoom from "./pages/Psychiatrist/PsychVideoChat/VideoChatRoom";
 
 
@@ -44,7 +44,6 @@ import VideoChatRoom from "./pages/Psychiatrist/videoChat/video";
 // Try page
 // import Try from "./pages/Try/Try";
 // import ChatPage from "./pages/Try/ChatPage";
-import ProfileSetting from "./ProfileSetting";
 import ForgotPasswordEmail from "./component/ForgotPasswordEmail/ForgotPasswordEmail";
 import ResetPassword from "./component/ResetPassword/ResetPassword";
 
@@ -68,19 +67,19 @@ const Apps = () => {
                   <Route exact path="/" component={Landing} />
                   <Route exact path="/forgot" component={ForgotPasswordEmail} />
                   <Route exact path="/reset-password" component={ResetPassword} />
-                  <Route exact path="/ps" component={ProfileSetting} />
+                  <Route exact path="/vp/videochat/room/:roomId" component={VideoChatRoom}/>
+                  <UserProtectedRoute exact path="/vp/user/dashboard" component={UserDashBoard} />
                   <Route exact path="/vp/user/signup" component={Signup} />
                   <Route exact path="/vp/user/signin" component={Signin} />
+                  <Route exact path="/vp/user/psychiatrists" component = {PsychiatristList} />
+                  <PrivateRoute exact path="/vp/psychiatrist/dashboard" component={PsychiatristDashboard} />
                   <Route exact path="/vp/psychiatrist/signin" component={PsychSignin} />
                   <Route exact path="/vp/psychiatrist/signup" component={PsychSignup} />
-                  <Route exact path="/vp/user/psychiatrists" component = {PsychiatristList} />
-                  <UserProtectedRoute exact path="/vp/user/dashboard" component={UserDashBoard} />
-                  <PrivateRoute exact path="/vp/psychiatrist/dashboard" component={PsychiatristDashboard} />
                   <Route exact path="/vp/psychiatrist/article" component={PsychArticle} />
-                  <Route exact path="/vp/psychiatrist/profile" component={Psychprofile} />
+                  <Route exact path="/vp/psychiatrist/profile-setting" component={PsychiatristProfileForm} />
+                  <Route exact path="/vp/psychiatrist/detail-profile" component={PsychDetailProfile} />
                   <Route exact path="/vp/psychiatrist/socialmedia" component={PsychSocial} />
                   <Route exact path="/vp/psychiatrist/videochat" component={PsychVideoChat} />
-                  <Route exact path="/vp/videochat/room/:roomId" component={VideoChatRoom}/>
                   <Route exact path="/vp/psychiatrist/schedule" component={PsychSchedule} />
                   {/* <Route exact path ="/vp/try" component = {Try} /> */}
                   {/* <Route exact path ="/chat" component = {ChatPage} /> */}

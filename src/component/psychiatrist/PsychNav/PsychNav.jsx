@@ -70,7 +70,7 @@ const PsychNav = () => {
             </Link>
           </li>
           <li>
-            <Link className="a" to="/vp/psychiatrist/profile">
+            <Link className="a" to="/vp/psychiatrist/profile-setting">
               <i className="fas fa-user-cog"></i>
               <span>Profile Setting</span>
             </Link>

@@ -1,4 +1,4 @@
-import { ADD_PSYCH_PROFILE,LOAD_PSYCH_PROFILE,PSYCH_PROFILE_EROOR,PSYCH_PROFILE_FORM,SUBMIT_PSCY_PROFILE_FORM } from "../types";
+import { ADD_PSYCH_PROFILE,LOAD_PSYCH_PROFILE,PSYCH_PROFILE_EROOR,PSYCH_PROFILE_FORM,LOAD_ALL_PSYCH_PROFILE} from "../types";
 
 const initialState = {
   psychProfiles: [],
@@ -21,7 +21,13 @@ export default (state = initialState, action) => {
         ...state,
         psychProfile:payload
       }
-    case PSYCH_PROFILE_FORM:
+    case LOAD_ALL_PSYCH_PROFILE:
+      return {
+        ...state,
+        // psychProfiles:[...state.psychProfiles,payload]
+        psychProfiles:payload
+      }
+      case PSYCH_PROFILE_FORM:
       return {
         psychProfileForm:payload,
         ...state,
@@ -30,10 +36,7 @@ export default (state = initialState, action) => {
       return {
         error: action.psyload,
       };
-    case SUBMIT_PSCY_PROFILE_FORM:
-      return {
-
-      }  
+   
       
     default:
       return state;

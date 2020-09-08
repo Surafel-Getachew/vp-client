@@ -1,0 +1,19 @@
+.eduExpCont {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.exp {
+  flex: 50%;
+}
+.edu {
+  flex: 50%;
+}
+.edu h4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.exp h4 {
+  margin-bottom: 20px;
+  text-align: center;
+} 

@@ -21,7 +21,7 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 import PsychPage from "../../../component/Page/PsychPage";
-import ProfileCard from "../../../component/ProfileCard/ProfileCard";
+import ProfileCard from "../../../component/ProfileInputCard/ProfileCard";
 
 const radioStyle = {
   display: "block",
@@ -43,7 +43,7 @@ const servicesTag = () => {
   );
 };
 
-const PsProfile = (props) => {
+const PsychiatristProfileForm = (props) => {
   const [profile, setProfile] = useState({});
   // if error like can not read propery of null appear later, adding initial state to useState of profile will work
   const { psychProfile, addPsychProfile, loadPsychProfile } = props;
@@ -72,6 +72,7 @@ const PsProfile = (props) => {
     specializations,
     service,
     education,
+    experience
   } = profile;
   const [form] = Form.useForm();
   form.setFieldsValue({
@@ -84,6 +85,7 @@ const PsProfile = (props) => {
     specializations,
     service,
     education,
+    // experience
   });
   return (
     <PsychPage>
@@ -313,5 +315,5 @@ const mapStateToProps = (state) => ({
   psychProfile: state.psychProfile.psychProfile,
 });
 export default connect(mapStateToProps, { addPsychProfile, loadPsychProfile })(
-  PsProfile
+  PsychiatristProfileForm
 );

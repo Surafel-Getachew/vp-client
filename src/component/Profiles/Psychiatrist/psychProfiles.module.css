@@ -1,4 +1,3 @@
-
 /* .profileCardsContainer {
   padding:40px;
   margin: 0 auto;
@@ -39,6 +38,9 @@
   margin-bottom: 5px;
 }
 .title a {
+  display: inline-block;
+}
+.profileLink {
   display: inline-block;
 }
 .title i {
@@ -91,7 +93,7 @@
 .profileViewBtn {
   margin-right: 3px;
 }
-.profileViewBtn a {
+.profileLink {
   color: #0de0fe;
   font-size: 13px;
   border: 2px solid #0de0fe;
@@ -126,20 +128,38 @@
 }
 
 @media screen and (min-width: 576px) {
+  .mainCnt {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media screen and (min-width: 776px) {
+  .mainCnt {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 912px) {
+  .mainCnt {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  /* @media screen and (min-width: 576px) {
   .profileCardsContainer {
     display: grid;
-    grid-template-columns: repeat(1,1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 @media screen and (min-width: 776px) {
   .profileCardsContainer {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media screen and (min-width: 912px) {
   .profileCardsContainer {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-  }
+    grid-template-columns: repeat(3, 1fr);
+    
+  } */
 }
