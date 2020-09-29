@@ -28,7 +28,7 @@ const PsychNav = () => {
           <div className="profile-side-nav-info">
             <h3>{name}</h3>
             {/* <h3>Ross geller</h3> */}
-            <h5>Dragon</h5>
+            <h5>Psychiatrist,MD specialist</h5>
           </div>
         </div>
       </div>

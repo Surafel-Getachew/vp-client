@@ -40,5 +40,5 @@ export const loadAllPsychProfile = () => async (dispatch) => {
 
 export const psychProfileForm = (formData) => (dispatch) => {
   dispatch({ type: PSYCH_PROFILE_FORM, payload: formData });
-  console.log(formData);
+  // console.log(formData);
 };

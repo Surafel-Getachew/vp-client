@@ -1,0 +1,28 @@
+.scheduleCnt {
+  display: grid;
+  grid-template-columns: 1fr 0.01fr 1fr;
+}
+
+.appointmentForm {
+  /* border-right: 2px solid rgb(35, 129, 218); */
+  height: 100vh;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+}
+.appointmentDisplay {
+  height: 100vh;
+}
+
+.line {
+  height: 400px;
+  /* background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%); */
+  /* background-image: linear-gradient(315deg, #05e8ba 0%, #087ee1 74%); */
+  /* background-image: linear-gradient(315deg, #0beef9 0%, #48a9fe 74%); */
+  background-image: linear-gradient(315deg, #fefefe 0%, #00a4e4 74%);
+  border-top-right-radius: 60%;
+  border-top-left-radius: 60%;
+  border-bottom-right-radius: 60%;
+  border-bottom-left-radius: 60%;
+  align-self: center;
+}
