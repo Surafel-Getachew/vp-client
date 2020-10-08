@@ -65,7 +65,7 @@ const SignIn = () => {
           </Button>
 
           <p>
-            You don't have account? <Button type="link">Sign IN</Button>
+            You don't have account? <Button type="link">Sign Up</Button>
           </p>
         </Form>
       </div>

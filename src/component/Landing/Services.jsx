@@ -4,12 +4,23 @@ const Services = () => {
   return (
     <div>
       <section id="banner">
-       <div className = "banner-text">
+       {/* <div className = "banner-text">
          <h1>Virtual Psychiatrist</h1>
          <p>Discuss with proffessionals from the comfort of your home</p>
        <div className="banner-btn">
          <a href="#none">make appointment</a>
        </div>
+       </div> */}
+       <div className = "hero-cnt">
+        <div className = "hero-btn">
+          <a className = "reg-btn">Sign Up</a>
+          <a className = "reg-btn">Sign In</a>
+        </div>
+        <div className = "hero-text">
+          <h3>Get Psychiatric Help From The Comfort Of Your Home</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit voluptates quae quod cumque ducimus eum maiores. Cupiditate necessitatibus delectus deleniti nam, recusandae dicta animi asperiores similique, autem ipsa sequi error nobis itaque tenetur non in dignissimos labore eius ad explicabo nisi fuga consequuntur obcaecati! Fugiat sunt soluta ipsum excepturi corrupti!</p>
+          <a href="">Book Appointment</a>
+        </div>
        </div>
       </section>
 

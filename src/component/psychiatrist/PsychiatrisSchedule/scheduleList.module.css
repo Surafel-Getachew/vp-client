@@ -26,3 +26,18 @@
   border-bottom-left-radius: 60%;
   align-self: center;
 }
+
+.todaysSchedule {
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 1px solid red; */
+  justify-content: center;
+}
+
+.tl {
+  margin-top: 40px;
+}
+
+.colorChe{
+  color:rgb(236, 38, 38)
+}

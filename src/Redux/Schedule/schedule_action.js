@@ -1,6 +1,12 @@
 import axios from "axios";
 
-import { ADD_SCHEDULE, SCHEDULE_ERROR, CLEAR_SCHEDULE_ERROR } from "./types";
+import {
+  ADD_SCHEDULE,
+  SCHEDULE_ERROR,
+  CLEAR_SCHEDULE_ERROR,
+  LOAD_TODAYS_SCHEDULE,
+  DELETE_SCHEDULE
+} from "./types";
 
 const config = {
   headers: {
@@ -14,11 +20,30 @@ export const addSchedule = (formData) => async (dispatch) => {
     dispatch({ type: ADD_SCHEDULE, payload: res.data });
   } catch (error) {
     dispatch({ type: SCHEDULE_ERROR, payload: error.response.data.msg });
+    // console.log("from schedule action", error.response.data.msg);
   }
 };
+
+export const psychTodaysSchedule = (theDay) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/vp/psych/schedule/my-schedule/${theDay}`);
+    dispatch({ type: LOAD_TODAYS_SCHEDULE, payload: res.data });
+  } catch (error) {
+    // dispatch({ type: SCHEDULE_ERROR, payload: error.response.data.msg });
+  }
+};
+
+export const deletePsychSchedule = (info) => async(dispatch) => {
+  try {
+    const res = await axios.delete(`/vp/psych/schedule/my-schedule/${info.date}/${info.id}`)
+    dispatch({type:DELETE_SCHEDULE,payload:res.data});
+  } catch (error) {
+    dispatch({type:SCHEDULE_ERROR,payload:error.response.data.msg});
+  }
+}
 
 export const clearScheduleError = () => (dispatch) => {
   setTimeout(() => {
     dispatch({ type: CLEAR_SCHEDULE_ERROR });
-  }, 3000);
+  }, 5000);
 };

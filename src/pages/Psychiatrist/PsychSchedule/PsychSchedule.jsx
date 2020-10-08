@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PsychPage from "../../../component/Page/PsychPage";
 import ScheduleList from "../../../component/psychiatrist/PsychiatrisSchedule/ScheduleList";
 import { Tabs } from "antd";
@@ -6,30 +6,41 @@ import styles from "./schedule.module.css";
 const { TabPane } = Tabs;
 
 const PsychSchedule = () => {
+  const [currentTab, setCurrentTab] = useState("monday");
+  const callback = (key) => {
+    setCurrentTab(key);
+  };
+  
   return (
     <PsychPage>
       <div className={styles.scheduleContainer}>
-        <Tabs defaultActiveKey="1" centered tabBarGutter="1" tabPosition="top">
-          <TabPane tab="Monday" key="1">
-            <ScheduleList theDate="monday" />
+        <Tabs
+          defaultActiveKey="monday"
+          centered
+          tabBarGutter="1"
+          tabPosition="top"
+          onChange={callback}
+        >
+          <TabPane tab="Monday" key="monday">
+            <ScheduleList theDate={currentTab} />
           </TabPane>
-          <TabPane tab="Tuesday" key="2">
-            <ScheduleList theDate="tuesday" />
+          <TabPane tab="Tuesday" key="tuesday">
+            <ScheduleList theDate={currentTab} />
           </TabPane>
-          <TabPane tab="Wednesday" key="4">
-            <ScheduleList theDate="wednesday" />
+          <TabPane tab="Wednesday" key="wednesday">
+            <ScheduleList theDate={currentTab} />
           </TabPane>
-          <TabPane tab="Thursday" key="5">
-            <ScheduleList theDate="thursday" />
+          <TabPane tab="Thursday" key="thursday">
+            <ScheduleList theDate={currentTab} />
           </TabPane>
-          <TabPane tab="Friday" key="6">
-            <ScheduleList theDate="friday" />
+          <TabPane tab="Friday" key="friday">
+            <ScheduleList theDate={currentTab} />
           </TabPane>
-          <TabPane tab="Saturday" key="7">
-            <ScheduleList theDate="saturday" />
+          <TabPane tab="Saturday" key="saturday">
+            <ScheduleList theDate={currentTab} />
           </TabPane>
-          <TabPane tab="Sunday" key="8">
-            <ScheduleList theDate="sunday" />
+          <TabPane tab="Sunday" key="sunday">
+            <ScheduleList theDate={currentTab} />
           </TabPane>
         </Tabs>
       </div>

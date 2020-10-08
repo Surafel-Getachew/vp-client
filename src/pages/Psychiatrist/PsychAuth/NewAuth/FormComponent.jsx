@@ -6,8 +6,9 @@ const FormComponent = (props) => {
     <div className={style.white}>
       <div className={style.formCon}>
         <div className={style.pic}>
-          <img src={require("./undraw_medicine_b1ol.png")} alt="" />
-          <div className={style.filterimg}></div>
+          {/* <img src={require("./undraw_medicine_b1ol.png")} alt="" /> */}
+          <img src={require("../../../../assets/authentication.svg")} alt="" />
+          {/* <div className={style.filterimg}></div> */}
         </div>
         <div className={style.form}>{props.children}</div>
       </div>

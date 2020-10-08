@@ -6,7 +6,7 @@ import Services from "../../component/Landing/Services";
 const Landing = () => {
   return (
     <div className="landing-center">
-      <Header className="header-cmp"/>
+      {/* <Header className="header-cmp"/> */}
       <Services />
     </div>
   );
