@@ -1,0 +1,53 @@
+.topNavContainer {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search {
+  margin-left: 2rem;
+}
+
+.search i {
+  color: #757575;
+  font-size: 13px;
+  padding: 0 5px;
+}
+
+.search span {
+  color: #757575;
+  font-size: 13px;
+  padding: 0 5px;
+}
+
+.profileContainer {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  margin-right: 4rem;
+  justify-content: space-evenly;
+}
+
+.aviContainer {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.avi {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.profileContainer i {
+  color: #757575;
+  padding: 0 10px;
+}
+
+.profileContainer span {
+  color: #757575;
+  padding: 0 10px;
+}

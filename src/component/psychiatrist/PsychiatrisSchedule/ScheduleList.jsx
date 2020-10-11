@@ -73,7 +73,7 @@ const ScheduleList = (props) => {
           style={{
             textAlign: "center",
             marginBottom: "100px",
-            color: "rgb(35, 129, 218)",
+            color: "#703BDA",
           }}
         >
           Add Appointment Time's
@@ -147,13 +147,13 @@ const ScheduleList = (props) => {
           </Form.Item>
         </Form>
       </div>
-      <div className={styles.line}></div>
+      {/* <div className={styles.line}></div> */}
       <div className={styles.appointmentDisplay}>
         <h3
           style={{
             textAlign: "center",
             marginBottom: "60px",
-            color: "rgb(35, 129, 218)",
+            color: "#703BDA",
           }}
         >
           Today's Appointment

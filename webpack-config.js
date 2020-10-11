@@ -1,4 +1,4 @@
-import AntdDayjsWebpackPlugin from 'antd-dayjs-webpack-plugin';
+import AntdDayjsWebpackPlugin from "antd-dayjs-webpack-plugin";
 
 module.exports = {
   // ...

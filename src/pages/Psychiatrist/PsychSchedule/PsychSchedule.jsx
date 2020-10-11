@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PsychPage from "../../../component/Page/PsychPage";
+import Layout from "../../../component/Layout/Layout";
 import ScheduleList from "../../../component/psychiatrist/PsychiatrisSchedule/ScheduleList";
 import { Tabs } from "antd";
 import styles from "./schedule.module.css";
@@ -10,9 +11,9 @@ const PsychSchedule = () => {
   const callback = (key) => {
     setCurrentTab(key);
   };
-  
+
   return (
-    <PsychPage>
+    <Layout>
       <div className={styles.scheduleContainer}>
         <Tabs
           defaultActiveKey="monday"
@@ -44,7 +45,7 @@ const PsychSchedule = () => {
           </TabPane>
         </Tabs>
       </div>
-    </PsychPage>
+    </Layout>
   );
 };
 

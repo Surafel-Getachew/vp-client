@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import PsychPage from "../../../component/Page/PsychPage";
+// import PsychPage from "../../../component/Page/PsychPage";
+import Layout from "../../../component/Layout/Layout"
 import ArticleItem from "../../../component/psychiatrist/ArticleItem/ArticleItem";
 import styles from "./psychArticle.module.css";
 
@@ -56,7 +57,7 @@ const PsychArticle = () => {
   };
 
   return (
-    <PsychPage>
+    <Layout>
         <div className={styles.psychArticleCnt}>
           <form className={styles.psychArticleForm} onSubmit={onSubmit}>
             <label className={styles.psychArticleFormLabel} htmlFor="title">
@@ -96,7 +97,7 @@ const PsychArticle = () => {
             ))}
           </div>
         </div>
-    </PsychPage>
+    </Layout>
   );
 };
 

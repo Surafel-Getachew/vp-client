@@ -10,11 +10,11 @@ import AuthContext from "../../../context/auth/authContext";
 import VideoChatContext from "../../../context/video_chat/videoChatContext";
 const Vct = (props) => {
   const socket = io({
-    transports:["websocket"]
+    transports: ["websocket"],
   });
-  const vct = io("/vct",{
-    transports:["websocket"]
-  })
+  const vct = io("/vct", {
+    transports: ["websocket"],
+  });
   const [msg, setMsg] = useState({
     textMsg: "",
     newMsg: "",
@@ -87,17 +87,17 @@ const Vct = (props) => {
   const onEnter = async (e) => {
     e.preventDefault();
     const messageInfo = {
-      room:roomId,
-      textMsg:textMsg
-    }
-    vct.emit ("message",messageInfo);
+      room: roomId,
+      textMsg: textMsg,
+    };
+    vct.emit("message", messageInfo);
     setMsg({ textMsg: "" });
   };
 
-  vct.on("newMessage",newMessage => {
+  vct.on("newMessage", (newMessage) => {
     console.log(newMessage);
-    setMsg({newMsg:newMessage});
-  })
+    setMsg({ newMsg: newMessage });
+  });
 
   peer.on("open", async (id) => {
     socket.emit("join-room", roomId, id);
@@ -163,44 +163,44 @@ const Vct = (props) => {
     </div>
   );
 
-  // return (
-  //   <div className={style.vidiochat}>
-  //     <div className={style.uservideo}>
-  //       <video ref = {otherStream} className={style.center} autoPlay>
-  //         {" "}
-  //       </video>
-  //     </div>
+  return (
+    <div className={style.vidiochat}>
+      <div className={style.uservideo}>
+        <video ref={otherStream} className={style.center} autoPlay>
+          {" "}
+        </video>
+      </div>
 
-  //     <div className={style.myvideo}>
-  //       <video ref = {myStream} className={style.center} autoPlay>
-  //         <source />
-  //       </video>
-  //     </div>
-  //     <div className={style.videonav}>
-  //       <div className={style.icon}>
-  //         <i className={` fa fa-copy fa-2x`}> </i>
-  //       </div>
-  //       <div className={style.centericon}>
-  //         <div className={style.icon}>
-  //           <i className={` fa fa-microphone-alt-slash fa-2x`}> </i>
-  //         </div>
+      <div className={style.myvideo}>
+        <video ref={myStream} className={style.center} autoPlay>
+          <source />
+        </video>
+      </div>
+      <div className={style.videonav}>
+        <div className={style.icon}>
+          <i className={` fa fa-copy fa-2x`}> </i>
+        </div>
+        <div className={style.centericon}>
+          <div className={style.icon}>
+            <i className={` fa fa-microphone-alt-slash fa-2x`}> </i>
+          </div>
 
-  //         <div className={style.iconend}>
-  //           <i className={` fa  fa-phone-alt fa-2x`}> </i>
-  //           <span>3:00</span>
-  //         </div>
+          <div className={style.iconend}>
+            <i className={` fa  fa-phone-alt fa-2x`}> </i>
+            <span>3:00</span>
+          </div>
 
-  //         <div className={style.icon}>
-  //           <i className={` fa fa-video fa-2x`}> </i>
-  //         </div>
-  //       </div>
-  //       <div className={style.icon}>
-  //         <i className={` fa fa-comment-alt fa-2x`}> </i>
-  //       </div>
-  //     </div>
-  //     {/* <Chat /> */}
-  //   </div>
-  // );
+          <div className={style.icon}>
+            <i className={` fa fa-video fa-2x`}> </i>
+          </div>
+        </div>
+        <div className={style.icon}>
+          <i className={` fa fa-comment-alt fa-2x`}> </i>
+        </div>
+      </div>
+      {/* <Chat /> */}
+    </div>
+  );
 
   // return (
   //   <div>

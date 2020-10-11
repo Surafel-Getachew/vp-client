@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import PsychPage from "../../../component/Page/PsychPage";
+// import PsychPage from "../../../component/Page/PsychPage";
+import Layout from "../../../component/Layout/Layout";
 import styels from "./psychSoc.module.css";
 import { addPsychSocial } from "../../../Redux/PsychSocial/psych_social_action";
 
@@ -23,7 +24,7 @@ const PsychSocial = ({ addPsychSocial }) => {
   };
 
   return (
-    <PsychPage>
+    <Layout>
       <div className={styels.socialForm}>
         <div className={styels.socialFormCenter}>
           <form onSubmit={onSubmit}>
@@ -89,7 +90,7 @@ const PsychSocial = ({ addPsychSocial }) => {
           </form>
         </div>
       </div>
-    </PsychPage>
+    </Layout>
   );
 };
 

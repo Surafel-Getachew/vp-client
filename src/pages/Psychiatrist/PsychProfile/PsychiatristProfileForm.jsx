@@ -20,7 +20,9 @@ import {
   MinusCircleOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
-import PsychPage from "../../../component/Page/PsychPage";
+import styles from "./psych-profile-form.module.css";
+// import PsychPage from "../../../component/Page/PsychPage";
+import Layout from "../../../component/Layout/Layout";
 import ProfileCard from "../../../component/ProfileInputCard/ProfileCard";
 
 const radioStyle = {
@@ -72,7 +74,7 @@ const PsychiatristProfileForm = (props) => {
     specializations,
     service,
     education,
-    experience
+    experience,
   } = profile;
   const [form] = Form.useForm();
   form.setFieldsValue({
@@ -88,7 +90,8 @@ const PsychiatristProfileForm = (props) => {
     // experience
   });
   return (
-    <PsychPage>
+    <Layout>
+      <div className = {styles.profileFormCnt}>
       <Form form={form} onFinish={onFinish}>
         <ProfileCard title="Basic Information">
           <Form.Item
@@ -308,7 +311,8 @@ const PsychiatristProfileForm = (props) => {
           </Button>
         </Form.Item>
       </Form>
-    </PsychPage>
+      </div>
+    </Layout>
   );
 };
 const mapStateToProps = (state) => ({

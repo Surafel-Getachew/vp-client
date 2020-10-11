@@ -1,13 +1,14 @@
 import React from 'react'
-import PsychPage from "../../../component/Page/PsychPage";
+// import PsychPage from "../../../component/Page/PsychPage";
+import Layout from "../../../component/Layout/Layout"
 
 const PsychDashboard = () => {
     return (
-        <PsychPage>
+        <Layout>
             <div>
                 <h1>DashBoard</h1>
             </div>
-        </PsychPage>
+        </Layout>
     )
 }
 

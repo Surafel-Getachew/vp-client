@@ -7,7 +7,7 @@ const ProfileCard = (props) => {
     <div className={styles.inputCard}>
       <div>
         <h3
-          style={{ marginLeft: "10px", color: "#1890FF" }}
+          style={{ marginLeft: "10px", color: "#703BDA" }}
           className={styles.cardTitle}
         >
           {title}
