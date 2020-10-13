@@ -1,13 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import PsychNav from "../../../component/psychiatrist/PsychNav/PsychNav";
-import styles from "./psychArticle.module.css";
+import ReactQuill from "react-quill";
+// import PsychPage from "../../../component/Page/PsychPage";
+import Layout from "../../../component/Layout/Layout";
 import ArticleItem from "../../../component/psychiatrist/ArticleItem/ArticleItem";
-import ArticleContext from "../../../context/article/articleContext";
-import PsychPage from "../../../component/Page/PsychPage";
+import styles from "./psychArticle.module.css";
 
-const PsycArticle = () => {
+import ArticleContext from "../../../context/article/articleContext";
+
+const PsychArticle = () => {
   const articleContext = useContext(ArticleContext);
   const {
     addArticle,
@@ -29,17 +31,22 @@ const PsycArticle = () => {
     loadPsychiatristArticles();
     // eslint-disable-next-line
   }, []);
+
   useEffect(() => {
     if (current !== null) {
+      // setArticle({title:current.title,body:current.body});
       setArticle(current);
     } else {
       setArticle({ title: "", body: "" });
     }
     // eslint-disable-next-line
   }, [articleContext, current]);
-  const onChange = (e) => {
+  // i have to check articleContext in the dependency array check the useEffect hook
+
+  const onChangeTitle = (e) => {
     setArticle({ ...article, title: e.target.value });
   };
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (current == null) {
@@ -49,30 +56,39 @@ const PsycArticle = () => {
     }
     clearCurrent();
   };
+
   return (
-    // <div className={styles.psychArticle}>
-    //   <div className={styles.psychArticleCenter}>
-    // {/* <PsychNav /> */}
-    <PsychPage>
+    <Layout>
       <div className={styles.psychArticleCnt}>
-        <form onSubmit={onSubmit}>
-          <label htmlFor="title">Title</label>
+        <form className={styles.psychArticleForm} onSubmit={onSubmit}>
+          <label className={styles.psychArticleFormLabel} htmlFor="title">
+            <span> Title</span>
+          </label>
           <br />
-          <input type="text" name="title" value={title} onChange={onChange} />
+          <input
+            type="text"
+            name="title"
+            value={title}
+            onChange={onChangeTitle}
+            placeholder="title"
+          />
           <br />
-          <label htmlFor="body">Body</label>
+          <label className={styles.psychArticleFormLabel} htmlFor="body">
+            Body
+          </label>
           <br />
-          <CKEditor
-            editor={ClassicEditor}
-            data={body}
-            onInit={(editor) => {
-              console.log("editor is ready to use", editor);
-            }}
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              setArticle({ ...article, body: data });
-            }}
-          ></CKEditor>
+          {/* <CKEditor
+              editor={ClassicEditor}
+              data={body}
+              onInit={(editor) => {
+                console.log("editor is ready to use", editor);
+              }}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setArticle({ ...article, body: data });
+              }}
+            ></CKEditor> */}
+          <ReactQuill style={{ height: "300px" }} />
           <input type="submit" value="Publish" />
         </form>
         <div>
@@ -83,10 +99,8 @@ const PsycArticle = () => {
           ))}
         </div>
       </div>
-    </PsychPage>
-    //   {/* </div>
-    // </div> */}
+    </Layout>
   );
 };
 
-export default PsycArticle;
+export default PsychArticle;

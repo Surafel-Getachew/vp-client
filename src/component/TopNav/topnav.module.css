@@ -6,20 +6,20 @@
 }
 
 .search {
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
 }
 
-.search i {
+/* .search i {
   color: #757575;
   font-size: 13px;
   padding: 0 5px;
-}
+} */
 
-.search span {
+/* .search span {
   color: #757575;
   font-size: 13px;
   padding: 0 5px;
-}
+} */
 
 .profileContainer {
   display: flex;
