@@ -14,7 +14,7 @@ const PsychDetailProfile = (props) => {
   const { psychProfile, loadPsychProfileForUser } = props;
   // console.log(props.location.state.id);
   useEffect(() => {
-    if (!psychProfile)loadPsychProfileForUser(props.location.state.id);
+    if (!psychProfile) loadPsychProfileForUser(props.location.state.id);
     if (psychProfile) {
       setProfile(psychProfile);
     }
@@ -22,10 +22,10 @@ const PsychDetailProfile = (props) => {
   const { name, specializations, about, education } = profile;
   return (
     <div className={styles.profileCont}>
-      <Overview profile = {profile} />
+      <Overview profile={profile} />
       <Tabs defaultActiveKey="1" centered tabBarGutter="1" tabPosition="top">
         <TabPane tab="Education and Experience" key="1">
-          <EducationExperience profile = {profile}/>
+          <EducationExperience profile={profile} />
         </TabPane>
         <TabPane tab="Service and Specialites" key="2">
           <ServicesSpecialites profile={profile} />

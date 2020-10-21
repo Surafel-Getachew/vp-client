@@ -94,9 +94,11 @@
   margin-right: 3px;
 }
 .profileLink {
-  color: #0de0fe;
+  /* color: #0de0fe; */
+  color: #9363e6;
   font-size: 13px;
-  border: 2px solid #0de0fe;
+  /* border: 2px solid #0de0fe; */
+  border: 2px solid #9363e6;
   text-align: center;
   display: block;
   font-weight: 500;
@@ -109,9 +111,11 @@
   line-height: 1.5;
 }
 
-.bookBtn a {
-  background-color: #0de0fe;
-  border: 2px solid #0de0fe;
+.bookBtnLink {
+  /* background-color: #0de0fe;
+  border: 2px solid #0de0fe; */
+  background-color: #9363e6;
+  border: 2px solid #9363e6;
   color: #fff;
   font-size: 13px;
   text-align: center;
@@ -125,6 +129,10 @@
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.bookBtnLink:hover {
+  color: #fff;
 }
 
 @media screen and (min-width: 576px) {

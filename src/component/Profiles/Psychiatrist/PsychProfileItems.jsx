@@ -57,7 +57,17 @@ const PsychProfileItems = ({ profile }) => {
               </Link>
             </div>
             <div className={styles.bookBtn}>
-              <a href="">Book Now</a>
+              <Link
+                className = {styles.bookBtnLink}
+                to={{
+                  pathname: "/vp/user/appointment",
+                  state: {
+                    id: psychOwner,
+                  },
+                }}
+              >
+                Book Now
+              </Link>
             </div>
           </div>
         </div>

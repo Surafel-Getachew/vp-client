@@ -15,7 +15,6 @@ const SignIn = () => {
     showForgotPassword();
   }
   const onFinish = (values) => {
-    console.log(values);
     if (values) {
       login(values);
     }
