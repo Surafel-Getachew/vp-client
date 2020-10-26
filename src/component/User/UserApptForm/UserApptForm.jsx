@@ -10,8 +10,15 @@ const { RangePicker } = TimePicker;
 
 const UserApptForm = (props) => {
   const [error, setError] = useState("");
-  const [success,setSuccess] = useState("");
-  const { theDate, psychId, addUserAppt, clearApptMsg, errorMsg,successMsg } = props;
+  const [success, setSuccess] = useState("");
+  const {
+    theDate,
+    psychId,
+    addUserAppt,
+    clearApptMsg,
+    errorMsg,
+    successMsg,
+  } = props;
   useEffect(() => {
     setError(errorMsg);
     clearApptMsg();
@@ -19,7 +26,7 @@ const UserApptForm = (props) => {
   useEffect(() => {
     setSuccess(successMsg);
     clearApptMsg();
-  },[successMsg])
+  }, [successMsg]);
   const onFinish = (values) => {
     const formData = {
       [theDate]: [
