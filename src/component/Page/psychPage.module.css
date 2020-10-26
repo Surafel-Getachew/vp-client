@@ -1,0 +1,25 @@
+.psychPage {
+  background-color: #f8f9fa;
+  padding: 40px 0;
+}
+
+.psychPageCenter {
+  width: 95%;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 572px) {
+  .psychPageCenter {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: 0.5rem;
+}
+}
+
+@media screen and (min-width: 889px) {
+    .psychPageCenter {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-column-gap: 0.5rem;
+  }
+}

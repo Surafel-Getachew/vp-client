@@ -1,0 +1,18 @@
+.psychSignup {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100vh;
+}
+
+.signUpForm {
+  border: 2px solid red;
+}
+
+.antdForm {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+

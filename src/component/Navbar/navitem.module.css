@@ -1,0 +1,29 @@
+.navLinkContainer {
+  width: 100%;
+  padding: 10px 0;
+}
+/* .navLinkContainer :hover {
+  background-color:black;
+}
+.navLinkContainer :hover .itemName {
+  color: #fff !important;
+}
+
+.navLinkContainer :hover .iconStyle {
+  color: #fff !important;
+} */
+
+.navLink {
+  padding: 0 4px;
+}
+
+.itemName {
+  font-size: 13px;
+  /* font-weight: bold; */
+}
+
+.iconStyle {
+  text-align: center;
+  margin-right: 20px;
+  /* margin-bottom: 7px; */
+}

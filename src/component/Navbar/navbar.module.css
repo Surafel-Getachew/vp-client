@@ -1,0 +1,43 @@
+.navContainer {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100vh;
+}
+
+.logo {
+  color: #703bda;
+  margin-bottom: 40px;
+}
+
+.reg {
+  background-color: #703bda;
+  color: white;
+  padding: 7px 14px;
+  border-radius: 5px;
+  font-size: medium;
+  margin-bottom: 40px;
+}
+
+.navItemContainer {
+  /* border:2px solid skyblue; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.svgContainer {
+  margin-top: 40px;
+  width: 200px;
+  height: 80px;
+}
+
+.svgContainer img {
+  width: 100%;
+  height: 100%;
+}
+
+.svgContainer h6 {
+  text-align: center;
+}

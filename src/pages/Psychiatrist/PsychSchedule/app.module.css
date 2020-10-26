@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.psy{
+    padding: 50px;
+    width: 70vw;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px;
+    min-width: 250px;
+    margin:  10px;
+    height: fit-content;
+    min-height: 300px;
+    background-color: #fff;
+}
+
+@media only screen and (max-width: 1000px){
+    .psy{
+        padding: 50px;
+        width: 100vw;
+        height: fit-content;
+        background-color: #eee;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

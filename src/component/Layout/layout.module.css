@@ -1,0 +1,19 @@
+.Container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  background-color: #e1e1e9;
+}
+
+.appContainer {
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-template-rows: 1fr 8fr;
+  min-height: 100vh;
+}
+
+.childPage {
+  width: 98%;
+  max-height: 96%;
+  min-height: 96%;
+  margin: 0 auto;
+}

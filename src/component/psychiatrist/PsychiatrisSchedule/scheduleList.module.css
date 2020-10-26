@@ -1,0 +1,13 @@
+.scheduleCnt {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.appointmentForm {
+}
+
+.todaysSchedule {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+}

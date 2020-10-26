@@ -1,0 +1,29 @@
+
+
+.navBar{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.navBar h1{
+  text-align: center;
+  margin-left: 2rem;
+}
+
+.navBar h1 span{
+  color: rgb(0, 150, 204);
+}
+
+.navLink {
+  align-self: center;
+  margin-right: 2rem;
+}
+
+.navLink a{
+  padding: 0 1rem;
+  color: rgb(0, 150, 204);
+  font-size: 17px;
+  /* font-weight: bold; */
+  /* letter-spacing: 1px; */
+}

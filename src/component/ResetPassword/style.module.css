@@ -1,0 +1,24 @@
+.formCnt {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  width: 40vw;
+  /* border: 1px solid red; */
+  text-align: center;
+}
+
+.lockImg {
+  width: 400px;
+ 
+}
+.lockImg img {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

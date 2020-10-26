@@ -1,0 +1,15 @@
+#psych-landing{
+ padding:40px 0;
+ /* background: #757575; */
+}
+
+.psych-landing-center{
+    width:95%;
+    margin:0 auto;
+}
+
+.psych-landing-center{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-column-gap: 0.7rem;
+}

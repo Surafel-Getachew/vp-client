@@ -1,0 +1,173 @@
+/* .profileCardsContainer {
+  padding:40px;
+  margin: 0 auto;
+} */
+
+.profileCard {
+  background-color: #fff;
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  margin-right: 10px;
+  padding: 15px;
+  /* add the transition here */
+}
+
+.profileImg {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.profileImg img {
+  border-radius: 4px;
+  transform: translateZ(0);
+  transition: all 2000ms cubic-bezier(0.19, 1, 0.22, 1) 0ms;
+  width: 100%;
+  height: auto;
+}
+
+.proContent {
+  padding: 15px 0 0;
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.title a {
+  display: inline-block;
+}
+.profileLink {
+  display: inline-block;
+}
+.title i {
+  color: #28a745;
+  margin-left: 3px;
+}
+.speciality {
+  font-size: 15px;
+  color: #757575;
+  margin-bottom: 5px;
+  /* min-height: 40px; */
+}
+
+.rating {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.rating i {
+  color: #f4c150;
+  padding-right: 5px;
+}
+
+.availableInfo {
+  font-size: 15px;
+  color: #757575;
+  list-style: none;
+  padding: 0;
+  /* margin-bottom: 15px; */
+  display: block;
+}
+
+.availableInfo i {
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.profileBtns {
+  /* margin-left: 3px;
+  margin-right: 3px; */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profileViewBtn .bookBtn {
+  padding-left: 3px;
+  padding-right: 3px;
+  flex: 0 0 50%;
+}
+.profileViewBtn {
+  margin-right: 3px;
+}
+.profileLink {
+  /* color: #0de0fe; */
+  color: #9363e6;
+  font-size: 13px;
+  /* border: 2px solid #0de0fe; */
+  border: 2px solid #9363e6;
+  text-align: center;
+  display: block;
+  font-weight: 500;
+  padding: 6px;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  /* vertical-align: middle; */
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.bookBtnLink {
+  /* background-color: #0de0fe;
+  border: 2px solid #0de0fe; */
+  background-color: #9363e6;
+  border: 2px solid #9363e6;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  display: block;
+  font-weight: 500;
+  padding: 6px;
+  /* vertical-align: middle; */
+  cursor: pointer;
+  /* user-select: none; */
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.bookBtnLink:hover {
+  color: #fff;
+}
+
+@media screen and (min-width: 576px) {
+  .mainCnt {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media screen and (min-width: 776px) {
+  .mainCnt {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 912px) {
+  .mainCnt {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  /* @media screen and (min-width: 576px) {
+  .profileCardsContainer {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media screen and (min-width: 776px) {
+  .profileCardsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 912px) {
+  .profileCardsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+  } */
+}

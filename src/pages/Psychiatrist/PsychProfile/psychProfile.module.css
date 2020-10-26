@@ -1,0 +1,40 @@
+.profileCard {
+  background: #fff;
+  padding: 10px 0;
+  margin-bottom:2rem ;
+}
+
+.profileCardCenter {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.profileCardTitle h1 {
+  letter-spacing: 0.5px;
+}
+
+.profileCardForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.profileCardForm div {
+    flex: 0 0 48%;
+    padding:1rem 0;
+}
+
+.profileCardForm div input{
+    width: 100%;
+    height: 40px;
+    margin-bottom: 1rem ;
+}
+
+.profileFormBtn {
+  background:#1ad10d;
+  padding: 1rem;
+  border:none;
+  color:#fff;
+  border-radius: 5px;
+}
+

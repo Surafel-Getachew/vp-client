@@ -1,0 +1,178 @@
+#banner {
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  /* background: linear-gradient(
+    to bottom,
+    rgba(0, 102, 139, 0.6) 0%,
+    rgba(0, 150, 204, 0.6) 50%,
+    rgba(43, 164, 171, 0.8) 100%
+    ),
+    url("../../assets/images/bbg.jpeg"); */
+  background: url("../../assets//landing.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* background-attachment: fixed; */
+  height: 100vh;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-cnt {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 0.5fr 5fr;
+}
+.hero-btn {
+  /* border:1px solid white; */
+  display:flex;
+  justify-content: flex-end;
+
+}
+.reg-btn{
+  margin-right: 50px;
+  background: none;
+  border:1.5px solid white;
+  border-radius:50px;
+  padding:3px 30px;
+  align-self: center;
+  color:#fff;
+}
+
+.hero-text {
+  display:flex;
+  flex-direction: column;
+  flex-grow: 0;
+  width: 520px;
+  justify-content:  center;
+  margin-left: 50px;
+}
+
+.hero-text h3 {
+  color:white;
+  font-size: 30px;
+}
+.hero-text p {
+  color:white;
+}
+.hero-text a {
+  background: none;
+  border:2px solid white;
+  border-radius:50px;
+  width:150px;
+  padding:3px 1px;
+  color:white;
+  align-self: center;
+  margin-top: 20px;
+}
+
+
+
+
+.banner-btn {
+  margin-top: 3rem;
+}
+
+.banner-btn a {
+  color: #fff;
+  border: 1px solid #fff;
+  padding:1rem 2rem;
+}
+
+.banner-text {
+  margin: auto 0;
+}
+
+.banner-text h1{
+    letter-spacing: 2px;
+    font-size: 40px;
+}
+
+#services {
+  padding: 60px 0;
+}
+
+.services-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.services-title h2 {
+  font-size: 50px;
+}
+
+.services-title p {
+  margin-top: -10px;
+  text-align: center;
+  width: 50%;
+}
+
+.services-center {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.services-card {
+  margin: 15px 15px;
+}
+
+.services-card h3 {
+  text-transform: capitalize;
+}
+.service-card p {
+  display: block;
+}
+
+@media screen and (min-width: 576px) {
+  .services-center {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media screen and (min-width: 776px) {
+  .services-center {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 996px) {
+  .services-center {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+#about-us {
+  padding: 60px 0;
+  background-color: gainsboro;
+}
+
+.about-center {
+  width: 80vw;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.about-img {
+  margin-top: -110px;
+}
+
+.about-text h1 {
+  font-size: 30px;
+  text-align: center;
+}
+
+@media screen and (min-width: 552px) {
+  .about-center {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .about-text {
+    /* align-self: center; */
+  }
+}

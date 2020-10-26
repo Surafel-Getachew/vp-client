@@ -1,0 +1,54 @@
+.scheduleCnt {
+  display: grid;
+  /* grid-template-columns: 1fr 0.001fr 1fr; */
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+.appointmentForm {
+  border: 3px solid blue;
+  height: 100%;
+  /* border-right: 2px solid rgb(35, 129, 218); */
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+.appointmentDisplay {
+  
+}
+
+.line {
+  /* height: 400px; */
+  /* height: 300px; */
+  /* background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%); */
+  /* background-image: linear-gradient(315deg, #05e8ba 0%, #087ee1 74%); */
+  /* background-image: linear-gradient(315deg, #0beef9 0%, #48a9fe 74%); */
+  /* background-image: linear-gradient(315deg, #fefefe 0%, #00a4e4 74%); this was the choosen when theme was blue */
+  /* purple ones are below */
+  background-image: linear-gradient(315deg, #6e72fc 0%, #ad1deb 74%);
+  /* background-image: linear-gradient(315deg, #9921e8 0%, #5f72be 74%); */
+  /* background-image: linear-gradient(315deg, #2876f9 0%, #6d17cb 74%); */
+
+  border-top-right-radius: 60%;
+  border-top-left-radius: 60%;
+  border-bottom-right-radius: 60%;
+  border-bottom-left-radius: 60%;
+  /* align-self: center; */
+}
+
+.todaysSchedule {
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 1px solid red; */
+  justify-content: center;
+}
+
+.tl {
+  margin-top: 40px;
+}
+
+.colorChe {
+  color: rgb(236, 38, 38);
+}

@@ -1,0 +1,46 @@
+.psychArticleCnt {
+  padding: 20px 0;
+  background:#fff;
+  min-height: 100%;
+}
+
+.psychArticleCenter {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.psychArticleCenter {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-column-gap: 1rem;
+}
+
+.psychArticleForm {
+  padding: 10px 0;
+}
+
+.psychArticleForm label{
+    color:rgba(0, 150, 204, 1);
+}
+
+.psychArticleForm input {
+  width: 50%;
+  height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 150, 204, 1);
+}
+
+/* .psychArticleForm input::placeholder{
+    color:rgba(0, 150, 204, 1)
+} */
+
+.psychArticleForm input:last-child {
+  background: rgba(0, 150, 204, 1);
+  color: white;
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 10px 30px;
+  width:auto;
+  height: auto;
+  margin-top:10px;
+}
