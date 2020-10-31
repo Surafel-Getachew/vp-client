@@ -3,6 +3,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 50px;
+  max-height: 60px;
 }
 
 .search {
@@ -46,8 +48,17 @@
   color: #757575;
   padding: 0 10px;
 }
-
+/* 
 .profileContainer span {
   color: #757575;
   padding: 0 10px;
+} */
+
+.dropdown {
+  color: #757575;
+  padding: 0 10px;
+}
+
+.dropdown {
+  color: #757575;
 }

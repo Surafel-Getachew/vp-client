@@ -46,8 +46,6 @@ import VideoChatRoom from "./pages/Psychiatrist/videoChat/video";
 import ForgotPasswordEmail from "./component/ForgotPasswordEmail/ForgotPasswordEmail";
 import ResetPassword from "./component/ResetPassword/ResetPassword";
 
-// Theo
-
 // adding auth token to global header so that will not send it every time.
 import setAuthToken from "./utils/setAuthToken";
 if (localStorage.token) {

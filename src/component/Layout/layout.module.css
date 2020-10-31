@@ -3,11 +3,19 @@
   grid-template-columns: 1fr 5fr;
   background-color: #e1e1e9;
 }
-
 .appContainer {
+}
+
+.childPage {
+  width: 98%;
+  margin: 20px auto 0px auto;
+
+}
+
+/* .appContainer {
   display: grid;
-  grid-row-gap: 1rem;
   grid-template-rows: 1fr 8fr;
+  grid-template-rows: 10% 80%;
   min-height: 100vh;
 }
 
@@ -16,4 +24,5 @@
   max-height: 96%;
   min-height: 96%;
   margin: 0 auto;
-}
+  border:2px solid yellow
+}  */

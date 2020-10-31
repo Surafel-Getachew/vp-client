@@ -1,18 +1,28 @@
 import React from "react";
-import { Input } from "antd";
+import { Input,Menu,Dropdown} from "antd";
 import styles from "./topnav.module.css";
+import { DownOutlined } from '@ant-design/icons';
 const { Search } = Input;
+const menu = (
+  <Menu>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
+        Change Password
+      </a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
+        3rd menu item
+      </a>
+    </Menu.Item>
+    <Menu.Item danger>Logout</Menu.Item>
+  </Menu>
+);
+
 const TopNav = () => {
   return (
     <div className={styles.topNavContainer}>
       <div className={styles.search}>
-        {/* <i className="fas fa-search"></i>
-        <span>Search...</span> */}
-        {/* <Search
-      placeholder="input search text"
-      onSearch={value => console.log(value)}
-      style={{ width: 200 }}
-    /> */}
         <Search
           placeholder="input search text"
           onSearch={(value) => console.log(value)}
@@ -29,10 +39,23 @@ const TopNav = () => {
             src={require("../../assets/images/doctors/doctor-thumb-02.jpg")}
           ></img>
         </div>
-        <span>Emma watson</span>
+        {/* <span>Emma watson</span> */}
+          <Dropdown overlay={menu} className = {styles.dropdown}>
+      <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+      Emma watson <DownOutlined />
+      </a>
+  </Dropdown>
       </div>
     </div>
   );
 };
 
 export default TopNav;
+
+  {/* <i className="fas fa-search"></i>
+        <span>Search...</span> */}
+        {/* <Search
+      placeholder="input search text"
+      onSearch={value => console.log(value)}
+      style={{ width: 200 }}
+    /> */}

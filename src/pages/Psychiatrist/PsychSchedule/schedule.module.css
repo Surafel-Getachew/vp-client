@@ -1,4 +1,9 @@
-.scheduleContainer {
+/* .scheduleContainer {
   background-color: #fff;
   height: 100%;
+ } */
+
+ .scheduleContainer {
+   background-color: #fff;
+   height:85vh;
  }
