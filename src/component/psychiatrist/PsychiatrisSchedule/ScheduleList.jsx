@@ -156,7 +156,7 @@ const ScheduleList = (props) => {
             color: "#703BDA",
           }}
         >
-          Today's Appointment
+          Today's Schedule
         </h3>
         {todaysSchedule.length === 0 ? (
           <div style={{ textAlign: "center" }}>
@@ -168,7 +168,7 @@ const ScheduleList = (props) => {
                 // color: "rgb(35, 129, 218)",
               }}
             >
-              No Appointment Today
+              No Schedule Today
             </h5>
           </div>
         ) : (
@@ -182,7 +182,7 @@ const ScheduleList = (props) => {
                   <span> </span>-<span> </span>
                   <span>End Time </span>
                   {getTimeAMPMFormat(new Date(schedule.end))}
-                  <button
+                  {/* <button
                     style={{
                       marginLeft: "12px",
                       background: "none",
@@ -192,9 +192,9 @@ const ScheduleList = (props) => {
                     value={schedule._id}
                     onClick={onClick}
                   >
-                    butt
+                  </button> */}
+                    <DeleteOutlined value = {schedule._id} onClick = {onClick}/>
                     {/* <i className="far fa-trash-alt"></i> */}
-                  </button>
                 </Timeline.Item>
               ))}
             </Timeline>

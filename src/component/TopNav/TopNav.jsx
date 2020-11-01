@@ -1,25 +1,40 @@
-import React from "react";
+import React,{useEffect,useContext,useState} from "react";
+import {Redirect} from "react-router-dom"
+import AuthContext from "../../context/auth/authContext"
 import { Input,Menu,Dropdown} from "antd";
 import styles from "./topnav.module.css";
 import { DownOutlined } from '@ant-design/icons';
 const { Search } = Input;
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
-        Change Password
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-        3rd menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item danger>Logout</Menu.Item>
-  </Menu>
-);
 
-const TopNav = () => {
+
+
+const TopNav = props => {
+  const authContext = useContext(AuthContext);
+  const {loadPsychiatrist,user,psychiatristLogout} = authContext
+  const {redirect,setRedirect} = useState(false);
+  useEffect(() => {
+    loadPsychiatrist();
+    // eslint-disable-next-line
+  },[])
+  const {name} = user;
+  const onLogout = () => {
+    psychiatristLogout();
+    setRedirect(true);
+  }
+  if (redirect){
+    return <Redirect to = "/vp/psychiatrist/signin" />
+  }
+  const menu = (
+    <Menu>
+      <Menu.Item>
+        <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
+          Change Password
+        </a>
+      </Menu.Item>
+      <Menu.Item danger onClick = {onLogout}>Logout</Menu.Item>
+    </Menu>
+  );
+
   return (
     <div className={styles.topNavContainer}>
       <div className={styles.search}>
@@ -42,7 +57,7 @@ const TopNav = () => {
         {/* <span>Emma watson</span> */}
           <Dropdown overlay={menu} className = {styles.dropdown}>
       <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-      Emma watson <DownOutlined />
+     {name} <DownOutlined />
       </a>
   </Dropdown>
       </div>
