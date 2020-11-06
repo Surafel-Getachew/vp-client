@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import style from "./form.module.css";
 import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
-import { Input, Form, Button } from "antd";
+import { Input, Form, Button, Alert } from "antd";
 import FormContainer from "./FormComponent";
 import AuthContext from "../../../../context/auth/authContext";
 import { Redirect } from "react-router-dom";
@@ -12,9 +12,10 @@ const tooMuchNameRegEx = /^([\S]{1,16})(|\s)+(|[\S]{1,16})(|\s)+(|[\S]{1,16})$/;
 
 const SignUp = () => {
   const authContext = useContext(AuthContext);
-  const { isAuthenticated, registerPsychiatrist } = authContext;
+  const { isAuthenticated, registerPsychiatrist, error, clearErrors } = authContext;
   const [size, setSize] = useState("large");
   const [redirect, setRedirect] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const [form] = Form.useForm();
   const onFinish = (values) => {
     if (values) {
@@ -23,6 +24,11 @@ const SignUp = () => {
     }
   };
 
+
+  useEffect(() => {
+    setErrorMsg(error);
+    clearErrors();
+  }, [error]);
   useEffect(() => {
     if (isAuthenticated) {
       setRedirect(true);
@@ -34,6 +40,7 @@ const SignUp = () => {
   return (
     <FormContainer>
       <div className={style.signup}>
+        {errorMsg ? <Alert style = {{width:"500px"}} message={errorMsg} type="error" /> : null}
         <Form style={{ width: "100%" }} onFinish={onFinish} scrollToFirstError>
           <h1> SignUp Psychiatrist</h1>
 

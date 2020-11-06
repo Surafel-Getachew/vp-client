@@ -44,11 +44,7 @@ const AuthState = (props) => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   const loadUser = async () => {
-    // load token in global header
-    if (localStorage.token) {
-      setAuthToken(localStorage.token);
-    }
-
+    setAuthToken(localStorage.token);
     try {
       const res = await axios.get("/vp/users");
       dispatch({ type: USER_LOADED, payload: res.data });
@@ -58,10 +54,7 @@ const AuthState = (props) => {
   };
 
   const loadPsychiatrist = async () => {
-    if (localStorage.token) {
-      setAuthToken(localStorage.token);
-    }
-
+    setAuthToken(localStorage.token);
     try {
       const res = await axios.get("/vp/psychiatrist");
       dispatch({ type: PSYCHIATRIST_LOADED, payload: res.data });
@@ -94,7 +87,6 @@ const AuthState = (props) => {
     try {
       const res = await axios.post("/vp/users", formData, config);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data });
-
       loadUser();
     } catch (error) {
       dispatch({ type: REGISTER_FAIL, payload: error.response.data.msg });
@@ -110,7 +102,6 @@ const AuthState = (props) => {
     try {
       const res = await axios.post("/vp/psychiatrist", formData, config);
       dispatch({ type: REGISTER_SUCCESS_PSYCHIATRIST, payload: res.data });
-
       loadPsychiatrist();
     } catch (error) {
       dispatch({ type: REGISTER_FAIL, payload: error.response.data.msg });
@@ -179,7 +170,7 @@ const AuthState = (props) => {
     };
     try {
       const res = await axios.post("/vp/users/resetPassword", data, config);
-      dispatch({ type: RESET_PASSWRORD, payload: res.data });
+      dispatch({ type: RESET_PASSWRORD, payload: res. data });
     } catch (error) {}
   };
 
@@ -212,7 +203,11 @@ const AuthState = (props) => {
     dispatch({ type: LOGOUT_PSYCHIATRIST });
   };
 
-  const clearErrors = () => dispatch({ type: { CLEAR_ERRORS } });
+  const clearErrors = () => {
+    setTimeout(() => {
+      dispatch({type:CLEAR_ERRORS});
+    },5000)
+  }
 
   return (
     <AuthContext.Provider

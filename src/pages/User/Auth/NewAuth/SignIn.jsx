@@ -1,16 +1,17 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import style from "./form.module.css";
-import { Input, Form, Button } from "antd";
+import { Input, Form, Button,Alert } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import FormComponent from "./FormComponent";
 import ForgotPasswordEmail from "../../../../component/ForgotPasswordEmail/ForgotPasswordEmail";
 import AuthContext from "../../../../context/auth/authContext";
 const SignIn = () => {
   const authContext = useContext(AuthContext);
-  const { login, isAuthenticated,showForgotPassword,showForgotPasswordState } = authContext;
+  const { login, isAuthenticated,showForgotPassword,showForgotPasswordState,error,clearErrors } = authContext;
   const [size, setSize] = useState("large");
   const [redirect, setRedirect] = useState(false);
+  const [errorMsg,setErrorMsg] = useState()
   const toggleForgotPassword = () => {
     showForgotPassword();
   }
@@ -19,6 +20,10 @@ const SignIn = () => {
       login(values);
     }
   };
+  useEffect(() => {
+    setErrorMsg(error);
+    clearErrors();
+  },[error])
   useEffect(() => {
     if (isAuthenticated) {
       setRedirect(true);
@@ -30,9 +35,9 @@ const SignIn = () => {
   return (
     <FormComponent>
       <div className={style.signup}>
+      {errorMsg ? <Alert style = {{width:"500px"}} message={errorMsg} type="error" /> : null}
         <Form style={{ width: "100%" }} onFinish={onFinish} scrollToFirstError>
           <h1> SignIn</h1>
-
           <Form.Item
             style={{ width: "100%" }}
             name="email"

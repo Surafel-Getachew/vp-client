@@ -32,8 +32,8 @@ export default (state, action) => {
         isAuthenticated: true,
         loading: false,
         user: action.payload,
-        // user:[...state.user,action.payload],
         role: action.payload.role,
+        // user:[...state.user,action.payload],
       };
     case PSYCHIATRIST_LOADED:
       return {
@@ -42,8 +42,8 @@ export default (state, action) => {
         loading: false,
         user: action.payload,
         psychiatrist: action.payload,
-        // psychiatrist:[...state.psychiatrist,action.payload],
         role: action.payload.role,
+        // psychiatrist:[...state.psychiatrist,action.payload],
       };
     case REGISTER_SUCCESS:
       localStorage.setItem("token", action.payload.token);
@@ -52,47 +52,48 @@ export default (state, action) => {
         ...action.payload,
         isAuthenticated: true,
         loading: false,
-        error: null,
       };
     case REGISTER_SUCCESS_PSYCHIATRIST:
       localStorage.setItem("token", action.payload.token);
       return {
         ...state,
         ...action.payload,
-        // token:action.payload.token,
-        // role:action.payload.role,
         isAuthenticated: true,
         loading: false,
-        error: null,
+        // token:action.payload.token,
+        // role:action.payload.role,
       };
     case LOGIN_WITH_GOOGLE:
       localStorage.setItem("token", action.payload.token);
       return {
         ...state,
-        token: action.payload,
+        ...action.payload,  // if any error happens it may be because of this try to remove it and check.
         isAuthenticated: true,
         loading: false,
+        token: action.payload,
         error: null,
       };
     case LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
       return {
         ...state,
-        token: action.payload.token,
+        ...action.payload,
         isAuthenticated: true,
-        role: action.payload.role,
         loading: false,
-        error: null,
+        role: action.payload.role,
+        // token: action.payload.token,
+        // error: null,
       };
     case PSYCHIATRIST_LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
       return {
         ...state,
-        token: action.payload.token,
+        ...action.payload,
         isAuthenticated: true,
-        role: action.payload,
         loading: false,
-        error: null,
+        role: action.payload.role,
+        // token: action.payload.token,
+        // error: null,
       };
     // case REGISTER_FAIL:
     // case AUTH_ERROR:
@@ -113,11 +114,18 @@ export default (state, action) => {
         ...state,
         error: null,
       };
+    case AUTH_ERROR:  
+    case LOGIN_FAIL:  
     case REGISTER_FAIL:
+      localStorage.removeItem("token");
       return {
         ...state,
+        token:null,
         error: action.payload,
-        emailInUse: action.payload,
+        isAuthenticated:false,
+        loading:false,
+        token:null
+        // emailInUse: action.payload,
       };
     case RESET_PASSWRORD_EMAIL:
       return {

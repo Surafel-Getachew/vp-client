@@ -24,6 +24,12 @@ const Navbar = () => {
       key: 2,
     },
     {
+      name: "Message",
+      icon: "fas fa-envelope",
+      to:"/vp/psychiatrist/chats",
+      key:8,
+    },
+    {
       name: "Group Video Chat",
       icon: "fas fa-users",
       to: "/vp/psychiatirst/group-therapy",
@@ -53,12 +59,7 @@ const Navbar = () => {
       to: "/vp/psychiatrist/change-password",
       key: 7,
     },
-    {
-      name: "Chats",
-      icon: "far fa-comment",
-      to:"/vp/psychiatrist/chats",
-      key:8,
-    }
+    
   ];
 
   return (

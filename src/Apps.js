@@ -11,9 +11,8 @@ import PsychState from "./context/psych/PsychState";
 import VideoChatState from "./context/video_chat/VideoChatState";
 
 // private route
-import PrivateRoute from "./component/routing/PrivateRouting";
-import UserProtectedRoute from "./component/routing/UserProtectedRoute";
-
+import PsychPrivateRoute from "./component/Routes/PsychPrivateRoute"
+import UserPrivateRoute from "./component/Routes/UserPrivateRoute"
 // Landing pages
 import Landing from "./pages/Landing/Landing";
 
@@ -73,14 +72,14 @@ const Apps = () => {
                     path="/vp/videochat/room/:roomId"
                     component={VideoChatRoom}
                   />
-                  <UserProtectedRoute
+                  <UserPrivateRoute
                     exact
                     path="/vp/user/dashboard"
                     component={UserDashBoard}
                   />
                   <Route exact path="/vp/user/signup" component={Signup} />
                   <Route exact path="/vp/user/signin" component={Signin} />
-                  <Route
+                  <UserPrivateRoute
                     exact
                     path="/vp/user/psychiatrists"
                     component={PsychiatristList}
@@ -90,7 +89,7 @@ const Apps = () => {
                     path = "/vp/user/appointment"
                     component = {UserAppointment}
                   />
-                  <PrivateRoute
+                  <PsychPrivateRoute
                     exact
                     path="/vp/psychiatrist/dashboard"
                     component={PsychiatristDashboard}
@@ -105,12 +104,12 @@ const Apps = () => {
                     path="/vp/psychiatrist/signup"
                     component={PsychSignup}
                   />
-                  <Route
+                  <PsychPrivateRoute
                     exact
                     path="/vp/psychiatrist/article"
                     component={PsychArticle}
                   />
-                  <Route
+                  <PsychPrivateRoute
                     exact
                     path="/vp/psychiatrist/profile-setting"
                     component={PsychiatristProfileForm}
@@ -120,17 +119,17 @@ const Apps = () => {
                     path="/vp/psychiatrist/detail-profile"
                     component={PsychDetailProfile}
                   />
-                  <Route
+                  <PsychPrivateRoute
                     exact
                     path="/vp/psychiatrist/socialmedia"
                     component={PsychSocial}
                   />
-                  <Route
+                  <PsychPrivateRoute
                     exact
                     path="/vp/psychiatrist/videochat"
                     component={PsychVideoChat}
                   />
-                  <Route
+                  <PsychPrivateRoute
                     exact
                     path="/vp/psychiatrist/schedule"
                     component={PsychSchedule}

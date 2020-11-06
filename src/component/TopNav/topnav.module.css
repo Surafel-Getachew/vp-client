@@ -1,20 +1,26 @@
 .topNavContainer {
   background-color: #ffffff;
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
   min-height: 50px;
   max-height: 60px;
 }
 
 .search {
-  /* margin-left: 2rem; */
+  flex-basis: 80%;
+  display:flex;
+  justify-content: center;
+}
+
+.searchInput {
+  width:60%;
 }
 
 /* .search i {
   color: #757575;
   font-size: 13px;
-  padding: 0 5px;
+  padding: 0 5px; 
 } */
 
 /* .search span {
@@ -24,10 +30,10 @@
 } */
 
 .profileContainer {
+  /* margin-left: auto; */
   display: flex;
   height: 100%;
   align-items: center;
-  margin-right: 4rem;
   justify-content: space-evenly;
 }
 

@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import GoogleLogin from "react-google-login";
 import style from "./form.module.css";
 import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
-import { Input, Form, Button } from "antd";
+import { Input, Form, Button, Alert } from "antd";
 import FormContainer from "./FormComponent";
 import { Redirect } from "react-router-dom";
 import AuthContext from "../../../../context/auth/authContext";
@@ -12,10 +12,18 @@ const invalidCharacterRegEx = /^([\s]|[a-zA-Z/\\])+([\s]{1}|[a-zA-Z/\\]+)*$/;
 const tooMuchNameRegEx = /^([\S]{1,16})(|\s)+(|[\S]{1,16})(|\s)+(|[\S]{1,16})$/;
 const SignUp = () => {
   const authContext = useContext(AuthContext);
-  const { register, isAuthenticated, emailInUse,loginWithGoogle } = authContext;
+  const {
+    register,
+    isAuthenticated,
+    emailInUse,
+    loginWithGoogle,
+    error,
+    clearErrors
+  } = authContext;
   const [size, setSize] = useState("large");
   const [err, setErr] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const [form] = Form.useForm();
   const onFinish = (values) => {
     if (values) {
@@ -25,8 +33,12 @@ const SignUp = () => {
   };
   const responseGoogle = (response) => {
     console.log(response);
-    loginWithGoogle(response.accessToken)
-  }
+    loginWithGoogle(response.accessToken);
+  };
+  useEffect(() => {
+    setErrorMsg(error);
+    clearErrors();
+  }, [error]);
   // useEffect(() => {
   //   setErr(emailInUse);
   //   console.log(err);
@@ -43,9 +55,11 @@ const SignUp = () => {
   return (
     <FormContainer>
       <div className={style.signup}>
+        {errorMsg ? (
+          <Alert style={{ width: "500px" }} message={errorMsg} type="error" />
+        ) : null}
         <Form style={{ width: "100%" }} onFinish={onFinish} scrollToFirstError>
           <h1> SignUp User</h1>
-
           <Form.Item
             style={{ width: "100%" }}
             name="name"
@@ -197,20 +211,20 @@ const SignUp = () => {
             type="primary"
             htmlType="submit"
             size={size}
-            style={{ width: "70%",marginBottom:"15px" }}
+            style={{ width: "70%", marginBottom: "15px" }}
           >
             SignUp
           </Button>
           <GoogleLogin
-            clientId= "88513050295-peb5bai40q8mg78k6p6sn60t5qh16aod.apps.googleusercontent.com"
+            clientId="88513050295-peb5bai40q8mg78k6p6sn60t5qh16aod.apps.googleusercontent.com"
             buttonText="Continue With Google"
             cookiePolicy={"single_host_origin"}
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
-            style = {{}}
+            style={{}}
           />
           <p>
-            You have account?<Button type="link">Sign IN</Button>
+            You have account?<Button type="link">Sign in</Button>
           </p>
         </Form>
       </div>
