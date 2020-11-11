@@ -1,0 +1,115 @@
+.dashboard {
+  background-color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome {
+  width: 90%;
+  height: 150px;
+  border-radius: 10px;
+  margin: 10px auto;
+  background-color: rgba(112, 59, 218, 0.4);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.welcomeTxt p {
+  color: rgb(90, 90, 90);
+}
+
+.welcomeTxt h2 {
+  color: #6f3ad9;
+}
+.second {
+  margin-top: -12px;
+  /* fix this by targeting with last child than class Name */
+}
+.docImg {
+  width: 200px;
+}
+
+.docImg img {
+  width: 100%;
+}
+
+.dashBoardContent {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.apptCard {
+  min-width: 270px;
+  min-height: 350px;
+  max-height: 350px;
+  border-radius: 5px;
+  background-color: #fff;
+  overflow-y: scroll;
+  -webkit-box-shadow: 0px 0px 26px 0px rgba(50, 50, 50, 0.43);
+  -moz-box-shadow: 0px 0px 26px 0px rgba(50, 50, 50, 0.43);
+  box-shadow: 0px 0px 26px 0px rgba(50, 50, 50, 0.43);
+}
+
+.apptCard h4 {
+  margin: 0 0 20px 10px;
+}
+
+/***************scroll bar style *************/
+/* width */
+
+.apptCard::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+.apptCard::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 20px;
+}
+
+/* Handle */
+.apptCard::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(112, 59, 218, 0.6);
+}
+
+/* Handle on hover */
+.apptCard::-webkit-scrollbar-thumb:hover {
+  background: rgb(112, 59, 218);
+}
+
+/***** End of scroll bar style ****************/
+
+.numbers {
+  flex-basis: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboardFigures {
+  display: flex;
+  width: 100%;
+  height: 150px;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  background: rgb(248, 245, 245);
+}
+
+.graphs {
+  height: 200px;
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+  /* border:2px solid greenyellow; */
+}
+
+.liquid {
+  /* align-self: center; */
+}

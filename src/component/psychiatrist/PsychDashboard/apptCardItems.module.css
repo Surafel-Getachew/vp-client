@@ -1,0 +1,38 @@
+.apptCardItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  justify-content: space-around;
+}
+
+.apptCardAvi {
+  width: 40px;
+  border-radius: 50%;
+  /* margin: 0 10px; */
+}
+
+.apptCardAvi img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.apptCardName {
+  /* margin-right: 40px; */
+}
+
+.apptStatus {
+  color: rgb(179, 20, 20);
+  /* margin-top: -10px; */
+}
+
+.apptCardTime {
+  margin-right: 10px;
+}
+
+.line {
+  /* border: 2px solid red; */
+  height: 1px;
+  width: 70%;
+  margin: 12px auto;
+  background-color: #6f3ad9;
+}
