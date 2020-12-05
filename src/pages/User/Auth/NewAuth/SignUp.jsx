@@ -18,7 +18,7 @@ const SignUp = () => {
     emailInUse,
     loginWithGoogle,
     error,
-    clearErrors
+    clearErrors,
   } = authContext;
   const [size, setSize] = useState("large");
   const [err, setErr] = useState("");
@@ -38,6 +38,7 @@ const SignUp = () => {
   useEffect(() => {
     setErrorMsg(error);
     clearErrors();
+    // eslint-disable-next-line
   }, [error]);
   // useEffect(() => {
   //   setErr(emailInUse);
@@ -48,6 +49,7 @@ const SignUp = () => {
     if (isAuthenticated) {
       setRedirect(true);
     }
+    // eslint-disable-next-line
   }, [isAuthenticated]);
   if (redirect) {
     return <Redirect to="/vp/user/dashboard" />;

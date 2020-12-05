@@ -1,10 +1,7 @@
 import React, { useState, useRef } from "react";
 import style from "../video.module.css";
 import Buble from "./Buble";
-import io from "socket.io-client";
-
 const Chat = ({ roomId }) => {
-  const socket = io("/vct");
   const [message, setMessage] = useState("");
   const chatCont = useRef();
   const recivedMsg = [];
@@ -18,14 +15,14 @@ const Chat = ({ roomId }) => {
       room: roomId,
       textMsg: message,
     };
-    socket.emit("message", messageInfo);
-    setMessage("");
+    // socket.emit("message", messageInfo);
+    // setMessage("");
   };
-  socket.on("newMessage", (message) => {
-    console.log(message)
-    recivedMsg.push(message);
-    console.log(recivedMsg);
-  });
+  // socket.on("newMessage", (message) => {
+  //   console.log(message)
+  //   recivedMsg.push(message);
+  //   console.log(recivedMsg);
+  // });
   return (
     <div className={style.chat}>
       <div className={style.chatheader}>
@@ -47,7 +44,7 @@ const Chat = ({ roomId }) => {
         value={message}
         onChange={onChange}
       />
-      <input type="submit" value="send" onClick={onClick} />
+      {/* <input type="submit" value="send" onClick={onClick} /> */}
     </div>
   );
 };

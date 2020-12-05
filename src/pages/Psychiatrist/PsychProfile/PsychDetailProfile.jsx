@@ -18,6 +18,7 @@ const PsychDetailProfile = (props) => {
     if (psychProfile) {
       setProfile(psychProfile);
     }
+    // eslint-disable-next-line
   }, [psychProfile]);
   const { name, specializations, about, education } = profile;
   return (

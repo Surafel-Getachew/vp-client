@@ -30,18 +30,15 @@ import PsychArticle from "./pages/Psychiatrist/PsychArticle/PsychArticle";
 import PsychiatristProfileForm from "./pages/Psychiatrist/PsychProfile/PsychiatristProfileForm";
 import PsychSocial from "./pages/Psychiatrist/PsychSocial/PsychSocial";
 import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychSchedule";
+import PsychMessage from "./pages/Psychiatrist/PsychMessage/PsychMessage";
 // import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychAppointment";
 import PsychVideoChat from "./pages/Psychiatrist/PsychVideoChat/PsychVideoChat";
 import PsychDetailProfile from "./pages/Psychiatrist/PsychProfile/PsychDetailProfile";
 // import VideoChatRoom from "./pages/Psychiatrist/PsychVideoChat/VideoChatRoom";
 
 // video chats that are not yet decided and completed.
-// import VideoChatRoom from "./pages/Psychiatrist/PsychVideoChat/vct";
-import VideoChatRoom from "./pages/Psychiatrist/videoChat/video";
+import VideoCall from "./pages/Psychiatrist/videoChat/Video";
 
-// Try page
-// import Try from "./pages/Try/Try";
-// import ChatPage from "./pages/Try/ChatPage";
 import ForgotPasswordEmail from "./component/ForgotPasswordEmail/ForgotPasswordEmail";
 import ResetPassword from "./component/ResetPassword/ResetPassword";
 
@@ -61,6 +58,7 @@ const Apps = () => {
               <BrowserRouter>
                 <Switch>
                   <Route exact path="/" component={Landing} />
+                  {/* <Route exact path = "/videochat" component = {VideoTrial}/> */}
                   <Route exact path="/forgot" component={ForgotPasswordEmail} />
                   <Route
                     exact
@@ -69,8 +67,8 @@ const Apps = () => {
                   />
                   <Route
                     exact
-                    path="/vp/videochat/room/:roomId"
-                    component={VideoChatRoom}
+                    path="/vp/videocall"
+                    component={VideoCall}
                   />
                   <UserPrivateRoute
                     exact
@@ -133,6 +131,11 @@ const Apps = () => {
                     exact
                     path="/vp/psychiatrist/schedule"
                     component={PsychSchedule}
+                  />
+                  <PsychPrivateRoute
+                    exact
+                    path="/vp/psychiatrist/message"
+                    component={PsychMessage}
                   />
                   {/* <Route exact path ="/vp/try" component = {Try} /> */}
                   {/* <Route exact path ="/chat" component = {ChatPage} /> */}

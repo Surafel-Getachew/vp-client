@@ -25,6 +25,7 @@ const SignIn = () => {
   useEffect(() => {
     setErrorMsg(error);
     clearErrors();
+    // eslint-disable-next-line
   }, [error]);
   useEffect(() => {
     if (isAuthenticated) {

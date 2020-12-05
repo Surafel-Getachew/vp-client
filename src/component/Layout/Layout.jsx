@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import TopNav from "../TopNav/TopNav";
 import Navbar from "../Navbar/Navbar";
 import styles from "./layout.module.css";

@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../../../component/Layout/Layout";
 import styles from "./psych-article.module.css";
 import ReactQuill from "react-quill";
-const PsychArticle = () => {
+const PsychArticle = (props) => {
   return (
     <Layout>
       <div className={styles.articleFormCnt}>

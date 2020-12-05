@@ -26,7 +26,7 @@ const Navbar = () => {
     {
       name: "Message",
       icon: "fas fa-envelope",
-      to:"/vp/psychiatrist/chats",
+      to:"/vp/psychiatrist/message",
       key:8,
     },
     {

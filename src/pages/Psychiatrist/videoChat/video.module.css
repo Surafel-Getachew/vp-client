@@ -1,28 +1,71 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+.videoChatContainer {
+  /* width: 100vw; */
+  height: 100vh;
+  display: flex;
 }
-.vidiochat {
-  transition: all 0.3s ease;
+
+.textChat {
+  flex-basis: 25%;
+  background: #703bda66;
+}
+
+.messageInput {
+  position: relative;
   position: fixed;
+  top: 95.4%;
+  width: 100%;
+}
+
+.messageInput input {
+  display: block;
+  width: 100%;
+}
+
+.fromme {
+  background: #fff;
+  width: 60%;
+  height: auto;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  /* padding-left: 10px;
+  padding-top: 3px; */
+  /* padding:1.5px 5px; */
+}
+
+.txtMsg {
+  margin: 0;
+  padding-left: 8px;
+  color: black;
+  /* display: block; */
+}
+
+.msgTime {
+  text-align: right;
+  margin: 0;
+  padding-right: 8px;
+  color: black;
+}
+
+.videochat {
+  flex-basis: 75%;
+  transition: all 0.3s ease;
+  /* position: fixed;
   top: 0;
-  left: 0;
+  left: 0; */
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
   background-color: #fff;
   overflow: hidden;
 }
+
 .top {
   transition: all 0.3s ease;
-  position: relative;
-  top: 0;
-  left: 0;
   display: flex;
-  width: 100%;
   background-color: #fff;
+  /* position: relative; */
+  /* top: 0;
+  left: 0; */
 }
 
 .nav {
@@ -33,15 +76,153 @@
   width: 100%;
   height: 70px;
   background-color: #ffffff;
-  color: #007ac2;
+  color: #6f3ad9;
   padding: 20px;
-  box-shadow: 0px 3px 6px #0078f82c;
+  box-shadow: 0px 3px 6px rgba(112, 59, 218, 0.4);
 }
 .nav span {
   margin-right: 350px;
 }
 
+.streamContainer {
+  /* flex-basis: 70%; */
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: 100%;
+  height: 100%; */
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  /* background-color: #ffffff00; */
+  /* color: #6f3ad9; */
+}
+.myStreamContainer {
+  transition: all 0.3s ease;
+  position: fixed;
+  top: 100px;
+  left: 20px;
+  text-align: center;
+}
+.othersStreamContainer {
+  text-align: center;
+}
+.uservideo {
+  transition: all 0.3s ease;
+  width: 30vw;
+}
+.myvideo {
+  width: 15vw;
+}
+.bnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: absolute;
+  margin-right: 350px;
+  top: 100%;
+  left: 0;
+  z-index: 4;
+  transform: translateY(-100%);
+  width: 100%;
+  height: 80px;
+  background-color: #ffffff;
+}
+.bnav div {
+  transition: all 0.3s ease;
+  width: 150px;
+  height: 60%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #6f3ad9;
+  border-radius: 5px;
+}
+.bnav div:hover {
+  background-color: rgba(112, 59, 218, 0.4);
+}
+
+.bnav div i {
+  font-size: 20px;
+}
+.bnav div span {
+  font-size: 15px;
+  font-family: sans-serif;
+}
+
+@media only screen and (max-width: 1200px) {
+  /* .nav {
+    width: 70%;
+  } */
+  .nav span {
+    margin-right: 0px;
+  }
+  .streamContainer {
+    width: 70%;
+  }
+
+  .chat {
+    width: 30%;
+  }
+  .bnav {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 900px) {
+  /* .nav {
+    width: 60%;
+  } */
+  .nav span {
+    margin-right: 0px;
+  }
+  .streamContainer {
+    width: 60%;
+  }
+
+  .chat {
+    width: 40%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  /* .nav {
+    width: 100%;
+  } */
+  .nav span {
+    margin-right: 0px;
+  }
+  .streamContainer {
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+  }
+  .myvideo {
+    position: relative;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    /* height: 0px; */
+    /* padding-bottom: calc(100% * 9 / 16); */
+  }
+  .uservideo {
+    width: 100%;
+    /* padding-bottom: calc(100% * 9 / 16); */
+  }
+  .chat {
+    display: none;
+  }
+  .bnav div {
+    flex-direction: column;
+  }
+}
+
+/* 
 .chat {
+  flex-basis: 30%;
   display: flex;
   flex-direction: column;
   transition: all 1s ease;
@@ -49,7 +230,10 @@
   right: 0%;
   width: 350px;
   height: 100%;
-  background-color: #c1ddeb;
+  width: 100%;
+  height: 100%;
+  background-color: #b799f5;
+  border: 2px solid red;
   z-index: 2;
 }
 
@@ -60,7 +244,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  color: #0077f8;
+  color: #6f3ad9;
   font-size: 20px;
 }
 
@@ -88,14 +272,14 @@
   padding: 5px;
   padding-left: 20px;
   padding: 10px;
-  background-color: #cfe7fe;
+  background-color: red;
   border-radius: 10px;
   border-top-left-radius: 0px;
   color: rgb(8, 26, 54);
   font-family: sans-serif;
   font-size: 12px;
   margin-bottom: 10px;
-  box-shadow: 0px 3px 6px #013d7c5d;
+  box-shadow: 0px 3px 6px red;
 }
 .buble .header {
   display: flex;
@@ -106,130 +290,4 @@
 .buble .header span {
   font-size: 14px;
   font-weight: 600;
-}
-
-.vidcon {
-  transition: all 0.3s ease;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 70%;
-  height: 100%;
-  background-color: #ffffff00;
-  color: rgb(0, 0, 0);
-}
-.uservideo {
-  transition: all 0.3s ease;
-  width: 40vw;
-}
-.myvideo {
-  transition: all 0.3s ease;
-  position: fixed;
-  top: 80px;
-  left: 10px;
-  width: 10vw;
-}
-.bnav {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  position: absolute;
-  margin-right: 350px;
-  top: 100%;
-  left: 0;
-  z-index: 4;
-  transform: translateY(-100%);
-  width: 100%;
-  height: 80px;
-  background-color: #ffffff;
-}
-.bnav div {
-  transition: all 0.3s ease;
-  width: 150px;
-  height: 60%;
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  color: #007ac2;
-  border-radius: 5px;
-}
-.bnav div:hover {
-  background-color: #007bc231;
-}
-
-.bnav div i {
-  font-size: 20px;
-}
-.bnav div span {
-  font-size: 15px;
-  font-family: sans-serif;
-}
-
-@media only screen and (max-width: 1200px) {
-  .nav {
-    width: 70%;
-  }
-  .nav span {
-    margin-right: 0px;
-  }
-  .vidcon {
-    width: 70%;
-  }
-
-  .chat {
-    width: 30%;
-  }
-  .bnav {
-    width: 100%;
-  }
-}
-@media only screen and (max-width: 900px) {
-  .nav {
-    width: 60%;
-  }
-  .nav span {
-    margin-right: 0px;
-  }
-  .vidcon {
-    width: 60%;
-  }
-
-  .chat {
-    width: 40%;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .nav {
-    width: 100%;
-  }
-  .nav span {
-    margin-right: 0px;
-  }
-  .vidcon {
-    width: 100%;
-    justify-content: start;
-    align-items: center;
-  }
-  .myvideo {
-    position: relative;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    /* height: 0px; */
-    /* padding-bottom: calc(100% * 9 / 16); */
-  }
-  .uservideo {
-    width: 100%;
-    /* padding-bottom: calc(100% * 9 / 16); */
-  }
-  .chat {
-    display: none;
-  }
-  .bnav div {
-    flex-direction: column;
-  }
-}
+} */

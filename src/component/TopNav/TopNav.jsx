@@ -1,5 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
+import {connect} from "react-redux";
 import { Redirect } from "react-router-dom";
+import {storeClientInfo} from "../../Redux/VideoCall/video_call_action";
 import AuthContext from "../../context/auth/authContext";
 import { Input, Menu, Dropdown } from "antd";
 import styles from "./topnav.module.css";
@@ -7,14 +9,20 @@ import { DownOutlined } from "@ant-design/icons";
 const { Search } = Input;
 
 const TopNav = (props) => {
+  const {storeClientInfo} = props
   const authContext = useContext(AuthContext);
   const { loadPsychiatrist, user, psychiatristLogout } = authContext;
   const { redirect, setRedirect } = useState(false);
+  const { name,_id } = user;
   useEffect(() => {
     loadPsychiatrist();
     // eslint-disable-next-line
   }, []);
-  const { name } = user;
+  useEffect(() => {
+    if(_id !== undefined)
+    storeClientInfo(_id);
+  },[user])
+  
   const onLogout = () => {
     psychiatristLogout();
     setRedirect(true);
@@ -70,16 +78,11 @@ const TopNav = (props) => {
   );
 };
 
-export default TopNav;
+const mapStateToProps = (state) => ({
 
-{
-  /* <i className="fas fa-search"></i>
-        <span>Search...</span> */
-}
-{
-  /* <Search
-      placeholder="input search text"
-      onSearch={value => console.log(value)}
-      style={{ width: 200 }}
-    /> */
-}
+})
+
+export default connect(mapStateToProps,{
+  storeClientInfo
+})(TopNav);
+

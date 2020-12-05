@@ -9,6 +9,7 @@ const PsychiatristProfiles = (props) => {
   const { loadAllPsychProfile, psychProfiles } = props;
   useEffect(() => {
     loadAllPsychProfile();
+    // eslint-disable-next-line
   }, []);
   return (
     <div className = {styles.mainCnt}>

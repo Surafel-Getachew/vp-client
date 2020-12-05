@@ -22,10 +22,12 @@ const UserApptForm = (props) => {
   useEffect(() => {
     setError(errorMsg);
     clearApptMsg();
+    // eslint-disable-next-line
   }, [errorMsg]);
   useEffect(() => {
     setSuccess(successMsg);
     clearApptMsg();
+    // eslint-disable-next-line
   }, [successMsg]);
   const onFinish = (values) => {
     const formData = {

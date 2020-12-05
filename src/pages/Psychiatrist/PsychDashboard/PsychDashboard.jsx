@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { getPsychAppointment } from "../../../Redux/PsychAppointment/psych_appointment_action";
 import { Liquid } from "@ant-design/charts";
 import {
   AreaChart,
@@ -14,7 +16,63 @@ import Layout from "../../../component/Layout/Layout";
 import AppointmentCardItems from "../../../component/psychiatrist/PsychDashboard/AppointmentCardItems";
 import FigureItem from "../../../component/psychiatrist/PsychDashboard/FigureItem";
 import styles from "./psychDashboard.module.css";
-const PsychDashboard = () => {
+const PsychDashboard = (props) => {
+  const { getPsychAppointment, psychAppointment } = props;
+  const [appointment, setAppointment] = useState([]);
+  useEffect(() => {
+    if (!psychAppointment) {
+      getPsychAppointment();
+    } else {
+      setAppointment(psychAppointment);
+    }
+  }, [psychAppointment]);
+  const Days = [
+    {
+      name: "monday",
+      appts: null,
+      shortHand: "Mon",
+    },
+    {
+      name: "tuesday",
+      appts: null,
+      shortHand: "Tue",
+    },
+    {
+      name: "wednesday",
+      appts: null,
+      shortHand: "Wed",
+    },
+    {
+      name: "thursday",
+      appts: null,
+      shortHand: "Thur",
+    },
+    {
+      name: "friday",
+      appts: null,
+      shortHand: "Fri",
+    },
+    {
+      name: "saturday",
+      appts: null,
+      shortHand: "Satur",
+    },
+    {
+      name: "sunday",
+      appts: null,
+      shortHand: "Sun",
+    },
+  ];
+  if (appointment.monday !== undefined) {
+    for (let i = 0; i < Days.length; i++) {
+      // Days[i].appts =  Object.entries(appointment[Days][i].day).length;
+      // console.log(Days[i].appts = Object.entries(appointment[Days][i].day).length);
+      let name = Days[i].name;
+      Days[i].appts = Object.entries(appointment[name]).length;
+    }
+  }
+  console.log(Days);
+
   var config = {
     percent: 0.74,
     statistic: {
@@ -37,50 +95,6 @@ const PsychDashboard = () => {
       return "#5B8FF9";
     },
   };
-  const data = [
-    {
-      name: "Mon",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "Tue",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "Wed",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "Thur",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Fri",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Sat",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Sun",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
   const figures = [
     {
       color: "#40A9FF",
@@ -182,10 +196,10 @@ const PsychDashboard = () => {
             </div>
             <div className={styles.graphs}>
               <AreaChart
-               className={styles.areaChart}
-               width={400}
-               height={200}
-               data={data}
+                className={styles.areaChart}
+                width={400}
+                height={200}
+                data={Days}
               >
                 <defs>
                   <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -193,48 +207,18 @@ const PsychDashboard = () => {
                     <stop offset="95%" stopColor="#6f3ad9" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <XAxis dataKey="name" />
-                <YAxis />
+                <XAxis dataKey="shortHand" />
+                <YAxis type="number" allowDecimals = "false" />
                 {/* <CartesianGrid strokeDasharray="3 3" /> */}
                 <Tooltip />
                 <Area
                   type="monotone"
-                  dataKey="uv"
+                  dataKey="appts"
                   stroke="#6f3ad9"
                   fillOpacity={1}
                   fill="url(#colorUv)"
                 />
               </AreaChart>
-              {/* <AreaChart
-                className={styles.areaChart}
-                width={400}
-                height={200}
-                data={data}
-                margin={{
-                  top: 10,
-                  right: 30,
-                  left: 0,
-                  bottom: 0,
-                }}
-              >
-                <defs>
-                  <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                    <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Area
-                  type="monotone"
-                  dataKey="uv"
-                  stroke="#8884d8"
-                  fill="#8884d8"
-                />
-              </AreaChart> */}
               <Liquid
                 className={styles.liquid}
                 {...config}
@@ -252,4 +236,10 @@ const PsychDashboard = () => {
   );
 };
 
-export default PsychDashboard;
+const mapStateToProps = (state) => ({
+  psychAppointment: state.psychAppointment.psychAppointment,
+});
+
+export default connect(mapStateToProps, {
+  getPsychAppointment,
+})(PsychDashboard);
