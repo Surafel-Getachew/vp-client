@@ -66,9 +66,10 @@ const Video = (props) => {
             othersStream.current.srcObject = otherPepStream;
           });
         });
-        socket.on("user-connected", (peerId, peerName) => {
-          // socket.emit("myNameee", myName);
-          setOtherPeerName(peerName);
+        // socket.on("user-connected", (peerId, peerName) => {
+        socket.on("user-connected", (peerId) => {
+          socket.emit("myNameee", myName);
+          // setOtherPeerName(peerName);
           var call = peer.call(peerId, stream);
           call.on("stream", (otherPepStream) => {
             othersStream.current.srcObject = otherPepStream;
