@@ -36,10 +36,9 @@ const Video = (props) => {
   const { audioIcon, audioText } = audioState;
   const { videoIcon, videoText } = videoState;
   const { chatText, chatTime } = recivedTxtMessage;
-  console.log("checking peer id", peer.id);
   useEffect(() => {
     socket.emit("join-room", userToCall, peer.id, myName);
-    console.log("my peer ID", peer.id);
+    socket.emit("myNameee", myName);
   }, [peer.id]);
   useEffect(() => {
     if (chatBox.current) {
@@ -54,7 +53,7 @@ const Video = (props) => {
     navigator.mediaDevices
       .getUserMedia({
         video: true,
-        audio: true,
+        // audio: true,
       })
       .then((stream) => {
         setMyVideo(stream);
@@ -68,6 +67,7 @@ const Video = (props) => {
           });
         });
         socket.on("user-connected", (peerId, peerName) => {
+          // socket.emit("myNameee", myName);
           setOtherPeerName(peerName);
           var call = peer.call(peerId, stream);
           call.on("stream", (otherPepStream) => {
@@ -78,9 +78,17 @@ const Video = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  socket.on("user-connected", (peerId, peerName) => {
+  // peer.on("call", (call) => {
+  //   call.answer(myVideo);
+  //   myStream.current.srcObject = myVideo;
+  //   call.on("stream", (otherPepStream) => {
+  //     othersStream.current.srcObject = otherPepStream;
+  //   });
+  // });
+
+  socket.on("otherrPeerName", (peerName) => {
     setOtherPeerName(peerName);
-    setPeeerId(peerId);
+    console.log(peerName, "JOINED OUTSIDE");
   });
 
   useEffect(() => {
@@ -92,6 +100,11 @@ const Video = (props) => {
     }
   }, [peeerId]);
 
+  peer.on("open", (id) => {
+    socket.emit("join-room", userToCall, id, myName);
+    console.log("peer is open");
+  });
+
   // socket.on("user-connected", (peerId, peerName) => {
   //   var call = peer.call(peerId, myVideo);
   //   call.on("stream", (otherPepStream) => {
@@ -100,11 +113,6 @@ const Video = (props) => {
   //   setPeeerId(peerId);
   //   setOtherPeerName(peerName);
   // });
-
-  peer.on("open", (id) => {
-    socket.emit("join-room", userToCall, id, myName);
-    console.log("peer is open");
-  });
 
   const playStopVideo = () => {
     let enabled = myVideo.getVideoTracks()[0].enabled;
