@@ -5,8 +5,24 @@
 }
 
 .textChat {
+  overflow-y: auto;
   flex-basis: 25%;
   background: #703bda66;
+  display: flex;
+  flex-direction: column;
+}
+
+.textChatTitle {
+  min-height: 50px;
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  background-color: #703bda;
+  text-align: center;
+}
+
+.textChat h3 {
+  color: #fff;
 }
 
 .messageInput {
@@ -14,6 +30,11 @@
   position: fixed;
   top: 95.4%;
   width: 100%;
+}
+
+.autoScroll {
+  height: 35px;
+  clear: both;
 }
 
 .messageInput input {
@@ -28,9 +49,25 @@
   margin-top: 10px;
   margin-left: 10px;
   border-radius: 10px;
-  /* padding-left: 10px;
-  padding-top: 3px; */
-  /* padding:1.5px 5px; */
+  clear: both;
+}
+
+.fromOthers {
+  background: #703bda;
+  width: 60%;
+  height: auto;
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  float: right;
+  clear: both;
+  clear: left;
+  clear: right;
+}
+
+.fromOthers p {
+  color: #fff;
 }
 
 .txtMsg {
@@ -74,7 +111,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 70px;
+  height: 50px;
   background-color: #ffffff;
   color: #6f3ad9;
   padding: 20px;

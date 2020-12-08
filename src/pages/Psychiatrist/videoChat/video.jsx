@@ -2,25 +2,34 @@ import React, { useRef, useEffect, useState } from "react";
 import Peer from "peerjs";
 import io from "socket.io-client";
 import style from "./video.module.css";
-
 const socket = io("/videocall");
 const peer = new Peer(undefined, {
   path: "/peerjs",
   host: "/",
   port: "5000",
 });
+// socket.on("newMessage", (msg, sender) => {
+//   console.log("New Message", msg);
+//   newMessage(msg, sender);
+//   // setRecivedTxtMessage([
+//   //   ...recivedTxtMessage,
+//   //   { chatText: msg, chatTime: getTime(), sender: sender },
+//   // ]);
+// });
+
 const Video = (props) => {
   const userToCall = props.location.state.id;
   const myName = props.location.state.name;
   const othersStream = useRef();
   const myStream = useRef();
-  const chatBox = useRef();
+  const autoScroll = useRef();
   const [peeerId, setPeeerId] = useState("");
   const [myVideo, setMyVideo] = useState();
   const [recivedTxtMessage, setRecivedTxtMessage] = useState([
     {
       chatText: "",
       chatTime: "",
+      sender: "",
     },
   ]);
   const [audioState, setAudioState] = useState({
@@ -35,20 +44,12 @@ const Video = (props) => {
   const [otherPeerName, setOtherPeerName] = useState("");
   const { audioIcon, audioText } = audioState;
   const { videoIcon, videoText } = videoState;
-  const { chatText, chatTime } = recivedTxtMessage;
+
   useEffect(() => {
     socket.emit("join-room", userToCall, peer.id, myName);
     socket.emit("myNameee", myName);
   }, [peer.id]);
-  useEffect(() => {
-    if (chatBox.current) {
-      chatBox.current.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-    }
-  }, [recivedTxtMessage]);
+
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({
@@ -78,6 +79,20 @@ const Video = (props) => {
       });
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    scorllAuto();
+  }, [recivedTxtMessage]);
+
+  const scorllAuto = () => {
+    if (autoScroll.current) {
+      autoScroll.current.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
+    }
+  };
 
   // peer.on("call", (call) => {
   //   call.answer(myVideo);
@@ -152,24 +167,30 @@ const Video = (props) => {
       });
     }
   };
+  const endCall = () => {
+    peer.destroy();
+    // peer.disconnect();
+  };
+  peer.on("disconnected", () => {
+    console.log("peer disconnected...");
+  });
+  peer.on("close", () => {
+    // console.log("peer is no longer available try calling again");
+  });
 
   const onChange = (e) => {
     setTxtMessage(e.target.value);
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      console.log("Enter key pressed");
-      socket.emit("sendTxtMessage", txtMessage, userToCall);
-      setTxtMessage("");
-    }
-  };
+  socket.once("newMessage", (msg, sender) => {
+    console.log("New Message", msg);
+    setRecivedTxtMessage([
+      ...recivedTxtMessage,
+      { chatText: msg, chatTime: getTime(), sender: sender },
+    ]);
+    scorllAuto();
+  });
 
-  // const onSend = () => {
-  //   // console.log(txtMessage);
-  //   socket.emit("sendTxtMessage", txtMessage, userToCall);
-  //   setTxtMessage("");
-  // };
   const getTime = () => {
     let time = new Date();
     let Hour = time.getHours();
@@ -180,14 +201,14 @@ const Video = (props) => {
     let messageTime = Hour + ":" + Minute + " " + AMPM;
     return messageTime;
   };
-  // console.log(getTime());
-  socket.on("newMessage", (msg) => {
-    // console.log("New Message", msg);
-    setRecivedTxtMessage([
-      ...recivedTxtMessage,
-      { chatText: msg, chatTime: getTime() },
-    ]);
-  });
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && e.target.value !== "") {
+      console.log("Enter key pressed");
+      socket.emit("sendTxtMessage", txtMessage, userToCall, myName);
+      setTxtMessage("");
+    }
+  };
   return (
     <div className={style.videoChatContainer}>
       <div className={style.videochat}>
@@ -222,22 +243,33 @@ const Video = (props) => {
               <i className={videoIcon}></i>
               <span>{videoText}</span>
             </div>
-            <div>
-              <i className="fa fa-phone-alt"></i>
-              <span>End Call</span>
+            <div onClick={endCall}>
+              <i style={{ color: "#eb534b" }} className="fa fa-phone-alt"></i>
+              <span style={{ color: "#eb534b" }}>End Call</span>
             </div>
           </div>
         </div>
       </div>
       <div className={style.textChat}>
-        <h3 style={{ textAlign: "center" }}>Chat</h3>
-        {recivedTxtMessage.map((msg) => (
-          <div ref={chatBox} className={style.fromme}>
-            <p className={style.txtMsg}>{msg.chatText}</p>
-            {/* <br /> */}
-            <p className={style.msgTime}>{msg.chatTime}</p>
-          </div>
-        ))}
+        <div className={style.textChatTitle}>
+          <h3 style={{ textAlign: "center" }}>Chat</h3>
+        </div>
+        <div className={style.chatWindow}>
+          {recivedTxtMessage.map((msg) =>
+            msg.sender === myName ? (
+              <div className={style.fromme}>
+                <p className={style.txtMsg}>{msg.chatText}</p>
+                <p className={style.msgTime}>{msg.chatTime}</p>
+              </div>
+            ) : (
+              <div className={style.fromOthers}>
+                <p className={style.txtMsg}>{msg.chatText}</p>
+                <p className={style.msgTime}>{msg.chatTime}</p>
+              </div>
+            )
+          )}
+          <div ref={autoScroll} className={style.autoScroll}></div>
+        </div>
         <div className={style.messageInput}>
           <input
             autoComplete="off"
@@ -248,7 +280,6 @@ const Video = (props) => {
             onChange={onChange}
             onKeyDown={handleKeyDown}
           />
-          {/* <button onClick={onSend}>Send</button> */}
         </div>
       </div>
     </div>
