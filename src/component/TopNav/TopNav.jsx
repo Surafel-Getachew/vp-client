@@ -21,7 +21,13 @@ const TopNav = (props) => {
   useEffect(() => {
     if(_id !== undefined)
     storeClientInfo(_id);
-  },[user])
+  },[user]);
+
+  // useEffect(() => {
+  //   if (_id !== undefined){
+  //     storeClientInfo(_id);
+  //   }
+  // },[])
   
   const onLogout = () => {
     psychiatristLogout();

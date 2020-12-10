@@ -1,23 +1,30 @@
 import React, { useContext, useEffect } from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import {storeClientInfo} from "../../../Redux/VideoCall/video_call_action"
-// import "../../psychiatrist/PsychNav/psycha-side-nav.css";
+import { storeClientInfo } from "../../../Redux/VideoCall/video_call_action";
 import AuthContext from "../../../context/auth/authContext";
 import "../../psychiatrist/PsychNav/Psycha-side-nav.css";
 const UserNav = (props) => {
-  const {storeClientInfo} = props
+  // import "../../psychiatrist/PsychNav/psycha-side-nav.css";
+  const { storeClientInfo } = props;
   const authContext = useContext(AuthContext);
   const { loadUser, user, logout } = authContext;
-  const {_id} = user
+  const { _id } = user;
   useEffect(() => {
     loadUser();
     // eslint-disable-next-line
   }, []);
-  useEffect (() => {
-    if (_id !== undefined)
-    storeClientInfo(_id);
-  },[user])
+  // useEffect (() => {
+  //   if (_id !== undefined)
+  //   storeClientInfo(_id);
+  // },[user])
+
+  useEffect(() => {
+    if (_id !== undefined) {
+      storeClientInfo(_id);
+    }
+  }, [_id]);
+
   const onClick = (e) => {
     e.preventDefault();
     logout();
@@ -109,10 +116,8 @@ const UserNav = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({});
 
-})
-
-export default connect(mapStateToProps,{
-  storeClientInfo
+export default connect(mapStateToProps, {
+  storeClientInfo,
 })(UserNav);

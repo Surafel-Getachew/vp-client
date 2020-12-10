@@ -257,12 +257,12 @@ const Video = (props) => {
         <div className={style.chatWindow}>
           {recivedTxtMessage.map((msg) =>
             msg.sender === myName ? (
-              <div className={style.fromme}>
+              <div className={style.fromme} key = {msg.length}>
                 <p className={style.txtMsg}>{msg.chatText}</p>
                 <p className={style.msgTime}>{msg.chatTime}</p>
               </div>
             ) : (
-              <div className={style.fromOthers}>
+              <div className={style.fromOthers} key = {msg.length}>
                 <p className={style.txtMsg}>{msg.chatText}</p>
                 <p className={style.msgTime}>{msg.chatTime}</p>
               </div>

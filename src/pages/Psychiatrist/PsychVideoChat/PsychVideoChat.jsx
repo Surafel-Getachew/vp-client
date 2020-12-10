@@ -8,7 +8,6 @@ import AuthContext from "../../../context/auth/authContext"
 import Layout from "../../../component/Layout/Layout";
 import uuid from "uuid";
 import styles from "./psych-vc.module.css";
-// const socket = io();
 const PsychVideoChat = (props) => {
   const authContext = useContext(AuthContext);
   const {loadPsychiatrist,user} = authContext;
@@ -67,7 +66,7 @@ const PsychVideoChat = (props) => {
           {appointment.monday !== undefined ? (
             <div>
               {appointment.monday.map((appt) => (
-                <div>
+                <div key = {appt._id}>
                   <h6>{appt.appointedBy}</h6>
                   <button value={appt.appointedBy} onClick={onCall}>
                     Call

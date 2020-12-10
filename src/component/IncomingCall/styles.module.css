@@ -1,0 +1,68 @@
+.incomingCallCard {
+  width: 350px;
+  height: 280px;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+  z-index: 120;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-around; */
+}
+
+.imgContainer {
+  width: auto;
+  border-radius: 50%;
+  margin: 15px 0;
+}
+
+.callerAvi {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+.incomingCallBtnCnt {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1px;
+}
+
+.btnCnt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btnCnt:hover {
+  cursor: pointer;    
+}
+
+.incomingCallBtn {
+  color: #ffffff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 18px;
+}
+
+.incomingCallBtn i {
+  font-size: 20px;
+}
+
+.answerCall {
+  background-color: rgb(60, 218, 60);
+}
+
+.declineCall {
+  background-color: rgb(211, 19, 19);
+  /* margin-left: 60px; */
+}

@@ -1,0 +1,36 @@
+.menu{
+    list-style-type: none;
+    background: blue;
+    width: 200px;
+    border-radius: 20px;
+    padding: 30px 0 30px 30px;
+  }
+  
+  .menu li{
+    position: relative;
+    padding: 5px;
+    border-radius: 10px 0 0 10px;
+  }
+  
+  .menu li:hover{
+    background: white; 
+  }
+  
+  .menu li:hover:after,
+  .menu li:hover:before{
+    content:'';
+    position: absolute;
+    width: 10px; 
+    height: 10px;
+    right: 0px;
+  }
+  
+  .menu li:hover:after{
+    top: -10px;
+    background: radial-gradient(circle at top left, blue 10px, white 11px);
+  }
+  
+  .menu li:hover:before{
+    bottom: -10px;
+    background: radial-gradient(circle at bottom left, blue 10px, white 11px);
+  }

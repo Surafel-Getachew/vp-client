@@ -42,6 +42,8 @@ import VideoCall from "./pages/Psychiatrist/videoChat/Video";
 import ForgotPasswordEmail from "./component/ForgotPasswordEmail/ForgotPasswordEmail";
 import ResetPassword from "./component/ResetPassword/ResetPassword";
 
+import IncomingCall from "./component/IncomingCall/IncomingCall";
+
 // adding auth token to global header so that will not send it every time.
 import setAuthToken from "./utils/setAuthToken";
 if (localStorage.token) {
@@ -60,6 +62,7 @@ const Apps = () => {
                   <Route exact path="/" component={Landing} />
                   {/* <Route exact path = "/videochat" component = {VideoTrial}/> */}
                   <Route exact path="/forgot" component={ForgotPasswordEmail} />
+                  <Route exact path="/incoming" component={IncomingCall} />
                   <Route
                     exact
                     path="/reset-password"

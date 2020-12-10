@@ -23,9 +23,9 @@ export const callUser = (id,caller) => (dispatch) => {
 }
 
 export const reciveCall = () => (dispatch) => {
-    socket.on("reciveCall",data => {
-        console.log(data);
-        dispatch({type:RECIVE_CALL,payload:data})
+    socket.on("reciveeCall",caller => {
+        console.log("RecivingCall",caller);
+        dispatch({type:RECIVE_CALL,payload:caller})
     })
 }
 
