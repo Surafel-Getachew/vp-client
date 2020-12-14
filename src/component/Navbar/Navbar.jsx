@@ -42,7 +42,7 @@ const Navbar = () => {
       key: 4,
     },
     {
-      name: "VideoChat",
+      name: "Video Chat",
       icon: "fas fa-video",
       to: "/vp/psychiatrist/videochat",
       key: 5,

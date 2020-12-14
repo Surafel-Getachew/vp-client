@@ -1,16 +1,27 @@
 import { ADD_PSYCH_PROFILE,LOAD_PSYCH_PROFILE,PSYCH_PROFILE_EROOR,PSYCH_PROFILE_FORM,LOAD_ALL_PSYCH_PROFILE} from "../types";
-
+import {GET_AVATAR,DOESNT_HAVE_AVATAR} from "./type";
 const initialState = {
   psychProfiles: [],
   psychProfile: null,
   psychProfileForm:{},
   error: null,
+  avatar:null
 };
 
 export default (state = initialState, action) => {
   const {type,payload} = action
   // const {psychProfileForm} = initialState
   switch (type) {
+    case GET_AVATAR:
+      return {
+        ...state,
+        avatar:payload
+      }
+    case DOESNT_HAVE_AVATAR: 
+      return {
+        ...state,
+        avatar:null
+      }  
     case ADD_PSYCH_PROFILE:
       return {
         ...state,

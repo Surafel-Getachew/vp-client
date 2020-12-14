@@ -1,0 +1,3 @@
+export const GET_AVATAR = "GET_AvATAR"
+export const DISPLAY_AVATAR = "DISPLAY_AVATAR";
+export const DOESNT_HAVE_AVATAR = "DOESNT_HAVE_AVATAR";

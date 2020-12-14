@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {
   addPsychProfile,
   loadPsychProfile,
+  addPsychAvatar,
 } from "../../../Redux/PsychProfile/psych_profile_aciton";
 import {
   Form,
@@ -14,11 +15,13 @@ import {
   Tag,
   Space,
   DatePicker,
+  message,
 } from "antd";
 import {
-  UploadOutlined,
   MinusCircleOutlined,
   PlusOutlined,
+  UploadOutlined,
+  LoadingOutlined,
 } from "@ant-design/icons";
 import styles from "./psych-profile-form.module.css";
 // import PsychPage from "../../../component/Page/PsychPage";
@@ -47,9 +50,14 @@ const servicesTag = () => {
 
 const PsychiatristProfileForm = (props) => {
   const [profile, setProfile] = useState({});
+  const [file, setFile] = useState(null);
   // if error like can not read propery of null appear later, adding initial state to useState of profile will work
-  const { psychProfile, addPsychProfile, loadPsychProfile } = props;
-
+  const {
+    psychProfile,
+    addPsychProfile,
+    addPsychAvatar,
+    loadPsychProfile,
+  } = props;
   useEffect(() => {
     if (!psychProfile) loadPsychProfile();
     if (psychProfile) {
@@ -60,8 +68,14 @@ const PsychiatristProfileForm = (props) => {
 
   const onFinish = (values) => {
     if (values) {
-      console.log(values);
-      addPsychProfile(values);
+      if (file !== null) {
+        const formData = new FormData();
+        formData.append("avatar", file);
+        addPsychAvatar(formData);
+        addPsychProfile(values);
+      } else {
+        addPsychProfile(values);
+      }
     }
   };
   const {
@@ -89,18 +103,19 @@ const PsychiatristProfileForm = (props) => {
     education,
     // experience
   });
+
+  const onChange = ({ fileList }) => {
+    setFile(fileList[0].originFileObj);
+    console.log(fileList[0].originFileObj);
+  };
   return (
     <Layout>
       <div className={styles.profileFormCnt}>
         <Form form={form} onFinish={onFinish}>
           <ProfileCard title="Basic Information">
-            <Form.Item
-              name="upload"
-              label="Profile Picture"
-              valuePropName="fileList"
-            >
-              <Upload name="logo" action="/upload.do" listType="picture">
-                <Button icon={<UploadOutlined />}>Click to upload</Button>
+            <Form.Item name="avatar" label="Avatar">
+              <Upload onChange={onChange}>
+                <Button icon={<UploadOutlined />}>Upload</Button>
               </Upload>
             </Form.Item>
             <Form.Item name="name" label="Full Name">
@@ -273,7 +288,7 @@ const PsychiatristProfileForm = (props) => {
                           fieldKey={[field.fieldKey, "years"]}
                           rules={[{ required: true, message: "Missign Years" }]}
                         >
-                          <RangePicker picker="year" />
+                          <RangePicker picker="year" name="years" />
                         </Form.Item>
 
                         <MinusCircleOutlined
@@ -318,6 +333,8 @@ const PsychiatristProfileForm = (props) => {
 const mapStateToProps = (state) => ({
   psychProfile: state.psychProfile.psychProfile,
 });
-export default connect(mapStateToProps, { addPsychProfile, loadPsychProfile })(
-  PsychiatristProfileForm
-);
+export default connect(mapStateToProps, {
+  addPsychProfile,
+  addPsychAvatar,
+  loadPsychProfile,
+})(PsychiatristProfileForm);

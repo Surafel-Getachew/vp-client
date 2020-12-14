@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Tabs } from "antd";
-import UserPage from "../../../component/Page/User/UserPage";
+// import UserPage from "../../../component/Page/User/UserPage";
 import UserApptForm from "../../../component/User/UserApptForm/UserApptForm";
+import Layout from "../Layout/Layout";
 const { TabPane } = Tabs;
 
 const UserAppointment = (props) => {
@@ -11,7 +12,7 @@ const UserAppointment = (props) => {
   };
   let psychId = props.location.state.id;
   return (
-    <UserPage>
+    <Layout>
       <div>
         <Tabs
           defaultActiveKey="monday"
@@ -43,7 +44,7 @@ const UserAppointment = (props) => {
           </TabPane>
         </Tabs>
       </div>
-    </UserPage>
+    </Layout>
   );
 };
 

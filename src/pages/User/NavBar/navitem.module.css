@@ -1,0 +1,56 @@
+.navItemCnt {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  border-radius: 10px 60px 60px 10px;
+  background: #f8a301;
+}
+
+.navItemSelected {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  border-radius: 120px 0 0 120px;
+  background-color: #fff;
+}
+
+.navIcon {
+  flex-basis: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.navItemName {
+  flex-basis: 60%;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.navIcon i {
+  font-size: 20px;
+}
+
+.navItemName h4 {
+  color: #7a7a7a;
+  margin-top: 3px;
+}
+
+.navItemSelected:after,
+.navItemSelected:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  right: 0px;
+}
+
+.navItemSelected:after {
+  top: -10px;
+  background: radial-gradient(circle at top left, #f8a301 10px, #fff 11px);
+}
+
+.navItemSelected:before {
+  bottom: -10px;
+  background: radial-gradient(circle at bottom left, #f8a301 10px, #fff 11px);
+}

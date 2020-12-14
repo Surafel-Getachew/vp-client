@@ -5,21 +5,46 @@ import {
   PSYCH_PROFILE_FORM,
   LOAD_PSYCH_PROFILE,
   LOAD_ALL_PSYCH_PROFILE,
+
 } from "../types";
+ 
+import {GET_AVATAR,DOESNT_HAVE_AVATAR} from "./type"
 
 export const addPsychProfile = (formData) => async (dispatch) => {
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type":  "application/json",
     },
   };
   try {
-    const res = await axios.post("/vp/psych/profile", formData, config);
+    const res = await axios.post("/vp/psych/profile", formData,config);
     dispatch({ type: ADD_PSYCH_PROFILE, payload: res.data });
   } catch (error) {
     dispatch({ type: PSYCH_PROFILE_EROOR, payload: error });
   }
 };
+
+export const addPsychAvatar = (formData) => async(dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type":"multipart/form-data"
+    }
+  }
+  try {
+    const res = await axios.post("/vp/psych/profile/avatar",formData,config)
+  } catch (error) {
+    dispatch({type:DOESNT_HAVE_AVATAR,})
+  }
+}
+
+export const getPsychAvatar = () => async (dispatch) => {
+  try {
+    const res = await axios.get("/vp/psych/profile/avatar");
+    dispatch({type:GET_AVATAR,payload:res.data})
+  } catch (error) {
+    dispatch({type:DOESNT_HAVE_AVATAR})
+  }
+}
 
 export const loadPsychProfile = () => async (dispatch) => {
   const res = await axios.get("/vp/psych/profile/me");

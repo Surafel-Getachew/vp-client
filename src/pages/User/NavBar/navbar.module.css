@@ -1,0 +1,46 @@
+.sideNavCnt {
+  display: flex;
+  flex-direction: column;
+  background:#F8A301;
+  height: 100%;
+  justify-content: space-around;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.profileCnt {
+  flex-basis: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.aviCnt {
+  /* border: 2px solid #7a7a7a; */
+  border: 2px solid #fff;
+  width: auto;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  padding: 2px;
+}
+.aviCnt img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.profileName h3 {
+  /* color: #e2d5cc; */
+  color: black;
+}
+
+.navItemsCnt {
+  flex-basis: 60%;
+  align-self: flex-end;
+  width: 96%;
+  border-radius: 20px;
+  /* border:2px solid yellow; */
+
+}

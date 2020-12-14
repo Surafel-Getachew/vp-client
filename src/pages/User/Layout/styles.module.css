@@ -1,0 +1,16 @@
+.layoutCnt {
+    display:flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sideNav {
+    flex-basis: 15%;
+    border-radius: 10px;
+}
+
+.page {
+    flex-basis: 80%;
+    width:80%;
+    margin:0 auto;
+}
