@@ -1,6 +1,15 @@
+.articleCnt {
+  background-color: #fff;
+  display: flex;
+}
+.articleList {
+  flex-basis: 50%;
+  border:1px solid black;
+}
 .articleFormCnt {
   background: #fff;
   min-height: 100%;
+  flex-basis: 50%;
 }
 
 .articleCenter {
@@ -21,6 +30,7 @@
   height: 50px;
   width: 100%;
   margin-bottom: 20px;
+  border:1px solid black;
 }
 
 .richText {

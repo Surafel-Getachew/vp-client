@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-// import UserPage from "../../../component/Page/User/UserPage";
+import UserPage from "../../../component/Page/User/UserPage";
 import Layout from "../Layout/Layout";
 import { reciveCall } from "../../../Redux/VideoCall/video_call_action";
 import AuthContext from "../../../context/auth/authContext";
@@ -21,32 +21,34 @@ const UserDashBoard = (props) => {
     }
   }, [ringing]);
   reciveCall();
-  const answerCall = () => {
-    setRedirect(true);
-  };
-  if (redirect) {
-    return (
-      <Redirect
-        to={{
-          pathname: "/vp/videocall",
-          state: { id: caller, name: name },
-        }}
-      />
-    );
-  }
+  // const answerCall = () => {
+  //   setRedirect(true);
+  // };
+  // if (redirect) {
+  //   return (
+  //     <Redirect
+  //       to={{
+  //         pathname: "/vp/videocall",
+  //         state: { id: caller, name: name },
+  //       }}
+  //     />
+  //   );
+  // }
   return (
-    <Layout>
+    // <Layout>
+    <UserPage>
       <div>
         <h2>User Dashboard</h2>
-        {recivingCall ? (
+        {/* {recivingCall ? (
           <div>
             <h1>SomeOne is calling</h1>
             <button onClick={answerCall}>Answer</button>
             <button>Decline</button>
           </div>
-        ) : null}
+        ) : null} */}
       </div>
-    </Layout>
+      </UserPage>
+    // </Layout>
   );
 };
 

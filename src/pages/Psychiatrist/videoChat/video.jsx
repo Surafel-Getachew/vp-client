@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
 import Peer from "peerjs";
 import io from "socket.io-client";
 import style from "./video.module.css";
@@ -25,6 +26,7 @@ const Video = (props) => {
   const autoScroll = useRef();
   const [peeerId, setPeeerId] = useState("");
   const [myVideo, setMyVideo] = useState();
+  const [callDeclined, setCallDeclined] = useState(false);
   const [recivedTxtMessage, setRecivedTxtMessage] = useState([
     {
       chatText: "",
@@ -106,7 +108,15 @@ const Video = (props) => {
     setOtherPeerName(peerName);
     console.log(peerName, "JOINED OUTSIDE");
   });
-
+  socket.on("callDeclined", () => {
+    setCallDeclined(true);
+  });
+  if (callDeclined) {
+    setTimeout(() => {
+      // return <Redirect to="/vp/psychiatrist/dashboard" />;
+      props.history.push("/vp/psychiatrist/dashboard/")
+    }, 5000);
+  }
   useEffect(() => {
     var call = peer.call(peeerId, myVideo);
     if (call !== undefined) {
@@ -167,16 +177,16 @@ const Video = (props) => {
       });
     }
   };
-  const endCall = () => {
-    peer.destroy();
-    // peer.disconnect();
-  };
-  peer.on("disconnected", () => {
-    console.log("peer disconnected...");
-  });
-  peer.on("close", () => {
-    // console.log("peer is no longer available try calling again");
-  });
+  // const endCall = () => {
+  //   peer.destroy();
+  //   // peer.disconnect();
+  // };
+  // peer.on("disconnected", () => {
+  //   console.log("peer disconnected...");
+  // });
+  // peer.on("close", () => {
+  //   // console.log("peer is no longer available try calling again");
+  // });
 
   const onChange = (e) => {
     setTxtMessage(e.target.value);
@@ -225,6 +235,11 @@ const Video = (props) => {
             <video ref={myStream} autoPlay className={style.myvideo}></video>
             <h3>{myName}</h3>
           </div>
+          {callDeclined && (
+            <div className={style.declinedCall}>
+              <h3 style={{ color: "#7a7a7a" }}>User Declined Your Call</h3>
+            </div>
+          )}
           <div className={style.othersStreamContainer}>
             <video
               ref={othersStream}
@@ -243,7 +258,7 @@ const Video = (props) => {
               <i className={videoIcon}></i>
               <span>{videoText}</span>
             </div>
-            <div onClick={endCall}>
+            <div>
               <i style={{ color: "#eb534b" }} className="fa fa-phone-alt"></i>
               <span style={{ color: "#eb534b" }}>End Call</span>
             </div>
@@ -257,12 +272,12 @@ const Video = (props) => {
         <div className={style.chatWindow}>
           {recivedTxtMessage.map((msg) =>
             msg.sender === myName ? (
-              <div className={style.fromme} key = {msg.length}>
+              <div className={style.fromme} key={msg.length}>
                 <p className={style.txtMsg}>{msg.chatText}</p>
                 <p className={style.msgTime}>{msg.chatTime}</p>
               </div>
             ) : (
-              <div className={style.fromOthers} key = {msg.length}>
+              <div className={style.fromOthers} key={msg.length}>
                 <p className={style.txtMsg}>{msg.chatText}</p>
                 <p className={style.msgTime}>{msg.chatTime}</p>
               </div>

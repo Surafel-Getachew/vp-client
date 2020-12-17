@@ -42,15 +42,18 @@ const ScheduleList = (props) => {
     // console.log(values);
     addSchedule(formData);
   };
-  const onClick = (e) => {
-    console.log("value", e.target.value);
-    const info = {
-      id: e.target.value,
-      date: theDate,
-    };
-    deletePsychSchedule(info);
+  const onDelete = (id) => {
+    console.log(id,"ddde");
+    // const info = {
+    //   id: e.target.value,
+    //   date: theDate,
+    // };
+    // console.log(info);
+    // deletePsychSchedule(info);
+    console.log("deleteddd");
   };
   const [error, setError] = useState("");
+  const [deleteSchdule, setDeleteSchedule] = useState("");
 
   useEffect(() => {
     setError(errorMsg);
@@ -175,27 +178,14 @@ const ScheduleList = (props) => {
           <div className={styles.todaysSchedule}>
             <Timeline className={styles.tl}>
               {todaysSchedule.map((schedule) => (
-                <Timeline.Item key={schedule._id}>
-                  <span>Start Time </span>
-                  <span> </span>
-                  {getTimeAMPMFormat(new Date(schedule.start))}
-                  <span> </span>-<span> </span>
-                  <span>End Time </span>
-                  {getTimeAMPMFormat(new Date(schedule.end))}
-                  {/* <button
-                    style={{
-                      marginLeft: "12px",
-                      background: "none",
-                      border: "none",
-                      outline: "none",
-                    }}
-                    value={schedule._id}
-                    onClick={onClick}
-                  >
-                  </button> */}
-                    <DeleteOutlined value = {schedule._id} onClick = {onClick}/>
-                    {/* <i className="far fa-trash-alt"></i> */}
-                </Timeline.Item>
+                  <Timeline.Item>
+                    <span>Start Time </span>
+                    <span> </span>
+                    {getTimeAMPMFormat(new Date(schedule.start))}
+                    <span> </span>-<span> </span>
+                    <span>End Time </span>
+                    {getTimeAMPMFormat(new Date(schedule.end))}
+                  </Timeline.Item>
               ))}
             </Timeline>
           </div>

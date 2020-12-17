@@ -1,26 +1,44 @@
 import React, { useContext, useEffect, useState } from "react";
-import {connect} from "react-redux"
-import io from "socket.io-client";
+import { connect } from "react-redux";
 import Layout from "../../../component/Layout/Layout";
 import styles from "./styles.module.css";
 import PsychContext from "../../../context/psych/psychContext";
-import {sendTextMessage,reciveTextMessage} from "../../../Redux/VideoCall/video_call_action"
-// const socket = io();
+import AuthContext from "../../../context/auth/authContext";
+import {
+  sendTextMessage,
+  reciveTextMessage,
+} from "../../../Redux/VideoCall/video_call_action";
+import {getMessages} from "../../../Redux/Messages/message_action"
 
 const PsychMessage = (props) => {
   const psychContext = useContext(PsychContext);
+  const authContext = useContext(AuthContext);
   const { loadAllPsych, psychs } = psychContext;
+  const { loadPsychiatrist, user } = authContext;
   const [reciver, setReciver] = useState();
   const [message, setMessage] = useState("");
-  const [recivedMessage,setRecivedMessage] = useState("");
-  const {sendTextMessage,reciveTextMessage} = props
+  const [recivedMessage, setRecivedMessage] = useState("");
+  const {
+    sendTextMessage,
+    reciveTextMessage,
+    getMessages,
+  } = props;
+  const { _id } = user;
   useEffect(() => {
     loadAllPsych();
   }, []);
 
   useEffect(() => {
+    loadPsychiatrist();
+  }, []);
+
+  useEffect(() => {
     reciveTextMessage();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    getMessages(_id,reciver)
+  }, [reciver]);
 
   const onChange = (e) => {
     setMessage(e.target.value);
@@ -28,14 +46,9 @@ const PsychMessage = (props) => {
   };
 
   const onSend = () => {
-    sendTextMessage(reciver,message)
+    sendTextMessage(_id, reciver, message);
     // socket.emit("sendMessage", reciver, message);
   };
-
-  // socket.on("msg", (mssg) => {
-  //   console.log(mssg);
-  //   // setRecivedMessage(message)
-  // });
 
   return (
     <Layout>
@@ -71,13 +84,13 @@ const PsychMessage = (props) => {
   );
 };
 
-const mapStateToProps = (state) => (
-  {
-    recivedTxtMessage:state.videoCall.recivedTxtMessage
-  }
-)
+const mapStateToProps = (state) => ({
+  recivedTxtMessage: state.videoCall.recivedTxtMessage,
+  loadedMessages:state.message.messageTexts
+});
 
-export default connect(mapStateToProps,{
+export default connect(mapStateToProps, {
   sendTextMessage,
-  reciveTextMessage
+  reciveTextMessage,
+  getMessages
 })(PsychMessage);

@@ -146,11 +146,11 @@ const PsychDashboard = (props) => {
               avi={require("../../../assets/person8.jpg")}
             />
             <AppointmentCardItems
-              name="senke demelash"
+              name="David alison"
               avi={require("../../../assets/person2.jpg")}
             />
             <AppointmentCardItems
-              name="belayneh wase"
+              name="belayneh"
               avi={require("../../../assets/person7.jpg")}
             />
             <AppointmentCardItems

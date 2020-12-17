@@ -4,6 +4,7 @@
   position: relative;
   border-radius: 10px 60px 60px 10px;
   background: #f8a301;
+  /* background-color: #703bda; */
 }
 
 .navItemSelected {
@@ -47,10 +48,10 @@
 
 .navItemSelected:after {
   top: -10px;
-  background: radial-gradient(circle at top left, #f8a301 10px, #fff 11px);
+  background: radial-gradient(circle at top left, #703bda 10px, #fff 11px);
 }
 
 .navItemSelected:before {
   bottom: -10px;
-  background: radial-gradient(circle at bottom left, #f8a301 10px, #fff 11px);
+  background: radial-gradient(circle at bottom left, #703bda 10px, #fff 11px);
 }

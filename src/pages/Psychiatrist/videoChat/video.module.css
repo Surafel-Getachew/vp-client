@@ -144,6 +144,17 @@
   left: 20px;
   text-align: center;
 }
+
+.declinedCall {
+  width: 350px;
+  height: 60px;
+  background-color: #fff2f0;
+  border: 1px solid #ffccc7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .othersStreamContainer {
   text-align: center;
 }

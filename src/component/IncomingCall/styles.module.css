@@ -1,6 +1,6 @@
 .incomingCallCard {
   width: 350px;
-  height: 280px;
+  height: 300px;
   background-color: #fff;
   transform: translate(-50%, -50%);
   z-index: 120;
@@ -39,7 +39,7 @@
 }
 
 .btnCnt:hover {
-  cursor: pointer;    
+  cursor: pointer;
 }
 
 .incomingCallBtn {
@@ -50,8 +50,45 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
   margin-top: 18px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.answerCall:before {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 1px solid #44bd32;
+  border-radius: 50%;
+  animation: pulseeffects 1.5s linear infinite;
+  /* animation-delay: 0.4s; */
+}
+.answerCall:after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 1px solid #44bd32;
+  border-radius: 50%;
+  animation: pulseeffects 1.5s linear infinite;
+  animation-delay: 0.4s;
+}
+
+@keyframes pulseeffects {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
 }
 
 .incomingCallBtn i {
@@ -59,7 +96,7 @@
 }
 
 .answerCall {
-  background-color: rgb(60, 218, 60);
+  background-color: #44bd32;
 }
 
 .declineCall {

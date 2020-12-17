@@ -7,7 +7,8 @@ import {
     RECIVE_TXT_MESSAGE,
     SEND_TXT_MESSAGE,
     RECIVE_VIDEO_CALL,
-    MAKE_VIDEO_CALL
+    MAKE_VIDEO_CALL,
+    DECLINE_CALL
 } from "./types"
 const socket = io();
 // let socket
@@ -29,8 +30,8 @@ export const reciveCall = () => (dispatch) => {
     })
 }
 
-export const sendTextMessage = (reciver,message) => (dispatch) => {
-    socket.emit("sendMessage",reciver,message);
+export const sendTextMessage = (sender,reciver,message) => (dispatch) => {
+    socket.emit("sendMessage",sender,reciver,message);
     dispatch({type:SEND_TXT_MESSAGE});
 }
 
@@ -38,7 +39,7 @@ export const reciveTextMessage = () => (dispatch) => {
     socket.on("msg", msg => {
         console.log("message recived");
         console.log(msg);
-        // dispatch({type:RECIVE_TXT_MESSAGE,payload:msg})
+        dispatch({type:RECIVE_TXT_MESSAGE,payload:msg})
     })
 }
 
@@ -56,7 +57,9 @@ export const reciveVideoCall = () => (dispatch) => {
     })
 }
 
-
+export const declineCall = () => (dispatch) => {
+    dispatch({type:DECLINE_CALL});
+}
 
 
 

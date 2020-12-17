@@ -1,36 +1,35 @@
 .apptCardItem {
   display: flex;
-  align-items: center;
   margin-bottom: 8px;
   justify-content: space-around;
 }
 
 .apptCardAvi {
-  width: 40px;
+  flex-basis: 30%;
+  width:auto;
   border-radius: 50%;
-  /* margin: 0 10px; */
 }
 
 .apptCardAvi img {
-  width: 100%;
+  width:40px;
   border-radius: 50%;
 }
 
 .apptCardName {
-  /* margin-right: 40px; */
+  flex-basis: 30%;
+  text-align: left;
 }
 
 .apptStatus {
   color: rgb(179, 20, 20);
-  /* margin-top: -10px; */
 }
 
 .apptCardTime {
-  margin-right: 10px;
+  flex-basis: 30%;
+  text-align: left;
 }
 
 .line {
-  /* border: 2px solid red; */
   height: 1px;
   width: 70%;
   margin: 12px auto;

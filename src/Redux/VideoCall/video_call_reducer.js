@@ -5,7 +5,8 @@ import {
     SET_PARTNER_STREAM,
     SET_CALLER_SIGNAL,
     RECIVE_TXT_MESSAGE,
-    RECIVE_VIDEO_CALL
+    RECIVE_VIDEO_CALL,
+    DECLINE_CALL
 } from "./types"
 const initialState = {
     ringing:false,
@@ -17,7 +18,7 @@ const initialState = {
     userVideo:null,
     partnerStream:null,
     callerSignal:null,
-    peerId:""
+    peerId:"",
 }
 
 export default (state = initialState,action) => {
@@ -59,7 +60,12 @@ export default (state = initialState,action) => {
             return {
                 ...state,
                 peerId:action.payload
-            }           
+            }
+        case DECLINE_CALL:
+            return {
+                ...state,
+                ringing:false
+            }
         default:
             return state
     }
