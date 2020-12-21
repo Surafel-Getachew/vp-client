@@ -7,6 +7,8 @@
     "@ant-design/icons": "^4.2.2",
     "@ckeditor/ckeditor5-build-classic": "^19.0.2",
     "@ckeditor/ckeditor5-react": "^2.1.0",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.13",
     "antd": "^4.5.2",
     "antd-dayjs-webpack-plugin": "^1.0.1",
     "axios": "^0.19.2",

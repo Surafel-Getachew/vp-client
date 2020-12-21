@@ -8,7 +8,7 @@ import {
 
 } from "../types";
  
-import {GET_AVATAR,DOESNT_HAVE_AVATAR} from "./type"
+import {GET_AVATAR,DOESNT_HAVE_AVATAR,LOAD_ALL_PSYCHS_BASIC_PROFILE,LOAD_PSYCH_BASIC_PROFILE} from "./type"
 
 export const addPsychProfile = (formData) => async (dispatch) => {
   const config = {
@@ -67,3 +67,30 @@ export const psychProfileForm = (formData) => (dispatch) => {
   dispatch({ type: PSYCH_PROFILE_FORM, payload: formData });
   // console.log(formData);
 };
+
+export const loadAllPsychsBasicProfile = () => async(dispatch) => {
+  try {
+    const res = await axios.get("/vp/psych/profile/all/basic");
+    dispatch({type:LOAD_ALL_PSYCHS_BASIC_PROFILE,payload:res.data});
+  } catch (error) {
+      
+  }
+}
+
+export const loadPsychBasicProfile = (id) => async(dispatch) => {
+  try {
+    const res = await axios.get(`/vp/psych/profile/basic/${id}`)
+    dispatch({type:LOAD_PSYCH_BASIC_PROFILE,payload:res.data});
+  } catch (error) {
+    
+  }
+}
+
+// export const loadAllPsychsBasicProfile = () => (dispatch) =>{
+//   try {
+//     const res = await axios.get("/vp/psych/profile/all/basic");
+//     dispatch({type:LOAD_PSYCHS_BASIC_PROFILE,payload:res.data});
+//   } catch (error) {
+    
+//   }
+// }

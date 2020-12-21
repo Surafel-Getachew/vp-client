@@ -1,13 +1,13 @@
 import React from "react";
-import style from "./form.module.css";
-
+// import style from "./form.module.css";
+import style from "./formstyle.module.css"
 const FormComponent = (props) => {
   return (
     <div className={style.white}>
       <div className={style.formCon}>
         <div className={style.pic}>
           {/* <img src={require("./undraw_medicine_b1ol.png")} alt="" /> */}
-          <img src={require("../../../../assets/authentication.svg")} alt="" />
+          <img src={require("../../../../assets/psychauth.svg")} alt="" />
           {/* <div className={style.filterimg}></div> */}
         </div>
         <div className={style.form}>{props.children}</div>

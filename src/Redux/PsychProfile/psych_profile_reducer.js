@@ -1,8 +1,10 @@
 import { ADD_PSYCH_PROFILE,LOAD_PSYCH_PROFILE,PSYCH_PROFILE_EROOR,PSYCH_PROFILE_FORM,LOAD_ALL_PSYCH_PROFILE} from "../types";
-import {GET_AVATAR,DOESNT_HAVE_AVATAR} from "./type";
+import {GET_AVATAR,DOESNT_HAVE_AVATAR,LOAD_ALL_PSYCHS_BASIC_PROFILE, LOAD_PSYCH_BASIC_PROFILE} from "./type";
 const initialState = {
   psychProfiles: [],
   psychProfile: null,
+  psychsBasicProfile:[],
+  psychBasicProfile:null,
   psychProfileForm:{},
   error: null,
   avatar:null
@@ -35,8 +37,8 @@ export default (state = initialState, action) => {
     case LOAD_ALL_PSYCH_PROFILE:
       return {
         ...state,
-        // psychProfiles:[...state.psychProfiles,payload]
         psychProfiles:payload
+        // psychProfiles:[...state.psychProfiles,payload]
       }
       case PSYCH_PROFILE_FORM:
       return {
@@ -47,8 +49,16 @@ export default (state = initialState, action) => {
       return {
         error: action.psyload,
       };
-   
-      
+    case LOAD_ALL_PSYCHS_BASIC_PROFILE:
+      return {
+        ...state,
+        psychsBasicProfile:payload
+      }
+    case LOAD_PSYCH_BASIC_PROFILE:
+      return {
+        ...state,
+        psychBasicProfile:payload
+      }  
     default:
       return state;
   }

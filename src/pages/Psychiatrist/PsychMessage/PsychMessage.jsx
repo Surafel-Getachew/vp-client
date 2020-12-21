@@ -2,42 +2,49 @@ import React, { useContext, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Layout from "../../../component/Layout/Layout";
 import styles from "./styles.module.css";
-import PsychContext from "../../../context/psych/psychContext";
 import AuthContext from "../../../context/auth/authContext";
 import {
   sendTextMessage,
   reciveTextMessage,
 } from "../../../Redux/VideoCall/video_call_action";
-import {getMessages} from "../../../Redux/Messages/message_action"
-
+import { getMessages } from "../../../Redux/Messages/message_action";
+import {
+  loadAllPsychsBasicProfile,
+} from "../../../Redux/PsychProfile/psych_profile_aciton";
+import UserNameAvi from "./UserNameAvi";
+import ChatWindow from "./ChatWindow"
 const PsychMessage = (props) => {
-  const psychContext = useContext(PsychContext);
   const authContext = useContext(AuthContext);
-  const { loadAllPsych, psychs } = psychContext;
   const { loadPsychiatrist, user } = authContext;
-  const [reciver, setReciver] = useState();
+  const [reciver, setReciver] = useState("");
   const [message, setMessage] = useState("");
   const [recivedMessage, setRecivedMessage] = useState("");
   const {
     sendTextMessage,
     reciveTextMessage,
     getMessages,
+    loadAllPsychsBasicProfile,
+    psychsBasicProfile,
   } = props;
   const { _id } = user;
-  useEffect(() => {
-    loadAllPsych();
-  }, []);
-
+  // const { psychOwner, name, avatar } = psychProfiles;
   useEffect(() => {
     loadPsychiatrist();
+  }, []);
+  useEffect(() => {
+    setReciver(_id)
+  },[user])
+  useEffect(() => {
+    loadAllPsychsBasicProfile();
+    // loadAllPsych();
   }, []);
 
   useEffect(() => {
     reciveTextMessage();
   }, []);
-
+  // reciveTextMessage();
   useEffect(() => {
-    getMessages(_id,reciver)
+    getMessages(_id, reciver);
   }, [reciver]);
 
   const onChange = (e) => {
@@ -52,23 +59,19 @@ const PsychMessage = (props) => {
 
   return (
     <Layout>
-      <h1>Messages</h1>
       <div className={styles.msgContainer}>
         <div className={styles.users}>
-          {psychs.map((psych) => (
-            <div key={psych._id} className={styles.nameContainer}>
-              <div
-                onClick={() => {
-                  setReciver(psych._id);
-                }}
-              >
-                <h4>{psych.name}</h4>
-              </div>
+          {psychsBasicProfile.map((psych) => (
+            <div key={psych.psychOwner} onClick = {() => setReciver(psych.psychOwner)}>
+              <UserNameAvi name={psych.name} avatar = {psych.avatar}/>
             </div>
           ))}
         </div>
         <div className={styles.chats}>
-          <input
+          <ChatWindow
+            activeUser = {reciver}
+          />
+          {/* <input
             type="text"
             placeholder="message"
             value={message}
@@ -77,7 +80,7 @@ const PsychMessage = (props) => {
           <button type="submit" onClick={onSend}>
             Send
           </button>
-          {recivedMessage}
+          {recivedMessage} */}
         </div>
       </div>
     </Layout>
@@ -86,11 +89,13 @@ const PsychMessage = (props) => {
 
 const mapStateToProps = (state) => ({
   recivedTxtMessage: state.videoCall.recivedTxtMessage,
-  loadedMessages:state.message.messageTexts
+  loadedMessages: state.message.messageTexts,
+  psychsBasicProfile: state.psychProfile.psychsBasicProfile,
 });
 
 export default connect(mapStateToProps, {
   sendTextMessage,
   reciveTextMessage,
-  getMessages
+  getMessages,
+  loadAllPsychsBasicProfile,
 })(PsychMessage);

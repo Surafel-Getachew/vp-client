@@ -80,6 +80,7 @@ const TopNav = (props) => {
             <img
               className={styles.avi}
               src={`data:image/jpeg;base64,${avatar}`}
+              alt = "Avatar"
             />
           )}
         </div>

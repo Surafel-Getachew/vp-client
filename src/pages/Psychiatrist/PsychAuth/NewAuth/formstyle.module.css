@@ -1,0 +1,27 @@
+.formCon {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100vw;
+    height:100vh;
+    background:#fff;
+}
+
+.pic {
+    flex-basis: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+}
+
+.pic img {
+    width:350px;
+    height:350px;
+    margin-bottom:50px;
+}
+
+.form {
+    flex-basis: 60%;
+    height:100%;
+}
