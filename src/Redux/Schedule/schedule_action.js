@@ -5,7 +5,8 @@ import {
   SCHEDULE_ERROR,
   CLEAR_SCHEDULE_ERROR,
   LOAD_TODAYS_SCHEDULE,
-  DELETE_SCHEDULE
+  DELETE_SCHEDULE,
+  GET_PSYCH_SCHEDULE_BY_ID
 } from "./types";
 
 const config = {
@@ -39,6 +40,15 @@ export const deletePsychSchedule = (info) => async(dispatch) => {
     dispatch({type:DELETE_SCHEDULE,payload:res.data});
   } catch (error) {
     dispatch({type:SCHEDULE_ERROR,payload:error.response.data.msg});
+  }
+}
+
+export const getPsychScheduleById = (id,date) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/vp/psych/schedule/${id}/${date}`);
+    dispatch({type:GET_PSYCH_SCHEDULE_BY_ID,payload:res.data});
+  } catch (error) {
+    dispatch({type:SCHEDULE_ERROR,payload:error.response.data.msg})
   }
 }
 

@@ -4,7 +4,9 @@
 }
 .articleList {
   flex-basis: 50%;
-  border:1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
 }
 .articleFormCnt {
   background: #fff;
@@ -31,6 +33,7 @@
   width: 100%;
   margin-bottom: 20px;
   border:1px solid black;
+  padding-left: 10px;
 }
 
 .richText {

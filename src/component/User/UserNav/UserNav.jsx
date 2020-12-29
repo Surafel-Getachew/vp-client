@@ -9,7 +9,7 @@ const UserNav = (props) => {
   const { storeClientInfo } = props;
   const authContext = useContext(AuthContext);
   const { loadUser, user, logout } = authContext;
-  const { _id } = user;
+  const { _id,name} = user;
   useEffect(() => {
     loadUser();
     // eslint-disable-next-line
@@ -29,7 +29,7 @@ const UserNav = (props) => {
     e.preventDefault();
     logout();
   };
-  const { name } = user;
+  // const { name } = user;
   return (
     <div id="psych-side-nav">
       <div className="profile-side-nav">

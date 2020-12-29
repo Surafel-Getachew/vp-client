@@ -1,16 +1,21 @@
 .layoutCnt {
-    display:flex;
-    width: 100vw;
-    height: 100vh;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  /* border:2px solid blue; */
 }
 
 .sideNav {
-    flex-basis: 15%;
-    border-radius: 10px;
+  flex-basis: 18%;
+  /* border-radius: 10px; */
 }
 
 .page {
-    flex-basis: 80%;
-    width:80%;
-    margin:0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6b0f1a;
+  background-image: linear-gradient(315deg, #6b0f1a 0%, #b91372 74%);
+  
 }

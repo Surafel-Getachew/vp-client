@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
-
+import AuthContext from "../../context/auth/authContext";
 import NavItem from "./NavItem";
 import styles from "./navbar.module.css";
 const Navbar = () => {
   const [active, setActive] = useState("/");
   const { pathname } = useLocation();
   // console.log("pathname",pathname);
+  const authContext = useContext(AuthContext);
+  const { loadPsychiatrist, user } = authContext;
+  const { _id } = user;
   useEffect(() => {
     setActive(pathname);
   }, [pathname]);
+  useEffect(() => {
+    loadPsychiatrist()
+  },[]);
   const navItems = [
     {
       name: "Dashboard",
@@ -26,8 +32,8 @@ const Navbar = () => {
     {
       name: "Message",
       icon: "fas fa-envelope",
-      to:"/vp/psychiatrist/message",
-      key:8,
+      to: `/vp/psychiatrist/message/${_id}`,
+      key: 8,
     },
     {
       name: "Group Video Chat",
@@ -59,7 +65,6 @@ const Navbar = () => {
       to: "/vp/psychiatrist/change-password",
       key: 7,
     },
-    
   ];
 
   return (

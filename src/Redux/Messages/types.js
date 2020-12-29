@@ -1,1 +1,2 @@
 export const GET_MESSAGES = "GET_MESSAGES";
+export const SAVE_MESSAGES = "SAVE_MESSAGES";

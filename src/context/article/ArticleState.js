@@ -105,14 +105,14 @@ const ArticleState = (props) => {
         dispatch({type:CLEAR_ARTICLE})
     }
 
-    const updateArticle = async (article) => {
+    const updateArticle = async (article,id) => {
         try {
             const config = {
                 headers:{
                     "Content-Type":"application/json"
                 }
             }
-            const res = await axios.patch(`/vp/article/${article._id}`,article,config);
+            const res = await axios.patch(`/vp/article/${id}`,article,config);
             dispatch({type:UPDATE_ARTICLE,payload:res.data})
         } catch (error) {
             

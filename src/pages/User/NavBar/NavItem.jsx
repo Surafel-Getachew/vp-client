@@ -6,7 +6,7 @@ const NavItem = (props) => {
   let navCss;
   let itemColor;
   active ? (navCss = "navItemSelected") : (navCss = "navItemCnt");
-  active ? (itemColor = "#F8A301") : (itemColor = "#fff");
+  active ? (itemColor = "#ffff") : (itemColor = "#fff");
   return (
     <Link to={path}>
       <div className={styles[navCss]}>

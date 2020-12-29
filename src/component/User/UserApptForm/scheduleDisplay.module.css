@@ -1,0 +1,19 @@
+.psychAviCnt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.psychAvi {
+  border-radius: 50%;
+  margin-top: -27px;
+}
+
+.psychAvi img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+.psychSchedule {
+  margin-top: 20px;
+}

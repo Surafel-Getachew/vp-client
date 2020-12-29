@@ -4,13 +4,15 @@ import {
   CLEAR_SCHEDULE_ERROR,
   LOAD_TODAYS_SCHEDULE,
   DELETE_SCHEDULE,
+  GET_PSYCH_SCHEDULE_BY_ID
 } from "./types";
 
 const initialState = {
   schedule: [],
   scheduleError: null,
   todaysSchedule: [],
-  refresh:false
+  refresh:false,
+  psychScheduleById:[]
 };
 
 export default (state = initialState, action) => {
@@ -40,6 +42,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         refresh:!state.refresh
+      }
+    case GET_PSYCH_SCHEDULE_BY_ID:
+      return {
+        ...state,
+        psychScheduleById:action.payload
       }
     default:
       return state;

@@ -1,8 +1,12 @@
 .dashboard {
-  background-color: #fff;
+  /* background-color: #fff; */
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .welcome {
@@ -28,7 +32,7 @@
   /* fix this by targeting with last child than class Name */
 }
 .docImg {
-  width: 200px;
+  width: 180px;
 }
 
 .docImg img {

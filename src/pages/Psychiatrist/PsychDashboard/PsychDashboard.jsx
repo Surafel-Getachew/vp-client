@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext} from "react";
+import AuthContext from "../../../context/auth/authContext";
 import { connect } from "react-redux";
 import { getPsychAppointment } from "../../../Redux/PsychAppointment/psych_appointment_action";
 import { Liquid } from "@ant-design/charts";
@@ -17,8 +18,14 @@ import AppointmentCardItems from "../../../component/psychiatrist/PsychDashboard
 import FigureItem from "../../../component/psychiatrist/PsychDashboard/FigureItem";
 import styles from "./psychDashboard.module.css";
 const PsychDashboard = (props) => {
+  const authContext = useContext(AuthContext);
+  const {loadPsychiatrist,user} = authContext
+  const {name} = user
   const { getPsychAppointment, psychAppointment } = props;
   const [appointment, setAppointment] = useState([]);
+  useEffect(() => {
+    loadPsychiatrist();
+  },[])
   useEffect(() => {
     if (!psychAppointment) {
       getPsychAppointment();
@@ -125,7 +132,7 @@ const PsychDashboard = (props) => {
           <div className={styles.welcomeTxt}>
             <h2>
               {" "}
-              <b>Welcome</b> Surafel!
+              <b>Welcome</b> {name}!
             </h2>
             <p>
               You have <b>7 patinets</b> remaining today!
@@ -135,7 +142,7 @@ const PsychDashboard = (props) => {
             </p>
           </div>
           <div className={styles.docImg}>
-            <img src={require("../../../assets/dashboard_doc.svg")} alt="" />
+            <img src={require("../../../assets/welcome.svg")} alt="" />
           </div>
         </div>
         <div className={styles.dashBoardContent}>

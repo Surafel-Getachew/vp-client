@@ -1,12 +1,15 @@
 import React from "react";
-// import UserPage from "../../../component/Page/User/UserPage";
+import UserPage from "../../../component/Page/User/UserPage";
 import PsychiatristProfiles from "../../../component/Profiles/Psychiatrist/PsychiatristProfiles";
 import Layout from "../Layout/Layout";
+import styles from "./psychList.module.css";
 const PsychiatristList = () => {
   return (
     <Layout>
-      <div>
-        <PsychiatristProfiles />
+      <div className={styles.psychListCnt}>
+        <div className = {styles.list}>
+          <PsychiatristProfiles />
+        </div>
       </div>
     </Layout>
   );

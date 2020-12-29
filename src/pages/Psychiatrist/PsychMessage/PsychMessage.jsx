@@ -56,13 +56,22 @@ const PsychMessage = (props) => {
     sendTextMessage(_id, reciver, message);
     // socket.emit("sendMessage", reciver, message);
   };
-
+  const onClick = (id) => {
+    setReciver(id);
+    props.history.push(`/vp/psychiatrist/message/${id}`)
+  }
+  // onClick = {() => setReciver(psych.psychOwner) }
   return (
     <Layout>
       <div className={styles.msgContainer}>
         <div className={styles.users}>
           {psychsBasicProfile.map((psych) => (
-            <div key={psych.psychOwner} onClick = {() => setReciver(psych.psychOwner)}>
+            <div key={psych.psychOwner} onClick = {
+              () => (
+                props.history.push(`/vp/psychiatrist/message/${psych.psychOwner}`),
+                setReciver(psych.psychOwner)
+              )
+            }>
               <UserNameAvi name={psych.name} avatar = {psych.avatar}/>
             </div>
           ))}

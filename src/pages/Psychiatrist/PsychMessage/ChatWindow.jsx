@@ -7,16 +7,23 @@ import {
   sendTextMessage,
   reciveTextMessage,
 } from "../../../Redux/VideoCall/video_call_action";
-import { getMessages } from "../../../Redux/Messages/message_action";
+import {
+  getMessages,
+  saveMessage,
+} from "../../../Redux/Messages/message_action";
+import { Spin, Alert } from "antd";
+
 const ChatWindow = (props) => {
   const {
     activeUser,
     loadPsychBasicProfile,
     psychBasicProfile,
     sendTextMessage,
-    reciveTextMessage,
     getMessages,
+    saveMessage,
     messageTexts,
+    recivedTxtMessage,
+    reciveTextMessage,
   } = props;
   const autoScroll = useRef();
   const authContext = useContext(AuthContext);
@@ -27,7 +34,12 @@ const ChatWindow = (props) => {
     selectedUserAvatar: null,
   });
   const [message, setMessage] = useState("");
-  const [recivedTxtMessage,setRecivedTxtMessage] = useState("");
+  const [directMessages, setDirectMessage] = useState([
+    {
+      chatText: "",
+      sender: "",
+    },
+  ]);
   const { selectedUserName, selectedUserAvatar } = selectedUser;
   useEffect(() => {
     loadPsychiatrist();
@@ -51,13 +63,41 @@ const ChatWindow = (props) => {
     setMessage(e.target.value);
   };
   const onSend = (e) => {
+    e.preventDefault();
     sendTextMessage(_id, activeUser, message);
+    const messageData = {
+      sender: _id,
+      reciver: activeUser,
+      message: message,
+    };
+    saveMessage(messageData);
     setMessage("");
+    setDirectMessage([
+      ...directMessages,
+      {
+        chatText: message,
+        sender: _id,
+      },
+    ]);
   };
   useEffect(() => {
     scorllAuto();
   }, [messageTexts]);
-
+  useEffect(() => {
+    if (recivedTxtMessage !== null) {
+      setDirectMessage([
+        ...directMessages,
+        {
+          sender: recivedTxtMessage.sender,
+          chatText: recivedTxtMessage.message,
+        },
+      ]);
+      scorllAuto();
+    }
+  }, [recivedTxtMessage]);
+  useEffect(() => {
+    scorllAuto();
+  }, [directMessages]);
   const scorllAuto = () => {
     if (autoScroll.current) {
       autoScroll.current.scrollIntoView({
@@ -84,7 +124,14 @@ const ChatWindow = (props) => {
             />
           )}
           {selectedUserName === "" ? (
-            <h3>Loading...</h3>
+            // <h3>Loading...</h3>
+            <Spin tip="Loading...">
+              <Alert
+                message="Loading message"
+                // description="Further details about the context of this alert."
+                type="info"
+              />
+            </Spin>
           ) : (
             <h3>{selectedUserName}</h3>
           )}
@@ -110,9 +157,30 @@ const ChatWindow = (props) => {
                     alt="Avatar"
                   />
                 )}
-                {/* <img src={require("../../../assets/profilepic.jpeg")} alt=""/> */}
               </div>
               <div className={styles.otherMsgText}>{msg.textMessage}</div>
+            </div>
+          )
+        )}
+        {directMessages.map((message) =>
+          message.sender === _id ? (
+            <div className={styles.myMessage}>{message.chatText}</div>
+          ) : (
+            <div className={styles.othersMessage}>
+              <div className={styles.msgAvi}>
+                {selectedUserAvatar === undefined ? (
+                  <img
+                    src={require("../../../assets/profilepic.jpeg")}
+                    alt="Avatar"
+                  />
+                ) : (
+                  <img
+                    src={`data:image/jpeg;base64,${selectedUserAvatar}`}
+                    alt="Avatar"
+                  />
+                )}
+              </div>
+              <div className={styles.otherMsgText}>{message.chatText}</div>
             </div>
           )
         )}
@@ -137,10 +205,13 @@ const ChatWindow = (props) => {
 const mapStateToPros = (state) => ({
   psychBasicProfile: state.psychProfile.psychBasicProfile,
   messageTexts: state.message.messageTexts,
+  recivedTxtMessage: state.videoCall.recivedTxtMessage,
 });
 
 export default connect(mapStateToPros, {
   loadPsychBasicProfile,
   sendTextMessage,
   getMessages,
+  saveMessage,
+  reciveTextMessage,
 })(ChatWindow);

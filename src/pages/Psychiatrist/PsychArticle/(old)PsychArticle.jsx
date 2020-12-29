@@ -40,7 +40,7 @@ const PsychArticle = () => {
       setArticle({ title: "", body: "" });
     }
     // eslint-disable-next-line
-  }, [articleContext, current]);
+  }, [current]);
   // i have to check articleContext in the dependency array check the useEffect hook
 
   const onChangeTitle = (e) => {

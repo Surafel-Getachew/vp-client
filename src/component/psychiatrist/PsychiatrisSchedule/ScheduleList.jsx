@@ -43,7 +43,7 @@ const ScheduleList = (props) => {
     addSchedule(formData);
   };
   const onDelete = (id) => {
-    console.log(id,"ddde");
+    console.log(id, "ddde");
     // const info = {
     //   id: e.target.value,
     //   date: theDate,
@@ -178,14 +178,14 @@ const ScheduleList = (props) => {
           <div className={styles.todaysSchedule}>
             <Timeline className={styles.tl}>
               {todaysSchedule.map((schedule) => (
-                  <Timeline.Item>
-                    <span>Start Time </span>
-                    <span> </span>
-                    {getTimeAMPMFormat(new Date(schedule.start))}
-                    <span> </span>-<span> </span>
-                    <span>End Time </span>
-                    {getTimeAMPMFormat(new Date(schedule.end))}
-                  </Timeline.Item>
+                <Timeline.Item>
+                  <span>Start Time </span>
+                  <span> </span>
+                  {getTimeAMPMFormat(new Date(schedule.start))}
+                  <span> </span>-<span> </span>
+                  <span>End Time </span>
+                  {getTimeAMPMFormat(new Date(schedule.end))}
+                </Timeline.Item>
               ))}
             </Timeline>
           </div>

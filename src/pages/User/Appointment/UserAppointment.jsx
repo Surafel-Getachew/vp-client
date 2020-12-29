@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Tabs } from "antd";
-import UserPage from "../../../component/Page/User/UserPage";
+import PsychScheduleDisplay from "../../../component/User/UserApptForm/PsychScheduleDisplay";
+import UserPage from "../../../component/User/UserApptForm/PsychScheduleDisplay";
 import UserApptForm from "../../../component/User/UserApptForm/UserApptForm";
 import Layout from "../Layout/Layout";
+import styles from "./userAppt.module.css";
 const { TabPane } = Tabs;
 
 const UserAppointment = (props) => {
@@ -13,13 +15,14 @@ const UserAppointment = (props) => {
   let psychId = props.location.state.id;
   return (
     <Layout>
-      <div>
+      <div className={styles.userApptCnt}>
         <Tabs
           defaultActiveKey="monday"
           centered
           tabBarGutter="1"
           tabPosition="top"
           onChange={callback}
+          className = {styles.scheduleTabs}
         >
           <TabPane tab="Monday" key="monday">
             <UserApptForm theDate={currentTab} psychId={psychId} />
@@ -43,6 +46,9 @@ const UserAppointment = (props) => {
             <UserApptForm theDate={currentTab} psychId={psychId} />
           </TabPane>
         </Tabs>
+        {/* <div className={styles.psychPsychedule}>
+          <PsychScheduleDisplay date={currentTab} psychId={psychId} />
+        </div> */}
       </div>
     </Layout>
   );

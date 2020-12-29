@@ -8,7 +8,7 @@
   overflow-y: auto;
   flex-basis: 25%;
   /* background-image: url("../../../assets/chatbackground.jpg") */
-  /* background-color: #703bda66; */
+  background-color: #703bda66;
   background-image: url("../../../assets/chatbackground.jpg")no-repeat left top, linear-gradient(#eb01a5, #d13531)r-gradient(red, yellow, blue);
   /* background-position: center;
   background-repeat: no-repeat; */
@@ -28,6 +28,7 @@
 .textChat h3 {
   color: #fff;
 }
+
 
 .messageInput {
   position: relative;

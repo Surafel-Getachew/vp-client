@@ -138,7 +138,7 @@ const Apps = () => {
                   />
                   <PsychPrivateRoute
                     exact
-                    path="/vp/psychiatrist/message"
+                    path="/vp/psychiatrist/message/:userId"
                     component={PsychMessage}
                   />
                   {/* <Route exact path ="/vp/try" component = {Try} /> */}

@@ -1,0 +1,16 @@
+.userApptFormCnt {
+  display: flex;
+  min-height: 60vh;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scheduleDisplay {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.apptForm {
+  flex-basis: 50%;
+}

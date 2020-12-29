@@ -1,0 +1,46 @@
+.articleItemCnt {
+  /* border: 2px solid red; */
+  width: 450px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.articleImg {
+  flex-basis: 40%;
+  display: flex;
+  align-items:center;
+}
+
+.articleContentCnt {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.articleImg img {
+  width: 150px;
+  height: 100px;
+}
+
+.btnCnt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.articleBtn {
+  background: none;
+  border-radius: 50px;
+  padding: 3px 10px;
+  outline:none;
+  border-color: none;
+}
+
+.articleUpdateBtn {
+    border-color: indigo;
+}
+
+.articleDeleteBtn{
+    border-color:rgb(158, 9, 9)
+}

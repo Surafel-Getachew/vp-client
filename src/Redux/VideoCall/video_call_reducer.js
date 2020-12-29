@@ -13,7 +13,7 @@ const initialState = {
     msg:"",
     reciver:"",
     caller:"",
-    recivedTxtMessage:"",
+    recivedTxtMessage:null,
     stream:null,
     userVideo:null,
     partnerStream:null,

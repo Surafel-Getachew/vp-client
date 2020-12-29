@@ -5,6 +5,8 @@ import UserPage from "../../../component/Page/User/UserPage";
 import Layout from "../Layout/Layout";
 import { reciveCall } from "../../../Redux/VideoCall/video_call_action";
 import AuthContext from "../../../context/auth/authContext";
+import styles from "./userDashboard.module.css"
+
 const UserDashBoard = (props) => {
   const authContext = useContext(AuthContext);
   const { loadUser, user } = authContext;
@@ -36,8 +38,8 @@ const UserDashBoard = (props) => {
   // }
   return (
     // <Layout>
-    <UserPage>
-      <div>
+    <Layout>
+      <div className = {styles.dashBoardd}>
         <h2>User Dashboard</h2>
         {/* {recivingCall ? (
           <div>
@@ -47,7 +49,7 @@ const UserDashBoard = (props) => {
           </div>
         ) : null} */}
       </div>
-      </UserPage>
+    </Layout>
     // </Layout>
   );
 };

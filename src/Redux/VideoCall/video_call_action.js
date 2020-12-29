@@ -36,10 +36,9 @@ export const sendTextMessage = (sender,reciver,message) => (dispatch) => {
 }
 
 export const reciveTextMessage = () => (dispatch) => {
-    socket.on("msg", msg => {
-        console.log("message recived");
-        console.log(msg);
-        dispatch({type:RECIVE_TXT_MESSAGE,payload:msg})
+    socket.on("msg", (msg,sender) => {
+        console.log("NewMessage",msg)
+        dispatch({type:RECIVE_TXT_MESSAGE,payload:{message:msg,sender:sender}})
     })
 }
 
