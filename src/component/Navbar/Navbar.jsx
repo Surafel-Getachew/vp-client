@@ -14,8 +14,8 @@ const Navbar = () => {
     setActive(pathname);
   }, [pathname]);
   useEffect(() => {
-    loadPsychiatrist()
-  },[]);
+    loadPsychiatrist();
+  }, []);
   const navItems = [
     {
       name: "Dashboard",
@@ -38,7 +38,7 @@ const Navbar = () => {
     {
       name: "Group Video Chat",
       icon: "fas fa-users",
-      to: "/vp/psychiatirst/group-therapy",
+      to: "/vp/psychiatrist/groupvideochat",
       key: 3,
     },
     {

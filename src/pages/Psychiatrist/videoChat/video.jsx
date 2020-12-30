@@ -114,7 +114,7 @@ const Video = (props) => {
   if (callDeclined) {
     setTimeout(() => {
       // return <Redirect to="/vp/psychiatrist/dashboard" />;
-      props.history.push("/vp/psychiatrist/dashboard/")
+      props.history.push("/vp/psychiatrist/dashboard/");
     }, 5000);
   }
   useEffect(() => {

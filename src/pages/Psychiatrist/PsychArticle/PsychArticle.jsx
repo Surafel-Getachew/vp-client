@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import Layout from "../../../component/Layout/Layout";
 import styles from "./psych-article.module.css";
 import ReactQuill from "react-quill";
+import { Tag, Select } from "antd";
 import ArticleContext from "../../../context/article/articleContext";
 import ArticleItems from "./ArticleItems";
 const PsychArticle = (props) => {
@@ -56,6 +57,25 @@ const PsychArticle = (props) => {
     }
     // console.log("submit button");
   };
+  const articleTag = [];
+  const tagChange = value => {
+    for (let i= 0; i<=5; i++){
+      articleTag.push(value)
+    }
+  }
+  const tagRender = (prop) => {
+    const { label, value, closable, onClose } = prop;
+    return (
+      <Tag
+        color={value}
+        closable={closable}
+        onClose={onClose}
+        style={{ marginRight: 3 }}
+      >
+        {label}
+      </Tag>
+    );
+  };
   return (
     <Layout>
       <div className={styles.articleCnt}>
@@ -78,7 +98,36 @@ const PsychArticle = (props) => {
                 Blog Post
               </label>{" "}
               <br />
-              <ReactQuill className={styles.richText} onChange={onBodyChange} value = {body}/>
+              <ReactQuill
+                className={styles.richText}
+                onChange={onBodyChange}
+                value={body}
+              />
+              <div className={styles.articleTags}>
+                <label htmlFor="tags" className={styles.tagsSpan}>
+                  Tags
+                </label>
+                <br />
+                <Select
+                  mode="multiple"
+                  showArrow
+                  tagRender={tagRender}
+                  defaultValue={["gold", "cyan"]}
+                  style={{ width: "100%" }}
+                  // onChange = {tagChange}
+                >
+                  {articleTag}
+                </Select>
+                {/* <Select
+                  mode="tags"
+                  // mode="multiple"
+                  // showArrow
+                  // tagRender={tagRender}
+                  color = "gold"
+                  tokenSeparators={[","]}
+                  style={{ width: "80%" }}
+                ></Select> */}
+              </div>
               <div>
                 <input
                   className={styles.submitBtn}

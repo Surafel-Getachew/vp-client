@@ -31,13 +31,14 @@ import PsychiatristProfileForm from "./pages/Psychiatrist/PsychProfile/Psychiatr
 import PsychSocial from "./pages/Psychiatrist/PsychSocial/PsychSocial";
 import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychSchedule";
 import PsychMessage from "./pages/Psychiatrist/PsychMessage/PsychMessage";
-// import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychAppointment";
+import VideoCall from "./pages/Psychiatrist/videoChat/Video";
 import PsychVideoChat from "./pages/Psychiatrist/PsychVideoChat/PsychVideoChat";
 import PsychDetailProfile from "./pages/Psychiatrist/PsychProfile/PsychDetailProfile";
+import PsychGroupVideoChat from "./pages/Psychiatrist/PsychGroupVideoChat/PsychGroupVideoChat"
+// import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychAppointment";
 // import VideoChatRoom from "./pages/Psychiatrist/PsychVideoChat/VideoChatRoom";
 
 // video chats that are not yet decided and completed.
-import VideoCall from "./pages/Psychiatrist/videoChat/Video";
 
 import ForgotPasswordEmail from "./component/ForgotPasswordEmail/ForgotPasswordEmail";
 import ResetPassword from "./component/ResetPassword/ResetPassword";
@@ -130,6 +131,11 @@ const Apps = () => {
                     exact
                     path="/vp/psychiatrist/videochat"
                     component={PsychVideoChat}
+                  />
+                  <PsychPrivateRoute
+                    exact
+                    path="/vp/psychiatrist/groupvideochat"
+                    component={PsychGroupVideoChat}
                   />
                   <PsychPrivateRoute
                     exact

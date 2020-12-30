@@ -9,7 +9,7 @@
   flex-basis: 25%;
   /* background-image: url("../../../assets/chatbackground.jpg") */
   background-color: #703bda66;
-  background-image: url("../../../assets/chatbackground.jpg")no-repeat left top, linear-gradient(#eb01a5, #d13531)r-gradient(red, yellow, blue);
+  /* background-image: url("../../../assets/chatbackground.jpg")no-repeat left top, linear-gradient(#eb01a5, #d13531)r-gradient(red, yellow, blue); */
   /* background-position: center;
   background-repeat: no-repeat; */
   display: flex;
@@ -28,7 +28,6 @@
 .textChat h3 {
   color: #fff;
 }
-
 
 .messageInput {
   position: relative;
@@ -134,11 +133,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* width: 100%;
-  height: 100%; */
   width: 90%;
   height: 100%;
   margin: 0 auto;
+  /* width: 90%;
+  height: 100%; */
   /* background-color: #ffffff00; */
   /* color: #6f3ad9; */
 }
