@@ -8,50 +8,34 @@
   height: 100%;
   margin: 0 auto;
   padding: 10px 0;
-  /* border:2px solid red; */
+  display: flex;
+  /* border: 2px solid red; */
 }
 .roomFormCnt {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 2px solid red; */
-  width: 300px;
   margin-left: 20px;
+  flex-basis: 40%;
+  /* width: 300px; */
+  /* border: 2px solid red; */
 }
 .avatarInput {
   display: flex;
   justify-content: center;
 }
 
-
 .createBtn {
   margin-left: 76%;
 }
 
-.roomPhoto::-webkit-file-upload-button {
-  /* border: 4px solid red; */
-  /* background:none;
-  border:1px dashed #703bda;
-  height: 90px;
-  outline: none;
-  content: none; */
-  visibility: hidden;
-  width: 90px;
+.roomListCnt {
+  /* border: 3px solid red; */
+  flex-basis: 60%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.roomPhoto::before {
-  content: "+";
-  display: inline-block;
-  background: linear-gradient(top, #f9f9f9, #e3e3e3);
-  border: 1px dashed #703bda;
-  height: 90px;
-  width: 90px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  outline: none;
-  white-space: nowrap;
-  cursor: pointer;
-  text-shadow: 1px 1px #fff;
-  text-align: center;
-}
+
+

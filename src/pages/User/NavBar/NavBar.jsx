@@ -67,12 +67,12 @@ const NavBar = (props) => {
       to: "/vp/user/profile-setting",
       key: 6,
     },
-    // {
-    //   name: "Change Password",
-    //   icon: "fas fa-lock",
-    //   to: "/vp/psychiatrist/change-password",
-    //   key: 7,
-    // },
+    {
+      name: "Change Password",
+      icon: "fas fa-lock",
+      to: "/vp/psychiatrist/change-password",
+      key: 7,
+    },
   ];
   return (
     <div className={styles.sideNavCnt}>

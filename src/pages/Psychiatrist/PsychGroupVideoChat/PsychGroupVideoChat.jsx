@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { createRoom } from "../../../Redux/GroupVideoChat/group-video-chat-action";
+import {
+  createRoom,
+  getMyRooms,
+} from "../../../Redux/GroupVideoChat/group-video-chat-action";
 import { Upload, message, Form, Input, TimePicker, Select, Button } from "antd";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import RoomItem from "./RoomItem";
 import Layout from "../../../component/Layout/Layout";
 import styles from "./groupvideo.module.css";
 const { RangePicker } = TimePicker;
 const { TextArea } = Input;
 const PsychGroupVideoChat = (props) => {
-  const { createRoom } = props;
+  const { createRoom, getMyRooms, psychRooms,refresh} = props;
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
   const [groupPhoto, setGroupPhoto] = useState(null);
+  useEffect(() => {
+    getMyRooms();
+  }, []);
+  useEffect(() => {
+    getMyRooms();
+  }, [refresh]);
   const handleChange = (info) => {
     if (info.file.status === "uploading") {
       //   this.setState({ loading: true });
@@ -157,14 +167,23 @@ const PsychGroupVideoChat = (props) => {
               </Form.Item>
             </Form>
           </div>
+          <div className={styles.roomListCnt}>
+            {psychRooms.map((room) => (
+              <RoomItem rooms={room} key={room._id} />
+            ))}
+          </div>
         </div>
       </div>
     </Layout>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  psychRooms: state.groupVideoChat.psychRooms,
+  refresh: state.groupVideoChat.refresh,
+});
 
 export default connect(mapStateToProps, {
   createRoom,
+  getMyRooms,
 })(PsychGroupVideoChat);

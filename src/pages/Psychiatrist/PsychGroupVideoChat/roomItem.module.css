@@ -1,0 +1,53 @@
+.roomCard {
+  width: 250px;
+  height: 250px;
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+}
+.roomAvi {
+  align-self: center;
+}
+.roomAvi img {
+  width: 120px;
+  height: 120px;
+}
+
+.roomContent {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  /* border: 2px solid red; */
+}
+
+.roomTitle {
+  flex-basis: 20%;
+}
+
+.roomValue {
+  flex-basis: 80%;
+}
+
+.roomBtnCnt {
+  display: flex;
+}
+
+.roomCrudBtn {
+  /* border: 1px solid blue; */
+  flex-basis: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.deleteRoomBtn {
+  cursor: pointer;
+}
+.editRoomBtn {
+  cursor: pointer;
+}
+.joinBtnCnt {
+  flex-basis: 80%;
+  display: flex;
+  justify-content: flex-end;
+}

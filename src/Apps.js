@@ -22,6 +22,7 @@ import PsychiatristList from "./pages/User/List_of_psychiatrist/PsychiatristList
 import Signup from "./pages/User/Auth/NewAuth/SignUp";
 import Signin from "./pages/User/Auth/NewAuth/SignIn";
 import UserAppointment from "./pages/User/Appointment/UserAppointment";
+import UserProfileForm from "./pages/User/ProfileSetting/UserProfileForm"
 // psych pages
 import PsychiatristDashboard from "./pages/Psychiatrist/PsychDashboard/PsychDashboard";
 import PsychSignin from "./pages/Psychiatrist/PsychAuth/NewAuth/SignIn";
@@ -86,6 +87,11 @@ const Apps = () => {
                     exact
                     path="/vp/user/psychiatrists"
                     component={PsychiatristList}
+                  />
+                  <UserPrivateRoute
+                    exact
+                    path="/vp/user/profile-setting"
+                    component={UserProfileForm}
                   />
                   <Route 
                     exact 
