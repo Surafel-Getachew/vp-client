@@ -19,6 +19,8 @@ export const storeClientInfo = (id) => (dispatch) => {
 }
 
 export const callUser = (id,caller) => (dispatch) => {
+    console.log("User To Call",id);
+    console.log("Caller",caller);
     socket.emit("callUser",id,caller);
     dispatch({type:MAKE_CALL})
 }

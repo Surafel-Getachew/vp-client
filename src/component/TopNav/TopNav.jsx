@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { withRouter} from "react-router-dom";
 import { storeClientInfo } from "../../Redux/VideoCall/video_call_action";
 import AuthContext from "../../context/auth/authContext";
 import { Input, Menu, Dropdown } from "antd";
@@ -13,7 +13,7 @@ const TopNav = (props) => {
   const { storeClientInfo, getPsychAvatar, avatar } = props;
   const authContext = useContext(AuthContext);
   const { loadPsychiatrist, user, psychiatristLogout } = authContext;
-  const { redirect, setRedirect } = useState(false);
+  // const { redirect, setRedirect } = useState(false);
   const { name, _id } = user;
   useEffect(() => {
     loadPsychiatrist();
@@ -33,23 +33,15 @@ const TopNav = (props) => {
   // },[])
 
   const onLogout = () => {
+    // setRedirect(true);
     psychiatristLogout();
-    setRedirect(true);
+    props.history.push("/vp/psychiatrist/signin")
   };
-  if (redirect) {
-    return <Redirect to="/vp/psychiatrist/signin" />;
-  }
+  // if (redirect) {
+  //   return <Redirect to="/vp/psychiatrist/signin" />;
+  // }
   const menu = (
     <Menu>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="http://www.taobao.com/"
-        >
-          Change Password
-        </a>
-      </Menu.Item>
       <Menu.Item danger onClick={onLogout}>
         Logout
       </Menu.Item>
@@ -99,7 +91,7 @@ const mapStateToProps = (state) => ({
   avatar: state.psychProfile.avatar,
 });
 
-export default connect(mapStateToProps, {
+export default withRouter(connect(mapStateToProps, {
   storeClientInfo,
   getPsychAvatar,
-})(TopNav);
+})(TopNav));

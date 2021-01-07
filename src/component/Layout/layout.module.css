@@ -1,7 +1,8 @@
 .Container {
   display: grid;
   grid-template-columns: 1fr 5fr;
-  background-color: #e1e1e9;
+  /* background-color: #e1e1e9; */
+  background-color: #fff;
 }
 .appContainer {
 }

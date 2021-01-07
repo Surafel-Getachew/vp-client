@@ -69,7 +69,7 @@ const Navbar = () => {
 
   return (
     <div className={styles.navContainer}>
-      <h2 className={styles.logo}>Logo</h2>
+      <h2 className={styles.logo}>Virtual Psychiatrist</h2>
       <div className={styles.reg}>Register Patient +</div>
       <div className={styles.navItemContainer}>
         {navItems.map((item) => (

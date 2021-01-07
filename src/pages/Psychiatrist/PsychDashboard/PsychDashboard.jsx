@@ -1,7 +1,7 @@
-import React, { useEffect, useState,useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import AuthContext from "../../../context/auth/authContext";
 import { connect } from "react-redux";
-import { getPsychAppointment } from "../../../Redux/PsychAppointment/psych_appointment_action";
+import { getAllPsychAppointment } from "../../../Redux/PsychAppointment/psych_appointment_action";
 import { Liquid } from "@ant-design/charts";
 import {
   AreaChart,
@@ -19,20 +19,20 @@ import FigureItem from "../../../component/psychiatrist/PsychDashboard/FigureIte
 import styles from "./psychDashboard.module.css";
 const PsychDashboard = (props) => {
   const authContext = useContext(AuthContext);
-  const {loadPsychiatrist,user} = authContext
-  const {name} = user
-  const { getPsychAppointment, psychAppointment } = props;
+  const { loadPsychiatrist, user } = authContext;
+  const { name } = user;
+  const { getAllPsychAppointment, allPsychAppointment } = props;
   const [appointment, setAppointment] = useState([]);
   useEffect(() => {
     loadPsychiatrist();
-  },[])
+  }, []);
   useEffect(() => {
-    if (!psychAppointment) {
-      getPsychAppointment();
+    if (!allPsychAppointment) {
+      getAllPsychAppointment();
     } else {
-      setAppointment(psychAppointment);
+      setAppointment(allPsychAppointment);
     }
-  }, [psychAppointment]);
+  }, [allPsychAppointment]);
   const Days = [
     {
       name: "monday",
@@ -215,7 +215,7 @@ const PsychDashboard = (props) => {
                   </linearGradient>
                 </defs>
                 <XAxis dataKey="shortHand" />
-                <YAxis type="number" allowDecimals = "false" />
+                <YAxis type="number" allowDecimals="false" />
                 {/* <CartesianGrid strokeDasharray="3 3" /> */}
                 <Tooltip />
                 <Area
@@ -244,9 +244,9 @@ const PsychDashboard = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  psychAppointment: state.psychAppointment.psychAppointment,
+  allPsychAppointment: state.psychAppointment.allPsychAppointment,
 });
 
 export default connect(mapStateToProps, {
-  getPsychAppointment,
+  getAllPsychAppointment,
 })(PsychDashboard);
