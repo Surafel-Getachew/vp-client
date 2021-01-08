@@ -51,13 +51,13 @@ const TopNav = (props) => {
   return (
     <div className={styles.topNavContainer}>
       <div className={styles.search}>
-        <Search
+        {/* <Search
           // style = {{width:"600px"}}
           className={styles.searchInput}
           placeholder="input search text"
           onSearch={(value) => console.log(value)}
           enterButton
-        />
+        /> */}
       </div>
       <div className={styles.profileContainer}>
         <i className="fas fa-bell"></i>

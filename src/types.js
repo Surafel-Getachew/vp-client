@@ -28,6 +28,7 @@ export const UPDATE_ARTICLE = "UPDATE_ARTICLE";
 export const ARTICLE_ERROR = "ARTICLE_ERROR";
 export const CLEAR_ARTICLE = "CLEAR_ARTICLE";
 export const CLEAR_CURRENT = "CLEAR_CURRENT";
+export const SEARCH_PSYCH_ARTICLE = "SEARCH_PSYCH_ARTICLE"
 
 // For Rooms
 export const CREATE_ROOM = "CREATE_ROOM";

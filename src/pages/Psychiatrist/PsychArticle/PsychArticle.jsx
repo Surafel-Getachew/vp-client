@@ -2,14 +2,16 @@ import React, { useState, useContext, useEffect } from "react";
 import Layout from "../../../component/Layout/Layout";
 import styles from "./psych-article.module.css";
 import ReactQuill from "react-quill";
-import { Tag, Select } from "antd";
+import { Tag, Select, Input } from "antd";
 import ArticleContext from "../../../context/article/articleContext";
 import ArticleItems from "./ArticleItems";
+const { Search } = Input;
 const PsychArticle = (props) => {
   const articleContext = useContext(ArticleContext);
   const {
     addArticle,
     loadPsychiatristArticles,
+    psychSearchArticle,
     articles,
     current,
     clearCurrent,
@@ -17,6 +19,7 @@ const PsychArticle = (props) => {
   } = articleContext;
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [searchValue,setSearchValue] = useState("");
   const [btnName, setBtnName] = useState("Submit");
   useEffect(() => {
     loadPsychiatristArticles();
@@ -28,6 +31,11 @@ const PsychArticle = (props) => {
       setBtnName("Update");
     }
   }, [current]);
+  useEffect(() => {
+    if (searchValue === "") {
+      loadPsychiatristArticles();
+    }
+  },[searchValue])
   const onTitleChange = (e) => {
     setTitle(e.target.value);
   };
@@ -57,12 +65,22 @@ const PsychArticle = (props) => {
     }
     // console.log("submit button");
   };
-  const articleTag = [];
-  const tagChange = value => {
-    for (let i= 0; i<=5; i++){
-      articleTag.push(value)
-    }
+  const onArticleSearch = () => {
+    psychSearchArticle({
+      search:searchValue
+    })
+  };
+  const onSearchChange = (e) => {
+    setSearchValue(e.target.value)
+    psychSearchArticle({search:e.target.value})
   }
+
+  const articleTag = [];
+  const tagChange = (value) => {
+    for (let i = 0; i <= 5; i++) {
+      articleTag.push(value);
+    }
+  };
   const tagRender = (prop) => {
     const { label, value, closable, onClose } = prop;
     return (
@@ -141,6 +159,15 @@ const PsychArticle = (props) => {
         </div>
         {/* <Carousel> */}
         <div className={styles.articleList}>
+          <Search
+            style={{ width: "50%" }}
+            placeholder="input search text"
+            value = {searchValue}
+            onChange = {onSearchChange}
+            onSearch = {onArticleSearch}
+            required
+            enterButton
+          />
           {articles.map((article) => (
             <div key={article._id}>
               <ArticleItems article={article} />

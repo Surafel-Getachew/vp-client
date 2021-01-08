@@ -7,6 +7,7 @@ import {
     DELETE_ARTICLE,
     SET_CURRENT,
     CLEAR_CURRENT,
+    SEARCH_PSYCH_ARTICLE,
     PROFILE
 }from "../../types";
 
@@ -21,9 +22,19 @@ export default (state,action) => {
                 loading:false,
                 error:null
             }
+        
         case LOAD_ARTICLE:{
             return {
                 ...state,
+                articles:action.payload,
+                loading:false,
+                error:null
+            }
+        }
+        case SEARCH_PSYCH_ARTICLE:{
+            return {
+                ...state,
+                articles:[],
                 articles:action.payload,
                 loading:false,
                 error:null

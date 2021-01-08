@@ -14,6 +14,7 @@ import {
     CLEAR_ARTICLE,
     ARTICLE_ERROR,
     CLEAR_CURRENT,
+    SEARCH_PSYCH_ARTICLE,
     PROFILE
 }from "../../types";
 
@@ -123,6 +124,22 @@ const ArticleState = (props) => {
         dispatch({type:CLEAR_CURRENT})
     }
 
+    const psychSearchArticle = async(formData) => {
+        // console.log("search article",formData);
+
+        const config = {
+            headers:{
+                "Content-Type":"application/json"
+            }
+        }
+        try {
+            const res = await axios.post("/vp/article/psychiatrist/search",formData,config)
+            dispatch({type:SEARCH_PSYCH_ARTICLE,payload:res.data})
+        } catch (error) {
+            
+        }
+    }
+
     return (
         <ArticleContext.Provider value = {{
             articles:state.articles,
@@ -140,7 +157,8 @@ const ArticleState = (props) => {
             updateArticle,
             clearCurrent,
             profile:state.profile,
-            profilePicture
+            profilePicture,
+            psychSearchArticle
         }}>
             {props.children}
         </ArticleContext.Provider>
