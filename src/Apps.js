@@ -23,6 +23,7 @@ import Signup from "./pages/User/Auth/NewAuth/SignUp";
 import Signin from "./pages/User/Auth/NewAuth/SignIn";
 import UserAppointment from "./pages/User/Appointment/UserAppointment";
 import UserProfileForm from "./pages/User/ProfileSetting/UserProfileForm"
+import UserArticle from "./pages/User/UserArticle/UserArticle"
 // psych pages
 import PsychiatristDashboard from "./pages/Psychiatrist/PsychDashboard/PsychDashboard";
 import PsychSignin from "./pages/Psychiatrist/PsychAuth/NewAuth/SignIn";
@@ -38,6 +39,9 @@ import PsychDetailProfile from "./pages/Psychiatrist/PsychProfile/PsychDetailPro
 import PsychGroupVideoChat from "./pages/Psychiatrist/PsychGroupVideoChat/PsychGroupVideoChat"
 // import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychAppointment";
 // import VideoChatRoom from "./pages/Psychiatrist/PsychVideoChat/VideoChatRoom";
+
+// Public Page
+import PublicArticle from "./pages/PublicArticle/PublicArticle";
 
 // video chats that are not yet decided and completed.
 
@@ -62,10 +66,11 @@ const Apps = () => {
               <BrowserRouter>
                 <Switch>
                   <Route exact path="/" component={Landing} />
+                  <Route exact path="/vp/article/:articleId" component={PublicArticle} />
                   {/* <Route exact path = "/videochat" component = {VideoTrial}/> */}
                   <Route exact path="/forgot" component={ForgotPasswordEmail} />
-                  <Route exact path="/incoming" component={IncomingCall} />
-                  <Route exact path="/userlayout" component={UserLayout} />
+                  {/* <Route exact path="/incoming" component={IncomingCall} />
+                  <Route exact path="/userlayout" component={UserLayout} /> */}
                   <Route
                     exact
                     path="/reset-password"
@@ -87,6 +92,11 @@ const Apps = () => {
                     exact
                     path="/vp/user/psychiatrists"
                     component={PsychiatristList}
+                  />
+                  <UserPrivateRoute
+                    exact
+                    path="/vp/user/article"
+                    component={UserArticle}
                   />
                   <UserPrivateRoute
                     exact

@@ -40,13 +40,13 @@ const NavBar = (props) => {
     {
       name: "Article",
       icon: "fas fa-newspaper",
-      to: "/vp/psychiatrist/article",
+      to: "/vp/user/article",
       key: 4,
     },
     {
       name: "Message",
       icon: "fas fa-envelope",
-      to: "/vp/psychiatrist/message",
+      to: "/vp/user/message",
       key: 8,
     },
     {
@@ -58,7 +58,7 @@ const NavBar = (props) => {
     // {
     //   name: "VideoChat",
     //   icon: "fas fa-video",
-    //   to: "/vp/psychiatrist/videochat",
+    //   to: "/vp/user/videochat",
     //   key: 5,
     // },
     {
@@ -70,7 +70,7 @@ const NavBar = (props) => {
     {
       name: "Change Password",
       icon: "fas fa-lock",
-      to: "/vp/psychiatrist/change-password",
+      to: "/vp/user/change-password",
       key: 7,
     },
   ];

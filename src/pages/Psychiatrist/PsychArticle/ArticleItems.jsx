@@ -4,7 +4,7 @@ import ShowMoreText from "react-show-more-text";
 import styles from "./articleItems.module.css";
 import { Button } from "antd";
 const ArticleItems = ({ article }) => {
-  const { _id, body, title, owner } = article;
+  const { _id, body, title,articleTag,owner } = article;
   const articleContext = useContext(ArticleContext);
   const { deleteArticle, setCurrent } = articleContext;
   const onDelete = () => {
@@ -16,6 +16,7 @@ const ArticleItems = ({ article }) => {
       _id: _id,
       title: title,
       body: body,
+      articleTag:articleTag
     };
     setCurrent(article);
   };

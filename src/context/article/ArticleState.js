@@ -15,6 +15,9 @@ import {
     ARTICLE_ERROR,
     CLEAR_CURRENT,
     SEARCH_PSYCH_ARTICLE,
+    SEARCH_ALL_ARTICLE,
+    GET_ARTICLE_BY_CATEGORY,
+    GET_ARTICLE_BY_ID,
     PROFILE
 }from "../../types";
 
@@ -25,6 +28,9 @@ const ArticleState = (props) => {
     const initialState = {
 
         articles:[],
+        userSearchedArticles:[],
+        article:null,
+        articlesByCategory:[],
         owner:null,
         current:null,
         filtered:null,
@@ -126,7 +132,6 @@ const ArticleState = (props) => {
 
     const psychSearchArticle = async(formData) => {
         // console.log("search article",formData);
-
         const config = {
             headers:{
                 "Content-Type":"application/json"
@@ -140,9 +145,46 @@ const ArticleState = (props) => {
         }
     }
 
+    const searchAllArticle = async (formData) => {
+        const config = {
+            headers:{
+                "Content-Type":"application/json"
+            }
+        }
+        try {
+            const res = await axios.post("/vp/article/search/all",formData,config)
+            dispatch({type:SEARCH_ALL_ARTICLE,payload:res.data});
+
+        } catch (error) {
+            
+        }
+    }
+
+    const getArticleByCategory = async (category) => {
+        // console.log("get Article of",category);
+        try {
+            const res = await axios.get(`/vp/article/category/${category}`);
+            dispatch({type:GET_ARTICLE_BY_CATEGORY,payload:res.data})
+        } catch (error) {
+            
+        }
+    }
+
+    const getArticleById = async(id) => {
+        try {
+            const res = await axios.get(`/vp/article/findById/${id}`);
+            dispatch({type:GET_ARTICLE_BY_ID,payload:res.data.article});
+        } catch (error) {
+            
+        }
+    }
+
     return (
         <ArticleContext.Provider value = {{
             articles:state.articles,
+            userSearchedArticles:state.userSearchedArticles,
+            article:state.article,
+            articlesByCategory:state.articlesByCategory,
             owner:state.owner,
             current:state.current,
             filtered:state.filtered,
@@ -156,9 +198,12 @@ const ArticleState = (props) => {
             loadPsychiatristArticles,
             updateArticle,
             clearCurrent,
-            profile:state.profile,
             profilePicture,
-            psychSearchArticle
+            psychSearchArticle,
+            searchAllArticle,
+            getArticleByCategory,
+            getArticleById
+            // profile:state.profile,
         }}>
             {props.children}
         </ArticleContext.Provider>

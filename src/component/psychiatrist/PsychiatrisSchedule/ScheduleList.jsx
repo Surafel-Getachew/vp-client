@@ -178,7 +178,7 @@ const ScheduleList = (props) => {
           <div className={styles.todaysSchedule}>
             <Timeline className={styles.tl}>
               {todaysSchedule.map((schedule) => (
-                <Timeline.Item>
+                <Timeline.Item key = {schedule._id}>
                   <span>Start Time </span>
                   <span> </span>
                   {getTimeAMPMFormat(new Date(schedule.start))}

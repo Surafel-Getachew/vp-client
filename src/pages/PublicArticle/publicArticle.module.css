@@ -1,0 +1,85 @@
+.articleCnt {
+  display: grid;
+  grid-template-columns: 15vw 85vw;
+  /* border:2px solid red; */
+}
+
+.writerProfileCnt {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.writerProfile {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.writerProfile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.articleContentCnt {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.articleContentCenter {
+  width: 90%;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.articleHeader h3 {
+  font-family: soleil-bold;
+  font-size: 1.125rem;
+  line-height: 44px;
+  color: #ff596c;
+  text-transform: uppercase;
+  letter-spacing: -0.75px;
+  margin-bottom: 0;
+}
+
+.articleHeader h1 {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 2.125rem;
+  line-height: 50px;
+  color: #302a3d;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.articleHeader p {
+  margin: 0;
+}
+.articleImage {
+  margin: 25px 0;
+}
+
+.articleImage img {
+  width: 100%;
+  vertical-align: middle;
+  border-style: none;
+}
+
+.articleBody {
+  letter-spacing: -0.003em;
+  line-height: 32px;
+  font-size: 21px;
+  font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-style: normal;
+  color: rgba(41, 41, 41, 1);
+  word-break: break-word;
+  font-weight: 400;
+  margin:0 auto;
+  /* border:2px solid red; */
+  width:80%;
+}

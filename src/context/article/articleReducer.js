@@ -8,6 +8,9 @@ import {
     SET_CURRENT,
     CLEAR_CURRENT,
     SEARCH_PSYCH_ARTICLE,
+    SEARCH_ALL_ARTICLE,
+    GET_ARTICLE_BY_CATEGORY,
+    GET_ARTICLE_BY_ID,
     PROFILE
 }from "../../types";
 
@@ -31,6 +34,14 @@ export default (state,action) => {
                 error:null
             }
         }
+        case SEARCH_ALL_ARTICLE:
+            return {
+                ...state,
+                userSearchedArticles:[],
+                userSearchedArticles:action.payload,
+                loading:false,
+                error:null
+            }
         case SEARCH_PSYCH_ARTICLE:{
             return {
                 ...state,
@@ -44,6 +55,22 @@ export default (state,action) => {
             return{
                 ...state,
                 articles:action.payload,
+                loading:false,
+                error:null
+            }
+        }
+        case GET_ARTICLE_BY_CATEGORY:{
+            return{
+                ...state,
+                articlesByCategory:action.payload,
+                loading:false,
+                error:null
+            }
+        }
+        case GET_ARTICLE_BY_ID:{
+            return{
+                ...state,
+                article:action.payload,
                 loading:false,
                 error:null
             }

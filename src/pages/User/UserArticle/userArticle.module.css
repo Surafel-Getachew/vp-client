@@ -1,0 +1,21 @@
+.userArticleCnt {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+.userArticleTopNav {
+  /* width: 100%; */
+  background:#fff;
+  height: 60px;
+  border-bottom: 1.5px solid rgb(206, 206, 206);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.aList {
+  /* border: 1px solid red; */
+  /* width:10%; */
+}

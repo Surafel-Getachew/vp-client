@@ -2,10 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import Layout from "../../../component/Layout/Layout";
 import styles from "./psych-article.module.css";
 import ReactQuill from "react-quill";
-import { Tag, Select, Input } from "antd";
+import { Select, Input } from "antd";
 import ArticleContext from "../../../context/article/articleContext";
 import ArticleItems from "./ArticleItems";
 const { Search } = Input;
+const { Option } = Select;
 const PsychArticle = (props) => {
   const articleContext = useContext(ArticleContext);
   const {
@@ -19,7 +20,8 @@ const PsychArticle = (props) => {
   } = articleContext;
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [searchValue,setSearchValue] = useState("");
+  const [articleTag,setTag] = useState("")
+  const [searchValue, setSearchValue] = useState("");
   const [btnName, setBtnName] = useState("Submit");
   useEffect(() => {
     loadPsychiatristArticles();
@@ -28,6 +30,7 @@ const PsychArticle = (props) => {
     if (current !== null) {
       setTitle(current.title);
       setBody(current.body);
+      setTag(current.articleTag);
       setBtnName("Update");
     }
   }, [current]);
@@ -35,7 +38,7 @@ const PsychArticle = (props) => {
     if (searchValue === "") {
       loadPsychiatristArticles();
     }
-  },[searchValue])
+  }, [searchValue]);
   const onTitleChange = (e) => {
     setTitle(e.target.value);
   };
@@ -48,52 +51,39 @@ const PsychArticle = (props) => {
       addArticle({
         title: title,
         body: body,
+        articleTag:articleTag
       });
       setBody("");
       setTitle("");
+      setTag("")
     } else {
       const articlee = {
         title: title,
         body: body,
+        articleTag:articleTag
       };
       const idOfArticle = current._id;
       updateArticle(articlee, idOfArticle);
       clearCurrent();
       setBody("");
       setTitle("");
+      setTag("")
       setBtnName("Submit");
     }
     // console.log("submit button");
   };
   const onArticleSearch = () => {
     psychSearchArticle({
-      search:searchValue
-    })
+      search: searchValue,
+    });
   };
   const onSearchChange = (e) => {
-    setSearchValue(e.target.value)
-    psychSearchArticle({search:e.target.value})
+    setSearchValue(e.target.value);
+    psychSearchArticle({ search: e.target.value });
+  };
+  const onTagChange = (value) => {
+    setTag(value)
   }
-
-  const articleTag = [];
-  const tagChange = (value) => {
-    for (let i = 0; i <= 5; i++) {
-      articleTag.push(value);
-    }
-  };
-  const tagRender = (prop) => {
-    const { label, value, closable, onClose } = prop;
-    return (
-      <Tag
-        color={value}
-        closable={closable}
-        onClose={onClose}
-        style={{ marginRight: 3 }}
-      >
-        {label}
-      </Tag>
-    );
-  };
   return (
     <Layout>
       <div className={styles.articleCnt}>
@@ -126,25 +116,29 @@ const PsychArticle = (props) => {
                   Tags
                 </label>
                 <br />
-                <Select
-                  mode="multiple"
-                  showArrow
-                  tagRender={tagRender}
-                  defaultValue={["gold", "cyan"]}
-                  style={{ width: "100%" }}
-                  // onChange = {tagChange}
-                >
-                  {articleTag}
-                </Select>
                 {/* <Select
-                  mode="tags"
-                  // mode="multiple"
-                  // showArrow
-                  // tagRender={tagRender}
-                  color = "gold"
-                  tokenSeparators={[","]}
-                  style={{ width: "80%" }}
-                ></Select> */}
+                      mode="tags"
+                      tokenSeparators={[","]}
+                      style={{ width: "80%" }}
+                    ></Select> */}
+                <Select
+                  showSearch
+                  style={{ width: 200 }}
+                  placeholder="Select a person"
+                  optionFilterProp="children"
+                  onChange={onTagChange}
+                  value = {articleTag}
+                  filterOption={(input, option) =>
+                    option.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
+                  }
+                >
+                  <Option value="Addiction">Addiction</Option>
+                  <Option value="Family">Family</Option>
+                  <Option value="Social">Social</Option>
+                  <Option value="Other">Other</Option>
+                </Select>
               </div>
               <div>
                 <input
@@ -162,9 +156,9 @@ const PsychArticle = (props) => {
           <Search
             style={{ width: "50%" }}
             placeholder="input search text"
-            value = {searchValue}
-            onChange = {onSearchChange}
-            onSearch = {onArticleSearch}
+            value={searchValue}
+            onChange={onSearchChange}
+            onSearch={onArticleSearch}
             required
             enterButton
           />
