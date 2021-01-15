@@ -7,7 +7,7 @@ import { Input, Menu, Dropdown } from "antd";
 import styles from "./topnav.module.css";
 import { DownOutlined } from "@ant-design/icons";
 import { getPsychAvatar } from "../../Redux/PsychProfile/psych_profile_aciton";
-const { Search } = Input;
+// const { Search } = Input;
 
 const TopNav = (props) => {
   const { storeClientInfo, getPsychAvatar, avatar } = props;

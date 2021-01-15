@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import styles from "./articleItems.module.css";
 const ArticleItem = (props) => {
   const { article } = props;
-  const { title, body, _id, articleTag } = article;
+  const { title, body, _id, articleTag,articlePhoto} = article;
   return (
     <div className={styles.articleCard}>
       <div className={styles.articleImg}>
-        <img src={require("../../../assets/family1.jpg")} alt="" />
+        {/* <img src={require("../../../assets/family1.jpg")} alt="" /> */}
+        <img src={`data:image/jpeg;base64,${articlePhoto}`} alt="Avatar" />
       </div>
       <div className={styles.articleCardTitle}>
         <h1>

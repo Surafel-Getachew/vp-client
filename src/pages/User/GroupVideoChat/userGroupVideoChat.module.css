@@ -1,0 +1,28 @@
+.groupVideoCnt {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+.topNav {
+  background: #fff;
+  height: 60px;
+  border-bottom: 1.5px solid rgb(206, 206, 206);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.groupTherapyRooms {
+  padding: 10px;
+  width: 98%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-column-gap: 3.33%;
+  grid-row-gap: 3%;
+}
+
+.roomContent {
+}

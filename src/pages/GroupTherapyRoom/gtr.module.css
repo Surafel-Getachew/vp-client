@@ -1,0 +1,109 @@
+.groupVideoCnt {
+  display: flex;
+  height: 100vh;
+}
+.videoCnt {
+  display: flex;
+  /* border: 1px solid red; */
+  flex-basis: 70%;
+}
+
+.myStream {
+  /* border:2px solid blue; */
+  width: 200px;
+  height: 200px;
+}
+
+.othersStream {
+  /* border:3px solid red; */
+  width: 200px;
+  height: 200px;
+}
+
+.chatCnt {
+  /* border: 1px solid blue; */
+  flex-basis: 30%;
+  display: flex;
+  flex-direction: column;
+  background: rgb(245, 245, 245);
+  overflow-y: auto;
+}
+
+.textChatHeader {
+  min-height: 50px;
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  background-color: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.textChatHeaderCenter {
+  /* border:1px solid burlywood; */
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.textChatHeaderCenter h3 {
+  /* font-weight: bold; */
+  align-self: flex-start;
+}
+.textChatHeaderCenter h4 {
+  color: #703bda;
+  background-color: #d7c4ff;
+  padding: 4px 18px;
+  border-radius: 10px;
+}
+
+.messageInput {
+  position: relative;
+  position: fixed;
+  top: 94.4%;
+  width: 100%;
+}
+
+.messageInput input {
+  width: 27%;
+  border-radius: 40px;
+  border: none;
+  border:3px solid rgb(240, 236, 236);
+    padding:0 10px;
+}
+
+.messageInput input:focus {
+  outline: none;
+}
+
+.fromme {
+  background: #fff;
+  width: 60%;
+  height: auto;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  clear: both;
+}
+
+.txtMsg {
+  margin: 0;
+  padding-left: 8px;
+  color: black;
+  /* display: block; */
+}
+
+.msgTime {
+  text-align: right;
+  margin: 0;
+  padding-right: 8px;
+  color: black;
+}
+
+.autoScroll {
+  height: 35px;
+  clear: both;
+}

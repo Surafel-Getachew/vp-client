@@ -30,12 +30,23 @@
 }
 
 .roomListCnt {
-  /* border: 3px solid red; */
+  /* border: 1px solid red; */
   flex-basis: 60%;
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: space-between; */
 }
 
+.psychGroupSearch {
+  margin-bottom:10px;
+  align-self: center;
+}
 
-
+.roomCards {
+  display:flex;
+  justify-content: space-between;
+  margin-top:10px;
+  flex-wrap:wrap;
+  /* border: 1px solid red; */
+}

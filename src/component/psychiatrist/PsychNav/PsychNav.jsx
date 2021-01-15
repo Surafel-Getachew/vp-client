@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Psycha-side-nav.css";
+import "./Psycha-side-nav.module.css";
 import AuthContext from "../../../context/auth/authContext";
 
 const PsychNav = () => {

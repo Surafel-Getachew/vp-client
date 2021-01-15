@@ -1,0 +1,51 @@
+.roomCardCnt {
+  width: 350px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding-bottom: 10px;
+}
+
+.roomImage {
+  width: 160px;
+  height: 160px;
+  margin: 0;
+}
+
+.roomImage img {
+  width: 100%;
+  height: 100%;
+}
+
+.roomContentCnt {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.roomTitle {
+  display: flex;
+  justify-content: center;
+}
+.roomTitle h2 {
+  font-weight: 600;
+  font-family: "Jost", sans-serif;
+  border-bottom: 1px solid rgb(212, 212, 212);
+  width: 80%;
+  text-align: center;
+  align-self: flex-start;
+}
+.roomTime {
+  padding: 2px 0;
+}
+
+.roomDescription {
+}
+
+.roomBtn {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+  /* padding: */
+}

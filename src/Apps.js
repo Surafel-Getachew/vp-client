@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 // context
 import AuthState from "./context/auth/AuthState";
+import AdminAuthstate from "./context/adminAuth/AdminAuthState";
 import AlertState from "./context/alert/AlertState";
 import ArticleState from "./context/article/ArticleState";
 import PsychState from "./context/psych/PsychState";
@@ -13,6 +14,7 @@ import VideoChatState from "./context/video_chat/VideoChatState";
 // private route
 import PsychPrivateRoute from "./component/Routes/PsychPrivateRoute"
 import UserPrivateRoute from "./component/Routes/UserPrivateRoute"
+import AdminPrivateRoute from "./component/Routes/AdminPrivateRoute"
 // Landing pages
 import Landing from "./pages/Landing/Landing";
 
@@ -24,6 +26,7 @@ import Signin from "./pages/User/Auth/NewAuth/SignIn";
 import UserAppointment from "./pages/User/Appointment/UserAppointment";
 import UserProfileForm from "./pages/User/ProfileSetting/UserProfileForm"
 import UserArticle from "./pages/User/UserArticle/UserArticle"
+import UserGroupVideoChat from "./pages/User/GroupVideoChat/UserGroupVideoChat";
 // psych pages
 import PsychiatristDashboard from "./pages/Psychiatrist/PsychDashboard/PsychDashboard";
 import PsychSignin from "./pages/Psychiatrist/PsychAuth/NewAuth/SignIn";
@@ -40,9 +43,14 @@ import PsychGroupVideoChat from "./pages/Psychiatrist/PsychGroupVideoChat/PsychG
 // import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychAppointment";
 // import VideoChatRoom from "./pages/Psychiatrist/PsychVideoChat/VideoChatRoom";
 
+// Admin page 
+import AdminSignup from "./pages/Admin/Auth/Signup";
+import AdminSignin from "./pages/Admin/Auth/Signin";
+import AdminDashboard from "./pages/Admin/Dashboard/Dashboard";
+import AdminPsychiatrists from "./pages/Admin/Psychiatrists/Psychiatrists";
 // Public Page
 import PublicArticle from "./pages/PublicArticle/PublicArticle";
-
+import GroupTherapyRoom from "./pages/GroupTherapyRoom/GroupTherapyRoom"
 // video chats that are not yet decided and completed.
 
 import ForgotPasswordEmail from "./component/ForgotPasswordEmail/ForgotPasswordEmail";
@@ -59,6 +67,7 @@ if (localStorage.token) {
 const Apps = () => {
   return (
     <AuthState>
+      <AdminAuthstate>
       <AlertState>
         <ArticleState>
           <PsychState>
@@ -67,6 +76,7 @@ const Apps = () => {
                 <Switch>
                   <Route exact path="/" component={Landing} />
                   <Route exact path="/vp/article/:articleId" component={PublicArticle} />
+                  <Route exact path="/vp/group-therapy-room/:roomId" component={GroupTherapyRoom} />
                   {/* <Route exact path = "/videochat" component = {VideoTrial}/> */}
                   <Route exact path="/forgot" component={ForgotPasswordEmail} />
                   {/* <Route exact path="/incoming" component={IncomingCall} />
@@ -97,6 +107,11 @@ const Apps = () => {
                     exact
                     path="/vp/user/article"
                     component={UserArticle}
+                  />
+                  <UserPrivateRoute
+                    exact
+                    path="/vp/user/group-video-chat"
+                    component={UserGroupVideoChat}
                   />
                   <UserPrivateRoute
                     exact
@@ -163,6 +178,27 @@ const Apps = () => {
                     path="/vp/psychiatrist/message/:userId"
                     component={PsychMessage}
                   />
+                  <Route
+                    exact
+                    path="/vp/admin/signup"
+                    component={AdminSignup}
+                  />
+                  <Route
+                    exact
+                    path="/vp/admin/signin"
+                    component={AdminSignin}
+                  />
+                  <Route
+                    exact
+                    path="/vp/admin/dashboard"
+                    component={AdminDashboard}
+                  />
+                  <Route
+                    exact
+                    path="/vp/admin/psychiatrists"
+                    component={AdminPsychiatrists}
+                  />
+                  
                   {/* <Route exact path ="/vp/try" component = {Try} /> */}
                   {/* <Route exact path ="/chat" component = {ChatPage} /> */}
                 </Switch>
@@ -171,6 +207,7 @@ const Apps = () => {
           </PsychState>
         </ArticleState>
       </AlertState>
+      </AdminAuthstate>
     </AuthState>
   );
 };

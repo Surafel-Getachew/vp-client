@@ -1,0 +1,16 @@
+.adminContainer {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  background-color: #181818;
+}
+
+.sideNav {
+  /* border:2px solid red; */
+}
+
+.sidePage {
+  /* border:2px solid blue; */
+}
+
+.childPage {
+}

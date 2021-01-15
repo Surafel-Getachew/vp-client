@@ -52,7 +52,7 @@ const NavBar = (props) => {
     {
       name: "Group Video Chat",
       icon: "fas fa-users",
-      to: "/vp/user/group-therapy",
+      to: "/vp/user/group-video-chat",
       key: 3,
     },
     // {

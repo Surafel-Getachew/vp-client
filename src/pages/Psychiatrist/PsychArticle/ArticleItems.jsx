@@ -4,7 +4,7 @@ import ShowMoreText from "react-show-more-text";
 import styles from "./articleItems.module.css";
 import { Button } from "antd";
 const ArticleItems = ({ article }) => {
-  const { _id, body, title,articleTag,owner } = article;
+  const { _id, body, title,articleTag,owner,articlePhoto} = article;
   const articleContext = useContext(ArticleContext);
   const { deleteArticle, setCurrent } = articleContext;
   const onDelete = () => {
@@ -29,7 +29,8 @@ const ArticleItems = ({ article }) => {
   return (
     <div className={styles.articleItemCnt}>
       <div className={styles.articleImg}>
-        <img src={require("../../../assets/family.jpeg")} alt="" />
+        {/* <img src={require("../../../assets/family.jpeg")} alt="" /> */}
+        <img src={`data:image/jpeg;base64,${articlePhoto}`} alt="Avatar" />
       </div>
       <div className={styles.articleContentCnt}>
         <h2>{title}</h2>

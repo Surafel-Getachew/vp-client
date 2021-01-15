@@ -1,0 +1,45 @@
+.psychsCont {
+  min-height: 100vh;
+  background-color: #181818;
+}
+
+.searchCnt {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.psychListTitle {
+  display: flex;
+  border-bottom: 1px solid white;
+  padding: 10px 0;
+  margin-top: 10px;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.listName {
+  flex-basis: 30%;
+  text-align: center;
+}
+
+.listEmail {
+  flex-basis: 30%;
+  text-align: center;
+}
+
+.listActions {
+  flex-basis: 40%;
+  text-align: center;
+}
+
+.listName h3 {
+  color: #aaaaaa;
+}
+.listEmail h3 {
+  color: #aaaaaa;
+}
+.listActions h3 {
+  color: #aaaaaa;
+}

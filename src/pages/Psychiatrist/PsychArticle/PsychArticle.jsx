@@ -2,9 +2,10 @@ import React, { useState, useContext, useEffect } from "react";
 import Layout from "../../../component/Layout/Layout";
 import styles from "./psych-article.module.css";
 import ReactQuill from "react-quill";
-import { Select, Input } from "antd";
+import { Select, Input, Upload, Button } from "antd";
 import ArticleContext from "../../../context/article/articleContext";
 import ArticleItems from "./ArticleItems";
+import { UploadOutlined } from "@ant-design/icons";
 const { Search } = Input;
 const { Option } = Select;
 const PsychArticle = (props) => {
@@ -20,9 +21,11 @@ const PsychArticle = (props) => {
   } = articleContext;
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [articleTag,setTag] = useState("")
+  const [articleTag, setTag] = useState("");
   const [searchValue, setSearchValue] = useState("");
+  const [articlePhoto,setArticlePhoto] = useState(null);
   const [btnName, setBtnName] = useState("Submit");
+  
   useEffect(() => {
     loadPsychiatristArticles();
   }, []);
@@ -45,29 +48,38 @@ const PsychArticle = (props) => {
   const onBodyChange = (value) => {
     setBody(value);
   };
+  const onArticlePhoto = ({fileList}) => {
+    setArticlePhoto(fileList[0].originFileObj);
+  };
   const onSubmit = (e) => {
     e.preventDefault();
     if (current === null) {
-      addArticle({
-        title: title,
-        body: body,
-        articleTag:articleTag
-      });
+      const formData = new FormData();
+      formData.append("title",title)
+      formData.append("body",body)
+      formData.append("articleTag",articleTag)
+      formData.append("articlePhoto",articlePhoto)
+      // addArticle({
+      //   title: title,
+      //   body: body,
+      //   articleTag: articleTag,
+      // });
+      addArticle(formData);
       setBody("");
       setTitle("");
-      setTag("")
+      setTag("");
     } else {
       const articlee = {
         title: title,
         body: body,
-        articleTag:articleTag
+        articleTag: articleTag,
       };
       const idOfArticle = current._id;
       updateArticle(articlee, idOfArticle);
       clearCurrent();
       setBody("");
       setTitle("");
-      setTag("")
+      setTag("");
       setBtnName("Submit");
     }
     // console.log("submit button");
@@ -82,14 +94,17 @@ const PsychArticle = (props) => {
     psychSearchArticle({ search: e.target.value });
   };
   const onTagChange = (value) => {
-    setTag(value)
-  }
+    setTag(value);
+  };
   return (
     <Layout>
       <div className={styles.articleCnt}>
         <div className={styles.articleFormCnt}>
           <div className={styles.articleCenter}>
             <form className={styles.formContainer}>
+              <Upload onChange={onArticlePhoto}>
+                <Button icon={<UploadOutlined />}>Upload</Button>
+              </Upload>
               <label className={styles.titleSpan} htmlFor="title">
                 Title
               </label>
@@ -124,10 +139,10 @@ const PsychArticle = (props) => {
                 <Select
                   showSearch
                   style={{ width: 200 }}
-                  placeholder="Select a person"
+                  placeholder="Select Category"
                   optionFilterProp="children"
                   onChange={onTagChange}
-                  value = {articleTag}
+                  value={articleTag}
                   filterOption={(input, option) =>
                     option.children
                       .toLowerCase()

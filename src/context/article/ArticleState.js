@@ -40,7 +40,13 @@ const ArticleState = (props) => {
     }
 
     const [state,dispatch] = useReducer(ArticleReducer,initialState) 
-
+    
+    const fileConfig = {
+        header:{
+            "Content-Type":"multipart/form-data"
+        }
+    }
+    
 
     // Adds Article To The DB
     const addArticle = async (formData) => {
@@ -52,7 +58,7 @@ const ArticleState = (props) => {
         }
     
     try {
-        const res = await axios.post("/vp/article",formData,config);
+        const res = await axios.post("/vp/article",formData,fileConfig);
         dispatch({type:ADD_ARTICLE,payload:res.data})
     } catch (error) {
         dispatch({type:ARTICLE_ERROR})    

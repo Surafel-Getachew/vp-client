@@ -62,7 +62,7 @@ const Video = (props) => {
         setMyVideo(stream);
         myStream.current.srcObject = stream;
         myStream.current.muted = true;
-        peer.on("call", (call) => {
+        peer.on("call",(call) => {
           call.answer(stream);
           myStream.current.srcObject = stream;
           call.on("stream", (otherPepStream) => {
@@ -214,7 +214,6 @@ const Video = (props) => {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && e.target.value !== "") {
-      console.log("Enter key pressed");
       socket.emit("sendTxtMessage", txtMessage, userToCall, myName);
       setTxtMessage("");
     }

@@ -15,7 +15,7 @@ const ArticlesList = (props) => {
       getArticleByCategory(category);
     }
   }, [category]);
-  console.log("current cat", category);
+  // console.log("current cat", category);
   return (
     <div className={styles.articleListCnt}>
       <div className={styles.categoryTitleCnt}>

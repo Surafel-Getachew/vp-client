@@ -3,75 +3,102 @@ import { connect } from "react-redux";
 import {
   createRoom,
   getMyRooms,
+  searchRoomForPsych,
 } from "../../../Redux/GroupVideoChat/group-video-chat-action";
 import { Upload, message, Form, Input, TimePicker, Select, Button } from "antd";
-import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import {
+  LoadingOutlined,
+  PlusOutlined,
+  UploadOutlined,
+} from "@ant-design/icons";
 import RoomItem from "./RoomItem";
 import Layout from "../../../component/Layout/Layout";
 import styles from "./groupvideo.module.css";
 const { RangePicker } = TimePicker;
-const { TextArea } = Input;
+const { TextArea, Search } = Input;
+const { Option } = Select;
 const PsychGroupVideoChat = (props) => {
-  const { createRoom, getMyRooms, psychRooms,refresh} = props;
+  const {
+    createRoom,
+    getMyRooms,
+    searchRoomForPsych,
+    psychRooms,
+    refresh,
+  } = props;
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
   const [groupPhoto, setGroupPhoto] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
     getMyRooms();
   }, []);
   useEffect(() => {
     getMyRooms();
   }, [refresh]);
-  const handleChange = (info) => {
-    if (info.file.status === "uploading") {
-      //   this.setState({ loading: true });
-      setLoading(true);
-      return;
+  useEffect(() => {
+    if (searchValue == "") {
+      getMyRooms();
     }
-    if (info.file.status === "done") {
-      // Get this url from response in real world.
-      setGroupPhoto(info.file.originFileObj);
-      getBase64(info.file.originFileObj, (imageUrl) => {
-        // this.setState({
-        //   imageUrl,
-        //   loading: false,
-        // })
-        setImageUrl(imageUrl);
-        setLoading(false);
-      });
-    }
+  }, [searchValue]);
+  const onSearchChange = (e) => {
+    setSearchValue(e.target.value);
+    const searchText = {
+      searchText: e.target.value,
+    };
+    searchRoomForPsych(searchText);
   };
-  const getBase64 = (img, callback) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => callback(reader.result));
-    reader.readAsDataURL(img);
+
+  const onSearch = () => {
+    const searchText = {
+      searchText: searchValue,
+    };
+    searchRoomForPsych(searchText);
   };
-  const beforeUpload = (file) => {
-    const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
-    if (!isJpgOrPng) {
-      message.error("You can only upload JPG/PNG file!");
+  const onGroupPhoto = ({ fileList }) => {
+    // if (fileList[0].originFileObj == undefined) {
+    if (fileList == undefined) {
+      setGroupPhoto(null);
     }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-      message.error("Image must smaller than 2MB!");
-    }
-    return isJpgOrPng && isLt2M;
+    setGroupPhoto(fileList[0].originFileObj);
   };
-  const uploadButton = (
-    <div>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div style={{ marginTop: 8 }}>Upload</div>
-    </div>
-  );
+  // const handleChange = (info) => {
+  //   if (info.file.status === "uploading") {
+  //     setLoading(true);
+  //     return;
+  //   }
+  //   if (info.file.status === "done") {
+  //     // Get this url from response in real world.
+  //     setGroupPhoto(info.file.originFileObj);
+  //     getBase64(info.file.originFileObj, (imageUrl) => {
+  //       setImageUrl(imageUrl);
+  //       setLoading(false);
+  //     });
+  //   }
+  // };
+  // const getBase64 = (img, callback) => {
+  //   const reader = new FileReader();
+  //   reader.addEventListener("load", () => callback(reader.result));
+  //   reader.readAsDataURL(img);
+  // };
+  // const beforeUpload = (file) => {
+  //   const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+  //   if (!isJpgOrPng) {
+  //     message.error("You can only upload JPG/PNG file!");
+  //   }
+  //   const isLt2M = file.size / 1024 / 1024 < 2;
+  //   if (!isLt2M) {
+  //     message.error("Image must smaller than 2MB!");
+  //   }
+  //   return isJpgOrPng && isLt2M;
+  // };
+  // const uploadButton = (
+  //   <div>
+  //     {loading ? <LoadingOutlined /> : <PlusOutlined />}
+  //     <div style={{ marginTop: 8 }}>Upload</div>
+  //   </div>
+  // );
   const [form] = Form.useForm();
   const onFinish = (values) => {
-    // const formData = {
-    //   start: values.time[0],
-    //   end: values.time[1],
-    //   name: values.name,
-    //   avatar:groupPhoto,
-    //   description: values.description,
-    // };
     const formData = new FormData();
     formData.append("start", values.time[0]);
     formData.append("end", values.time[1]);
@@ -87,7 +114,7 @@ const PsychGroupVideoChat = (props) => {
         <div className={styles.groupVideoCenter}>
           <div className={styles.roomFormCnt}>
             <h3>Create Room</h3>
-            <Upload
+            {/* <Upload
               name="avatar"
               listType="picture-card"
               // className="avatar-uploader"
@@ -102,8 +129,13 @@ const PsychGroupVideoChat = (props) => {
               ) : (
                 uploadButton
               )}
-            </Upload>
+            </Upload> */}
             <Form form={form} onFinish={onFinish}>
+              <Form.Item name="avatar" label="Avatar">
+                <Upload onChange={onGroupPhoto}>
+                  <Button icon={<UploadOutlined />}>Upload</Button>
+                </Upload>
+              </Form.Item>
               <Form.Item
                 name="name"
                 label="Name"
@@ -150,12 +182,40 @@ const PsychGroupVideoChat = (props) => {
                 ]}
               >
                 <Select
+                  showSearch
+                  // style={{ width: 200 }}
+                  placeholder="Select Category"
+                  optionFilterProp="children"
+                  // onChange={onTagChange}
+                  // value={articleTag}
+                  filterOption={(input, option) =>
+                    option.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
+                  }
+                >
+                  <Option value="Addiction">Addiction</Option>
+                  <Option value="Family">Family</Option>
+                  <Option value="Social">Social</Option>
+                  <Option value="Other">Other</Option>
+                </Select>
+              </Form.Item>
+              {/* <Form.Item
+                name="category"
+                label="Category"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              >
+                <Select
                   mode="tags"
                   tokenSeparators={[","]}
                   placeholder="Category Of The Room"
                   // style={{ width: "80%" }}
                 ></Select>
-              </Form.Item>
+              </Form.Item> */}
               <Form.Item>
                 <Button
                   type="primary"
@@ -168,9 +228,20 @@ const PsychGroupVideoChat = (props) => {
             </Form>
           </div>
           <div className={styles.roomListCnt}>
-            {psychRooms.map((room) => (
-              <RoomItem rooms={room} key={room._id} />
-            ))}
+            <Search
+              className = {styles.psychGroupSearch}
+              placeholder="input search text"
+              allowClear
+              value={searchValue}
+              onChange={onSearchChange}
+              onSearch={onSearch}
+              style={{ width: 200, margin: "0 10px" }}
+            />
+            <div className={styles.roomCards}>
+              {psychRooms.map((room) => (
+                <RoomItem rooms={room} key={room._id} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -186,4 +257,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   createRoom,
   getMyRooms,
+  searchRoomForPsych,
 })(PsychGroupVideoChat);

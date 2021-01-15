@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { storeClientInfo } from "../../../Redux/VideoCall/video_call_action";
 import AuthContext from "../../../context/auth/authContext";
-import "../../psychiatrist/PsychNav/Psycha-side-nav.css";
+// import "../../psychiatrist/PsychNav/Psycha-side-nav.css";
 const UserNav = (props) => {
   // import "../../psychiatrist/PsychNav/psycha-side-nav.css";
   const { storeClientInfo } = props;

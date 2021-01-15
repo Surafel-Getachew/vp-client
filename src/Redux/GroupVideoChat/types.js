@@ -1,3 +1,7 @@
 export const CREATE_ROOM = "CREATE_ROOM"
 export const LOAD_PSYCH_ROOM = "LOAD_MY_ROOM";
 export const DELETE_ROOM = "DELETE_ROOM";
+export const GET_ALL_ROOMS = "GET_ALL_ROOMS";
+export const GET_ROOMS_BY_CATEGORY = "GET_ROOMS_BY_CATEGORY";
+export const SEARCH_FOR_ROOM = "SEARCH_FOR_ROOM";
+export const PSYCH_SEARCH_ROOM = "PSYCH_SEARCH_ROOM";
