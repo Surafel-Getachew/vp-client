@@ -3,13 +3,14 @@ import { connect } from "react-redux";
 import { adminDeleteRoom } from "../../../Redux/GroupVideoChat/group-video-chat-action";
 import { Modal } from "antd";
 import { ExclamationCircleOutlined, DeleteOutlined } from "@ant-design/icons";
+import { getTimeAMPMFormat } from "../../../utils/helpers";
 import styles from "./roomCard.module.css";
 
 const { confirm } = Modal;
 
 const RoomCard = (props) => {
-  const { adminDeleteRoom} = props;
-  const { _id,name, description, category, avatar, start, end } = props.room;
+  const { adminDeleteRoom } = props;
+  const { _id, name, description, category, avatar, start, end } = props.room;
   function showDeleteConfirm() {
     confirm({
       title: "Are you sure delete this task?",
@@ -30,7 +31,8 @@ const RoomCard = (props) => {
   return (
     <div className={styles.roomCard}>
       <div className={styles.roomImg}>
-        <img src={require("../../../assets/family.jpeg")} alt="" />
+        {/* <img src={require("../../../assets/family.jpeg")} alt="" /> */}
+        <img src={`data:image/jpeg;base64,${avatar}`} alt="Avatar" />
       </div>
       <div className={styles.roomName}>
         {/* <h2>Palentosis Discussion</h2> */}
@@ -38,7 +40,10 @@ const RoomCard = (props) => {
       </div>
       <div className={styles.roomTime}>
         <h4>Time:</h4>
-        <span>2:00AM - 4:00AM</span>
+        <span>
+          {getTimeAMPMFormat(new Date(start))} -{" "}
+          {getTimeAMPMFormat(new Date(end))}
+        </span>
       </div>
       <div className={styles.roomDescription}>
         <h4>Description:</h4>
@@ -59,8 +64,7 @@ const RoomCard = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-});
+const mapStateToProps = (state) => ({});
 
 export default connect(mapStateToProps, {
   adminDeleteRoom,

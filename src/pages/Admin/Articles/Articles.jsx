@@ -14,11 +14,15 @@ const Articles = () => {
     getArticleByCategory,
     articlesByCategory,
     searchAllArticle,
-    userSearchedArticles
+    userSearchedArticles,
+    refresh
   } = articleContext;
   const [category, setCategory] = useState(null);
   const [searchValue, setSearchvalue] = useState("");
   const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    loadArticle();
+  },[refresh])
   useEffect(() => {
     if (searchValue == "" && category == null) {
       loadArticle();

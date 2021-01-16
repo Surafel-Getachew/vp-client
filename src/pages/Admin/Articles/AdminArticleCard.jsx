@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
+import ArticleContext from "../../../context/article/articleContext";
 import { Link } from "react-router-dom";
 import styles from "./articleCard.module.css";
-import { DeleteOutlined, EyeOutlined } from "@ant-design/icons";
-
+import {
+  DeleteOutlined,
+  EyeOutlined,
+  ExclamationCircleOutlined,
+} from "@ant-design/icons";
+import { Modal } from "antd";
+const { confirm } = Modal;
 const AdminArticleCard = ({ article }) => {
   const { _id, title, articleTag, articlePhoto } = article;
+  const articleContext = useContext(ArticleContext);
+  const { adminDeleteArticle } = articleContext;
+  function showDeleteConfirm() {
+    confirm({
+      title: "Are you sure delete this task?",
+      icon: <ExclamationCircleOutlined />,
+      content: "Once deleted it can't be reversed",
+      okText: "Yes",
+      okType: "danger",
+      cancelText: "No",
+      onOk() {
+        adminDeleteArticle(_id);
+        console.log("OK");
+      },
+      onCancel() {
+        console.log("Cancel");
+      },
+    });
+  }
   return (
     <div className={styles.articleCard}>
       <div className={styles.articleImgCnt}>
@@ -41,7 +66,7 @@ const AdminArticleCard = ({ article }) => {
             Read Article
           </Link>
         </div>
-        <div className={styles.deleteArticleBtnCnt}>
+        <div className={styles.deleteArticleBtnCnt} onClick={showDeleteConfirm}>
           <DeleteOutlined style={{ fontSize: "17px", marginRight: "3px" }} />
           Delete Article
         </div>

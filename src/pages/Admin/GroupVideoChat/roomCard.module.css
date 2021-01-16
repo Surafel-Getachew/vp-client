@@ -1,12 +1,20 @@
 .roomCard {
   background: #212121;
   width: 350px;
-  margin-top:15px;
+  margin-top: 15px;
 }
 
 .roomImg {
   display: flex;
   justify-content: center;
+  width: 350px;
+  height: 200px;
+}
+
+.roomImg img {
+  object-fit: cover;
+  width: 350px;
+  height: 200px;
 }
 
 .roomName {
@@ -76,6 +84,6 @@
   cursor: pointer;
 }
 
-.roomBtn span{
+.roomBtn span {
   margin-left: 8px;
 }

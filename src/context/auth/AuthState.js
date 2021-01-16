@@ -23,6 +23,7 @@ import {
   CLEAR_ERRORS,
   FOUND_LOGGEDIN_USER,
   SHOW_FORGOT_PASSWORD,
+  DELETE_PSYCHIATRIST
 } from "../../types";
 
 const AuthState = (props) => {
@@ -39,6 +40,7 @@ const AuthState = (props) => {
     role: null,
     emailInUser: "",
     showForgotPasswordState: false,
+    refresh:false
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -195,6 +197,11 @@ const AuthState = (props) => {
     }
   };
 
+  const deletePsychiatrist = async(id) => {
+    const res = await axios.delete(`/vp/psychiatrist/${id}`)
+    dispatch({type:DELETE_PSYCHIATRIST})
+  }
+
   const showForgotPassword = () => {
     dispatch({ type: SHOW_FORGOT_PASSWORD });
   };
@@ -224,6 +231,7 @@ const AuthState = (props) => {
         emailInUse: state.emailInUse,
         responseMsg:state.responseMsg,
         showForgotPasswordState: state.showForgotPasswordState,
+        refresh:state.refresh,
         loadUser,
         loadPsychiatrist,
         register,
@@ -238,6 +246,7 @@ const AuthState = (props) => {
         clearErrors,
         findLoggedInUser,
         showForgotPassword,
+        deletePsychiatrist
       }}
     >
       {props.children}

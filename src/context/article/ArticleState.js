@@ -18,7 +18,8 @@ import {
     SEARCH_ALL_ARTICLE,
     GET_ARTICLE_BY_CATEGORY,
     GET_ARTICLE_BY_ID,
-    PROFILE
+    PROFILE,
+    ADMIN_DELETE_ARTICLE
 }from "../../types";
 
 
@@ -36,7 +37,8 @@ const ArticleState = (props) => {
         filtered:null,
         loading:true,
         error:null,
-        profile:null
+        profile:null,
+        refresh:false
     }
 
     const [state,dispatch] = useReducer(ArticleReducer,initialState) 
@@ -186,6 +188,15 @@ const ArticleState = (props) => {
         }
     }
 
+    const adminDeleteArticle = async (id) => {
+        try {
+            const res = await axios.delete(`/vp/article/admin/${id}`);
+            dispatch({type:ADMIN_DELETE_ARTICLE});
+        } catch (error) {
+            
+        }
+    }
+
     return (
         <ArticleContext.Provider value = {{
             articles:state.articles,
@@ -196,6 +207,7 @@ const ArticleState = (props) => {
             current:state.current,
             filtered:state.filtered,
             loading:state.loading,
+            refresh:state.refresh,
             error:state.error,
             addArticle,
             loadArticle,
@@ -209,7 +221,8 @@ const ArticleState = (props) => {
             psychSearchArticle,
             searchAllArticle,
             getArticleByCategory,
-            getArticleById
+            getArticleById,
+            adminDeleteArticle
             // profile:state.profile,
         }}>
             {props.children}

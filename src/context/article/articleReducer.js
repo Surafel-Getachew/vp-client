@@ -11,7 +11,8 @@ import {
     SEARCH_ALL_ARTICLE,
     GET_ARTICLE_BY_CATEGORY,
     GET_ARTICLE_BY_ID,
-    PROFILE
+    PROFILE,
+    ADMIN_DELETE_ARTICLE
 }from "../../types";
 
 export default (state,action) => {
@@ -117,6 +118,12 @@ export default (state,action) => {
             return {
                 ...state,
                 profile:action.payload
+            }
+        }
+        case ADMIN_DELETE_ARTICLE:{
+            return{
+                ...state,
+                refresh:!state.refresh
             }
         }
         default:

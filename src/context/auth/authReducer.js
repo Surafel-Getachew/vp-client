@@ -17,6 +17,7 @@ import {
   PSYCHIATRIST_LOADED,
   FOUND_LOGGEDIN_USER,
   SHOW_FORGOT_PASSWORD,
+  DELETE_PSYCHIATRIST
 } from "../../types";
 
 export default (state, action) => {
@@ -150,6 +151,11 @@ export default (state, action) => {
         ...state,
         showForgotPasswordState: !state.showForgotPasswordState,
       };
+    case DELETE_PSYCHIATRIST:
+      return {
+        ...state,
+        refresh:!state.refresh
+      }
     default:
       return state;
   }
