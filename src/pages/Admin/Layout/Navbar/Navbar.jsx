@@ -34,15 +34,15 @@ const Navbar = () => {
     //   key: 8,
     // },
     {
-      name: "Group Video Chat",
+      name: "Group Therapy Rooms",
       icon: "fas fa-users",
-      to: "/vp/admin/groupvideochat",
+      to: "/vp/admin/group-video-rooms",
       key: 3,
     },
     {
       name: "Article",
       icon: "fas fa-newspaper",
-      to: "/vp/admin/article",
+      to: "/vp/admin/articles",
       key: 4,
     },
     {

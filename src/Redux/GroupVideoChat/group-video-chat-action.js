@@ -1,5 +1,5 @@
 import axios from "axios";
-import {CREATE_ROOM,LOAD_PSYCH_ROOM,DELETE_ROOM, GET_ALL_ROOMS,GET_ROOMS_BY_CATEGORY,SEARCH_FOR_ROOM,PSYCH_SEARCH_ROOM} from "./types"
+import {CREATE_ROOM,LOAD_PSYCH_ROOM,DELETE_ROOM, GET_ALL_ROOMS,GET_ROOMS_BY_CATEGORY,SEARCH_FOR_ROOM,PSYCH_SEARCH_ROOM,ADMIN_DELETE_GROUP} from "./types"
 const config = {
     headers:{
         "Content-Type":"application/json"
@@ -71,6 +71,15 @@ export const searchRoomForPsych = (searchText) => async(dispatch) => {
     try {
         const res = await axios.post("/vp/groupVideoChat/psychiatrist/search",searchText,config);
         dispatch({type:PSYCH_SEARCH_ROOM,payload:res.data});
+    } catch (error) {
+        
+    }
+}
+
+export const adminDeleteRoom = (id) => async(dispatch) => {
+    try {
+        const res = await axios.delete(`/vp/groupVideoChat/admin/${id}`)
+        dispatch({type:ADMIN_DELETE_GROUP})
     } catch (error) {
         
     }

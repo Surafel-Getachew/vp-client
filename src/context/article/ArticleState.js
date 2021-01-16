@@ -171,6 +171,7 @@ const ArticleState = (props) => {
         try {
             const res = await axios.get(`/vp/article/category/${category}`);
             dispatch({type:GET_ARTICLE_BY_CATEGORY,payload:res.data})
+            
         } catch (error) {
             
         }
@@ -179,7 +180,7 @@ const ArticleState = (props) => {
     const getArticleById = async(id) => {
         try {
             const res = await axios.get(`/vp/article/findById/${id}`);
-            dispatch({type:GET_ARTICLE_BY_ID,payload:res.data.article});
+            dispatch({type:GET_ARTICLE_BY_ID,payload:res.data.articleData});
         } catch (error) {
             
         }

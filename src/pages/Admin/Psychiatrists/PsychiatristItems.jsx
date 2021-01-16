@@ -1,14 +1,17 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./psychItems.module.css";
 import { DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 
-const PsychiatristItems = ({ profile }) => {
-  const { name, avatar, psychOwner } = profile;
+const PsychiatristItems = (props) => {
+  const { name, avatar, psychOwner,email} = props.profile;
+  // const [prof, setProf] = useState({});
+ 
+
   return (
     <div className={styles.psychItemsCnt}>
       <div className={styles.profileCnt}>
-        <div className={styles.aviContainer}>
+        <div className={styles.aviContainer}> 
           <img src={`data:image/jpeg;base64,${avatar}`} alt="" />
         </div>
         <div className={styles.psychName}>
@@ -16,7 +19,8 @@ const PsychiatristItems = ({ profile }) => {
         </div>
       </div>
       <div className={styles.psychEmail}>
-        <h3>surafel@sura.co</h3>
+        {/* <h3>{psychCredential == null || psychCredential == undefined ? "Loading" : prof.email}</h3> */}
+        <h3>{email}</h3>
       </div>
       <div className={styles.psychActions}>
         <div className={styles.viewProfileCnt}>
@@ -44,4 +48,4 @@ const PsychiatristItems = ({ profile }) => {
   );
 };
 
-export default PsychiatristItems;
+export default PsychiatristItems

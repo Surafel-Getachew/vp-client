@@ -8,7 +8,7 @@ import {
 
 } from "../types";
  
-import {GET_AVATAR,DOESNT_HAVE_AVATAR,LOAD_ALL_PSYCHS_BASIC_PROFILE,LOAD_PSYCH_BASIC_PROFILE} from "./type"
+import {GET_AVATAR,DOESNT_HAVE_AVATAR,LOAD_ALL_PSYCHS_BASIC_PROFILE,LOAD_PSYCH_BASIC_PROFILE,GET_PSYCH_CREDENTIAL} from "./type"
 
 export const addPsychProfile = (formData) => async (dispatch) => {
   const config = {
@@ -85,6 +85,7 @@ export const loadPsychBasicProfile = (id) => async(dispatch) => {
     
   }
 }
+
 
 // export const loadAllPsychsBasicProfile = () => (dispatch) =>{
 //   try {

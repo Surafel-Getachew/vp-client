@@ -1,0 +1,24 @@
+.adminArticleTop {
+  display: flex;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+
+.categoryTitle {
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.categoryTitle h3 {
+  color: #fff;
+}
+
+.articleCardCnt {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin: 0 auto;
+}

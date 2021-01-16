@@ -1,0 +1,25 @@
+.adminGroupChatTop {
+  display: flex;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+
+.roomName {
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.roomName h3 {
+  color: #fff;
+}
+
+.roomCardCnt {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  width: 98%;
+  margin: 0 auto;
+}

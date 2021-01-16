@@ -5,7 +5,8 @@ import {
     GET_ALL_ROOMS,
     GET_ROOMS_BY_CATEGORY,
     SEARCH_FOR_ROOM,
-    PSYCH_SEARCH_ROOM
+    PSYCH_SEARCH_ROOM,
+    ADMIN_DELETE_GROUP
 } from "./types"
 
 const initialState = {
@@ -28,6 +29,7 @@ export default (state=initialState,action) => {
                 ...state,
                 psychRooms:action.payload
             }
+        case ADMIN_DELETE_GROUP:
         case DELETE_ROOM:
             return {
                 ...state,

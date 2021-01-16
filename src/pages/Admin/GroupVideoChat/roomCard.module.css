@@ -1,0 +1,81 @@
+.roomCard {
+  background: #212121;
+  width: 350px;
+  margin-top:15px;
+}
+
+.roomImg {
+  display: flex;
+  justify-content: center;
+}
+
+.roomName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+  border-bottom: 1px solid #aaaaaa;
+  margin-bottom: 5px;
+}
+
+.roomName h2 {
+  margin: 0;
+  color: #ffffff;
+}
+
+.roomTime {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  color: #aaaaaa;
+  margin-left: 3px;
+  margin-bottom: 5px;
+}
+
+.roomTime h4 {
+  margin: 0;
+  color: #aaaaaa;
+  margin-right: 7px;
+}
+
+.roomDescription {
+  display: flex;
+  margin-left: 3px;
+  color: #aaaaaa;
+  margin-bottom: 5px;
+}
+
+.roomDescription h4 {
+  color: #aaaaaa;
+  margin: 0;
+  margin-right: 7px;
+}
+
+.roomCategory {
+  margin-left: 3px;
+  display: flex;
+  color: #aaaaaa;
+  margin-bottom: 5px;
+}
+
+.roomCategory h4 {
+  color: #aaaaaa;
+  margin-right: 7px;
+}
+
+.roomBtn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 15px;
+  color: #fa4a4a;
+  /* border: 2px solid white; */
+  margin-top: -10px;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.roomBtn span{
+  margin-left: 8px;
+}

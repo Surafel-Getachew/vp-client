@@ -15,7 +15,7 @@ const GroupTherapyRoom = (props) => {
   const others = useRef();
   const autoScroll = useRef();
   const [myVideo, setMyVideo] = useState();
-  const [streams,setStreams] = useState([])
+  const [streams, setStreams] = useState([]);
   const [peeerId, setPeeerId] = useState("");
   const [textMessage, setTxtMessage] = useState("");
   const [recivedTxtMessage, setRecivedTxtMessage] = useState([
@@ -41,16 +41,16 @@ const GroupTherapyRoom = (props) => {
           myStream.current.srcObject = stream;
           call.on("stream", (otherPepStream) => {
             console.log("reciving stream..");
-            // setStreams([...streams,otherPepStream]);
-            others.current.srcObject = otherPepStream;
+            setStreams([...streams, otherPepStream]);
+            // others.current.srcObject = otherPepStream;
           });
         });
         socket.on("user-connected", (peerId) => {
           console.log("user to call", peerId);
           var call = peer.call(peerId, stream);
           call.on("stream", (otherPepStream) => {
-            others.current.srcObject = otherPepStream;
-            // setStreams([...streams,otherPepStream])
+            // others.current.srcObject = otherPepStream;
+            setStreams([...streams, otherPepStream]);
           });
         });
       });
@@ -104,29 +104,30 @@ const GroupTherapyRoom = (props) => {
       ...recivedTxtMessage,
       { chatText: msg, chatTime: getTime() },
     ]);
-    scrollAuto()
+    scrollAuto();
   });
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && e.target.value !== "") {
       socket.emit("sendGroupMessage", textMessage, roomId);
-      setTxtMessage("")
+      setTxtMessage("");
     }
-
   };
 
   return (
     <div className={styles.groupVideoCnt}>
       <div className={styles.videoCnt}>
         <video ref={myStream} autoPlay className={styles.myStream}></video>
-        <video ref={others} autoPlay className={styles.othersStream}></video>
-        {/* {streams.map((stream) => <VideoComponent stream = {stream}/>)} */}
+        {/* <video ref={others} autoPlay className={styles.othersStream}></video> */}
+        {streams.map((stream) => (
+          <VideoComponent stream={stream} />
+        ))}
       </div>
       <div className={styles.chatCnt}>
         <div className={styles.textChatHeader}>
-          <div className = {styles.textChatHeaderCenter}>
-          <h3>Group Chat</h3>
-          <h4>Messages</h4>
+          <div className={styles.textChatHeaderCenter}>
+            <h3>Group Chat</h3>
+            <h4>Messages</h4>
           </div>
         </div>
         <div className={styles.chatWindow}>

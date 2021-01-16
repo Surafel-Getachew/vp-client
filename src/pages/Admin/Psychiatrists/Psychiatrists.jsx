@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { loadAllPsychsBasicProfile } from "../../../Redux/PsychProfile/psych_profile_aciton";
+import { loadAllPsychsBasicProfile} from "../../../Redux/PsychProfile/psych_profile_aciton";
 import { Input } from "antd";
 import Layout from "../Layout/Layout";
 import PsychiatristItems from "./PsychiatristItems";
 import styles from "./psychs.module.css";
 const { Search } = Input;
 const Psychiatrists = (props) => {
-  const { loadAllPsychsBasicProfile, psychsBasicProfile } = props;
+  const { loadAllPsychsBasicProfile, psychsBasicProfile} = props;
   useEffect(() => {
     loadAllPsychsBasicProfile();
   }, []);
@@ -46,6 +46,7 @@ const Psychiatrists = (props) => {
 
 const mapStateToProps = (state) => ({
   psychsBasicProfile: state.psychProfile.psychsBasicProfile,
+
 });
 
 export default connect(mapStateToProps, {

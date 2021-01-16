@@ -48,6 +48,8 @@ import AdminSignup from "./pages/Admin/Auth/Signup";
 import AdminSignin from "./pages/Admin/Auth/Signin";
 import AdminDashboard from "./pages/Admin/Dashboard/Dashboard";
 import AdminPsychiatrists from "./pages/Admin/Psychiatrists/Psychiatrists";
+import AdminArticles from "./pages/Admin/Articles/Articles";
+import AdminGroupVideoChat from "./pages/Admin/GroupVideoChat/GroupVideoChat";
 // Public Page
 import PublicArticle from "./pages/PublicArticle/PublicArticle";
 import GroupTherapyRoom from "./pages/GroupTherapyRoom/GroupTherapyRoom"
@@ -197,6 +199,16 @@ const Apps = () => {
                     exact
                     path="/vp/admin/psychiatrists"
                     component={AdminPsychiatrists}
+                  />
+                  <Route
+                    exact
+                    path="/vp/admin/articles"
+                    component={AdminArticles}
+                  />
+                  <Route
+                    exact
+                    path="/vp/admin/group-video-rooms"
+                    component={AdminGroupVideoChat}
                   />
                   
                   {/* <Route exact path ="/vp/try" component = {Try} /> */}
