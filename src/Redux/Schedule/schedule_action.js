@@ -6,7 +6,8 @@ import {
   CLEAR_SCHEDULE_ERROR,
   LOAD_TODAYS_SCHEDULE,
   DELETE_SCHEDULE,
-  GET_PSYCH_SCHEDULE_BY_ID
+  GET_PSYCH_SCHEDULE_BY_ID,
+  TOTAL_SCHEDULE_EACH_DAY
 } from "./types";
 
 const config = {
@@ -52,7 +53,16 @@ export const getPsychScheduleById = (id,date) => async (dispatch) => {
   }
 }
 
-export const clearScheduleError = () => (dispatch) => {
+export const getTotalSchduleOfEachDay = () => async(dispatch) => {
+  try {
+    const res = await axios.get("/vp/psych/schedule/admin/allSchedule");
+    dispatch({type:TOTAL_SCHEDULE_EACH_DAY,payload:res.data})
+  } catch (error) {
+    
+  }
+}
+
+export const clearScheduleError = () => async(dispatch) => {
   setTimeout(() => {
     dispatch({ type: CLEAR_SCHEDULE_ERROR });
   }, 5000);

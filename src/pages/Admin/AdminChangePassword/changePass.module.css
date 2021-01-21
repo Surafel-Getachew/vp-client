@@ -1,0 +1,14 @@
+.changePassCnt {
+  /* border: 1px solid red; */
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formCnt {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

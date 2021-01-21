@@ -17,7 +17,11 @@ import {
   PSYCHIATRIST_LOADED,
   FOUND_LOGGEDIN_USER,
   SHOW_FORGOT_PASSWORD,
-  DELETE_PSYCHIATRIST
+  DELETE_PSYCHIATRIST,
+  CHANGE_PSYCH_PASSWORD,
+  CHANGE_PSYCH_PASSWORD_ERROR,
+  TOTAL_USERS,
+  TOTAL_PSYCHIATRISTS
 } from "../../types";
 
 export default (state, action) => {
@@ -156,6 +160,26 @@ export default (state, action) => {
         ...state,
         refresh:!state.refresh
       }
+    case CHANGE_PSYCH_PASSWORD:
+      return {
+        ...state,
+        successMsg:action.payload
+      }
+    case CHANGE_PSYCH_PASSWORD_ERROR:
+      return {
+        ...state,
+        error:action.payload
+      }
+    case TOTAL_PSYCHIATRISTS:
+      return {
+        ...state,
+        totalPsychiatrists:action.payload
+      }  
+    case TOTAL_USERS:
+      return {
+        ...state,
+        totalUsers:action.payload
+      }  
     default:
       return state;
   }

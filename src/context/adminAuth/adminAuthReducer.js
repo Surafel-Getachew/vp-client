@@ -4,7 +4,9 @@ import {
     ADMIN_SIGNIN,
     ADMIN_SIGNIN_FAIL,
     LOAD_ADMIN,
-    LOGOUT_ADMIN
+    LOGOUT_ADMIN,
+    ADMIN_CHANGE_PASSWORD,
+    ADMIN_CHANGE_PASSWORD_ERROR
 } from "./types"
 
 export default (state,action) => {
@@ -49,6 +51,16 @@ export default (state,action) => {
                 isAuthenticated:false,
                 loading:false,
                 admin:null,
+            }
+        case ADMIN_CHANGE_PASSWORD:
+            return {
+                ...state,
+                successMsg:action.payload
+            }
+        case ADMIN_CHANGE_PASSWORD_ERROR:
+            return {
+                ...state,
+                error:action.payload
             }
         default:
             return state

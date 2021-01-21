@@ -23,7 +23,11 @@ import {
   CLEAR_ERRORS,
   FOUND_LOGGEDIN_USER,
   SHOW_FORGOT_PASSWORD,
-  DELETE_PSYCHIATRIST
+  DELETE_PSYCHIATRIST,
+  CHANGE_PSYCH_PASSWORD,
+  CHANGE_PSYCH_PASSWORD_ERROR,
+  TOTAL_PSYCHIATRISTS,
+  TOTAL_USERS
 } from "../../types";
 
 const AuthState = (props) => {
@@ -40,11 +44,17 @@ const AuthState = (props) => {
     role: null,
     emailInUser: "",
     showForgotPasswordState: false,
-    refresh:false
+    refresh:false,
+    totalUsers:"",
+    totalPsychiatrists:""
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
-
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
   const loadUser = async () => {
     setAuthToken(localStorage.token);
     try {
@@ -202,6 +212,34 @@ const AuthState = (props) => {
     dispatch({type:DELETE_PSYCHIATRIST})
   }
 
+  const changePassword = async(formData) => {
+    try {
+      // const res = await axios.post("vp/psychiatrist/changePassword",formData,config);
+      const res = await axios.post("/vp/psychiatrist/changePassword",formData,config)
+      dispatch({type:CHANGE_PSYCH_PASSWORD,payload:res.data.msg})
+    } catch (error) {
+      dispatch({type:CHANGE_PSYCH_PASSWORD_ERROR,payload:error.response.data.msg})
+    }
+  }
+
+  const getTotalUsers = async() => {
+    try {
+      const res = await axios.get("/vp/users/admin/total");
+      dispatch({type:TOTAL_USERS,payload:res.data})
+    } catch (error) {
+      
+    }
+  }
+
+  const getTotalPsychiatrists = async() => {
+    try {
+      const res = await axios.get("/vp/psychiatrist/admin/total");
+      dispatch({type:TOTAL_PSYCHIATRISTS,payload:res.data})
+    } catch (error) {
+      
+    }
+  }
+
   const showForgotPassword = () => {
     dispatch({ type: SHOW_FORGOT_PASSWORD });
   };
@@ -232,6 +270,8 @@ const AuthState = (props) => {
         responseMsg:state.responseMsg,
         showForgotPasswordState: state.showForgotPasswordState,
         refresh:state.refresh,
+        totalUsers:state.totalUsers,
+        totalPsychiatrists:state.totalPsychiatrists,
         loadUser,
         loadPsychiatrist,
         register,
@@ -246,7 +286,10 @@ const AuthState = (props) => {
         clearErrors,
         findLoggedInUser,
         showForgotPassword,
-        deletePsychiatrist
+        deletePsychiatrist,
+        changePassword,
+        getTotalUsers,
+        getTotalPsychiatrists
       }}
     >
       {props.children}

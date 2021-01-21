@@ -6,7 +6,10 @@ import {
     GET_ROOMS_BY_CATEGORY,
     SEARCH_FOR_ROOM,
     PSYCH_SEARCH_ROOM,
-    ADMIN_DELETE_GROUP
+    ADMIN_DELETE_GROUP,
+    SET_CURRENT_ROOM,
+    UPDATE_ROOM,
+    TOTAL_ROOM
 } from "./types"
 
 const initialState = {
@@ -14,7 +17,9 @@ const initialState = {
     psychRooms:[],
     allRooms:[],
     roomsByCategory:[],
-    refresh:false
+    refresh:false,
+    currentRoom:null,
+    totalRooms:""
 }
 
 export default (state=initialState,action) => {
@@ -57,6 +62,23 @@ export default (state=initialState,action) => {
                 psychRooms:[],
                 psychRooms:action.payload
             }
+        case SET_CURRENT_ROOM:
+            return {
+                ...state,
+                currentRoom:action.payload
+            }
+        case UPDATE_ROOM:{
+            return {
+                ...state,
+                refresh:!state.refresh
+            }
+        }
+        case TOTAL_ROOM:{
+            return {
+                ...state,
+                totalRooms:action.payload
+            }
+        }    
         default:
             return state;
     }

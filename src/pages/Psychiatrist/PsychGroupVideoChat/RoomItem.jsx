@@ -1,18 +1,22 @@
 import React from "react";
 import { Redirect,Link} from "react-router-dom";
 import { connect } from "react-redux";
-import { deleteRoom } from "../../../Redux/GroupVideoChat/group-video-chat-action";
+import { deleteRoom,setCurrentRoom} from "../../../Redux/GroupVideoChat/group-video-chat-action";
 import styles from "./roomItem.module.css";
 import RoomDescription from "./RoomDescription";
 import { getTimeAMPMFormat } from "../../../utils/helpers";
 import { Button } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 const RoomItem = (props) => {
-  const { rooms, deleteRoom } = props;
+  const { rooms, deleteRoom,setCurrentRoom,currentRoom} = props;
+  const {_id,name,description,start,end} = rooms;
   const onDelete = (id) => {
     deleteRoom(id);
     // console.log("delete",id);
   };
+  const onRoomEdit = () => {
+    setCurrentRoom(rooms)
+  }
   return (
     // <div className={styles.roomItemCnt}>
     <div className={styles.roomCard}>
@@ -41,6 +45,7 @@ const RoomItem = (props) => {
               fontWeight: "lighter",
             }}
             className={styles.editRoom}
+            onClick = {onRoomEdit}
           />
         </div>
         <div className={styles.joinBtnCnt}>
@@ -65,7 +70,11 @@ const RoomItem = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  currentRoom:state.groupVideoChat.currentRoom
+
+});
 export default connect(mapStateToProps, {
   deleteRoom,
+  setCurrentRoom
 })(RoomItem);

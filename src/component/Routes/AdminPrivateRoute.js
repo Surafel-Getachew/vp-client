@@ -7,7 +7,7 @@ const AdminPrivateRoute = ({component:Component,...rest}) => {
     const {isAuthenticated,loading} = adminAuthContext
 
     return (
-        <Route {...rest} render = {props => isAuthenticated == false && loading == false ? (
+        <Route {...rest} render = {props => isAuthenticated === false && loading === false ? (
             <Redirect to = "/vp/admin/signin" />
         ) :(
             <Component {...props} /> 

@@ -4,7 +4,8 @@ import {
   CLEAR_SCHEDULE_ERROR,
   LOAD_TODAYS_SCHEDULE,
   DELETE_SCHEDULE,
-  GET_PSYCH_SCHEDULE_BY_ID
+  GET_PSYCH_SCHEDULE_BY_ID,
+  TOTAL_SCHEDULE_EACH_DAY
 } from "./types";
 
 const initialState = {
@@ -12,7 +13,8 @@ const initialState = {
   scheduleError: null,
   todaysSchedule: [],
   refresh:false,
-  psychScheduleById:[]
+  psychScheduleById:[],
+  totalScheduleOfDays:null
 };
 
 export default (state = initialState, action) => {
@@ -48,6 +50,11 @@ export default (state = initialState, action) => {
         ...state,
         psychScheduleById:action.payload
       }
+    case TOTAL_SCHEDULE_EACH_DAY:
+      return {
+        ...state,
+        totalScheduleOfDays:action.payload
+      }  
     default:
       return state;
   }

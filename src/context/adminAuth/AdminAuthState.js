@@ -11,8 +11,11 @@ import {
     ADMIN_SIGNIN_FAIL,
     LOAD_ADMIN,
     ADMIN_AUTH_ERROR,
-    LOGOUT_ADMIN
+    LOGOUT_ADMIN,
+    ADMIN_CHANGE_PASSWORD,
+    ADMIN_CHANGE_PASSWORD_ERROR
 } from "./types"
+import { CHANGE_PSYCH_PASSWORD } from "../../types";
 
 const AdminAuthState = (props) => {
     const initialState = {
@@ -20,7 +23,8 @@ const AdminAuthState = (props) => {
         isAuthenticated:false,
         loading:true,
         admin:[],
-        error:null
+        error:null,
+        successMsg:null,        
     }
     const [state,dispatch] = useReducer(AdminAuthReducer,initialState)
     const config = {
@@ -58,6 +62,15 @@ const AdminAuthState = (props) => {
         }
     }
 
+    const adminChangePassword = async (formData) => {
+        try {
+            const res = await axios.post("/vp/admin/changePassword",formData,config);
+            dispatch({type:ADMIN_CHANGE_PASSWORD,payload:res.data.msg});
+        } catch (error) {
+            dispatch({type:ADMIN_CHANGE_PASSWORD_ERROR,payload:error.response.data.msg});
+        }
+    }
+
     const logoutAdmin = () => {
         dispatch({type:LOGOUT_ADMIN})
     }
@@ -68,6 +81,7 @@ const AdminAuthState = (props) => {
             isAuthenticated:state.isAuthenticated,
             loading:false,
             admin:state.admin,
+            adminChangePassword,
             loadAdmin,
             signupAdmin,
             signinAdmin,

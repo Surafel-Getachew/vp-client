@@ -9,6 +9,7 @@ const Layout = (props) => {
       <div className={styles.appContainer}>
         <TopNav className={styles.topNav} />
         <div className={styles.childPage}>{props.children}</div>
+      <div className = {styles.toggle}></div>
       </div>
     </div>
   );

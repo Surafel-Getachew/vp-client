@@ -4,13 +4,11 @@ import {
   createRoom,
   getMyRooms,
   searchRoomForPsych,
+  setCurrentRoom,
+  updateRoom,
 } from "../../../Redux/GroupVideoChat/group-video-chat-action";
-import { Upload, message, Form, Input, TimePicker, Select, Button } from "antd";
-import {
-  LoadingOutlined,
-  PlusOutlined,
-  UploadOutlined,
-} from "@ant-design/icons";
+import { Upload, Form, Input, TimePicker, Select, Button } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
 import RoomItem from "./RoomItem";
 import Layout from "../../../component/Layout/Layout";
 import styles from "./groupvideo.module.css";
@@ -24,11 +22,15 @@ const PsychGroupVideoChat = (props) => {
     searchRoomForPsych,
     psychRooms,
     refresh,
+    currentRoom,
+    updateRoom,
   } = props;
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
   const [groupPhoto, setGroupPhoto] = useState(null);
   const [searchValue, setSearchValue] = useState("");
+  const [btnName, setBtnName] = useState("Create");
+  const [form] = Form.useForm();
   useEffect(() => {
     getMyRooms();
   }, []);
@@ -40,6 +42,20 @@ const PsychGroupVideoChat = (props) => {
       getMyRooms();
     }
   }, [searchValue]);
+  // const [form] = Form.useForm();
+  useEffect(() => {
+    if (currentRoom !== null) {
+      setBtnName("Update");
+      form.setFieldsValue({
+        name: currentRoom.name,
+        description: currentRoom.description,
+        start: currentRoom.start,
+        end: currentRoom.end,
+        category: currentRoom.category,
+        avatar: currentRoom.avatar,
+      });
+    }
+  }, [currentRoom]);
   const onSearchChange = (e) => {
     setSearchValue(e.target.value);
     const searchText = {
@@ -61,52 +77,26 @@ const PsychGroupVideoChat = (props) => {
     }
     setGroupPhoto(fileList[0].originFileObj);
   };
-  // const handleChange = (info) => {
-  //   if (info.file.status === "uploading") {
-  //     setLoading(true);
-  //     return;
-  //   }
-  //   if (info.file.status === "done") {
-  //     // Get this url from response in real world.
-  //     setGroupPhoto(info.file.originFileObj);
-  //     getBase64(info.file.originFileObj, (imageUrl) => {
-  //       setImageUrl(imageUrl);
-  //       setLoading(false);
-  //     });
-  //   }
-  // };
-  // const getBase64 = (img, callback) => {
-  //   const reader = new FileReader();
-  //   reader.addEventListener("load", () => callback(reader.result));
-  //   reader.readAsDataURL(img);
-  // };
-  // const beforeUpload = (file) => {
-  //   const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
-  //   if (!isJpgOrPng) {
-  //     message.error("You can only upload JPG/PNG file!");
-  //   }
-  //   const isLt2M = file.size / 1024 / 1024 < 2;
-  //   if (!isLt2M) {
-  //     message.error("Image must smaller than 2MB!");
-  //   }
-  //   return isJpgOrPng && isLt2M;
-  // };
-  // const uploadButton = (
-  //   <div>
-  //     {loading ? <LoadingOutlined /> : <PlusOutlined />}
-  //     <div style={{ marginTop: 8 }}>Upload</div>
-  //   </div>
-  // );
-  const [form] = Form.useForm();
   const onFinish = (values) => {
-    const formData = new FormData();
-    formData.append("start", values.time[0]);
-    formData.append("end", values.time[1]);
-    formData.append("name", values.name);
-    formData.append("description", values.description);
-    formData.append("category", values.category);
-    formData.append("avatar", groupPhoto);
-    createRoom(formData);
+    if (currentRoom !== null) {
+      const formData = new FormData();
+      formData.append("start", values.time[0]);
+      formData.append("end", values.time[1]);
+      formData.append("name", values.name);
+      formData.append("description", values.description);
+      formData.append("category", values.category);
+      formData.append("avatar", groupPhoto);
+      updateRoom(currentRoom._id, formData);
+    } else {
+      const formData = new FormData();
+      formData.append("start", values.time[0]);
+      formData.append("end", values.time[1]);
+      formData.append("name", values.name);
+      formData.append("description", values.description);
+      formData.append("category", values.category);
+      formData.append("avatar", groupPhoto);
+      createRoom(formData);
+    }
   };
   return (
     <Layout>
@@ -114,24 +104,16 @@ const PsychGroupVideoChat = (props) => {
         <div className={styles.groupVideoCenter}>
           <div className={styles.roomFormCnt}>
             <h3>Create Room</h3>
-            {/* <Upload
-              name="avatar"
-              listType="picture-card"
-              // className="avatar-uploader"
-              className={styles.avatarInput}
-              showUploadList={false}
-              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-              beforeUpload={beforeUpload}
-              onChange={handleChange}
-            >
-              {imageUrl ? (
-                <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
-              ) : (
-                uploadButton
-              )}
-            </Upload> */}
             <Form form={form} onFinish={onFinish}>
-              <Form.Item name="avatar" label="Avatar">
+              <Form.Item
+                name="avatar"
+                label="Avatar"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              >
                 <Upload onChange={onGroupPhoto}>
                   <Button icon={<UploadOutlined />}>Upload</Button>
                 </Upload>
@@ -200,36 +182,20 @@ const PsychGroupVideoChat = (props) => {
                   <Option value="Other">Other</Option>
                 </Select>
               </Form.Item>
-              {/* <Form.Item
-                name="category"
-                label="Category"
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
-                <Select
-                  mode="tags"
-                  tokenSeparators={[","]}
-                  placeholder="Category Of The Room"
-                  // style={{ width: "80%" }}
-                ></Select>
-              </Form.Item> */}
               <Form.Item>
                 <Button
                   type="primary"
                   htmlType="submit"
                   className={styles.createBtn}
                 >
-                  Create
+                  {btnName}
                 </Button>
               </Form.Item>
             </Form>
           </div>
           <div className={styles.roomListCnt}>
             <Search
-              className = {styles.psychGroupSearch}
+              className={styles.psychGroupSearch}
               placeholder="input search text"
               allowClear
               value={searchValue}
@@ -252,10 +218,12 @@ const PsychGroupVideoChat = (props) => {
 const mapStateToProps = (state) => ({
   psychRooms: state.groupVideoChat.psychRooms,
   refresh: state.groupVideoChat.refresh,
+  currentRoom: state.groupVideoChat.currentRoom,
 });
 
 export default connect(mapStateToProps, {
   createRoom,
   getMyRooms,
   searchRoomForPsych,
+  updateRoom,
 })(PsychGroupVideoChat);

@@ -17,14 +17,20 @@ const Navbar = () => {
     },
     {
       name: "Psychiatrists",
-      icon: "fas fa-calendar-check",
+      icon: "fas fa-user-md",
       to: "/vp/admin/psychiatrists",
       key: 9,
     },
     {
-      name: "Schedule",
-      icon: "fas fa-calendar-check",
-      to: "/vp/admin/schedule",
+      name: "Users",
+      icon: "fas fa-user",
+      to: "/vp/admin/users",
+      key: 2,
+    },
+    {
+      name: "Register Psychiatrist",
+      icon: "fas fa-user-plus",
+      to: "/vp/psychiatrist/signup",
       key: 2,
     },
     // {
@@ -45,12 +51,12 @@ const Navbar = () => {
       to: "/vp/admin/articles",
       key: 4,
     },
-    {
-      name: "Video Chat",
-      icon: "fas fa-video",
-      to: "/vp/admin/videochat",
-      key: 5,
-    },
+    // {
+    //   name: "Video Chat",
+    //   icon: "fas fa-video",
+    //   to: "/vp/admin/videochat",
+    //   key: 5,
+    // },
     {
       name: "Profile Setting",
       icon: "fas fa-user-cog",

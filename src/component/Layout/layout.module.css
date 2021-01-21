@@ -1,7 +1,6 @@
 .Container {
   display: grid;
   grid-template-columns: 1fr 5fr;
-  /* background-color: #e1e1e9; */
   background-color: #fff;
 }
 .appContainer {
@@ -12,17 +11,12 @@
   margin: 20px auto 0px auto;
 }
 
-/* .appContainer {
-  display: grid;
-  grid-template-rows: 1fr 8fr;
-  grid-template-rows: 10% 80%;
-  min-height: 100vh;
+.toggle {
+  position: absolute;
+  top: 310px;
+  right: 0;
+  z-index: 800;
+  /* height: 360px; */
+  background: red;
+  cursor: pointer;
 }
-
-.childPage {
-  width: 98%;
-  max-height: 96%;
-  min-height: 96%;
-  margin: 0 auto;
-  border:2px solid yellow
-}  */

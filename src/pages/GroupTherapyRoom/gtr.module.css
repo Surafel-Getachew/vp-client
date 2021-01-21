@@ -4,8 +4,20 @@
 }
 .videoCnt {
   display: flex;
-  /* border: 1px solid red; */
+  flex-direction: column;
+  border: 1px solid red;
   flex-basis: 70%;
+}
+
+.userVideoCnt{
+  border:1px solid green;
+  width:100%;
+  flex-basis: 85%;
+}
+
+.userVideoBtn{
+  flex-basis:15%;
+  border:2px solid red
 }
 
 .myStream {

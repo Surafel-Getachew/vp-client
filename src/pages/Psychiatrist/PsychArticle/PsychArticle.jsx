@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import Layout from "../../../component/Layout/Layout";
 import styles from "./psych-article.module.css";
 import ReactQuill from "react-quill";
-import { Select, Input, Upload, Button } from "antd";
+import { Select, Input, Upload, Button, Alert } from "antd";
 import ArticleContext from "../../../context/article/articleContext";
 import ArticleItems from "./ArticleItems";
 import { UploadOutlined } from "@ant-design/icons";
@@ -23,9 +23,10 @@ const PsychArticle = (props) => {
   const [body, setBody] = useState("");
   const [articleTag, setTag] = useState("");
   const [searchValue, setSearchValue] = useState("");
-  const [articlePhoto,setArticlePhoto] = useState(null);
+  const [articlePhoto, setArticlePhoto] = useState(null);
   const [btnName, setBtnName] = useState("Submit");
-  
+  const [showAlert, setShowAlert] = useState(false);
+
   useEffect(() => {
     loadPsychiatristArticles();
   }, []);
@@ -48,39 +49,46 @@ const PsychArticle = (props) => {
   const onBodyChange = (value) => {
     setBody(value);
   };
-  const onArticlePhoto = ({fileList}) => {
+  const onArticlePhoto = ({ fileList }) => {
     setArticlePhoto(fileList[0].originFileObj);
   };
   const onSubmit = (e) => {
-    e.preventDefault();
-    if (current === null) {
-      const formData = new FormData();
-      formData.append("title",title)
-      formData.append("body",body)
-      formData.append("articleTag",articleTag)
-      formData.append("articlePhoto",articlePhoto)
-      // addArticle({
-      //   title: title,
-      //   body: body,
-      //   articleTag: articleTag,
-      // });
-      addArticle(formData);
-      setBody("");
-      setTitle("");
-      setTag("");
+    if (
+      title === "" ||
+      body === "" ||
+      articleTag === "" ||
+      articlePhoto === null
+    ) {
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false)
+      }, 5000);
     } else {
-      const articlee = {
-        title: title,
-        body: body,
-        articleTag: articleTag,
-      };
-      const idOfArticle = current._id;
-      updateArticle(articlee, idOfArticle);
-      clearCurrent();
-      setBody("");
-      setTitle("");
-      setTag("");
-      setBtnName("Submit");
+      e.preventDefault();
+      if (current === null) {
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("body", body);
+        formData.append("articleTag", articleTag);
+        formData.append("articlePhoto", articlePhoto);
+        addArticle(formData);
+        setBody("");
+        setTitle("");
+        setTag("");
+      } else {
+        const articlee = {
+          title: title,
+          body: body,
+          articleTag: articleTag,
+        };
+        const idOfArticle = current._id;
+        updateArticle(articlee, idOfArticle);
+        clearCurrent();
+        setBody("");
+        setTitle("");
+        setTag("");
+        setBtnName("Submit");
+      }
     }
     // console.log("submit button");
   };
@@ -102,7 +110,14 @@ const PsychArticle = (props) => {
         <div className={styles.articleFormCnt}>
           <div className={styles.articleCenter}>
             <form className={styles.formContainer}>
-              <Upload onChange={onArticlePhoto}>
+              {showAlert ? (
+                <Alert
+                  style={{ width: "300px",marginBottom:"10px"}}
+                  message="All Fileds must be filled"
+                  type="error"
+                />
+              ) : null}
+              <Upload onChange={onArticlePhoto} required>
                 <Button icon={<UploadOutlined />}>Upload</Button>
               </Upload>
               <label className={styles.titleSpan} htmlFor="title">
@@ -115,6 +130,7 @@ const PsychArticle = (props) => {
                 name="title"
                 value={title}
                 onChange={onTitleChange}
+                required
               ></input>
               <br />
               <label className={styles.richTextSpan} htmlFor="story">
@@ -125,17 +141,13 @@ const PsychArticle = (props) => {
                 className={styles.richText}
                 onChange={onBodyChange}
                 value={body}
+                
               />
               <div className={styles.articleTags}>
                 <label htmlFor="tags" className={styles.tagsSpan}>
                   Tags
                 </label>
                 <br />
-                {/* <Select
-                      mode="tags"
-                      tokenSeparators={[","]}
-                      style={{ width: "80%" }}
-                    ></Select> */}
                 <Select
                   showSearch
                   style={{ width: 200 }}

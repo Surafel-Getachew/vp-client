@@ -39,7 +39,8 @@ import PsychMessage from "./pages/Psychiatrist/PsychMessage/PsychMessage";
 import VideoCall from "./pages/Psychiatrist/videoChat/Video";
 import PsychVideoChat from "./pages/Psychiatrist/PsychVideoChat/PsychVideoChat";
 import PsychDetailProfile from "./pages/Psychiatrist/PsychProfile/PsychDetailProfile";
-import PsychGroupVideoChat from "./pages/Psychiatrist/PsychGroupVideoChat/PsychGroupVideoChat"
+import PsychGroupVideoChat from "./pages/Psychiatrist/PsychGroupVideoChat/PsychGroupVideoChat";
+import PsychChangePassword from "./pages/Psychiatrist/PsychChangePassword/PsychChangePassword";
 // import PsychSchedule from "./pages/Psychiatrist/PsychSchedule/PsychAppointment";
 // import VideoChatRoom from "./pages/Psychiatrist/PsychVideoChat/VideoChatRoom";
 
@@ -50,6 +51,8 @@ import AdminDashboard from "./pages/Admin/Dashboard/Dashboard";
 import AdminPsychiatrists from "./pages/Admin/Psychiatrists/Psychiatrists";
 import AdminArticles from "./pages/Admin/Articles/Articles";
 import AdminGroupVideoChat from "./pages/Admin/GroupVideoChat/GroupVideoChat";
+import AdminUser from "./pages/Admin/Users/Users"
+import AdminChangePassword from "./pages/Admin/AdminChangePassword/AdminChangePassword";
 // Public Page
 import PublicArticle from "./pages/PublicArticle/PublicArticle";
 import GroupTherapyRoom from "./pages/GroupTherapyRoom/GroupTherapyRoom"
@@ -177,6 +180,11 @@ const Apps = () => {
                   />
                   <PsychPrivateRoute
                     exact
+                    path="/vp/psychiatrist/change-password"
+                    component={PsychChangePassword}
+                  />
+                  <PsychPrivateRoute
+                    exact
                     path="/vp/psychiatrist/message/:userId"
                     component={PsychMessage}
                   />
@@ -202,6 +210,11 @@ const Apps = () => {
                   />
                   <Route
                     exact
+                    path="/vp/admin/users"
+                    component={AdminUser}
+                  />
+                  <Route
+                    exact
                     path="/vp/admin/articles"
                     component={AdminArticles}
                   />
@@ -209,6 +222,11 @@ const Apps = () => {
                     exact
                     path="/vp/admin/group-video-rooms"
                     component={AdminGroupVideoChat}
+                  />
+                  <Route
+                    exact
+                    path="/vp/admin/change-password"
+                    component={AdminChangePassword}
                   />
                   
                   {/* <Route exact path ="/vp/try" component = {Try} /> */}

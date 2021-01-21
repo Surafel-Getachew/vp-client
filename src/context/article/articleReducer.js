@@ -12,7 +12,9 @@ import {
     GET_ARTICLE_BY_CATEGORY,
     GET_ARTICLE_BY_ID,
     PROFILE,
-    ADMIN_DELETE_ARTICLE
+    ADMIN_DELETE_ARTICLE,
+    PSYCHS_TOTAL_ARTICLE,
+    TOTAL_ARTICLE
 }from "../../types";
 
 export default (state,action) => {
@@ -126,6 +128,19 @@ export default (state,action) => {
                 refresh:!state.refresh
             }
         }
+        case PSYCHS_TOTAL_ARTICLE:{
+            return {
+                ...state,
+                psychTotalArticle:action.payload
+            }
+        }
+        case TOTAL_ARTICLE:{
+            return {
+                ...state,
+                totalArticles:action.payload
+            }
+        }
+
         default:
             return state 
     }

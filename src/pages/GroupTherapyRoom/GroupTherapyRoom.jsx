@@ -14,6 +14,16 @@ const GroupTherapyRoom = (props) => {
   const myStream = useRef();
   const others = useRef();
   const autoScroll = useRef();
+  const [audioState, setAudioState] = useState({
+    audioIcon: "fas fa-microphone-alt",
+    audioText: "Mute",
+  });
+  const [videoState, setVideoState] = useState({
+    videoIcon: "fa fa-video",
+    videoText: "Stop Video",
+  });
+  const { audioIcon, audioText } = audioState;
+  const { videoIcon, videoText } = videoState;
   const [myVideo, setMyVideo] = useState();
   const [streams, setStreams] = useState([]);
   const [peeerId, setPeeerId] = useState("");
@@ -114,14 +124,68 @@ const GroupTherapyRoom = (props) => {
     }
   };
 
+  const playStopVideo = () => {
+    let enabled = myVideo.getVideoTracks()[0].enabled;
+    if (enabled) {
+      myVideo.getVideoTracks()[0].enabled = false;
+      setVideoState({
+        ...videoState,
+        videoIcon: "fa fa-video-slash",
+        videoText: "Play Video",
+      });
+    } else {
+      myVideo.getVideoTracks()[0].enabled = true;
+      setVideoState({
+        ...videoState,
+        videoIcon: "fa fa-video",
+        videoText: "Stop Video",
+      });
+    }
+  };
+
+  const muteUnmute = () => {
+    let enabled = myVideo.getAudioTracks()[0].enabled;
+    if (enabled) {
+      myVideo.getAudioTracks()[0].enabled = false;
+      setAudioState({
+        ...audioState,
+        audioIcon: "fas fa-microphone-alt-slash",
+        audioText: "Unmute",
+      });
+    } else {
+      myVideo.getAudioTracks()[0].enabled = true;
+      setAudioState({
+        ...audioState,
+        audioIcon: "fas fa-microphone-alt",
+        audioText: "Mute",
+      });
+    }
+  };
+
   return (
     <div className={styles.groupVideoCnt}>
       <div className={styles.videoCnt}>
-        <video ref={myStream} autoPlay className={styles.myStream}></video>
-        {/* <video ref={others} autoPlay className={styles.othersStream}></video> */}
-        {streams.map((stream) => (
-          <VideoComponent stream={stream} />
-        ))}
+        <div className={styles.userVideoCnt}>
+          <video ref={myStream} autoPlay className={styles.myStream}></video>
+          {/* <video ref={others} autoPlay className={styles.othersStream}></video> */}
+          {streams.map((stream) => (
+            <VideoComponent stream={stream} />
+          ))}
+        </div>
+        <div className={styles.userVideoBtn}>
+          <div onClick={muteUnmute}>
+            <i className={audioIcon}></i>
+            <span>{audioText}</span>
+          </div>
+          <div onClick={playStopVideo}>
+            <i className={videoIcon}></i>
+            <span>{videoText}</span>
+          </div>
+          <div>
+            <i style={{ color: "#eb534b" }} className="fa fa-phone-alt"></i>
+            <span style={{ color: "#eb534b" }}>End Call</span>
+          </div>
+        </div>
       </div>
       <div className={styles.chatCnt}>
         <div className={styles.textChatHeader}>

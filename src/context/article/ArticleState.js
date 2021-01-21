@@ -19,7 +19,9 @@ import {
     GET_ARTICLE_BY_CATEGORY,
     GET_ARTICLE_BY_ID,
     PROFILE,
-    ADMIN_DELETE_ARTICLE
+    ADMIN_DELETE_ARTICLE,
+    PSYCHS_TOTAL_ARTICLE,
+    TOTAL_ARTICLE
 }from "../../types";
 
 
@@ -32,13 +34,15 @@ const ArticleState = (props) => {
         userSearchedArticles:[],
         article:null,
         articlesByCategory:[],
+        psychTotalArticle:"",
         owner:null,
         current:null,
         filtered:null,
         loading:true,
         error:null,
         profile:null,
-        refresh:false
+        refresh:false,
+        totalArticles:"",
     }
 
     const [state,dispatch] = useReducer(ArticleReducer,initialState) 
@@ -197,18 +201,38 @@ const ArticleState = (props) => {
         }
     }
 
+    const getPsychTotalArticle = async() => {
+        try {
+            const res = await axios.get("/vp/article/psychiatrist/numberOfArticle")
+            dispatch({type:PSYCHS_TOTAL_ARTICLE,payload:res.data});
+        } catch (error) {
+            
+        }
+    }
+
+    const getTotalArticles = async () => {
+        try {
+            const res = await axios.get("/vp/article/admin/total");
+            dispatch({type:TOTAL_ARTICLE,payload:res.data})
+        } catch (error) {
+            
+        }
+    }
+
     return (
         <ArticleContext.Provider value = {{
             articles:state.articles,
             userSearchedArticles:state.userSearchedArticles,
             article:state.article,
             articlesByCategory:state.articlesByCategory,
+            psychTotalArticle:state.psychTotalArticle,
             owner:state.owner,
             current:state.current,
             filtered:state.filtered,
             loading:state.loading,
             refresh:state.refresh,
             error:state.error,
+            totalArticles:state.totalArticles,
             addArticle,
             loadArticle,
             setCurrent,
@@ -222,7 +246,9 @@ const ArticleState = (props) => {
             searchAllArticle,
             getArticleByCategory,
             getArticleById,
-            adminDeleteArticle
+            adminDeleteArticle,
+            getPsychTotalArticle,
+            getTotalArticles
             // profile:state.profile,
         }}>
             {props.children}

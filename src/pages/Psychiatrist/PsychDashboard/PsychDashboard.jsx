@@ -1,15 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
 import AuthContext from "../../../context/auth/authContext";
+import ArticleContext from "../../../context/article/articleContext";
 import { connect } from "react-redux";
-import { getAllPsychAppointment } from "../../../Redux/PsychAppointment/psych_appointment_action";
+import { getAllPsychAppointment,getPsychTotalAppointment} from "../../../Redux/PsychAppointment/psych_appointment_action";
 import { Liquid } from "@ant-design/charts";
 import {
   AreaChart,
   Area,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
+  CartesianGrid,
   linearGradient,
 } from "recharts";
 // import PsychPage from "../../../component/Page/PsychPage";
@@ -19,13 +20,21 @@ import FigureItem from "../../../component/psychiatrist/PsychDashboard/FigureIte
 import styles from "./psychDashboard.module.css";
 const PsychDashboard = (props) => {
   const authContext = useContext(AuthContext);
+  const articleContext = useContext(ArticleContext);
+  const {getPsychTotalArticle,psychTotalArticle} = articleContext;
   const { loadPsychiatrist, user } = authContext;
   const { name } = user;
-  const { getAllPsychAppointment, allPsychAppointment } = props;
+  const { getAllPsychAppointment, allPsychAppointment,getPsychTotalAppointment,psychTotalAppointment} = props;
   const [appointment, setAppointment] = useState([]);
   useEffect(() => {
     loadPsychiatrist();
   }, []);
+  useEffect(() => {
+    getPsychTotalArticle()
+  },[])
+  useEffect(() => {
+    getPsychTotalAppointment()
+  },[])
   useEffect(() => {
     if (!allPsychAppointment) {
       getAllPsychAppointment();
@@ -114,14 +123,16 @@ const PsychDashboard = (props) => {
       color: "#3ade99",
       Icon: "fas fa-calendar",
       name: "Appointments",
-      totalNum: "102",
+      // totalNum: "102",
+      totalNum: psychTotalAppointment,
       backgroundColor: "rgba(58, 222, 153, 0.3)",
     },
     {
       color: "#fd7e14",
       Icon: "far fa-newspaper",
       name: "Article",
-      totalNum: "61",
+      // totalNum: "61",
+      totalNum:psychTotalArticle,
       backgroundColor: "rgb(253, 126, 20,0.3)",
     },
   ];
@@ -245,8 +256,10 @@ const PsychDashboard = (props) => {
 
 const mapStateToProps = (state) => ({
   allPsychAppointment: state.psychAppointment.allPsychAppointment,
+  psychTotalAppointment:state.psychAppointment.psychTotalAppointment
 });
 
 export default connect(mapStateToProps, {
   getAllPsychAppointment,
+  getPsychTotalAppointment
 })(PsychDashboard);

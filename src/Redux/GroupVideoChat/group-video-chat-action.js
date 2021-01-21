@@ -1,5 +1,7 @@
 import axios from "axios";
-import {CREATE_ROOM,LOAD_PSYCH_ROOM,DELETE_ROOM, GET_ALL_ROOMS,GET_ROOMS_BY_CATEGORY,SEARCH_FOR_ROOM,PSYCH_SEARCH_ROOM,ADMIN_DELETE_GROUP} from "./types"
+// import PsychGroupVideoChat from "../../pages/Psychiatrist/PsychGroupVideoChat/PsychGroupVideoChat";
+import {CREATE_ROOM,LOAD_PSYCH_ROOM,DELETE_ROOM, GET_ALL_ROOMS,GET_ROOMS_BY_CATEGORY,SEARCH_FOR_ROOM,PSYCH_SEARCH_ROOM,ADMIN_DELETE_GROUP,SET_CURRENT_ROOM,
+    UPDATE_ROOM,TOTAL_ROOM} from "./types"
 const config = {
     headers:{
         "Content-Type":"application/json"
@@ -76,10 +78,33 @@ export const searchRoomForPsych = (searchText) => async(dispatch) => {
     }
 }
 
+export const setCurrentRoom = (room) => (dispatch) => {
+    dispatch({type:SET_CURRENT_ROOM,payload:room});
+} 
+
 export const adminDeleteRoom = (id) => async(dispatch) => {
     try {
         const res = await axios.delete(`/vp/groupVideoChat/admin/${id}`)
         dispatch({type:ADMIN_DELETE_GROUP})
+    } catch (error) {
+        
+    }
+}
+
+export const updateRoom = (id,formData) => async(dispatch) => {
+    try {
+        const res = await axios.patch(`/vp/groupVideoChat/${id}`,formData,fileConfig);
+        dispatch({type:UPDATE_ROOM});
+        console.log(formData)
+    } catch (error) {
+        
+    }
+}
+
+export const getTotalRooms = () => async (dispatch) => {
+    try {
+        const res = await axios.get("/vp/groupVideoChat/admin/total");
+        dispatch({type:TOTAL_ROOM,payload:res.data});
     } catch (error) {
         
     }

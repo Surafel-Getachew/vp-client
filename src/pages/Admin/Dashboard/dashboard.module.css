@@ -1,0 +1,15 @@
+.numsCnt {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  width: 85%;
+  margin: 30px auto;
+  height: 150px;
+  background-color: #212121;
+}
+
+.areaChart {
+  /* display: flex;
+  justify-content: center; */
+}
