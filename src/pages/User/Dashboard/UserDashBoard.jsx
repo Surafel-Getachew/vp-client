@@ -1,18 +1,25 @@
 import React, { useEffect, useState, useContext } from "react";
+import { Tabs } from "antd";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import UserPage from "../../../component/Page/User/UserPage";
 import Layout from "../Layout/Layout";
+import UserApptHeader from "./UserApptHeader";
 import { reciveCall } from "../../../Redux/VideoCall/video_call_action";
+import { loadTodaysAppt } from "../../../Redux/UserAppointment/user_appt_action";
 import AuthContext from "../../../context/auth/authContext";
-import styles from "./userDashboard.module.css"
-
+import styles from "./userDashboard.module.css";
+import UserAppt from "./UserAppt";
+const { TabPane } = Tabs;
 const UserDashBoard = (props) => {
   const authContext = useContext(AuthContext);
   const { loadUser, user } = authContext;
-  const { reciveCall, ringing, caller } = props;
+  const { reciveCall, ringing, caller, loadTodaysAppt, todaysAppt } = props;
   const [recivingCall, setRecivingCall] = useState(false);
   const [redirect, setRedirect] = useState(false);
+  const [currentTab, setCurrentTab] = useState("monday");
+  const onDayChange = (key) => {
+    setCurrentTab(key);
+  };
   useEffect(() => {
     loadUser();
   }, []);
@@ -23,42 +30,55 @@ const UserDashBoard = (props) => {
     }
   }, [ringing]);
   reciveCall();
-  // const answerCall = () => {
-  //   setRedirect(true);
-  // };
-  // if (redirect) {
-  //   return (
-  //     <Redirect
-  //       to={{
-  //         pathname: "/vp/videocall",
-  //         state: { id: caller, name: name },
-  //       }}
-  //     />
-  //   );
-  // }
+
+  useEffect(() => {
+    loadTodaysAppt(currentTab);
+  }, [currentTab]);
+
   return (
-    // <Layout>
     <Layout>
-      <div className = {styles.dashBoardd}>
-        <h2>User Dashboard</h2>
-        {/* {recivingCall ? (
-          <div>
-            <h1>SomeOne is calling</h1>
-            <button onClick={answerCall}>Answer</button>
-            <button>Decline</button>
-          </div>
-        ) : null} */}
+      <div className={styles.UserDashBoard}>
+        <Tabs
+          defaultActiveKey="monday"
+          centered
+          tabBarGutter="1"
+          tabPosition="top"
+          onChange={onDayChange}
+        >
+          <TabPane tab="Monday" key="monday">
+            <UserApptHeader todaysAppt={todaysAppt} />
+          </TabPane>
+          <TabPane tab="Tuesday" key="tuesday">
+            <UserApptHeader todaysAppt={todaysAppt} />
+          </TabPane>
+          <TabPane tab="Wednesday" key="wednesday">
+            <UserApptHeader todaysAppt={todaysAppt} />
+          </TabPane>
+          <TabPane tab="Thursday" key="thursday">
+            <UserApptHeader todaysAppt={todaysAppt} />
+          </TabPane>
+          <TabPane tab="Friday" key="friday">
+            <UserApptHeader todaysAppt={todaysAppt} />
+          </TabPane>
+          <TabPane tab="Saturday" key="saturday">
+            <UserApptHeader todaysAppt={todaysAppt} />
+          </TabPane>
+          <TabPane tab="Sunday" key="sunday">
+            <UserApptHeader todaysAppt={todaysAppt} />
+          </TabPane>
+        </Tabs>
       </div>
     </Layout>
-    // </Layout>
   );
 };
 
 const mapStateToProps = (state) => ({
   ringing: state.videoCall.ringing,
   caller: state.videoCall.caller,
+  todaysAppt: state.userAppt.todaysAppt,
 });
 
 export default connect(mapStateToProps, {
   reciveCall,
+  loadTodaysAppt,
 })(UserDashBoard);

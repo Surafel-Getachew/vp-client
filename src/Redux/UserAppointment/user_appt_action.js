@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_USER_APPT, USER_APPT_ERROR, CLEAR_APPT_MSG } from "./types";
+import { ADD_USER_APPT, USER_APPT_ERROR, CLEAR_APPT_MSG,TODAYS_APPT} from "./types";
 
 const config = {
   headers: {
@@ -16,6 +16,15 @@ export const addUserAppt = (formData) => async (dispatch) => {
     console.log("dispatching error");
   }
 };
+
+export const loadTodaysAppt = (date) => async(dispatch) => {
+  try {
+    const res = await axios.get(`/vp/user/appointment/myAppointment/${date}`)
+    dispatch({type:TODAYS_APPT,payload:res.data});
+  } catch (error) {
+    // dispatch()
+  }
+}
 
 export const clearApptMsg = () => (dispatch) => {
   setTimeout(() => {

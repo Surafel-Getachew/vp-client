@@ -1,8 +1,9 @@
-import { ADD_USER_APPT, USER_APPT_ERROR,CLEAR_APPT_MSG } from "./types";
+import { ADD_USER_APPT, USER_APPT_ERROR,CLEAR_APPT_MSG,TODAYS_APPT} from "./types";
 
 const initialState = {
   successMsg: "",
   errorMsg: "",
+  todaysAppt:null
 };
 
 export default (state = initialState, action) => {
@@ -23,6 +24,11 @@ export default (state = initialState, action) => {
         errorMsg:"",
         successMsg:""
       }
+    case  TODAYS_APPT:
+      return {
+        ...state,
+        todaysAppt:action.payload
+      }  
     default:
       return state;
   }

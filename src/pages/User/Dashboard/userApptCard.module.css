@@ -1,0 +1,64 @@
+.userApptCard {
+  /* border: 2px solid red; */
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #aaaaaa;
+  padding: 5px 0;
+  align-items: center;
+}
+
+.profileCnt {
+  flex-basis: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.imgCnt {
+  width: 40px;
+  height: 40px;
+}
+
+.imgCnt img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.timeCnt {
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.startTime {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.endTime {
+  flex-basis: 50%;
+  flex-basis: flex;
+  text-align: center;
+}
+
+.actionCnt {
+  flex-basis: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deleteIcon {
+  color: rgb(250, 74, 74);
+}
+.actionCnt h4 {
+  margin: 0;
+  color: #fa4a4a;
+  text-align: center;
+  /* color: red; */
+}
