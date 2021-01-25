@@ -5,11 +5,17 @@ import {
     GET_USER_PROFILE,
     GET_ALL_USERS_PROFILE,
     DELETE_USER,
-    LOAD_USER_PROFILE_ERROR
+    LOAD_USER_PROFILE_ERROR,
+    ADMIN_SEARCH_USER
 } from "./types"
 const fileConfig = {
     header:{
         "Content-Type":"multipart/form-data"
+    }
+}
+const config = {
+    header:{
+        "Content-Type":"application/json"
     }
 }
 
@@ -55,6 +61,15 @@ export const deleteUser = (id) => async (dispatch) => {
     try {
         const res = await axios.delete(`/vp/users/${id}`);
         dispatch({type:DELETE_USER,payload:res.data});
+    } catch (error) {
+        
+    }
+}
+
+export const adminSearchUser = (searchText) => async(dispatch) => {
+    try {
+        const res = await axios.post("/vp/user/profile/search/all",searchText,config)
+        dispatch({type:ADMIN_SEARCH_USER,payload:res.data});
     } catch (error) {
         
     }

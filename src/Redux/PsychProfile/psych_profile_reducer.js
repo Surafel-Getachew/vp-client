@@ -1,5 +1,5 @@
 import { ADD_PSYCH_PROFILE,LOAD_PSYCH_PROFILE,PSYCH_PROFILE_EROOR,PSYCH_PROFILE_FORM,LOAD_ALL_PSYCH_PROFILE} from "../types";
-import {GET_AVATAR,DOESNT_HAVE_AVATAR,LOAD_ALL_PSYCHS_BASIC_PROFILE, LOAD_PSYCH_BASIC_PROFILE,GET_PSYCH_CREDENTIAL} from "./type";
+import {GET_AVATAR,DOESNT_HAVE_AVATAR,LOAD_ALL_PSYCHS_BASIC_PROFILE, LOAD_PSYCH_BASIC_PROFILE,ADMIN_SEARCH_PSYCHS} from "./type";
 const initialState = {
   psychProfiles: [],
   psychProfile: null,
@@ -58,7 +58,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         psychBasicProfile:payload
-      }  
+      }
+    case ADMIN_SEARCH_PSYCHS:
+      return {
+        ...state,
+        psychsBasicProfile:[],
+        psychsBasicProfile:payload
+      }    
     default:
       return state;
   }

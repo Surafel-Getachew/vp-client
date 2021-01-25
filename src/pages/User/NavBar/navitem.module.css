@@ -6,16 +6,28 @@
 .navItemSelected {
   display: flex;
   justify-content: center;
-  /* border-left: 3px solid white;
-  background: #9e70fa; */
   border-left: 3px solid white;
-  background-color: #91d370;
+  /* background-color: #bf3a30;
+  background-image: linear-gradient(
+    315deg,
+    #bf3a30 0%,
+    #864ba2 74%
+  ); */
+  background-color: #c86fc9;
+  background-image: linear-gradient(316deg, #c86fc9 0%, #f79ad3 74%);
+  
+
+  /* background: #9e70fa;  */
+  /* background: #a79ea8;  */
+  /* background:rgba(149, 16, 158, 0.1) */
+  /* border-left: 3px solid white;  */
+  /* background-color: #91d370;
   background-image: linear-gradient(
     319deg,
     #91d370 0%,
     #bca0ff 37%,
     #f2cd54 100%
-  );
+  ); */
 }
 
 .navIcon {

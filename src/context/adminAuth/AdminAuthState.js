@@ -20,7 +20,7 @@ import { CHANGE_PSYCH_PASSWORD } from "../../types";
 const AdminAuthState = (props) => {
     const initialState = {
         token:localStorage.getItem("token"),
-        isAuthenticated:false,
+        isAuthenticated:null,
         loading:true,
         admin:[],
         error:null,

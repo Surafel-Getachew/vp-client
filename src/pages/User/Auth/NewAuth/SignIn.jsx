@@ -1,20 +1,27 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import style from "./form.module.css";
-import { Input, Form, Button,Alert } from "antd";
+import { Input, Form, Button, Alert } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import FormComponent from "./FormComponent";
 import ForgotPasswordEmail from "../../../../component/ForgotPasswordEmail/ForgotPasswordEmail";
 import AuthContext from "../../../../context/auth/authContext";
-const SignIn = () => {
+const SignIn = (props) => {
   const authContext = useContext(AuthContext);
-  const { login, isAuthenticated,showForgotPassword,showForgotPasswordState,error,clearErrors } = authContext;
+  const {
+    login,
+    isAuthenticated,
+    showForgotPassword,
+    showForgotPasswordState,
+    error,
+    clearErrors,
+  } = authContext;
   const [size, setSize] = useState("large");
   const [redirect, setRedirect] = useState(false);
-  const [errorMsg,setErrorMsg] = useState()
+  const [errorMsg, setErrorMsg] = useState();
   const toggleForgotPassword = () => {
     showForgotPassword();
-  }
+  };
   const onFinish = (values) => {
     if (values) {
       login(values);
@@ -24,7 +31,7 @@ const SignIn = () => {
     setErrorMsg(error);
     clearErrors();
     // eslint-disable-next-line
-  },[error])
+  }, [error]);
   useEffect(() => {
     if (isAuthenticated) {
       setRedirect(true);
@@ -36,7 +43,9 @@ const SignIn = () => {
   return (
     <FormComponent>
       <div className={style.signup}>
-      {errorMsg ? <Alert style = {{width:"500px"}} message={errorMsg} type="error" /> : null}
+        {errorMsg ? (
+          <Alert style={{ width: "500px" }} message={errorMsg} type="error" />
+        ) : null}
         <Form style={{ width: "100%" }} onFinish={onFinish} scrollToFirstError>
           <h1> SignIn</h1>
           <Form.Item
@@ -72,13 +81,25 @@ const SignIn = () => {
           >
             Sign In
           </Button>
-          <p><Button onClick = {toggleForgotPassword} type = "link">Forgot password?</Button></p>
           <p>
-            Don't have an account?<Button type="link">Sign Up</Button>
+            <Button onClick={toggleForgotPassword} type="link">
+              Forgot password?
+            </Button>
+          </p>
+          <p>
+            Don't have an account?
+            <Button
+              type="link"
+              onClick={() => {
+                props.history.push("/vp/user/signup");
+              }}
+            >
+              Sign Up
+            </Button>
           </p>
         </Form>
       </div>
-      {showForgotPasswordState && <ForgotPasswordEmail/>}
+      {showForgotPasswordState && <ForgotPasswordEmail />}
     </FormComponent>
   );
 };

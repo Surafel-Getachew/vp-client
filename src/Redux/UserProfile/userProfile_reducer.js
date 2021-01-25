@@ -4,7 +4,8 @@ import {
     GET_USER_PROFILE,
     GET_ALL_USERS_PROFILE,
     DELETE_USER,
-    LOAD_USER_PROFILE_ERROR
+    LOAD_USER_PROFILE_ERROR,
+    ADMIN_SEARCH_USER
 } from "./types"
 
 const initialState = {
@@ -12,7 +13,8 @@ const initialState = {
     userProfiles:{},
     refresh:false,
     allUsersProfile:[],
-    refresh:false
+    refresh:false,
+
 }
 
 export default (state = initialState,action) => {
@@ -45,6 +47,12 @@ export default (state = initialState,action) => {
             return {
                 ...state,
                 refresh:!state.refresh
+            }
+        case ADMIN_SEARCH_USER:
+            return {
+                ...state,
+                allUsersProfile:[],
+                allUsersProfile:action.payload
             }
          default:
              return state   

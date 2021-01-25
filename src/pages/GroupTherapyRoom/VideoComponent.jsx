@@ -9,9 +9,11 @@ const VideoComponent = ({stream}) => {
     },[stream,localVideo])
     return (
         <div>
-            <video ref = {localVideo} autoPlay style = {{width:"200px",height:"200px"}}></video>
+            <video ref = {localVideo} autoPlay ></video>
         </div>
     )
 }
 
 export default VideoComponent
+
+// style = {{width:"200px",height:"200px"}}

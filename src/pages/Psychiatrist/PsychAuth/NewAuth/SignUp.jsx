@@ -10,7 +10,7 @@ const tooLongNameRegEx = /(?=^.{0,48}$)(^[a-zA-Z/\\]{16,})$/;
 const invalidCharacterRegEx = /^([\s]|[a-zA-Z/\\])+([\s]{1}|[a-zA-Z/\\]+)*$/;
 const tooMuchNameRegEx = /^([\S]{1,16})(|\s)+(|[\S]{1,16})(|\s)+(|[\S]{1,16})$/;
 
-const SignUp = () => {
+const SignUp = (props) => {
   const authContext = useContext(AuthContext);
   const { isAuthenticated, registerPsychiatrist, error, clearErrors } = authContext;
   const [size, setSize] = useState("large");
@@ -179,7 +179,9 @@ const SignUp = () => {
             SignUp
           </Button>
           <p>
-            You have account?<Button type="link">Sign IN</Button>
+            You have account?<Button type="link" onClick = {() => {
+              props.history.push("/vp/psychiatrist/signin")
+            }}>Sign In</Button>
           </p>
         </Form>
       </div>

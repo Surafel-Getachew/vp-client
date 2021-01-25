@@ -1,7 +1,10 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import AuthContext from "../../../context/auth/authContext";
 import { connect } from "react-redux";
-import { loadAllPsychsBasicProfile } from "../../../Redux/PsychProfile/psych_profile_aciton";
+import {
+  loadAllPsychsBasicProfile,
+  adminSearchPsychs,
+} from "../../../Redux/PsychProfile/psych_profile_aciton";
 import { Input } from "antd";
 import Layout from "../Layout/Layout";
 import PsychiatristItems from "./PsychiatristItems";
@@ -10,13 +13,30 @@ const { Search } = Input;
 const Psychiatrists = (props) => {
   const authContext = useContext(AuthContext);
   const { refresh } = authContext;
-  const { loadAllPsychsBasicProfile, psychsBasicProfile } = props;
+  const {
+    loadAllPsychsBasicProfile,
+    psychsBasicProfile,
+    adminSearchPsychs,
+  } = props;
+  const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
     loadAllPsychsBasicProfile();
-  },[refresh]);
+  }, [refresh]);
   useEffect(() => {
     loadAllPsychsBasicProfile();
   }, []);
+  useEffect(() => {
+    if (searchValue == ""){
+      loadAllPsychsBasicProfile();
+    }
+  },[searchValue])
+  const onSearchChange = (e) => {
+    setSearchValue(e.target.value);
+    adminSearchPsychs({ searchText: e.target.value });
+  };
+  const onSearch = () => {
+    adminSearchPsychs({ searchText: searchValue });
+  };
   return (
     <Layout>
       <div className={styles.psychsCont}>
@@ -24,9 +44,9 @@ const Psychiatrists = (props) => {
           <Search
             placeholder="input search text"
             allowClear
-            // value={searchValue}
-            // onChange={onSearchChange}
-            // onSearch={onSearch}
+            value={searchValue}
+            onChange={onSearchChange}
+            onSearch={onSearch}
             enterButton
             style={{ width: 200, margin: "0 10px" }}
           />
@@ -56,4 +76,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   loadAllPsychsBasicProfile,
+  adminSearchPsychs,
 })(Psychiatrists);

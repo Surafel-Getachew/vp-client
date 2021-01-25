@@ -166,11 +166,17 @@ const GroupTherapyRoom = (props) => {
     <div className={styles.groupVideoCnt}>
       <div className={styles.videoCnt}>
         <div className={styles.userVideoCnt}>
-          <video ref={myStream} autoPlay className={styles.myStream}></video>
-          {/* <video ref={others} autoPlay className={styles.othersStream}></video> */}
+          <div className={styles.myStreamCnt}>
+            <video ref={myStream} autoPlay className={styles.myStreamVideo}></video>
+          </div>
+          <div className = {styles.othersStreamCnt}>
           {streams.map((stream) => (
-            <VideoComponent stream={stream} />
+            <div className={styles.secondStream}>
+              <VideoComponent stream={stream} />
+            </div>
           ))}
+          </div>
+          {/* <video ref={others} autoPlay className={styles.othersStream}></video> */}
         </div>
         <div className={styles.userVideoBtn}>
           <div onClick={muteUnmute}>

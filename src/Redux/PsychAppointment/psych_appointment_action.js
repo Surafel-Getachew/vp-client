@@ -13,7 +13,7 @@ export const getAllPsychAppointment = () => async(dispatch) => {
         const res = await axios.get("/vp/psych/appointment");
         dispatch({type:GET_ALL_PSYCH_APPOINTMENT,payload:res.data});
     } catch (error) {
-        dispatch({type:PSYCH_APPOINTMENT_ERROR,payload:error.response.data.msg});
+        // dispatch({type:PSYCH_APPOINTMENT_ERROR,payload:error.response.data.msg});
     }
 }
 

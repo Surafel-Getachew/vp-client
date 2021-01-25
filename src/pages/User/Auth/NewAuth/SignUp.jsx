@@ -10,7 +10,7 @@ const fullNameRegEx = /(?=^.{0,48}$)(^[a-zA-Z/\\]{3,16})+\s(|\s|\s\s)([a-zA-Z/\\
 const tooLongNameRegEx = /(?=^.{0,48}$)(^[a-zA-Z/\\]{16,})$/;
 const invalidCharacterRegEx = /^([\s]|[a-zA-Z/\\])+([\s]{1}|[a-zA-Z/\\]+)*$/;
 const tooMuchNameRegEx = /^([\S]{1,16})(|\s)+(|[\S]{1,16})(|\s)+(|[\S]{1,16})$/;
-const SignUp = () => {
+const SignUp = (props) => {
   const authContext = useContext(AuthContext);
   const {
     register,
@@ -226,7 +226,15 @@ const SignUp = () => {
             style={{}}
           />
           <p>
-            You have account?<Button type="link">Sign in</Button>
+            You have account?
+            <Button
+              type="link"
+              onClick={() => {
+                props.history.push("/vp/user/signin");
+              }}
+            >
+              Sign in
+            </Button>
           </p>
         </Form>
       </div>

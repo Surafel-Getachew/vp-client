@@ -1,13 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
+import AdminAuthContext from "../../../../context/adminAuth/adminAuthContext";
 import { useLocation } from "react-router-dom";
 import NavItem from "./NavItem";
 import styles from "./navbar.module.css";
 const Navbar = () => {
+  const adminAuthContext = useContext(AdminAuthContext);
+  const { loadAdmin, admin } = adminAuthContext;
   const [active, setActive] = useState("/");
   const { pathname } = useLocation();
   useEffect(() => {
     setActive(pathname);
   }, [pathname]);
+  useEffect(() => {
+    loadAdmin();
+  }, []);
   const navItems = [
     {
       name: "Dashboard",

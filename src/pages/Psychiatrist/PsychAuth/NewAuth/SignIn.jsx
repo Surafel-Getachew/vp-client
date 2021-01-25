@@ -5,7 +5,7 @@ import { Input, Form, Button, Alert } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import FormComponent from "./FormComponent";
 import AuthContext from "../../../../context/auth/authContext";
-const SignIn = () => {
+const SignIn = (props) => {
   const authContext = useContext(AuthContext);
   const {
     psychiatristLogin,
@@ -78,7 +78,15 @@ const SignIn = () => {
           </Button>
 
           <p>
-            You don't have account? <Button type="link">Sign Up</Button>
+            You don't have account?{" "}
+            <Button
+              type="link"
+              onClick={() => {
+                props.history.push("/vp/psychiatrist/signup");
+              }}
+            >
+              Sign Up
+            </Button>
           </p>
         </Form>
       </div>

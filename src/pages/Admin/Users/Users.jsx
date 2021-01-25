@@ -1,21 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getAllUsersProfile } from "../../../Redux/UserProfile/userProfile_action";
+import { adminSearchUser } from "../../../Redux/UserProfile/userProfile_action";
 import Layout from "../Layout/Layout";
 import { Input } from "antd";
 import styles from "../Psychiatrists/psychs.module.css";
 import UserItems from "./UserItems";
 const { Search } = Input;
 const Users = (props) => {
-  const { getAllUsersProfile, allUsersProfile,refresh} = props;
+  const {
+    getAllUsersProfile,
+    allUsersProfile,
+    refresh,
+    adminSearchUser,
+  } = props;
+  const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
     getAllUsersProfile();
   }, []);
 
   useEffect(() => {
     getAllUsersProfile();
-  },[refresh])
-  
+  }, [refresh]);
+
+  useEffect(() => {
+    if (searchValue == "") {
+      getAllUsersProfile();
+    }
+  }, [searchValue]);
+
+  const onSearchChange = (e) => {
+    setSearchValue(e.target.value);
+    adminSearchUser({ searchText: e.target.value });
+  };
+
+  const onSearch = () => {
+    adminSearchUser({ searchText: searchValue });
+  };
+
   return (
     <Layout>
       <div className={styles.psychsCont}>
@@ -23,9 +45,9 @@ const Users = (props) => {
           <Search
             placeholder="input search text"
             allowClear
-            // value={searchValue}
-            // onChange={onSearchChange}
-            // onSearch={onSearch}
+            value={searchValue}
+            onChange={onSearchChange}
+            onSearch={onSearch}
             enterButton
             style={{ width: 200, margin: "0 10px" }}
           />
@@ -50,10 +72,11 @@ const Users = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    allUsersProfile: state.userProfile.allUsersProfile,
-    refresh:state.userProfile.refresh
-  });
+  allUsersProfile: state.userProfile.allUsersProfile,
+  refresh: state.userProfile.refresh,
+});
 
 export default connect(mapStateToProps, {
   getAllUsersProfile,
+  adminSearchUser,
 })(Users);

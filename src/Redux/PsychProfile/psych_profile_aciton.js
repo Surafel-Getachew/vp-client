@@ -5,11 +5,14 @@ import {
   PSYCH_PROFILE_FORM,
   LOAD_PSYCH_PROFILE,
   LOAD_ALL_PSYCH_PROFILE,
-
 } from "../types";
  
-import {GET_AVATAR,DOESNT_HAVE_AVATAR,LOAD_ALL_PSYCHS_BASIC_PROFILE,LOAD_PSYCH_BASIC_PROFILE,GET_PSYCH_CREDENTIAL} from "./type"
-
+import {GET_AVATAR,DOESNT_HAVE_AVATAR,LOAD_ALL_PSYCHS_BASIC_PROFILE,LOAD_PSYCH_BASIC_PROFILE,GET_PSYCH_CREDENTIAL, ADMIN_SEARCH_PSYCHS} from "./type"
+const config = {
+  headers: {
+    "Content-Type":  "application/json",
+  },
+};
 export const addPsychProfile = (formData) => async (dispatch) => {
   const config = {
     headers: {
@@ -81,6 +84,15 @@ export const loadPsychBasicProfile = (id) => async(dispatch) => {
   try {
     const res = await axios.get(`/vp/psych/profile/basic/${id}`)
     dispatch({type:LOAD_PSYCH_BASIC_PROFILE,payload:res.data});
+  } catch (error) {
+    
+  }
+}
+
+export const adminSearchPsychs= (searchText) => async(dispatch) => {
+  try {
+    const res = await axios.post("/vp/psych/profile/search/all",searchText,config);
+    dispatch({type:ADMIN_SEARCH_PSYCHS,payload:res.data})
   } catch (error) {
     
   }
