@@ -6,11 +6,18 @@ const AppointmentCardItems = ({ name, avi }) => {
     <div>
       <div className={styles.apptCardItem}>
         <div className={styles.apptCardAvi}>
-          <img
-            src={avi}
-            // src={require("../../../assets/person8.jpg")}
-            alt="Avi"
-          />
+          {avi === undefined ? (
+            <img
+              alt="Avi"
+              src={require("../../../assets/profilepic.jpeg")}
+            ></img>
+          ) : (
+            <img
+              className={styles.avi}
+              src={`data:image/jpeg;base64,${avi}`}
+              alt="Avatar"
+            />
+          )}
         </div>
         <div className={styles.apptCardName}>
           <h5>

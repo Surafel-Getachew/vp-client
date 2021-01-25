@@ -3,10 +3,12 @@ import { useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import AuthContext from "../../../context/auth/authContext";
 import { storeClientInfo } from "../../../Redux/VideoCall/video_call_action";
+import { getUserProfile } from "../../../Redux/UserProfile/userProfile_action";
 import styles from "./navbar.module.css";
 import NavItem from "./NavItem";
 const NavBar = (props) => {
-  const { storeClientInfo } = props;
+  const { storeClientInfo, getUserProfile, userProfile } = props;
+  // const { avatar } = userProfile;
   const authContext = useContext(AuthContext);
   const { loadUser, user } = authContext;
   const [active, setActive] = useState("/");
@@ -15,6 +17,7 @@ const NavBar = (props) => {
     loadUser();
   }, []);
   const { _id, name } = user;
+
   useEffect(() => {
     if (_id !== undefined) {
       storeClientInfo(_id);
@@ -23,6 +26,11 @@ const NavBar = (props) => {
   useEffect(() => {
     setActive(pathname);
   }, [pathname]);
+  useEffect(() => {
+    if (_id !== undefined) {
+      getUserProfile(_id);
+    }
+  }, [_id]);
   const navItems = [
     {
       name: "Dashboard",
@@ -78,7 +86,19 @@ const NavBar = (props) => {
     <div className={styles.sideNavCnt}>
       <div className={styles.profileCnt}>
         <div className={styles.aviCnt}>
-          <img src={require("../../../assets/person2.jpg")} alt="avi" />
+          {/* <img src={require("../../../assets/person2.jpg")} alt="avi" /> */}
+          {userProfile === null ? (
+            <img
+              alt="Avi"
+              src={require("../../../assets/profilepic.jpeg")}
+            ></img>
+          ) : (
+            <img
+              className={styles.avi}
+              src={`data:image/jpeg;base64,${userProfile.avatar}`}
+              alt="Avatar"
+            />
+          )}
         </div>
         <div className={styles.profileName}>
           {/* <h3>Surafel Getachew</h3> */}
@@ -100,8 +120,11 @@ const NavBar = (props) => {
     </div>
   );
 };
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  userProfile: state.userProfile.userProfile,
+});
 
 export default connect(mapStateToProps, {
   storeClientInfo,
+  getUserProfile,
 })(NavBar);

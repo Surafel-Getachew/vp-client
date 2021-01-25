@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import Layout from "../../../component/Layout/Layout";
+import React,{useState,useEffect,useContext} from 'react'
+import Layout from "../Layout/Layout";
 import AuthContext from "../../../context/auth/authContext";
 import { Input, Form, Button, Alert } from "antd";
 import { LockOutlined } from "@ant-design/icons";
-import styles from "./psychChangePassword.module.css";
-const PsychChangePassword = () => {
-  const authContext = useContext(AuthContext);
-  const { changePassword, successMsg, error } = authContext;
+import styles from "./userChangePassword.module.css";
+
+const UserChangePassword = () => {
+    const authContext = useContext(AuthContext);
+  const { changeUserPassword, successMsg, error } = authContext;
   const [msg, setMsg] = useState({
     msgText: "",
     msgType: "",
@@ -14,7 +15,7 @@ const PsychChangePassword = () => {
   const { msgText, msgType } = msg;
   const onFinish = (values) => {
     // console.log(values);
-    changePassword(values);
+    changeUserPassword(values);
   };
   useEffect(() => {
     setMsg({ msgText: successMsg, msgType: "success" });
@@ -149,4 +150,5 @@ const PsychChangePassword = () => {
   );
 };
 
-export default PsychChangePassword;
+
+export default UserChangePassword

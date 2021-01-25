@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import AuthContext from "../../../context/auth/authContext";
 import ArticleContext from "../../../context/article/articleContext";
 import { connect } from "react-redux";
-import { getAllPsychAppointment,getPsychTotalAppointment} from "../../../Redux/PsychAppointment/psych_appointment_action";
+import { getAllPsychAppointment,getPsychTotalAppointment,getAppointedUsersProfile} from "../../../Redux/PsychAppointment/psych_appointment_action";
 import { Liquid } from "@ant-design/charts";
 import {
   AreaChart,
@@ -24,8 +24,15 @@ const PsychDashboard = (props) => {
   const {getPsychTotalArticle,psychTotalArticle} = articleContext;
   const { loadPsychiatrist, user } = authContext;
   const { name } = user;
-  const { getAllPsychAppointment, allPsychAppointment,getPsychTotalAppointment,psychTotalAppointment} = props;
+  const { getAllPsychAppointment, allPsychAppointment,getPsychTotalAppointment,psychTotalAppointment,getAppointedUsersProfile,appointedUsersProfile} = props;
   const [appointment, setAppointment] = useState([]);
+  const [dayName,setDayName] = useState("")
+  var dayNames = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"]
+  useEffect(() => {
+    var datee = new Date();
+    var day = datee.getDay();
+    setDayName(dayNames[day])
+  },[])
   useEffect(() => {
     loadPsychiatrist();
   }, []);
@@ -34,6 +41,11 @@ const PsychDashboard = (props) => {
   },[])
   useEffect(() => {
     getPsychTotalAppointment()
+  },[])
+  useEffect(() => {
+    var datee = new Date();
+    var day = datee.getDay();
+    getAppointedUsersProfile(dayNames[day]);
   },[])
   useEffect(() => {
     if (!allPsychAppointment) {
@@ -158,12 +170,19 @@ const PsychDashboard = (props) => {
         </div>
         <div className={styles.dashBoardContent}>
           <div id="apptCardId" className={styles.apptCard}>
-            <h4>Today's Appointment</h4>
-            <AppointmentCardItems
-              name="Emma watson"
-              avi={require("../../../assets/person8.jpg")}
-            />
-            <AppointmentCardItems
+            <h4>Today's Appointment ({dayName})</h4>
+            {appointedUsersProfile === undefined || appointedUsersProfile === null ? ("NO APPOINTMENT TODAY"):(
+              appointedUsersProfile.map((profile) => (
+                <AppointmentCardItems
+                // name="Emma watson"
+                // avi={require("../../../assets/person8.jpg")}
+                name = {profile.name}
+                avi = {profile.avatar}
+              />
+              ))
+            )}
+            
+            {/* <AppointmentCardItems
               name="David alison"
               avi={require("../../../assets/person2.jpg")}
             />
@@ -198,7 +217,7 @@ const PsychDashboard = (props) => {
             <AppointmentCardItems
               name="alehege degu"
               avi={require("../../../assets/person7.jpg")}
-            />
+            /> */}
           </div>
           <div className={styles.numbers}>
             <div className={styles.dashboardFigures}>
@@ -256,10 +275,12 @@ const PsychDashboard = (props) => {
 
 const mapStateToProps = (state) => ({
   allPsychAppointment: state.psychAppointment.allPsychAppointment,
-  psychTotalAppointment:state.psychAppointment.psychTotalAppointment
+  psychTotalAppointment:state.psychAppointment.psychTotalAppointment,
+  appointedUsersProfile:state.psychAppointment.appointedUsersProfile
 });
 
 export default connect(mapStateToProps, {
   getAllPsychAppointment,
-  getPsychTotalAppointment
+  getPsychTotalAppointment,
+  getAppointedUsersProfile
 })(PsychDashboard);

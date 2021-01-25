@@ -51,14 +51,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor:pointer;
 }
 
 .deleteIcon {
+  padding: 0 10px;
   color: rgb(250, 74, 74);
 }
 .actionCnt h4 {
   margin: 0;
   color: #fa4a4a;
   text-align: center;
-  /* color: red; */
 }

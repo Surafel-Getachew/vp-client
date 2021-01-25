@@ -46,25 +46,25 @@ const UserDashBoard = (props) => {
           onChange={onDayChange}
         >
           <TabPane tab="Monday" key="monday">
-            <UserApptHeader todaysAppt={todaysAppt} />
+            <UserApptHeader currentTab = {currentTab} todaysAppt={todaysAppt} />
           </TabPane>
           <TabPane tab="Tuesday" key="tuesday">
-            <UserApptHeader todaysAppt={todaysAppt} />
+            <UserApptHeader currentTab = {currentTab} todaysAppt={todaysAppt} />
           </TabPane>
           <TabPane tab="Wednesday" key="wednesday">
-            <UserApptHeader todaysAppt={todaysAppt} />
+            <UserApptHeader currentTab = {currentTab} todaysAppt={todaysAppt} />
           </TabPane>
           <TabPane tab="Thursday" key="thursday">
-            <UserApptHeader todaysAppt={todaysAppt} />
+            <UserApptHeader currentTab = {currentTab} todaysAppt={todaysAppt} />
           </TabPane>
           <TabPane tab="Friday" key="friday">
-            <UserApptHeader todaysAppt={todaysAppt} />
+            <UserApptHeader currentTab = {currentTab} todaysAppt={todaysAppt} />
           </TabPane>
           <TabPane tab="Saturday" key="saturday">
-            <UserApptHeader todaysAppt={todaysAppt} />
+            <UserApptHeader currentTab = {currentTab} todaysAppt={todaysAppt} />
           </TabPane>
           <TabPane tab="Sunday" key="sunday">
-            <UserApptHeader todaysAppt={todaysAppt} />
+            <UserApptHeader currentTab = {currentTab} todaysAppt={todaysAppt} />
           </TabPane>
         </Tabs>
       </div>

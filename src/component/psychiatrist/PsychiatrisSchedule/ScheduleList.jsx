@@ -7,7 +7,7 @@ import {
   deletePsychSchedule,
 } from "../../../Redux/Schedule/schedule_action";
 import { getTimeAMPMFormat } from "../../../utils/helpers";
-import { Form, Button, Space, TimePicker, Alert, Timeline } from "antd";
+import { Form, Button, Space, TimePicker, Alert, Timeline, Modal } from "antd";
 import {
   MinusCircleOutlined,
   PlusOutlined,
@@ -16,7 +16,7 @@ import {
 } from "@ant-design/icons";
 import styles from "./scheduleList.module.css";
 const { RangePicker } = TimePicker;
-
+const { confirm } = Modal;
 const ScheduleList = (props) => {
   const {
     addSchedule,
@@ -28,7 +28,6 @@ const ScheduleList = (props) => {
     todaysSchedule,
     refresh,
   } = props;
-
   const onFinish = (values) => {
     const formData = {
       [theDate]: [
@@ -38,22 +37,26 @@ const ScheduleList = (props) => {
         },
       ],
     };
-    // console.log(formData);
-    // console.log(values);
     addSchedule(formData);
   };
-  const onDelete = (id) => {
-    console.log(id, "ddde");
-    // const info = {
-    //   id: e.target.value,
-    //   date: theDate,
-    // };
-    // console.log(info);
-    // deletePsychSchedule(info);
-    console.log("deleteddd");
-  };
+  // function showDeleteConfirm() {
+  //   confirm({
+  //     title: "Are you sure delete this Psychiatrist?",
+  //     icon: <ExclamationCircleOutlined />,
+  //     content: "Once deleted it can't be reversed",
+  //     okText: "Yes",
+  //     okType: "danger",
+  //     cancelText: "No",
+  //     onOk() {
+  //       deleteUser(profileOwner);
+  //       // console.log("OK");
+  //     },
+  //     onCancel() {
+  //       console.log("Cancel");
+  //     },
+  //   });
+  // }
   const [error, setError] = useState("");
-  const [deleteSchdule, setDeleteSchedule] = useState("");
 
   useEffect(() => {
     setError(errorMsg);
@@ -178,13 +181,25 @@ const ScheduleList = (props) => {
           <div className={styles.todaysSchedule}>
             <Timeline className={styles.tl}>
               {todaysSchedule.map((schedule) => (
-                <Timeline.Item key = {schedule._id}>
+                <Timeline.Item key={schedule._id}>
                   <span>Start Time </span>
                   <span> </span>
                   {getTimeAMPMFormat(new Date(schedule.start))}
                   <span> </span>-<span> </span>
                   <span>End Time </span>
                   {getTimeAMPMFormat(new Date(schedule.end))}
+                  <button
+                    className={styles.deleteScheduleButton}
+                    onClick={() => {
+                      const info = {
+                        date: theDate,
+                        id: schedule._id,
+                      };
+                      deletePsychSchedule(info);
+                    }}
+                  >
+                    Delete
+                  </button>
                 </Timeline.Item>
               ))}
             </Timeline>

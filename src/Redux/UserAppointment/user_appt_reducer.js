@@ -1,9 +1,11 @@
-import { ADD_USER_APPT, USER_APPT_ERROR,CLEAR_APPT_MSG,TODAYS_APPT} from "./types";
+import { ADD_USER_APPT, USER_APPT_ERROR,CLEAR_APPT_MSG,TODAYS_APPT,DELETE_USER_APPT
+} from "./types";
 
 const initialState = {
   successMsg: "",
   errorMsg: "",
-  todaysAppt:null
+  todaysAppt:null,
+  refresh:false
 };
 
 export default (state = initialState, action) => {
@@ -28,7 +30,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         todaysAppt:action.payload
-      }  
+      }
+    case DELETE_USER_APPT:
+      return {
+        ...state,
+        refresh:!state.refresh
+      }    
     default:
       return state;
   }

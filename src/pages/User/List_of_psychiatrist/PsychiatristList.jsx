@@ -8,6 +8,7 @@ const PsychiatristList = () => {
     <Layout>
       <div className={styles.psychListCnt}>
         <div className = {styles.list}>
+          <h3>List of Psychiatrist</h3>
           <PsychiatristProfiles />
         </div>
       </div>

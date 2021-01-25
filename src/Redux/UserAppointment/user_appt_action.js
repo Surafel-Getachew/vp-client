@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_USER_APPT, USER_APPT_ERROR, CLEAR_APPT_MSG,TODAYS_APPT} from "./types";
+import { ADD_USER_APPT, USER_APPT_ERROR, CLEAR_APPT_MSG,TODAYS_APPT,DELETE_USER_APPT} from "./types";
 
 const config = {
   headers: {
@@ -23,6 +23,15 @@ export const loadTodaysAppt = (date) => async(dispatch) => {
     dispatch({type:TODAYS_APPT,payload:res.data});
   } catch (error) {
     // dispatch()
+  }
+}
+
+export const deleteUserAppointment = (date,id) => async(dispatch) => {
+  try {
+    const res = await axios.delete(`/vp/user/appointment/${date}/${id}`);
+    dispatch({type:DELETE_USER_APPT})
+  } catch (error) {
+    
   }
 }
 

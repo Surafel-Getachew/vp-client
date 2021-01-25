@@ -5,6 +5,7 @@ import {
     GET_USER_PROFILE,
     GET_ALL_USERS_PROFILE,
     DELETE_USER,
+    LOAD_USER_PROFILE_ERROR
 } from "./types"
 const fileConfig = {
     header:{
@@ -31,11 +32,12 @@ export const loadUserProfile = () => async(dispatch) => {
 }
 
 export const getUserProfile = (id) => async (dispatch) => {
+    console.log("getting profile",id);
     try {
         const res = await axios.get(`/vp/user/profile/${id}`)
         dispatch({type:GET_USER_PROFILE,payload:res.data})
     } catch (error) {
-        
+        dispatch({type:LOAD_USER_PROFILE_ERROR})
     }
 }
 

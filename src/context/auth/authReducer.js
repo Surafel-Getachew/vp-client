@@ -20,6 +20,8 @@ import {
   DELETE_PSYCHIATRIST,
   CHANGE_PSYCH_PASSWORD,
   CHANGE_PSYCH_PASSWORD_ERROR,
+  CHANGE_USER_PASSWORD,
+  CHANGE_USER_PASSWORD_ERROR,
   TOTAL_USERS,
   TOTAL_PSYCHIATRISTS
 } from "../../types";
@@ -160,11 +162,13 @@ export default (state, action) => {
         ...state,
         refresh:!state.refresh
       }
+    case CHANGE_USER_PASSWORD:  
     case CHANGE_PSYCH_PASSWORD:
       return {
         ...state,
         successMsg:action.payload
       }
+    case CHANGE_USER_PASSWORD_ERROR:
     case CHANGE_PSYCH_PASSWORD_ERROR:
       return {
         ...state,

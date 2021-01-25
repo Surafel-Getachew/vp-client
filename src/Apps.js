@@ -27,6 +27,7 @@ import UserAppointment from "./pages/User/Appointment/UserAppointment";
 import UserProfileForm from "./pages/User/ProfileSetting/UserProfileForm"
 import UserArticle from "./pages/User/UserArticle/UserArticle"
 import UserGroupVideoChat from "./pages/User/GroupVideoChat/UserGroupVideoChat";
+import UserChangePassword from "./pages/User/UserChangePassword/UserChangePassword";
 // psych pages
 import PsychiatristDashboard from "./pages/Psychiatrist/PsychDashboard/PsychDashboard";
 import PsychSignin from "./pages/Psychiatrist/PsychAuth/NewAuth/SignIn";
@@ -122,6 +123,11 @@ const Apps = () => {
                     exact
                     path="/vp/user/profile-setting"
                     component={UserProfileForm}
+                  />
+                  <UserPrivateRoute
+                    exact
+                    path="/vp/user/change-password"
+                    component={UserChangePassword}
                   />
                   <Route 
                     exact 

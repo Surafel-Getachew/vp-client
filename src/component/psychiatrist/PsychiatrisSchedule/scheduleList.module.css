@@ -3,11 +3,17 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.appointmentForm {
-}
-
 .todaysSchedule {
   /* border: 2px solid red; */
   display: flex;
   justify-content: center;
+}
+
+.deleteScheduleButton {
+  background: none;
+  border:1px solid red;
+  color:red;
+  margin-left:10px;
+  outline: none;
+  cursor: pointer;
 }

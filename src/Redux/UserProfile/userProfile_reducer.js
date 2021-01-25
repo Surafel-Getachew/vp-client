@@ -3,7 +3,8 @@ import {
     LOAD_USER_PROFILE,
     GET_USER_PROFILE,
     GET_ALL_USERS_PROFILE,
-    DELETE_USER
+    DELETE_USER,
+    LOAD_USER_PROFILE_ERROR
 } from "./types"
 
 const initialState = {
@@ -24,6 +25,11 @@ export default (state = initialState,action) => {
             return {
                 ...state,
                 userProfile:action.payload
+            }
+        case LOAD_USER_PROFILE_ERROR:
+            return {
+                ...state,
+                userProfile:null
             }
         case GET_USER_PROFILE:
             return {

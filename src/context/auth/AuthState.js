@@ -27,7 +27,9 @@ import {
   CHANGE_PSYCH_PASSWORD,
   CHANGE_PSYCH_PASSWORD_ERROR,
   TOTAL_PSYCHIATRISTS,
-  TOTAL_USERS
+  TOTAL_USERS,
+  CHANGE_USER_PASSWORD,
+  CHANGE_USER_PASSWORD_ERROR
 } from "../../types";
 
 const AuthState = (props) => {
@@ -222,6 +224,15 @@ const AuthState = (props) => {
     }
   }
 
+  const changeUserPassword = async (formData) => {
+    try {
+      const res = await axios.post("/vp/users/changePassword",formData,config);
+        dispatch({type:CHANGE_USER_PASSWORD,payload:res.data.msg});
+    } catch (error) {
+      dispatch({type:CHANGE_USER_PASSWORD_ERROR,payload:error.response.data.msg});
+    }
+  }
+
   const getTotalUsers = async() => {
     try {
       const res = await axios.get("/vp/users/admin/total");
@@ -289,7 +300,8 @@ const AuthState = (props) => {
         deletePsychiatrist,
         changePassword,
         getTotalUsers,
-        getTotalPsychiatrists
+        getTotalPsychiatrists,
+        changeUserPassword
       }}
     >
       {props.children}

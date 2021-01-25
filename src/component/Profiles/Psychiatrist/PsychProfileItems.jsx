@@ -3,16 +3,28 @@ import styles from "./psychProfiles.module.css";
 import { Link } from "react-router-dom";
 
 const PsychProfileItems = ({ profile }) => {
-  const { name, specializations, psychOwner } = profile;
+  const { name, specializations, psychOwner, avatar } = profile;
   return (
     <div className={styles.profileCardsContainer}>
       <div className={styles.profileCard}>
         <div className={styles.profileImg}>
           <a href="none">
-            <img
+            {/* <img
               src={require("../../../assets/images/doctors/doctor-thumb-02.jpg")}
               alt=""
-            />
+            /> */}
+            {avatar === undefined ? (
+              <img
+                alt="Avi"
+                src={require("../../../assets/profilepic.jpeg")}
+              ></img>
+            ) : (
+              <img
+                className={styles.avi}
+                src={`data:image/jpeg;base64,${avatar}`}
+                alt="Avatar"
+              />
+            )}
           </a>
         </div>
         <div className={styles.proContent}>
@@ -58,7 +70,7 @@ const PsychProfileItems = ({ profile }) => {
             </div>
             <div className={styles.bookBtn}>
               <Link
-                className = {styles.bookBtnLink}
+                className={styles.bookBtnLink}
                 to={{
                   pathname: "/vp/user/appointment",
                   state: {
